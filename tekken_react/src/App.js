@@ -1,10 +1,30 @@
 
-import styled from 'styled-components';
+import styled,{createGlobalStyle} from 'styled-components';
 import {Route, Switch} from 'react-router-dom'
 import Jin from './character/Jin'
 import Asuka from './character/Asuka'
 import Home from './character/Home'
 import Sidebar from './components/Sidebar'
+
+const GlobalStyle = createGlobalStyle`
+  table{
+    width: 80%;
+    min-width:200px;
+    border: 1px solid black;
+    border-collapse:collapse;
+  }
+  th,td{
+    border : 1px solid black;
+    border-collapse: collapse;
+  }
+  th,td,tr{
+    padding: 5px;
+  }
+  th{
+    text-align: left;
+  }
+`
+
 const Wrapper = styled.div`
     height:100%;
     width: 100%;
@@ -25,6 +45,7 @@ const PageContent = styled.div`
 function App() {
   return (
     <>
+    <GlobalStyle/>
     <Wrapper>
             <Sidebar/>
             <PageContent>

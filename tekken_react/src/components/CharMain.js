@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-
+import ExTabs from './ExTabs';
 const MainWrapper  = styled.div`
     position: absolute;
     left: 20%;
@@ -16,7 +16,7 @@ const MainWrapper  = styled.div`
 const CharMain = ()=>{
     return(
         <MainWrapper>
-
+            <ExTabs/>
         </MainWrapper>
     )
 }

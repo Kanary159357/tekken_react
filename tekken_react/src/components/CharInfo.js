@@ -38,13 +38,13 @@ const CharInfo = ()=>{
     return(
         <InfoWrapper>
             <div className="info_img">
-            <img src={InfoImg}/>
+            <img src={InfoImg} alt="char"/>
             <h2>Jin</h2>
             </div>
             <div className="link">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA" alt="youtube"><img src={youtubeImg}/>딜캐( 김케장유투브)</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA" alt="youtube"><img src={youtubeImg}/>콤보 (쿨잼)</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA" alt="dc"><img src={dcImg}/>철마갤 캐릭터 팁</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={youtubeImg}  alt="youtube"/>딜캐( 김케장유투브)</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={youtubeImg}  alt="youtube"/>콤보 (쿨잼)</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={dcImg}  alt="dc"/>철마갤 캐릭터 팁</a>
             </div>  
         </InfoWrapper>
     )
