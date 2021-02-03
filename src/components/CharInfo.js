@@ -3,19 +3,42 @@ import InfoImg from '../img/jin.jpg';
 import dcImg from '../img/dc.png';
 import youtubeImg from '../img/youtube.png';
 const InfoWrapper = styled.div`
-    position: absolute;
     display:flex;
-    margin-top: 30px;
-    margin-left: 50px;
     background: #fff;
-    width: 15%;
     height: 90%;
-    min-height: 600px;    
    align-items: center;
    justify-content:space-around;
    flex-direction: column;
+   @media all and (max-width: 1024px){
+       height:20%;
+       width:100%;
+       border-bottom: 1px solid black;
+   }
+
+   h2{
+       @media all and (max-width:1024px){
+           margin: 0;
+           font-size: 20px;
+
+       }
+   }
+
+   .link {
+       display:flex;
+       flex-direction:column;
+       @media all and (max-width: 1024px){
+        flex-direction: row;
+       }
+   }
     .info_img{
         text-align:center;
+        img{
+            width:80%;
+            @media all and (max-width: 1024px){
+                width:20%;
+            }   
+        }
+    
     }
     .link a{
         display:flex;
@@ -25,11 +48,22 @@ const InfoWrapper = styled.div`
             color:#333;
         }
         margin-bottom: 15px;
+        @media all and (max-width: 1140px){
+            line-height: 1em;
+        }
+    
+      
     }
     .link a img{
+        display:flex;
         width:1.5em;
         height:1.5em;
-        text-align:center;
+        align-items:center;
+        @media all and (max-width:1140px){
+            width: 1em;
+            height: 1em;
+        }
+        
     }
 `  
 
@@ -42,7 +76,7 @@ const CharInfo = ()=>{
             <h2>Jin</h2>
             </div>
             <div className="link">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={youtubeImg}  alt="youtube"/>딜캐( 김케장유투브)</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={youtubeImg}  alt="youtube"/>딜캐</a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={youtubeImg}  alt="youtube"/>콤보 (쿨잼)</a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={dcImg}  alt="dc"/>철마갤 캐릭터 팁</a>
             </div>  

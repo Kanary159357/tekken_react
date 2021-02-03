@@ -2,13 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Punish from './Punish'
-import Combo from './Combo'
-import styled from 'styled-components'
-
-
+import Punish from './Punish';
+import Combo from './Combo';
+import styled from 'styled-components';
+import MainMove from './MainMove';
+import MainPunish from './MainPunish'
 const TabPanelBlock = styled.div`
-    ${({value}) => value ? `width:100%` : 'width:0%'}
+    ${({value}) => value ? `width:100%;  height:90%;` : 'width:0%'};
+  overflow-y:scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
 `
 
 function TabPanel(props) {
@@ -41,14 +48,16 @@ function a11yProps(index) {
 }
 
 const Root = styled.div`
-  width:100%;
-  display: flex;
-  width: 100%;
-  height: 100%;
   flex-grow: 1;
+
 `
 const TabsBlock =styled(Tabs)`
-  border-right: 1px solid black;
+  display:flex;
+  width: 100%;
+  justify-content:center;
+`
+const TabBlock = styled(Tab)`
+  flex: 1 1 auto;
 `
 
 export default function VerticalTabs() {
@@ -61,16 +70,14 @@ export default function VerticalTabs() {
   return (
     <Root>
       <TabsBlock
-        orientation="vertical"
-        variant="scrollable"
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs example"
+        centered
       >
-        <Tab label="딜레이캐치" {...a11yProps(0)} />
-        <Tab label="콤보" {...a11yProps(1)} />
-        <Tab label="주력기" {...a11yProps(2)} />
-        <Tab label="주력기 딜캐" {...a11yProps(3)} />
+        <TabBlock label="딜레이캐치" {...a11yProps(0)} />
+        <TabBlock label="콤보" {...a11yProps(1)} />
+        <TabBlock label="주력기" {...a11yProps(2)} />
+        <TabBlock label="주력기 딜캐" {...a11yProps(3)} />
 
       </TabsBlock>
       <TabPanel value={value} index={0}>
@@ -80,10 +87,10 @@ export default function VerticalTabs() {
         <Combo/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <MainMove/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <MainPunish/>
       </TabPanel>
 
    

@@ -2,17 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom';
 const Wrapper = styled.div`
-    width :13%;
+    width :240px;
     background: #333;
-    height:100%;
-    min-width: 130px;
-    position:absolute;
+    position: fixed;
     top:0;
     left:0;
+    height: 100%;
     overflow-y: auto;
     -ms-overflow-style: none; 
+    flex-direction:column;
     ::-webkit-scrollbar { display: none; }
 
+    @media all and (max-width: 1024px){
+
+        width: 240px;
+        left: ${props=>props.toggle ? '0': '-240px'};
+        z-index:997;
+    }
+
+   
     .Main{
         width: 100%;
         height: 60px;
@@ -57,9 +65,9 @@ const SidebarItem = ({path})=>{
 }
 
 
-const Sidebar =()=>{
+const Sidebar =({toggle})=>{
     return(
-        <Wrapper>
+        <Wrapper toggle={toggle}>
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
