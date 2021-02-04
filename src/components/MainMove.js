@@ -24,17 +24,22 @@ const movedata = [
 
 ]
 
-const MainMove = ()=>{
+const MainMove = ({Data})=>{
     return(
         <Wrapper>
             <h2>주력기</h2>
             <table>
-                {movedata.map((row)=>(
-                     <tr>
-                     <td>{row.move}</td>
+                <tbody>
+                {Data.map((row,index)=>(
+                     <tr key={index}>
+                     <td>{row.command}</td>
+                     <td>{row.state}</td>
+                     <td>{row.damage}</td>
+                     <td>{row.guard}</td>
                      <td>{row.description}</td>
                  </tr>
                 ))}
+                </tbody>
             </table>
         </Wrapper>
     )

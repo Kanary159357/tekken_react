@@ -60,13 +60,11 @@ const TabBlock = styled(Tab)`
   flex: 1 1 auto;
 `
 
-export default function VerticalTabs() {
+export default function VerticalTabs({Data}) {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <Root>
       <TabsBlock
@@ -81,16 +79,16 @@ export default function VerticalTabs() {
 
       </TabsBlock>
       <TabPanel value={value} index={0}>
-        <Punish/>
+        <Punish Data ={Data.Punish}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Combo/>
+        <Combo Data={Data.ComboPage}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <MainMove/>
+        <MainMove Data={Data.MainMove}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <MainPunish/>
+        <MainPunish Data={Data}/>
       </TabPanel>
 
    

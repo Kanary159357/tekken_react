@@ -35,8 +35,8 @@ const Data = [
     
 ]
 
-const Punish = ()=>{
-
+const Punish = ({Data})=>{
+    console.log(Data);
     return(
         <Wrapper>
             <div>

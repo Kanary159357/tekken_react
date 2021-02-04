@@ -2,7 +2,7 @@ import React from 'react';
 import CharInfo from '../components/CharInfo'
 import CharMain from '../components/CharMain'
 import styled from 'styled-components'
-
+import JinData from '../info/JinData.json';
 const CharWrap = styled.div`
     display:flex;
     width: 100%;
@@ -18,7 +18,7 @@ const Jin = ()=>{
     return(
         <CharWrap>
             <CharInfo/>
-            <CharMain/>
+            <CharMain JinData ={JinData}/>
         </CharWrap>
     )
 }
