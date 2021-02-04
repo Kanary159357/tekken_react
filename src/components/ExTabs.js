@@ -6,7 +6,7 @@ import Punish from './Punish';
 import Combo from './Combo';
 import styled from 'styled-components';
 import MainMove from './MainMove';
-import MainPunish from './MainPunish'
+import Throw from './Throw'
 const TabPanelBlock = styled.div`
     ${({value}) => value ? `width:100%;  height:90%;` : 'width:0%'};
   overflow-y:scroll;
@@ -75,7 +75,7 @@ export default function VerticalTabs({Data}) {
         <TabBlock label="딜레이캐치" {...a11yProps(0)} />
         <TabBlock label="콤보" {...a11yProps(1)} />
         <TabBlock label="주력기" {...a11yProps(2)} />
-        <TabBlock label="주력기 딜캐" {...a11yProps(3)} />
+        <TabBlock label="잡기" {...a11yProps(3)} />
 
       </TabsBlock>
       <TabPanel value={value} index={0}>
@@ -88,7 +88,7 @@ export default function VerticalTabs({Data}) {
         <MainMove Data={Data.MainMove}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <MainPunish Data={Data}/>
+        <Throw Data={Data.Throw}/>
       </TabPanel>
 
    

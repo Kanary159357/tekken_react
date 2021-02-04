@@ -2,7 +2,6 @@ import React from 'react';
 import CharInfo from '../components/CharInfo'
 import CharMain from '../components/CharMain'
 import styled from 'styled-components'
-import JinData from '../info/JinData.json';
 const CharWrap = styled.div`
     display:flex;
     width: 100%;
@@ -14,13 +13,14 @@ const CharWrap = styled.div`
     }
 `
 
-const Jin = ({data})=>{
+const CharPage = ({data})=>{
+    console.log(data);
     return(
         <CharWrap>
-            <CharInfo data = {data.Info}/>
-            <CharMain data ={data}/>
+            <CharInfo data={data.Info}/>
+            <CharMain data={data}/>
         </CharWrap>
     )
 }
 
-export default Jin
+export default CharPage

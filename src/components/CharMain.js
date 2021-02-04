@@ -14,10 +14,10 @@ const MainWrapper  = styled.div`
     }
 `
 
-const CharMain = ({JinData})=>{
+const CharMain = ({data})=>{
     return(
         <MainWrapper>
-            <ExTabs Data={JinData}/>
+            <ExTabs Data={data}/>
         </MainWrapper>
     )
 }

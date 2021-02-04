@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Jin from '../character/Jin';
 
 const Wrapper = styled.div`
     display:flex;
@@ -14,6 +13,13 @@ const Combo = ({Data})=>{
         <Wrapper>
             <h2>콤보</h2>
             <table>
+            <thead>
+                <tr>
+                    <th>상황</th>
+                    <th>커맨드</th>
+                    <th>데미지</th>
+                </tr>
+                </thead>
                 <tbody>
                 {Data.combo.map((row,index)=>(
                     <tr key={index}>
@@ -27,6 +33,13 @@ const Combo = ({Data})=>{
 
                     <h2>추가타</h2>
                     <table>
+                    <thead>
+                <tr>
+                    <th>상황</th>
+                    <th>커맨드</th>
+                    <th>데미지</th>
+                </tr>
+                </thead>
                     <tbody>
                 {Data.extrahit.map((row,index)=>(
                        <tr  key={index}>

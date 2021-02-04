@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import InfoImg from '../img/jin.jpg';
 import dcImg from '../img/dc.png';
 import youtubeImg from '../img/youtube.png';
 const InfoWrapper = styled.div`
@@ -68,17 +67,17 @@ const InfoWrapper = styled.div`
 `  
 
 
-const CharInfo = ()=>{
+const CharInfo = ({data})=>{
     return(
         <InfoWrapper>
             <div className="info_img">
-            <img src={InfoImg} alt="char"/>
-            <h2>Jin</h2>
+            <img src={data.img} alt="char"/>
+            <h2>{data.name}</h2>
             </div>
             <div className="link">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={youtubeImg}  alt="youtube"/>딜캐</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={youtubeImg}  alt="youtube"/>콤보 (쿨잼)</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=-VKe-ZosJaA"><img src={dcImg}  alt="dc"/>철마갤 캐릭터 팁</a>
+            <a target="_blank" rel="noopener noreferrer" href={data.punish}><img src={youtubeImg}  alt="youtube"/>딜캐</a>
+            <a target="_blank" rel="noopener noreferrer" href={data.combo}><img src={youtubeImg}  alt="youtube"/>콤보 (쿨잼)</a>
+            <a target="_blank" rel="noopener noreferrer" href={data.dc}><img src={dcImg}  alt="dc"/>철마갤 캐릭터 팁</a>
             </div>  
         </InfoWrapper>
     )

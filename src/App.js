@@ -1,12 +1,14 @@
 
-import styled,{createGlobalStyle, css} from 'styled-components';
+import styled,{createGlobalStyle} from 'styled-components';
 import {Route, Switch} from 'react-router-dom'
 import Jin from './character/Jin'
-import Asuka from './character/Asuka'
 import Home from './character/Home'
 import Sidebar from './components/Sidebar'
 import {useState} from 'react'
-
+import CharPage from './components/CharPage'
+import AsukaData from './info/AsukaData.json'
+import JinData from './info/JinData.json'
+import CharData from './components/CharData'
 const GlobalStyle = createGlobalStyle`
 html, body{
   height: 100%;
@@ -71,8 +73,13 @@ const Overlay = styled.div`
     visibility: ${props=>props.toggle ? 'visible' : 'hidden'};
 `
 
+const DataMap = {
+
+}
+
 function App() {
   const [toggle, setToggle] = useState(false);
+  console.log(CharData);
   return (
     <>
     <title>Tekken_info 0.1.0</title>
@@ -90,8 +97,9 @@ function App() {
             <PageContent>
             <Switch>
                  <Route path="/" exact={true} component={Home}/>
-                 <Route path="/Jin" component={Jin}/>
-                 <Route path="/Asuka" component={Asuka}/>
+                 {Object.keys(CharData).map((element,index)=>(
+     <Route path={`/${element}`}><CharPage data={CharData[element]}/></Route>
+))}
             </Switch>
             </PageContent>
     </Wrapper>
