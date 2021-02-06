@@ -22,6 +22,7 @@ const Punish = ({Data})=>{
                     <th>커맨드</th>
                     <th>데미지</th>
                     <th>판정</th>
+                    <th>히트이득</th>
                 </tr>
                 {Data.standing.map((row,index)=>(
                     <tr key={index}>
@@ -29,6 +30,7 @@ const Punish = ({Data})=>{
                         <td>{row.command}</td>
                         <td>{row.damage}</td>
                         <td>{row.range}</td>
+                        <td>{row.hitframe>=0&&'+' +row.hitframe}</td>
                     </tr>
                 ))}
                 </tbody>
@@ -44,15 +46,17 @@ const Punish = ({Data})=>{
                     <th>커맨드</th>
                     <th>데미지</th>
                     <th>판정</th>
+                    <th>히트이득</th>
                 </tr>
                 </thead>
                 <tbody>
-                {Data.up.map((row)=>(
-                    <tr key={row.frame}>
+                {Data.up.map((row,index)=>(
+                    <tr key={index}>
                         <td>{row.frame}</td>
                         <td>{row.command}</td>
                         <td>{row.damage}</td>
                         <td>{row.range}</td>
+                        <td>{row.hitframe>=0&&'+' +row.hitframe}</td>
                     </tr>
                 ))}
                 </tbody>

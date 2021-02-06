@@ -65,44 +65,16 @@ const SidebarItem = ({path})=>{
 }
 
 
-const Sidebar =({toggle})=>{
+const Sidebar =({toggle, CharData})=>{
     return(
         <Wrapper toggle={toggle}>
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
             <SidebarItem path="Jin"/>
-            <SidebarItem path="Asuka"/>
-            <SidebarItem path="Akuma"/>
-            <SidebarItem path="Lili"/>
-            <SidebarItem path="Geese"/>
-            <SidebarItem path="Katarina"/>
-            <SidebarItem path="Noctis"/>
-            <SidebarItem path="King"/>
-            <SidebarItem path="Armor_king"/>
-            <SidebarItem path="Lei"/>
-            <SidebarItem path="Alisa"/>
-            <SidebarItem path="Aliza"/>
-            <SidebarItem path="Leroy"/>
-            <SidebarItem path="Kuma/Panda"/>
-            <SidebarItem path="Jin"/>
-            <SidebarItem path="Asuka"/>
-            <SidebarItem path="Jin"/>
-            <SidebarItem path="Asuka"/>
-            <SidebarItem path="Akuma"/>
-            <SidebarItem path="Lili"/>
-            <SidebarItem path="Geese"/>
-            <SidebarItem path="Katarina"/>
-            <SidebarItem path="Noctis"/>
-            <SidebarItem path="King"/>
-            <SidebarItem path="Armor_king"/>
-            <SidebarItem path="Lei"/>
-            <SidebarItem path="Alisa"/>
-            <SidebarItem path="Aliza"/>
-            <SidebarItem path="Leroy"/>
-            <SidebarItem path="Kuma/Panda"/>
-            <SidebarItem path="Jin"/>
-            <SidebarItem path="Asuka"/>
+           {Object.keys(CharData).map((element,index)=>(
+               <SidebarItem path={element} key={index}/>
+           ))}
         </Wrapper>
     )
 }

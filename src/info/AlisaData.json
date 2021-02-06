@@ -1,0 +1,170 @@
+{
+"ComboPage":
+                
+                {
+                "combo":[
+                    {
+                        "command":"4RKRKAK - LPRPLPAK",
+                        "state":""
+                     },
+                     {
+                        "command":"3RP - 6RP- 3LPLP- 2RKAP(S) - 2LKLP",
+                        "state":""
+                     },
+                     {
+                        "command":"9RKRK - 기상 LPRPLK - RK(S) - 2LKLP",
+                        "state":""
+                     },
+                     {
+                        "command":"66LKRKRK(S) - 대쉬 기상LPRP - LP - 46RP",
+                        "state":""
+                     },
+                     {
+                        "command":"6LKRP - 6AK - RPLP",
+                        "state":""
+                     },
+                     {
+                        "command":"RK(C) - 대쉬 기상LPRPLK - LP - 9LKRP",
+                        "state":"RK 카운터"
+                     },
+                     {
+                        "command":"흘리기 - 기상LPRPLK - 2RKAP - 2LKLP",
+                        "state":"흘리기"
+                     }
+                ],
+                "extrahit":[
+                    {
+                        "state": "3rp(C)",
+                        "extra": "3lprklk"
+                            }
+                   ]
+          },
+"Punish":
+    {
+        "standing":[
+            {
+                "frame":10,
+                "command":"LPLP",
+                "damage":"25",
+                "range":"상상",
+                "hitframe":"5"
+             },
+             {
+                "frame":12,
+                "command":"RPRK",
+                "damage":"31",
+                "range":"상상",
+                "hitframe":"5"
+             },
+             {
+                "frame":12,
+                "command":"3RK",
+                "damage":"13",
+                "range":"상상",
+                "hitframe":"5"
+             },
+             {
+                "frame":13,
+                "command":"RK",
+                "damage":"24",
+                "range":"상상",
+                "hitframe":"5"
+             },
+             {
+                "frame":14,
+                "command":"6LKRP",
+                "damage":"34+@",
+                "range":"상상",
+                "hitframe":"5"
+             },
+             {
+                "frame":15,
+                "command":"4RKRK~",
+                "damage":"34+@",
+                "range":"상상",
+                "hitframe":"5"
+             },
+             {
+                "frame":15,
+                "command":"3RP",
+                "damage":"16+@",
+                "range":"",
+                "hitframe":"~"
+             },
+             {
+                "frame":15,
+                "command":"9RKRK",
+                "damage":"20+@",
+                "range":"중중",
+                "hitframe":"~"
+             }
+        ],
+        "up":[
+            {
+                "frame":10,
+                "command":"2LP",
+                "damage":"5",
+                "range":"특중",
+                "hitframe":"5"
+             },
+             {
+                "frame":11,
+                "command":"기상RK",
+                "damage":"15",
+                "range":"중",
+                "hitframe":"6"
+             },
+             {
+                "frame":13,
+                "command":"기상LPRP",
+                "damage":"24",
+                "range":"중상",
+                "hitframe":"6"
+             },
+             {
+                "frame":15,
+                "command":"9RKRK",
+                "damage":"20+@",
+                "range":"상",
+                "hitframe":"~"
+             },
+             {
+                "frame":17,
+                "command":"기상RP",
+                "damage":"24+@",
+                "range":"중",
+                "hitframe":"~"
+             }
+        ]
+    },
+"MainMove" :[
+    {
+        "command":"3rplp",
+        "frame" : "13",
+        "state":"중중",
+        "damage":"13,42",
+        "guard":"-25",
+        "description":"으아아악!"
+    }
+],
+"Throw":[
+    {
+        "command" : "3ap",
+        "frame" : "11",
+        "way": "lp",
+        "damage" : "24",
+        "unthrow": "11",
+        "description": ""
+    }
+],
+"Info" : 
+    {
+        "punish": "youtube.com",
+        "combo": "youtube.com",
+        "dc" : "dcinside.com",
+        "img" : "/img/alisa.jpg",
+        "name": "Alisa"
+    }
+
+
+}

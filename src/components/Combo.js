@@ -15,17 +15,15 @@ const Combo = ({Data})=>{
             <table>
             <thead>
                 <tr>
-                    <th>상황</th>
                     <th>커맨드</th>
-                    <th>데미지</th>
+                    <th>상황</th>
                 </tr>
                 </thead>
                 <tbody>
                 {Data.combo.map((row,index)=>(
                     <tr key={index}>
-                        <td>{row.state}</td>
                         <td>{row.command}</td>
-                        <td>{row.damage}</td>
+                        <td>{row.state}</td>
                     </tr>
                  ))}          
     </tbody> 
@@ -37,7 +35,6 @@ const Combo = ({Data})=>{
                 <tr>
                     <th>상황</th>
                     <th>커맨드</th>
-                    <th>데미지</th>
                 </tr>
                 </thead>
                     <tbody>

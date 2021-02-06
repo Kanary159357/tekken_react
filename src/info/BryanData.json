@@ -1,0 +1,68 @@
+{
+"ComboPage":
+                
+                {
+                "combo":[
+                    {
+                        "command":"3rp 3rp3rp3rpr",
+                        "state": "겁나쎈 콤보",
+                        "damage":"62"
+                    }
+                ],
+                "extrahit":[
+                    {
+                        "state": "3rp(C)",
+                        "extra": "3lprklk"
+                            }
+                   ]
+          },
+"Punish":
+    {
+        "standing":[
+            {   
+                "frame": "",
+                "command": "",
+                "damage":"",
+                "range":""
+            }
+        ],
+        "up":[
+            {   
+                "frame": "",
+                "command": "",
+                "damage":"",
+                "range":""
+            }
+        ]
+    },
+"MainMove" :[
+    {
+        "command":"3rplp",
+        "frame" : "13",
+        "state":"중중",
+        "damage":"13,42",
+        "guard":"-25",
+        "description":"으아아악!"
+    }
+],
+"Throw":[
+    {
+        "command" : "3ap",
+        "frame" : "11",
+        "way": "lp",
+        "damage" : "24",
+        "unthrow": "11",
+        "description": ""
+    }
+],
+"Info" : 
+    {
+        "punish": "youtube.com",
+        "combo": "youtube.com",
+        "dc" : "dcinside.com",
+        "img" : "/img/bryan.jpg",
+        "name": "Bryan"
+    }
+
+
+}

@@ -73,13 +73,10 @@ const Overlay = styled.div`
     visibility: ${props=>props.toggle ? 'visible' : 'hidden'};
 `
 
-const DataMap = {
 
-}
 
 function App() {
   const [toggle, setToggle] = useState(false);
-  console.log(CharData);
   return (
     <>
     <title>Tekken_info 0.1.0</title>
@@ -89,7 +86,7 @@ function App() {
               setToggle(!toggle);
               console.log(toggle);
             }}>안녕</MenuButtonBlock>
-            <Sidebar toggle = {toggle}/>
+            <Sidebar toggle = {toggle} CharData={CharData}/>
             <Overlay toggle={toggle} onClick={()=>{
               setToggle(!toggle);
               console.log(toggle);

@@ -1,0 +1,159 @@
+{
+"ComboPage":
+                
+                {
+                "combo":[
+                    {
+                        "command":"3rp 3rp3rp3rpr",
+                        "state": "겁나쎈 콤보",
+                        "damage":"62"
+                    }
+                ],
+                "extrahit":[
+                    {
+                        "state": "3rp(C)",
+                        "extra": "3lprklk"
+                            }
+                   ]
+          },
+"Punish":
+    {
+        "standing":[
+            {   
+                "frame": "10",
+                "command": "lprp",
+                "damage":"27",
+                "range":"상중",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "10",
+                "command": "lp623rp",
+                "damage":"33",
+                "range":"상중",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "12",
+                "command": "2rp236rp ap66~",
+                "damage":"27",
+                "range":"",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "13",
+                "command": "3lprp",
+                "damage":"27",
+                "range":"중중",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "14",
+                "command": "4lp623rk~",
+                "damage":"애미뒤졌다옹~",
+                "range":"상",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "15",
+                "command": "rp236rp ap66~",
+                "damage":" ",
+                "range":"중중",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "16",
+                "command": "3rplp",
+                "damage":" ",
+                "range":"중중",
+                "hitframe": 15
+
+            }
+        ],
+        "up":[
+            {   
+                "frame": "10",
+                "command": "1lp623rp",
+                "damage":"",
+                "range":"",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "10",
+                "command": "1lp623rp",
+                "damage":"",
+                "range":"",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "11",
+                "command": "rkrk",
+                "damage":"",
+                "range":"",
+                "hitframe": 15
+
+            },
+            {   
+                "frame": "12",
+                "command": "2rp623rp",
+                "damage":"",
+                "range":"",
+                "hitframe": 15
+
+            },   {   
+                "frame": "13",
+                "command": "기상lp623rp",
+                "damage":"38",
+                "range":"중중",
+                "hitframe": "down"
+
+            },   {   
+                "frame": "15",
+                "command": "기상rp",
+                "damage":"17",
+                "range":"중",
+                "hitframe": 15
+
+            }
+         
+        ]
+    },
+"MainMove" :[
+    {
+        "command":"3rplp",
+        "frame" : "13",
+        "state":"중중",
+        "damage":"13,42",
+        "guard":"-25",
+        "description":"으아아악!"
+    }
+],
+"Throw":[
+    {
+        "command" : "3ap",
+        "frame" : "11",
+        "way": "lp",
+        "damage" : "24",
+        "unthrow": "11",
+        "description": ""
+    }
+],
+"Info" : 
+    {
+        "punish": "youtube.com",
+        "combo": "youtube.com",
+        "dc" : "dcinside.com",
+        "img" : "/img/akuma.jpg",
+        "name": "Akuma"
+    }
+
+
+}

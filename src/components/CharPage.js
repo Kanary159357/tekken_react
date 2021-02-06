@@ -14,7 +14,6 @@ const CharWrap = styled.div`
 `
 
 const CharPage = ({data})=>{
-    console.log(data);
     return(
         <CharWrap>
             <CharInfo data={data.Info}/>
