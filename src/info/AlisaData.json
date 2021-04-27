@@ -81,7 +81,7 @@
         "punish": "youtube.com",
         "combo": "youtube.com",
         "dc" : "dcinside.com",
-        "img" : "/img/alisa.jpg",
+        "img" : "./img/alisa.jpg",
         "name": "Alisa"
     }
 

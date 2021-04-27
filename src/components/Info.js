@@ -69,7 +69,7 @@ const Info = ({data})=>{
     return(
         <InfoWrapper>
             <div className="info_img">
-            <img src={data.img} alt="char"/>
+            <img src={process.env.PUBLIC_URL+ `./img/${data.name}.jpg`} alt="char"/>
             <h2>{data.name}</h2>
             </div>
             <div className="link">
