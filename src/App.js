@@ -1,14 +1,11 @@
 
 import styled,{createGlobalStyle} from 'styled-components';
 import {Route, Switch} from 'react-router-dom'
-import Jin from './character/Jin'
 import Home from './character/Home'
 import Sidebar from './components/Sidebar'
 import {useState} from 'react'
-import CharPage from './components/CharPage'
-import AsukaData from './info/AsukaData.json'
-import JinData from './info/JinData.json'
-import CharData from './components/CharData'
+import Page from './components/Page'
+import Data from './components/Data'
 const GlobalStyle = createGlobalStyle`
 html, body{
   height: 100%;
@@ -86,7 +83,7 @@ function App() {
               setToggle(!toggle);
               console.log(toggle);
             }}>안녕</MenuButtonBlock>
-            <Sidebar toggle = {toggle} CharData={CharData}/>
+            <Sidebar toggle = {toggle} Data={Data}/>
             <Overlay toggle={toggle} onClick={()=>{
               setToggle(!toggle);
               console.log(toggle);
@@ -94,8 +91,8 @@ function App() {
             <PageContent>
             <Switch>
                  <Route path="/" exact={true} component={Home}/>
-                 {Object.keys(CharData).map((element,index)=>(
-     <Route path={`/${element}`}><CharPage data={CharData[element]}/></Route>
+                 {Object.keys(Data).map((element,index)=>(
+     <Route path={`/${element}`}><Page data={Data[element]}/></Route>
 ))}
             </Switch>
             </PageContent>

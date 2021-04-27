@@ -65,14 +65,14 @@ const SidebarItem = ({path})=>{
 }
 
 
-const Sidebar =({toggle, CharData})=>{
+const Sidebar =({toggle, Data})=>{
     return(
         <Wrapper toggle={toggle}>
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
             <SidebarItem path="Jin"/>
-           {Object.keys(CharData).map((element,index)=>(
+           {Object.keys(Data).map((element,index)=>(
                <SidebarItem path={element} key={index}/>
            ))}
         </Wrapper>

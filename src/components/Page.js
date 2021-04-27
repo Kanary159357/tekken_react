@@ -1,6 +1,6 @@
 import React from 'react';
-import CharInfo from '../components/CharInfo'
-import CharMain from '../components/CharMain'
+import Info from './Info'
+import Main from './Main'
 import styled from 'styled-components'
 const CharWrap = styled.div`
     display:flex;
@@ -13,13 +13,13 @@ const CharWrap = styled.div`
     }
 `
 
-const CharPage = ({data})=>{
+const Page = ({data})=>{
     return(
         <CharWrap>
-            <CharInfo data={data.Info}/>
-            <CharMain data={data}/>
+            <Info data={data.Info}/>
+            <Main data={data}/>
         </CharWrap>
     )
 }
 
-export default CharPage
+export default Page

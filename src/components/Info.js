@@ -62,12 +62,10 @@ const InfoWrapper = styled.div`
             width: 1em;
             height: 1em;
         }
-        
     }
 `  
 
-
-const CharInfo = ({data})=>{
+const Info = ({data})=>{
     return(
         <InfoWrapper>
             <div className="info_img">
@@ -83,4 +81,4 @@ const CharInfo = ({data})=>{
     )
 }
 
-export default CharInfo;
+export default Info;

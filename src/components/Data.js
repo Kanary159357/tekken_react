@@ -13,9 +13,8 @@ import Eliza from '../info/ElizaData.json';
 import Feng from '../info/FengData.json';
 import Geese from '../info/GeeseData.json';
 import Gigas from '../info/GigasData.json';
-
-
 import Jin from '../info/JinData.json';
+
 const CharData = {
     'Akuma' : Akuma,
     'Alisa': Alisa,
@@ -32,8 +31,11 @@ const CharData = {
     'Feng':Feng,
     'Geese':Geese,
     'Gigas':Gigas,
+   /* 'Heihachi': Heihachi,
+    'Hworang': Hworang,
+    'Jack7': Jack7,
     'Jin': Jin, 
-
+*/
 }
 
 export default CharData;

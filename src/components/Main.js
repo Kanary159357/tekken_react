@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-import ExTabs from './ExTabs';
+import ExTabs from './CharInfo/ExTabs';
 const MainWrapper  = styled.div`
     display:flex;
     height: 90%;
@@ -14,7 +14,7 @@ const MainWrapper  = styled.div`
     }
 `
 
-const CharMain = ({data})=>{
+const Main = ({data})=>{
     return(
         <MainWrapper>
             <ExTabs Data={data}/>
@@ -22,4 +22,4 @@ const CharMain = ({data})=>{
     )
 }
 
-export default CharMain;
+export default Main;
