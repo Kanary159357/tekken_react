@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import Table from '../Table'
 const Wrapper = styled.div`
     display:flex;
     flex-direction:column;
@@ -11,41 +11,8 @@ const Wrapper = styled.div`
 const Combo = ({Data})=>{
     return(
         <Wrapper>
-            <h2>콤보</h2>
-            <table>
-            <thead>
-                <tr>
-                    <th>커맨드</th>
-                    <th>상황</th>
-                </tr>
-                </thead>
-                <tbody>
-                {Data.combo.map((row,index)=>(
-                    <tr key={index}>
-                        <td>{row.command}</td>
-                        <td>{row.state}</td>
-                    </tr>
-                 ))}          
-    </tbody> 
-     </table>
-
-                    <h2>추가타</h2>
-                    <table>
-                    <thead>
-                <tr>
-                    <th>상황</th>
-                    <th>커맨드</th>
-                </tr>
-                </thead>
-                    <tbody>
-                {Data.extrahit.map((row,index)=>(
-                       <tr  key={index}>
-                       <td>{row.state}</td>
-                       <td>{row.extra}</td>
-                   </tr>
-                ))}
-                </tbody>
-            </table>
+            <Table header="콤보" columns={["커맨드", "상황", "데미지"]}data={Data.combo}/>
+            <Table header="추가타" columns={["상황", "커맨드"]} data={Data.extrahit}/>
         </Wrapper>
     )
 }

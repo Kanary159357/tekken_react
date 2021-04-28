@@ -92,7 +92,7 @@ function App() {
             <Switch>
                  <Route path="/" exact={true} component={Home}/>
                  {Object.keys(Data).map((element,index)=>(
-                  <Route path={`/${element}`}><Page data={Data[element]}/></Route>
+                  <Route key={index} path={`/${element}`}><Page data={Data[element]}/></Route>
               ))}
             </Switch>
             </PageContent>

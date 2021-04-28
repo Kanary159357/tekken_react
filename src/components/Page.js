@@ -2,6 +2,7 @@ import React from 'react';
 import Info from './Info'
 import Main from './Main'
 import styled from 'styled-components'
+
 const CharWrap = styled.div`
     display:flex;
     width: 100%;

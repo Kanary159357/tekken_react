@@ -5,30 +5,30 @@ const InfoWrapper = styled.div`
     display:flex;
     background: #fff;
     height: 90%;
-   align-items: center;
-   justify-content:space-around;
-   flex-direction: column;
-   @media all and (max-width: 1024px){
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: column;
+    @media all and (max-width: 1024px){
        height:20%;
        width:100%;
        border-bottom: 1px solid black;
-   }
+    }
 
-   h2{
+    h2{
        @media all and (max-width:1024px){
            margin: 0;
            font-size: 20px;
 
        }
-   }
+    }
 
-   .link {
+    .link {
        display:flex;
        flex-direction:column;
        @media all and (max-width: 1024px){
         flex-direction: row;
        }
-   }
+    }
     .info_img{
         text-align:center;
         img{
@@ -50,9 +50,8 @@ const InfoWrapper = styled.div`
         @media all and (max-width: 1140px){
             line-height: 1em;
         }
-    
-      
     }
+
     .link a img{
         display:flex;
         width:1.5em;
@@ -69,7 +68,7 @@ const Info = ({data})=>{
     return(
         <InfoWrapper>
             <div className="info_img">
-            <img src={process.env.PUBLIC_URL+ `./img/${data.name}.jpg`} alt="char"/>
+            <img src={process.env.PUBLIC_URL+ `/img/${data.name}.jpg`} alt="char"/>
             <h2>{data.name}</h2>
             </div>
             <div className="link">

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import Table from '../Table';
 
 const Wrapper = styled.div`
     display:flex;
@@ -14,33 +14,7 @@ const Wrapper = styled.div`
 const Throw = ({Data})=>{
     return(
         <Wrapper>
-            <div>
-            <h2>잡기</h2>
-            <table>
-            <thead>
-                <tr>
-                    <th>커맨드</th>
-                    <th>프레임</th>
-                    <th>잡기풀기</th>
-                    <th>데미지</th>
-                    <th>풀기 프레임</th>
-                    <th>설명</th>
-                </tr>
-                </thead>
-                <tbody>
-                {Data.map((row,index)=>(
-                     <tr key={index}>
-                     <td>{row.command}</td>
-                     <td>{row.frame}</td>
-                     <td>{row.way}</td>
-                     <td>{row.damage}</td>
-                     <td>{row.unthrow}</td>
-                     <td>{row.description}</td>
-                 </tr>
-                ))}
-                </tbody>
-            </table>
-            </div>
+              <Table header="잡기" columns={["커맨드", "프레임", "잡기풀기", "데미지", "가드프레임", "설명"]} data={Data}/> 
         </Wrapper>
     )
 }
