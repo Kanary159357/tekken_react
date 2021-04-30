@@ -11,6 +11,8 @@ const Wrapper = styled.div`
     overflow-y: auto;
     -ms-overflow-style: none;
     flex-direction: column;
+    transition: all 0.1s;
+
     ::-webkit-scrollbar {
         display: none;
     }

@@ -7,7 +7,7 @@ import Page from './components/Page'
 import Data from './components/Data'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 const GlobalStyle = createGlobalStyle`
 html, body{
   height: 100%;
@@ -42,10 +42,6 @@ const MenuButtonBlock = styled(FontAwesomeIcon)`
     z-index: 999;
     font-size: 20px;
     color: #fff;
-    display: none;
-    @media all and (max-width: 1140px) {
-        display: ${(props) => (props.toggle ? 'none' : 'block')};
-    }
 `
 
 const Overlay = styled.div`
@@ -65,7 +61,7 @@ function App() {
             <GlobalStyle />
             <Wrapper>
                 <MenuButtonBlock
-                    icon={faBars}
+                    icon={toggle ? faTimes : faBars}
                     toggle={toggle}
                     onClick={() => {
                         setToggle(!toggle)
