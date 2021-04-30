@@ -6,7 +6,8 @@ import { useState } from 'react'
 import Page from './components/Page'
 import Data from './components/Data'
 import React from 'react'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 const GlobalStyle = createGlobalStyle`
 html, body{
   height: 100%;
@@ -14,7 +15,6 @@ html, body{
   margin: 0;
   width: 100%;
   user-select: none;
-
 }
 
 `
@@ -35,15 +35,16 @@ const PageContent = styled.div`
     }
 `
 
-const MenuButtonBlock = styled.button`
+const MenuButtonBlock = styled(FontAwesomeIcon)`
     position: fixed;
-    top: 20px;
+    top: 2.5%;
     left: 20px;
     z-index: 999;
-    background: tomato;
-    visibility: hidden;
+    font-size: 20px;
+    color: #fff;
+    display: none;
     @media all and (max-width: 1140px) {
-        visibility: ${(props) => (props.toggle ? 'hidden' : 'visible')};
+        display: ${(props) => (props.toggle ? 'none' : 'block')};
     }
 `
 
@@ -64,12 +65,15 @@ function App() {
             <GlobalStyle />
             <Wrapper>
                 <MenuButtonBlock
+                    icon={faBars}
                     toggle={toggle}
                     onClick={() => {
                         setToggle(!toggle)
                         console.log(toggle)
                     }}
-                />
+                >
+                    안녕
+                </MenuButtonBlock>
                 <Sidebar toggle={toggle} Data={Data} />
                 <Overlay
                     toggle={toggle}

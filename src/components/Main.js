@@ -8,7 +8,7 @@ const MainWrapper = styled.div`
     width: 70%;
     background: #fff;
 
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1140px) {
         height: 93%;
         width: 100%;
     }

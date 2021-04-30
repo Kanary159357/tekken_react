@@ -9,7 +9,7 @@ const InfoWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1140px) {
         height: 7%;
         width: 100%;
         border-bottom: 1px solid black;
@@ -22,7 +22,7 @@ const InfoWrapper = styled.div`
         justify-content: center;
     }
     h2 {
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1140px) {
             margin: 0;
             font-size: 20px;
         }
@@ -31,7 +31,7 @@ const InfoWrapper = styled.div`
     .link {
         display: flex;
         flex-direction: column;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1140px) {
             flex-direction: row;
             align-items: center;
             justify-content: center;
@@ -42,11 +42,11 @@ const InfoWrapper = styled.div`
         color: #333;
         img {
             width: 80%;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1140px) {
                 display: none;
             }
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1140px) {
             color: #dee2e6;
         }
     }
@@ -86,7 +86,7 @@ const InfoWrapper = styled.div`
             width: 1em;
             height: 1em;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1140px) {
             width: 2em;
             height: 2em;
             text-align: center;
