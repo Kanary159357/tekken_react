@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import { Route, Switch } from 'react-router-dom'
-import Home from './character/Home'
+import Home from './components/Home'
 import Sidebar from './components/Sidebar'
 import { useState } from 'react'
 import Page from './components/Page'
@@ -42,6 +42,10 @@ const MenuButtonBlock = styled(FontAwesomeIcon)`
     z-index: 999;
     font-size: 20px;
     color: #fff;
+    visibility: hidden;
+    @media all and (max-width: 1140px) {
+        visibility: visible;
+    }
 `
 
 const Overlay = styled.div`
@@ -67,9 +71,7 @@ function App() {
                         setToggle(!toggle)
                         console.log(toggle)
                     }}
-                >
-                    안녕
-                </MenuButtonBlock>
+                />
                 <Sidebar toggle={toggle} Data={Data} />
                 <Overlay
                     toggle={toggle}
