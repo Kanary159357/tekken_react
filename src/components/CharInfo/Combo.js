@@ -11,17 +11,14 @@ const Wrapper = styled.div`
 `
 
 const Combo = ({ Data }) => {
+    console.log(Data)
     return (
         <Wrapper>
-            <Table
-                header="콤보"
-                columns={['커맨드', '상황']}
-                data={Data.combo}
-            />
+            <Table header="콤보" columns={['커맨드', '상황']} data={Data[0]} />
             <Table
                 header="추가타"
                 columns={['상황', '커맨드']}
-                data={Data.extrahit}
+                data={Data[1]}
             />
         </Wrapper>
     )

@@ -1,68 +1,225 @@
 {
-"ComboPage":
-                
-                {
-                "combo":[
-                    {
-                        "command":"3rp 3rp3rp3rpr",
-                        "state": "겁나쎈 콤보",
-                        "damage":"62"
-                    }
-                ],
-                "extrahit":[
-                    {
-                        "state": "3rp(C)",
-                        "extra": "3lprklk"
-                            }
-                   ]
-          },
-"Punish":
-    {
-        "standing":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ],
-        "up":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ]
-    },
-"MainMove" :[
-    {
-        "command":"3rplp",
-        "frame" : "13",
-        "state":"중중",
-        "damage":"13,42",
-        "guard":"-25",
-        "description":"으아아악!"
-    }
-],
-"Throw":[
-    {
-        "command" : "3ap",
-        "frame" : "11",
-        "way": "lp",
-        "damage" : "24",
-        "unthrow": "11",
-        "description": ""
-    }
-],
-"Info" : 
-    {
-        "punish": "youtube.com",
-        "combo": "youtube.com",
-        "dc" : "dcinside.com",
-        "img" : "/img/anna.jpg",
-        "name": "Anna"
-    }
-
-
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "17",
+            "range": "상상",
+            "hitframe": "5"
+        },
+        {
+            "frame": "10",
+            "command": "RPLK",
+            "damage": "24",
+            "range": "상중",
+            "hitframe": "0"
+        },
+        {
+            "frame": "13",
+            "command": "3LPRP",
+            "damage": "23",
+            "range": "중상",
+            "hitframe": "2"
+        },
+        {
+            "frame": "14",
+            "command": "6RPLK",
+            "damage": "34",
+            "range": "상상",
+            "hitframe": "12G"
+        },
+        {
+            "frame": "14",
+            "command": "4RPRP",
+            "damage": "30+@",
+            "range": "상상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "34+@",
+            "range": "중중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "16+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "2LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "15",
+            "range": "중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상LK",
+            "damage": "20",
+            "range": "중",
+            "hitframe": "0"
+        },
+        {
+            "frame": "13",
+            "command": "기상LPRP",
+            "damage": "23",
+            "range": "중상",
+            "hitframe": "6"
+        },
+        {
+            "frame": "18",
+            "command": "기상RP",
+            "damage": "22",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "3RP- 236LP - LP - 236LP - 6LKRP(S) - 666RPLK",
+            "state": " "
+        },
+        {
+            "command": "66LK - 3LKRP - LP - 6LKRP(S) - 3LKLPRK",
+            "state": " "
+        },
+        {
+            "command": "앉아 3RP - 2RKLP - 236LP(LP) - 6LKRP(S) - 1LPRK ",
+            "state": "1LPRK 막타 딜레이"
+        },
+        {
+            "command": "9LP(C)LKAK - 대쉬 2RKRP - 6RPLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "9LPLK(C)AK - 대쉬 2RKLP - 236LP - 6LKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "9LPLKAK(C) -대쉬 2RKLP ",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 4RK(S) - 대시 236LP - LP - 3LKLPRK",
+            "state": " "
+        },
+        {
+            "command": "236LP(C) - 236LP - LP - 236LP -6LKRP(S) ~",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "3LKRP 횡신 LK",
+            "state": " "
+        },
+        {
+            "command": "3LKRP - 6LP+RK",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "666RP - 6AP",
+            "state": " "
+        },
+        {
+            "command": "3LPRK(C) - 1RK",
+            "state": "3LPRK 막타 카운터"
+        },
+        {
+            "command": "LPLP(C) - 1RK",
+            "state": "LPLP 막타 카운터"
+        },
+        {
+            "command": "기상AP(C) - 횡캔 2LK",
+            "state": "기상 AP 카운터"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "9AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "33LP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "5",
+            "state": "태클이행"
+        },
+        {
+            "command": "4AL, 4AR",
+            "frame": "3~8",
+            "way": "6AL,6AR",
+            "damage": "25+@",
+            "state": "상중단 반격(홀드시 51프레임까지)"
+        },
+        {
+            "command": "236AP ~ LK-RK-LK-AP",
+            "frame": "11",
+            "way": "RP, AP",
+            "damage": "45",
+            "state": " "
+        },
+        {
+            "command": "236AP ~ LP-LK-RP-LP ~ LK-LP-RK-AP-AP",
+            "frame": "11",
+            "way": "RP , LP, LP",
+            "damage": "58",
+            "state": " "
+        },
+        {
+            "command": "236AP ~ LP-LK-RP-LP ~ RP-LP-LK-RK-AP",
+            "frame": "11",
+            "way": "RP , LP, RP",
+            "damage": "58",
+            "state": " "
+        },
+        {
+            "command": "236AP ~ LP-LK-RP-LP ~ RP-LK-AP-AK-AP",
+            "frame": "11",
+            "way": "RP , LP, RP",
+            "damage": "58",
+            "state": " "
+        },
+        {
+            "command": "236AP ~ AL-RK-AP ~ RK-LK-RK-AK-RP",
+            "frame": "11",
+            "way": "RP,RP,RP",
+            "damage": "70",
+            "state": " "
+        },
+        {
+            "command": "236AP ~ AL-RK-AP ~ AP-RK-LK-AP-AP-AP",
+            "frame": "11",
+            "way": "RP,RP,LP",
+            "damage": "68",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=yaFmV2MKox0",
+            "combo": "https://www.youtube.com/watch?v=UQ1ZNNqXHW0",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=2863531&page=3",
+            "name": "Anna"
+        }
+    ]
 }

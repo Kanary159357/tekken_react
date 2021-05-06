@@ -15,12 +15,12 @@ const Punish = ({ Data }) => {
             <Table
                 header="선자세 딜캐"
                 columns={['프레임', '커맨드', '데미지', '판정', '히트이득']}
-                data={Data.standing}
+                data={Data[0]}
             />
             <Table
                 header="앉은자세 딜캐"
                 columns={['프레임', '커맨드', '데미지', '판정', '히트이득']}
-                data={Data.up}
+                data={Data[1]}
             />
         </Wrapper>
     )

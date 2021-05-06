@@ -1,0 +1,168 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "19",
+            "range": "상중",
+            "hitframe": "7"
+        },
+        {
+            "frame": "12",
+            "command": "RPRP(J)",
+            "damage": "35",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "3LKLK",
+            "damage": "35",
+            "range": "중중",
+            "hitframe": "7"
+        },
+        {
+            "frame": "15",
+            "command": "9LK",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "18",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "기상LPRK",
+            "damage": "31",
+            "range": "중",
+            "hitframe": "8"
+        },
+        {
+            "frame": "15",
+            "command": "9LK",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "기상RP",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "9LK - 3LK - 3RPRKLKLP(S) - 66RKAKRK",
+            "state": "국콤"
+        },
+        {
+            "command": "3RP - 3LK - 3RPRKLKLP(S) - 대시 6RPAP",
+            "state": " "
+        },
+        {
+            "command": "6RKRK4 - 6AKAKAK - LPRPAP(S) - 대시 6RPAP",
+            "state": " "
+        },
+        {
+            "command": "(뒤돌기)6AKAKAK - 3RPRKLKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상LPRK - 3LK - 3RPRKLKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "1AP - 9_RK - 3RPRKLKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - 3LK - 3RPRKLKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - 2AK - 6AKAKAK - LPRPAP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "앉아3LP}(C) - 3LK - 3RPRKLKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "3RK(C) - 2RK - 기상RK - 3LKLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "AP(C) - 66RKAK - 3LP - 6RPAP",
+            "state": " "
+        },
+        {
+            "command": "횡신RK(C) - 6AKAKAK - 3LKLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(RAGE)3AK4_3 - 기상RPRKLKLP(S) ~",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "4RP - 기상LK",
+            "state": " "
+        },
+        {
+            "command": "(뒤돌아)2AK - 기상LK",
+            "state": " "
+        },
+        {
+            "command": "2RP(C) - 4LP",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "LP - 3LP - LKRK",
+            "state": " "
+        },
+        {
+            "command": "LP - 3LP - 4LP",
+            "state": "차선책"
+        },
+        {
+            "command": "뒤돌아 6AKAKAK",
+            "state": "콤보 마무리 6RPAP 등으로 높벽꽝시 2AK로 뒤돌아서 가능"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": "3LKLK 확정타 OR 컷킥과 LPRPAP - 4LP 의 심리"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=F31Ym5CHQwo",
+            "combo": "https://www.youtube.com/watch?v=C34e9yIUWXI",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236953",
+            "name": "Lucky"
+        }
+    ]
+}

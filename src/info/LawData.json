@@ -1,0 +1,195 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPLPRP",
+            "damage": "20",
+            "range": "상상상",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "RKLK",
+            "damage": "26",
+            "range": "상상",
+            "hitframe": "-5"
+        },
+        {
+            "frame": "12",
+            "command": "LKRK",
+            "damage": "32",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "4RKLK",
+            "damage": "28",
+            "range": "중상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "AKRK",
+            "damage": "25",
+            "range": "중상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "12+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "18",
+            "command": "9~RK",
+            "damage": "23+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "16",
+            "range": "중",
+            "hitframe": "7"
+        },
+        {
+            "frame": "13",
+            "command": "기상LPRP",
+            "damage": "35",
+            "range": "중상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "기상RP",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "3RP - 6RK8LK - 4RP - 4RPLP(S) - 대시 RKLK46N6RK",
+            "state": "국콤"
+        },
+        {
+            "command": "기상RP - 6RK8LK - 4RP - 4RP - 4RPLP(S) - 대시 2RPLK",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 4RPLKRK46N6NLK(S) - 대시 RKLK46N6RK ",
+            "state": " "
+        },
+        {
+            "command": "기상LP - RK(S) - 대시 3LK2RP - 3LP - 4LK6LP",
+            "state": " "
+        },
+        {
+            "command": "RKLK(C)46 - 6RP - RP - 4RPLP(S) - 2RPLK",
+            "state": " "
+        },
+        {
+            "command": "66AK(양잡) - 6RK8LK - 4RP - 4RPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "9~RK - 9LP - 6LK8LK - 4RPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "9~RKLK - 4RP - RP - 66RKLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "AKRK - 대시 6RK8LK - AKRK",
+            "state": " "
+        },
+        {
+            "command": "AKRK - 대시 6RK8LK - 66RPLPLK",
+            "state": " "
+        },
+        {
+            "command": "횡AK - 대시 6RK - 4RPLKRK46N6RK",
+            "state": " "
+        },
+        {
+            "command": "1RP(C) - 대시 2RKLP6LP - LKLK(S) - 6RPLKLK",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "4RPRP(C) - 1LK",
+            "state": " "
+        },
+        {
+            "command": "기상RK46(C) - N6NAKRK",
+            "state": " "
+        },
+        {
+            "command": "(2AP)RK - 대시 9AK",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "RKLK46N6LK",
+            "state": "걍 이게 베스트"
+        },
+        {
+            "command": "4RPLK2RK",
+            "state": "스핀2타 안들어갈떄"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "66AK",
+            "frame": "12",
+            "way": "AP",
+            "damage": "10+@",
+            "state": "콤보이행"
+        },
+        {
+            "command": "3AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "35",
+            "state": " "
+        },
+        {
+            "command": "3APLPRPAP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": "바닥부서짐"
+        },
+        {
+            "command": "4AL,4AR",
+            "frame": "2~11",
+            "way": "X",
+            "damage": "0",
+            "state": "패링, 46NLPRK 추가타"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=PRqGoEalGnY",
+            "combo": "https://www.youtube.com/watch?v=kUY2B0nRpKY",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236934",
+            "name": "Law"
+        }
+    ]
+}

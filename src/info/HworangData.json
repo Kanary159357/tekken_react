@@ -1,0 +1,222 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "17",
+            "range": "상상",
+            "hitframe": "7"
+        },
+        {
+            "frame": "11",
+            "command": "RKLK",
+            "damage": "30",
+            "range": "상중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "14",
+            "command": "9AKRK",
+            "damage": "30",
+            "range": "중중",
+            "hitframe": "4"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "4LK",
+            "damage": "17+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RKRK",
+            "damage": "28",
+            "range": "중중",
+            "hitframe": "4"
+        },
+        {
+            "frame": "14",
+            "command": "기상LK",
+            "damage": "20",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "7LKLK",
+            "damage": "23+@",
+            "range": "중상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "17",
+            "command": "횡신 4LK",
+            "damage": "17",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "3RP - 6RK~4LK - 66RK - LKRK~4RK(S) - 대시 LK~RK",
+            "state": "국콤"
+        },
+        {
+            "command": "3RP - 66RK - LKRK~4RK(S) - 대시 AK6LK~LK6~9AK",
+            "state": "국콤2 대시 AK할때 6유지하면 편함"
+        },
+        {
+            "command": "6AP(C) - 66RK - LKRK~4RK(S) - 대시 LPRPLK~9AK",
+            "state": " "
+        },
+        {
+            "command": "6AP(C) - 1RK6~RP 대시 LKRK~4RK(S) LPRPLK~9AK",
+            "state": "축 틀리면"
+        },
+        {
+            "command": "6n3RK - AK LK~RK - 66RK - LK - RPLK - LK6 - 9AK",
+            "state": " "
+        },
+        {
+            "command": "(AK) LK~RK - 66RK - LKRK~6LKRK",
+            "state": " "
+        },
+        {
+            "command": "(AK) LK~RK - 66RK - LK - RPLK~LK6~LK6~9AK ",
+            "state": " "
+        },
+        {
+            "command": "(AK) 6RKRK - 8LK - LKRK~4RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "7LKLK 3RK6~RP - 6LK~LK6~LK6~LK6~9AK",
+            "state": " "
+        },
+        {
+            "command": "8AK - 1RKRK(S) - 66RK - LKRK~4RK",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - LK~RK - 반시계 66RK - LKRK~4RK",
+            "state": " "
+        },
+        {
+            "command": "(오른플라) 9RK - 6LK~LKRK~4RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(왼플라)6LK(C) - 6유지 2LKRK~4RK(S)~",
+            "state": " "
+        },
+        {
+            "command": "횡신RK - 1RK6~RP - 대시 LKRK~4RK(S)~",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "AK6LK~LK6RK",
+            "state": " "
+        },
+        {
+            "command": "6n23LK~LK6K",
+            "state": " "
+        },
+        {
+            "command": "2LKRK~3RK - 4LK",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "기상LK - 4LK",
+            "state": " "
+        },
+        {
+            "command": "(AK) 4RP(C) - 66LK",
+            "state": " "
+        },
+        {
+            "command": "(AK) 66LK - 66LK",
+            "state": " "
+        },
+        {
+            "command": "(AK) 3LK - 대시 4LK",
+            "state": " "
+        },
+        {
+            "command": "(왼플라)1RK - 66LK",
+            "state": " "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "AR4",
+            "frame": "12",
+            "way": "RP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "6RP+LK, 6LKRP, (왼플)6RP+LK",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "1AL",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "214LK",
+            "frame": "11",
+            "way": "LP",
+            "damage": "45",
+            "state": " "
+        },
+        {
+            "command": "(오른자세)AL, AR, (뒤돌기)AL6",
+            "frame": "12",
+            "way": "AP",
+            "damage": "45",
+            "state": " "
+        },
+        {
+            "command": "4AP",
+            "frame": "2~10",
+            "way": "X",
+            "damage": "0",
+            "state": "상중단 손패링, 패링성공시 +13"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=w_ccSyBppRs",
+            "combo": "https://www.youtube.com/watch?v=AFar9ZNPYYo",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236911",
+            "name": "Hworang"
+        }
+    ]
+}

@@ -1,0 +1,198 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPLPRP",
+            "damage": "25",
+            "range": "상상중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "12",
+            "command": "AP",
+            "damage": "30",
+            "range": "중중"
+        },
+        {
+            "frame": "13",
+            "command": "3LPRP",
+            "damage": "31",
+            "range": "중중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "66RP",
+            "damage": "37",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "66AP(레드)",
+            "damage": "37+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "9RK",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "LKRP",
+            "damage": "29",
+            "range": "중상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "18",
+            "command": "3RP",
+            "damage": "29+@",
+            "range": "중중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "11",
+            "command": "기상RKRK",
+            "damage": "15",
+            "range": "중상",
+            "hitframe": "13G"
+        },
+        {
+            "frame": "12",
+            "command": "기상LPRP",
+            "damage": "35",
+            "range": "중중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "9RK",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "18",
+            "command": "기상RP",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "9RK - 6LK6RP - 3LP - 46RPLPRK(S) - 대시 46RPLPAP",
+            "state": "국콤"
+        },
+        {
+            "command": "기상RP - 6LK6AK - 46RPLPRK(S) - 대시 6LK6AK",
+            "state": " "
+        },
+        {
+            "command": "66RK - 6LK6AK - 46RPLPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "3RP - 6LK6RP - 46RPLPRK(S) ~",
+            "state": "6AP 히트 후 레드로 콤보 가능"
+        },
+        {
+            "command": "6LK6RP - 6LK6RP - 46RPLPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "9LKRKLK(S) - 6AK~RK - 3LP - 46RPLPAP",
+            "state": "바사토 카운터도 다 6LK로 건지면 됨"
+        },
+        {
+            "command": "66AP - 9LKRKLK(S) - 9LKRKLP",
+            "state": "2RP이후 앉기 이행 상관없이 6LK 누르면 됨"
+        },
+        {
+            "command": "RK(C) - 4RP(S) - 6AK~RP - 6LK - 3LP - 46RPLPAP",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - (반시계) 6LK6RP - 46RPLPLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상LK(C) - 6RPLKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "1RP(C) - 대시 2RKLP6LP - LKLK(S) - 6RPLKLK",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "666LP - 666RP",
+            "state": " "
+        },
+        {
+            "command": "LKRP - RP+LK",
+            "state": " "
+        },
+        {
+            "command": "6AK~AP - 666RP",
+            "state": " "
+        },
+        {
+            "command": "1AP(C) -RP+LK",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "6LK6RP - AP",
+            "state": "남캐전용"
+        },
+        {
+            "command": "LP - 3LP - AP",
+            "state": "여캐전용"
+        },
+        {
+            "command": "6AK~LK - 2RP",
+            "state": " "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "6AK~LP+LK",
+            "frame": "46",
+            "way": "X",
+            "damage": "15",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=gBMWofgN-b0",
+            "combo": "https://www.youtube.com/watch?v=JULl483oAhc",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236958",
+            "name": "Kazumi"
+        }
+    ]
+}

@@ -1,0 +1,242 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "19",
+            "range": "상상",
+            "hitframe": "8"
+        },
+        {
+            "frame": "12",
+            "command": "4LPRP",
+            "damage": "33",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "12",
+            "command": "2AP",
+            "damage": "30",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "4LK",
+            "damage": "16+@",
+            "range": "상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "13+@",
+            "range": "상상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "236RP",
+            "damage": "34",
+            "range": "중",
+            "hitframe": "D"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "18",
+            "range": "중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "13",
+            "command": "기상LKRP",
+            "damage": "35",
+            "range": "중상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "기상RP",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "3RP - 236LP - RP - 짧대시 LKRP4~RK(S) - 대시 2RKRPLP",
+            "state": " "
+        },
+        {
+            "command": "3RP - 4LK - LKRP4~RK(S) - 대시 2RKRPLP",
+            "state": "이질풍 어려우면 이거"
+        },
+        {
+            "command": "3RP - 3LP4~RK(S) - 대시 236LP - LP - 66RPLP",
+            "state": " "
+        },
+        {
+            "command": "9LK - RP - LKRP4~RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "9LKRK - LKRP4~RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "4LK - LK - LKRP4~RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상RP - 4LPRP(S) - 대시 236LP - 236RP",
+            "state": " "
+        },
+        {
+            "command": "66RK - 기상LKRP(S) - 대시 236LP - 2RKRPLP",
+            "state": " "
+        },
+        {
+            "command": "66RK - 기상LK - LKRP4~RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "앉아3AP - 66RK- 기상LK - LKRP4~RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(RAGE) 3RP - AP4 - 236AK - LKRP4~RK(S) ",
+            "state": " "
+        },
+        {
+            "command": "(RAGE) 3RP - AP4 - 9_RK - LKRP4~RK(S) ",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 짧대시 - LKRP4~RK(S) - 2RKRPLP",
+            "state": " "
+        },
+        {
+            "command": "7RP(C) - 236LP - RP - 짧대시 LKRP4~RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "214LK(C) - 기상LK - LKRP4~RK(S) ~",
+            "state": "근접시에만 히트"
+        },
+        {
+            "command": "214LKRPLK(C) - RK - LKRP4~RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "214RK(C) - 236LP - RP - 짧대시 LKRP4~RK(S) ~",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "LKRP4~RP",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "236AK - 66RPLP(236RP)",
+            "state": " "
+        },
+        {
+            "command": "3LPLPRP - 236RP",
+            "state": "3타 히트"
+        },
+        {
+            "command": "46LP - 236RP",
+            "state": " "
+        },
+        {
+            "command": "횡신LP - 236RP",
+            "state": "축 많이 탐"
+        },
+        {
+            "command": "214LKRPLK - 1RP",
+            "state": "막타 히트"
+        },
+        {
+            "command": "횡신LK(C) - 4LPRP",
+            "state": " "
+        },
+        {
+            "command": "236LK(C) - 2RKRPLP",
+            "state": " "
+        },
+        {
+            "command": "214LK(C) - 3AP",
+            "state": "언제나 맞는 추가타"
+        },
+        {
+            "command": "6RKLKLP(C) - 236RP",
+            "state": "3타 카운터히트"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "3AL",
+            "frame": "12",
+            "way": "LP",
+            "damage": "20+@",
+            "state": "잡기 이행 이후 236RP로 추가타"
+        },
+        {
+            "command": "4LP+RK",
+            "frame": "11",
+            "way": "LP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "66AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "38",
+            "state": " "
+        },
+        {
+            "command": "1AP",
+            "frame": "26",
+            "way": "AP",
+            "damage": "5+@",
+            "state": "태클이행"
+        },
+        {
+            "command": "4AL, 4AR",
+            "frame": "3~8",
+            "way": "6AL,6AR",
+            "damage": "25+@",
+            "state": "상중단 반격"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=u0xB4zaarjo",
+            "combo": "https://www.youtube.com/watch?v=HAFuq27ptYg",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236821",
+            "name": "Paul"
+        }
+    ]
+}

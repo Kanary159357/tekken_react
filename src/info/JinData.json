@@ -1,68 +1,185 @@
 {
-"ComboPage":
-                
-                {
-                "combo":[
-                    {
-                        "command":"3rp 3rp3rp3rpr",
-                        "state": "겁나쎈 콤보",
-                        "damage":"62"
-                    }
-                ],
-                "extrahit":[
-                    {
-                        "state": "3rp(C)",
-                        "extra": "3lprklk"
-                            }
-                   ]
-          },
-"Punish":
-    {
-        "standing":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ],
-        "up":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ]
-    },
-"MainMove" :[
-    {
-        "command":"3rplp",
-        "frame" : "13",
-        "state":"중중",
-        "damage":"13,42",
-        "guard":"-25",
-        "description":"으아아악!"
-    }
-],
-"Throw":[
-    {
-        "command" : "3ap",
-        "frame" : "11",
-        "way": "lp",
-        "damage" : "24",
-        "unthrow": "11",
-        "description": ""
-    }
-],
-"Info" : 
-    {
-        "punish": "youtube.com",
-        "combo": "youtube.com",
-        "dc" : "dcinside.com",
-        "img" : "/img/jin.jpg",
-        "name": "Jin"
-    }
-
-
+    "standing": [
+        {
+            "frame": "10",
+            "command": "RPRK",
+            "damage": "29",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "12",
+            "command": "AP",
+            "damage": "30",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "13",
+            "command": "3LPRK",
+            "damage": "28",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "6AP",
+            "damage": "38",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "6n23Rp",
+            "damage": "25+@",
+            "range": "상상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "2AK",
+            "damage": "25+@",
+            "range": "중중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "16",
+            "range": "중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "13",
+            "command": "기상LPRP",
+            "damage": "26",
+            "range": "중중",
+            "hitframe": "3"
+        },
+        {
+            "frame": "14",
+            "command": "기상RP",
+            "damage": "14+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "9RK - 4LK - 4LK6LP - RK(S) - 4LK6LPRP",
+            "state": " "
+        },
+        {
+            "command": "66LK - 4LK6LP - 46RPLK6LK(S) - 4LK6LPLK",
+            "state": " "
+        },
+        {
+            "command": "6n23LP - 4LK6LP - 46RPLK6LK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상RP - 대점프킥 - 4LK6LP - RK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 대시 46RPLP - 46RP - 4LK6LPRP",
+            "state": " "
+        },
+        {
+            "command": "6n23RP - 6n23RP(끌어서) - 4LK6LP - 4LK6LPLK",
+            "state": " "
+        },
+        {
+            "command": "6n23RK - 46RPLK6LK(S) - 대시 LKLP6RP",
+            "state": " "
+        },
+        {
+            "command": "6RK(C)6~3nRk - 46RPLK6LK(S) - 대시 4LK6LPLK ",
+            "state": " "
+        },
+        {
+            "command": "6RK(C) - 대시 6n23nRK - 대시 4RPLP - LPRPRK(S) - LKLP6LK",
+            "state": "어려움"
+        },
+        {
+            "command": "4LK(C) - RK(S) - 4LP~AP - (LP) - 4LK6LPRP",
+            "state": " "
+        },
+        {
+            "command": "4LK(C)6LK(S) - 4LP~AP - 4LK6LPRP ",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "LPRPLK - 대시 2AP",
+            "state": " "
+        },
+        {
+            "command": "6RK - 대시 2AP",
+            "state": "3LPRK 막타 카운터"
+        },
+        {
+            "command": "1RK(C) - RK~LK",
+            "state": "LPLP 막타 카운터"
+        },
+        {
+            "command": "66RK(C) - 2AP",
+            "state": "기상 AP 카운터"
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "LP(RP) - 1RPRPLK",
+            "state": "남캐는 RP 가능"
+        },
+        {
+            "command": "LKLP6RP",
+            "state": " "
+        },
+        {
+            "command": "46RPLP3RP",
+            "state": " "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3RP+LK",
+            "frame": "12",
+            "way": "RP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "9AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "214AL",
+            "frame": "12",
+            "way": "LP",
+            "damage": "40",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=cNN3XSqLyc4&t=78s",
+            "combo": "https://www.youtube.com/watch?v=ENf7XdCrpY8",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236840",
+            "name": "Jin"
+        }
+    ]
 }

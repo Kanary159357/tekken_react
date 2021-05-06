@@ -1,0 +1,180 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPLPRP",
+            "damage": "25",
+            "range": "상상중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "11",
+            "command": "4LPRP",
+            "damage": "33",
+            "range": "상중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "12",
+            "command": "AP",
+            "damage": "25",
+            "range": "중중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "13",
+            "command": "3RKRK",
+            "damage": "26",
+            "range": "중중",
+            "hitframe": "-4"
+        },
+        {
+            "frame": "13",
+            "command": "6n3RP",
+            "damage": "23+@",
+            "range": "상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "14",
+            "command": "6n23RP",
+            "damage": "23+@",
+            "range": "상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "3LPRP",
+            "damage": "31+@",
+            "range": "중상",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RKRK",
+            "damage": "15",
+            "range": "중중",
+            "hitframe": "-4"
+        },
+        {
+            "frame": "13",
+            "command": "기상LPRP",
+            "damage": "22+@",
+            "range": "중중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "기상RP",
+            "damage": "25+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "6n23RP - 6n23RP - 6n23RP(LP) - 4RPLP(S) - 4RPLP",
+            "state": "국콤"
+        },
+        {
+            "command": "6n23RP - 대점킥 -  3LK딜레이RP - 4RPLP(S) - 3LPRK",
+            "state": " "
+        },
+        {
+            "command": "기상LPRP - LKLPRK - 4RPLP(S) - 6n23LK",
+            "state": " "
+        },
+        {
+            "command": "66LK -  3LK딜레이RP - 4RPLP(S) - 6n23RKLP",
+            "state": " "
+        },
+        {
+            "command": "기상RP - 기상AP - 4RPLP(S) - 4LKLP - 66RP",
+            "state": " "
+        },
+        {
+            "command": "횡LK - 1RP - 66RK",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 대시 LKLPRK - (대시) LP - (대시) 3LPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "3RP(C) - 6n23RP - 4RPLP(S) - 대시 4LKLP - 대시 3LPRK",
+            "state": " "
+        },
+        {
+            "command": "2AP(C) - 기상RK - 3LPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "6n23RKRK - 4RPRK - 4RPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - 대시 6n23RP - 3LK딜레이RP - 4RPLP",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "1RP, 3LPRP - 66RK",
+            "state": " "
+        },
+        {
+            "command": "3LKRPLP(C) - 대시 6n23RP",
+            "state": " "
+        },
+        {
+            "command": "앉아 3AK - 66RK",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "기상RK - 3LPRK - AP",
+            "state": " "
+        },
+        {
+            "command": "4RPRK - 3LPRK",
+            "state": " "
+        },
+        {
+            "command": "6n23LP+RK",
+            "state": "레드"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "66AK",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "AP",
+            "frame": "2~14",
+            "damage": "50",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=4OQ6dKkdvlA",
+            "combo": "https://www.youtube.com/watch?v=YOE0oirUw90",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236812",
+            "name": "Kazuya"
+        }
+    ]
+}

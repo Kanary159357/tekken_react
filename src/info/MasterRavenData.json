@@ -1,0 +1,294 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "19",
+            "range": "상상",
+            "hitframe": "6"
+        },
+        {
+            "frame": "10",
+            "command": "RPRK",
+            "damage": "27",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "12",
+            "command": "RKLP",
+            "damage": "29",
+            "range": "상상",
+            "hitframe": "5"
+        },
+        {
+            "frame": "13",
+            "command": "1RPLP",
+            "damage": "28",
+            "range": "중상",
+            "hitframe": "7"
+        },
+        {
+            "frame": "15",
+            "command": "6RPLK",
+            "damage": "38",
+            "range": "중중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "15",
+            "command": "6RK",
+            "damage": "25+@",
+            "range": "상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "(RAGE)6AK~RP",
+            "damage": "40+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "3RP",
+            "damage": "16+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "66LK",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "18",
+            "range": "중",
+            "hitframe": "4"
+        },
+        {
+            "frame": "13",
+            "command": "기상RP",
+            "damage": "34",
+            "range": "상상",
+            "hitframe": "8"
+        },
+        {
+            "frame": "14",
+            "command": "기상LP",
+            "damage": "21",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "66LK",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "기상LP - 66LK - 3RPLK(S) - 대시 4AK - AK - 66LK - (LP) - 66RK",
+            "state": "국콤"
+        },
+        {
+            "command": "66LK - 66LK - RKLP - RP - 6RPRKRP(S) - 시계횡 66LK - 66RK",
+            "state": " "
+        },
+        {
+            "command": "3RK - 66LK - RKLP - RP - 6RPRKRP(S) - 대시 LK~RK",
+            "state": " "
+        },
+        {
+            "command": "(뒤돌아)2LK - 66LK - 3RPLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상RP(C) - 66LK - RKLP- RP - 6RPRKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "RK~LK LK(S) - 4AK - AK - 66LK - LP - 66LK - 66RK",
+            "state": " "
+        },
+        {
+            "command": "3LK(C) - 66LK - 66LK - RP - 4RPRKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "RKLP(C) - RP - AK - 대시4RPRKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "RKLP(C) - RP - 6RPRKRP(S) - 대시 236LKRK",
+            "state": " "
+        },
+        {
+            "command": "LK~RK - 4RPLK - 시계횡 4RPRKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "236RK - 4RPLK - 대시 4RPRKRP(S) - 236LKRK",
+            "state": " "
+        },
+        {
+            "command": "236RP - 66RK - RKLP - 6RKLK(S) - 대시 LK~RK",
+            "state": " "
+        },
+        {
+            "command": "(RAGE) 236RP - 6AK~RP - 4AK - AK - 66LK - LP - 66LK - 6RPLK",
+            "state": " "
+        },
+        {
+            "command": "(RAGE) 6AK~RP - 4AK - AK - 66LK - LP - 66LK - 66RK",
+            "state": " "
+        },
+        {
+            "command": "9LK(C) - 4RKRK(S) - 대시AK - 66LK - LP - 66RK",
+            "state": " "
+        },
+        {
+            "command": "9AK - 4RKRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(뒤돌아) 66AK - AK - 4RPRKRP(S) - LK~RK - AP",
+            "state": "상대방과 근접시"
+        },
+        {
+            "command": "(뒤돌아) 66AK - 6RPRKRP(S) - 4AK - AK - 66LK - 6RPLK",
+            "state": "상대방과 근접시"
+        },
+        {
+            "command": "(뒤돌아) 66AK - 1RP - RP - 6RPRKRP(S) ~",
+            "state": "원거리 히트시"
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "1RK(C) - 4LK",
+            "state": " "
+        },
+        {
+            "command": "(RAGE) 1RK(C) - 1AK",
+            "state": " "
+        },
+        {
+            "command": "(뒤돌아)6LK(C) - 66RK",
+            "state": " "
+        },
+        {
+            "command": "앉아 3AK - 4LK",
+            "state": " "
+        },
+        {
+            "command": "6RK - 66RK",
+            "state": " "
+        },
+        {
+            "command": "LKLKRK - 66RK",
+            "state": " "
+        },
+        {
+            "command": "4LK - 4LK",
+            "state": " "
+        },
+        {
+            "command": "236LP(C)AK",
+            "state": " "
+        },
+        {
+            "command": "2LP(C) - 1RK",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "(뒤돌아) AK - 9AKRKRP",
+            "state": "9AK 바닥데미지 주면 더 쏌 4AK 혹은 스크류 이후 RKLP등으로 뒤돌기 가능"
+        },
+        {
+            "command": "(뒤돌아)4RPLK - 236LPRP",
+            "state": "마무리 236AP도 가능"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3LP+RK",
+            "frame": "11",
+            "way": "LP",
+            "damage": "38",
+            "state": " "
+        },
+        {
+            "command": "632146AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "48",
+            "state": " "
+        },
+        {
+            "command": "뒤돌아LP+RK OR RP+LK",
+            "frame": "12",
+            "way": "AP",
+            "damage": "48",
+            "state": " "
+        },
+        {
+            "command": "뒤돌아6AP",
+            "frame": "1~7",
+            "way": "X",
+            "damage": "30",
+            "state": "반격기"
+        },
+        {
+            "command": "4AL, 4AR",
+            "frame": "1~7",
+            "state": "패링기"
+        },
+        {
+            "command": "44RP",
+            "frame": "5~12",
+            "way": "X",
+            "damage": "31",
+            "state": "패링"
+        },
+        {
+            "command": "AP",
+            "frame": "1~3",
+            "way": "X",
+            "damage": "35",
+            "state": "AP발동시 상대 공격 있을 경우"
+        },
+        {
+            "command": "236AP",
+            "frame": "1~5",
+            "way": "X",
+            "damage": "31",
+            "state": "236AP 발동시 상대 공격 있을경우"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=UUtRMy-NMm4",
+            "combo": "https://www.youtube.com/watch?v=BhVE2hdDjs4",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236969",
+            "name": "MasterRaven"
+        }
+    ]
+}

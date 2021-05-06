@@ -1,0 +1,312 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "22",
+            "range": "상상",
+            "hitframe": "6"
+        },
+        {
+            "frame": "10",
+            "command": "RPLP",
+            "damage": "25",
+            "range": "상중",
+            "hitframe": "7"
+        },
+        {
+            "frame": "12",
+            "command": "4LPRP",
+            "damage": "33",
+            "range": "중중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "14",
+            "command": "4RPLP",
+            "damage": "37",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "3LPRP",
+            "damage": "30",
+            "hitframe": "5"
+        },
+        {
+            "frame": "15",
+            "command": "9RK",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "6RPLP",
+            "damage": "37",
+            "range": "중상",
+            "hitframe": "D"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "20",
+            "range": "중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "14",
+            "command": "기상RPRP",
+            "damage": "36",
+            "range": "중중",
+            "hitframe": "12G"
+        },
+        {
+            "frame": "15",
+            "command": "앉아3RP",
+            "damage": "21+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "9RK - RK - 대시 3RKLK - 3RPLP(S) - 666RP+RK",
+            "state": "국콤"
+        },
+        {
+            "command": "9RK - 6LK - LPRP - 4RPLP(S) - 666RP+RK",
+            "state": " "
+        },
+        {
+            "command": "2AP - 대점킥- LPRP - 4RPLP(S) - 6RPLP",
+            "state": " "
+        },
+        {
+            "command": "4RPAP - 6LK - 3RKLK - 3RPLP(S)~",
+            "state": "6AP 히트 후 레드로 콤보 가능"
+        },
+        {
+            "command": "6RP2LPRP - RPLP - 4RPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "1RP - 3RKLK - RP(LP) - 4RPLP(S) ~",
+            "state": "바사토 카운터도 다 6LK로 건지면 됨"
+        },
+        {
+            "command": "앉아3LP - 기상RPRP(S) ~ ",
+            "state": "2RP이후 앉기 이행 상관없이 6LK 누르면 됨"
+        },
+        {
+            "command": "앉아3RP - (반시계)6LK - 3RKLK - LP - 4RPLP(S)",
+            "state": " "
+        },
+        {
+            "command": "AK~LP - (빈시계)6LK - 3RKLK - 3RPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상AP - 6LK - LPRP - 4RPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "횡RP - 66LP - 3RKLK - LP - 641236LP",
+            "state": " "
+        },
+        {
+            "command": "66LP(C) - 66LP - 3RKLK - LP -",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 4RPRK - 4RPLP(S) - 666RP+RK",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "6AP - 대시 3LPRKRP",
+            "state": " "
+        },
+        {
+            "command": "3RPLP(C) - 2AKRKLP",
+            "state": " "
+        },
+        {
+            "command": "3RKLK2RK(C) - 앉아3LP",
+            "state": " "
+        },
+        {
+            "command": "2AK(C)RKRKRKRK",
+            "state": " "
+        },
+        {
+            "command": "1RK(C) - 2RP+LK",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "LPRP - 바닥잡기(1RK+RK, 1LP+LK)",
+            "state": " "
+        },
+        {
+            "command": "LPRP - 6LK",
+            "state": " "
+        },
+        {
+            "command": "3RKLK2RK",
+            "state": " "
+        },
+        {
+            "command": "666RK+RP or 641236LP",
+            "state": "축 틀어지면 힘듬"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3RP+LK",
+            "frame": "12",
+            "way": "RP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "1RP+LK",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "8AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "30",
+            "state": " "
+        },
+        {
+            "command": "16RP+RK",
+            "frame": "11",
+            "way": "RP",
+            "damage": "58",
+            "state": " "
+        },
+        {
+            "command": "214AP",
+            "frame": "11",
+            "way": "AP",
+            "damage": "50",
+            "state": " "
+        },
+        {
+            "command": "641236LP",
+            "frame": "10",
+            "way": "LP",
+            "damage": "65",
+            "state": " "
+        },
+        {
+            "command": "641236RP",
+            "frame": "12",
+            "way": "RP",
+            "damage": "50",
+            "state": " "
+        },
+        {
+            "command": "666RP+RK",
+            "frame": "10",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "앉아121AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "45",
+            "state": " "
+        },
+        {
+            "command": "4LP+LK",
+            "frame": "2~14",
+            "way": "X",
+            "damage": "25+@",
+            "state": "RP반격"
+        },
+        {
+            "command": "4RP+RK",
+            "frame": "2~10",
+            "way": "X",
+            "damage": "25+@",
+            "state": "LK,RK반격"
+        },
+        {
+            "command": "6n23LP+RK ~ APAP",
+            "frame": "12",
+            "way": "LP,RP",
+            "damage": "50",
+            "state": " "
+        },
+        {
+            "command": "6n23LP+RK ~ AP-RK-RP+RK ~ RK-LK-RK-AK-AP",
+            "frame": "12",
+            "way": "LP,RP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "6n23LP+RK ~ RP-LP-AP+LK ~ RP-LP-AP+RK-AP+RK",
+            "frame": "12",
+            "way": "LP,AP,LP",
+            "damage": "70",
+            "state": " "
+        },
+        {
+            "command": "6n23LP+RK ~ RP-LP-AP+LK ~ LP+LK-AK-RP+RK-AP-AP+LK",
+            "frame": "12",
+            "way": "LP,AP,RP",
+            "damage": "110",
+            "state": " "
+        },
+        {
+            "command": "6n23RP+LK ~ AP-LP-LK-AP ~ LP-LK-RK-AP-AK",
+            "frame": "12",
+            "way": "RP,AP",
+            "damage": "50",
+            "state": " "
+        },
+        {
+            "command": "6n23RP+LK ~ LP-RP-LK-AP",
+            "frame": "12",
+            "way": "RP,LP",
+            "damage": "60",
+            "state": " "
+        },
+        {
+            "command": "6n23RP+LK ~ AP-LK-LP-LP+LK",
+            "frame": "12",
+            "way": "RP,RP",
+            "damage": "65",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=yKs8WT8dzp0",
+            "combo": "https://www.youtube.com/watch?v=2zHQETjvMp4",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236950",
+            "name": "King"
+        }
+    ]
+}

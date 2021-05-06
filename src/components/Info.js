@@ -63,6 +63,8 @@ const InfoWrapper = styled.div`
         @media all and (max-width: 1140px) {
             padding-left: 10px;
             padding-bottom: 0;
+            color: #dee2e6;
+
             &:active,
             &:link,
             &:visited {
@@ -100,14 +102,15 @@ const InfoWrapper = styled.div`
 `
 
 const Info = ({ data }) => {
+    console.log(data[0].name)
     return (
         <InfoWrapper>
             <div className="info_img">
                 <img
-                    src={process.env.PUBLIC_URL + `/img/${data.name}.jpg`}
+                    src={process.env.PUBLIC_URL + `/img/${data[0].name}.jpg`}
                     alt="char"
                 />
-                <h2>{data.name}</h2>
+                <h2>{data[0].name}</h2>
             </div>
             <div className="link">
                 <a target="_blank" rel="noopener noreferrer" href={data.punish}>
@@ -116,7 +119,7 @@ const Info = ({ data }) => {
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={data.combo}>
                     <img src={youtubeImg} alt="youtube" />
-                    콤보 (쿨잼)
+                    콤보
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={data.dc}>
                     <img src={dcImg} alt="dc" />

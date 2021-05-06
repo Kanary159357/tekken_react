@@ -1,69 +1,211 @@
 {
-    "ComboPage":
-                    
-                    {
-                    "combo":[
-                        {
-                            "command":"3rp 3rp3rp3rpr",
-                            "state": "겁나쎈 콤보",
-                            "damage":"62"
-                        }
-                    ],
-                    "extrahit":[
-                        {
-                            "state": "3rp(C)",
-                            "extra": "3lprklk"
-                                }
-                       ]
-              },
-    "Punish":
+    "standing": [
         {
-            "standing":[
-                {   
-                    "frame": "",
-                    "command": "",
-                    "damage":"",
-                    "range":""
-                }
-            ],
-            "up":[
-                {   
-                    "frame": "",
-                    "command": "",
-                    "damage":"",
-                    "range":""
-                }
-            ]
+            "frame": "10",
+            "command": "LP",
+            "damage": "17",
+            "range": "상",
+            "hitframe": "9"
         },
-    "MainMove" :[
         {
-            "command":"3rplp",
-            "frame" : "13",
-            "state":"중중",
-            "damage":"13,42",
-            "guard":"-25",
-            "description":"으아아악!"
+            "frame": "12",
+            "command": "RPLK",
+            "damage": "29",
+            "range": "상중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "9RP",
+            "damage": "45",
+            "range": "상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "14+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "17",
+            "command": "6RP",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
         }
     ],
-    "Throw":[
+    "up": [
         {
-            "command" : "3ap",
-            "frame" : "11",
-            "way": "lp",
-            "damage" : "24",
-            "unthrow": "11",
-            "description": ""
+            "frame": "10",
+            "command": "2LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "15",
+            "range": "중",
+            "hitframe": "8"
+        },
+        {
+            "frame": "13",
+            "command": "기상RPLP",
+            "damage": "28",
+            "range": "중상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "14",
+            "command": "기상LPRK",
+            "damage": "32+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "18",
+            "command": "기상LK",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
         }
     ],
-    "Info" : 
+    "combo": [
         {
-            "punish": "youtube.com",
-            "combo": "youtube.com",
-            "dc" : "dcinside.com",
-            "img" : "/img/jin.jpg",
+            "command": "3RP - 66RPLK - LP - RPLPAP(S) - 66RPLP ",
+            "state": " "
+        },
+        {
+            "command": "3RP - 66RPLK - 1LPRP(S) - 4RPAPRK",
+            "state": " "
+        },
+        {
+            "command": "6RP - RK - 66RPLP - RPLPAP(S) - 66RPLP",
+            "state": " "
+        },
+        {
+            "command": "AP - 1RKLK - RPLPAP(S) - 66RPLP",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - 4RPRKLK - RPLPAP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "LK~RK - 기상LP - 3LP - RPLPAP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "LK~RK - 횡 1RKLK - RPLPAP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "2RP(C) - 3LPRP - RPLPAP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 대쉬 RPLP - RPLPAP(S) ~",
+            "state": "하이킥 카운터 끝거리면 안됨"
+        },
+        {
+            "command": "66LK(C) - 666LK - LP+RK - RPLPAP",
+            "state": " "
+        },
+        {
+            "command": "RPLPAP(C) - 3LK - LP+RK - RPLPAP",
+            "state": "막타 카운터"
+        },
+        {
+            "command": "기상AP(C) - 6RP - RK- 66RPLP- RPLPAP(S) ~",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "LP+RK - RP - RK ",
+            "state": " "
+        },
+        {
+            "command": "4RPLP2K",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "기상 LPRK - 3LK",
+            "state": " "
+        },
+        {
+            "command": "기상 LPRK - 66AP - 3LK",
+            "state": "레이지"
+        },
+        {
+            "command": "앉아 3RP(C) - 기상LPRK",
+            "state": " "
+        },
+        {
+            "command": "6RK - 1LKRK - 6RP",
+            "state": " "
+        },
+        {
+            "command": "LKLK(C) - 3LK",
+            "state": "2타 카운터"
+        },
+        {
+            "command": "AK - LP+RK- RP - RK",
+            "state": "벽에서 히트시"
+        },
+        {
+            "command": "AK - 3AP(레이지아트)",
+            "state": "레이지 벽에서 히트시"
+        }
+    ],
+    "Throw": [
+        {
+            "command": "1AP",
+            "frame": "12",
+            "way": "X",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "3RP+LK",
+            "frame": "26",
+            "way": "RP",
+            "damage": "5",
+            "state": "태클이행"
+        },
+        {
+            "command": "4AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "앉아323AP",
+            "frame": "11",
+            "way": "AP",
+            "damage": "45",
+            "state": "콤보 이행 가능"
+        },
+        {
+            "command": "4AL, 4AR",
+            "frame": "3~12(51)",
+            "way": "6AL,6AR",
+            "damage": "25+@",
+            "state": "상중단 반격(홀드시 51프레임까지)"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=QBq-psM1O4Y",
+            "combo": "https://www.youtube.com/watch?v=o0cKhCa1DIs",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236963",
             "name": "Asuka"
         }
-    
-    
-    }
-    
+    ]
+}

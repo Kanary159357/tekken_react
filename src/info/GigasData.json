@@ -1,68 +1,133 @@
 {
-"ComboPage":
-                
-                {
-                "combo":[
-                    {
-                        "command":"3rp 3rp3rp3rpr",
-                        "state": "겁나쎈 콤보",
-                        "damage":"62"
-                    }
-                ],
-                "extrahit":[
-                    {
-                        "state": "3rp(C)",
-                        "extra": "3lprklk"
-                            }
-                   ]
-          },
-"Punish":
-    {
-        "standing":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ],
-        "up":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ]
-    },
-"MainMove" :[
-    {
-        "command":"3rplp",
-        "frame" : "13",
-        "state":"중중",
-        "damage":"13,42",
-        "guard":"-25",
-        "description":"으아아악!"
-    }
-],
-"Throw":[
-    {
-        "command" : "3ap",
-        "frame" : "11",
-        "way": "lp",
-        "damage" : "24",
-        "unthrow": "11",
-        "description": ""
-    }
-],
-"Info" : 
-    {
-        "punish": "youtube.com",
-        "combo": "youtube.com",
-        "dc" : "dcinside.com",
-        "img" : "/img/gigas.jpg",
-        "name": "Gigas"
-    }
-
-
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "43",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "13",
+            "command": "3LKLP",
+            "damage": "23",
+            "range": "중상",
+            "hitframe": "4"
+        },
+        {
+            "frame": "15",
+            "command": "2rp",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상LP",
+            "damage": "17",
+            "range": "중",
+            "hitframe": "5"
+        },
+        {
+            "frame": "13",
+            "command": "기상RKAP",
+            "damage": "35",
+            "range": "중중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "기상RPLK",
+            "damage": "43",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "18",
+            "command": "기상LK",
+            "damage": "25",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "2RP - 6RPLP - RPLPAK~RKLP(S) - 대시 3APAP",
+            "state": "국콤"
+        },
+        {
+            "command": "2RP - 6RP6LP - 대시 9LK - 3LKAPAP",
+            "state": "벽보내기 국콤"
+        },
+        {
+            "command": "앉아3RP - 횡캔 1LKRP(S) - 66RKRP - 3RPLP",
+            "state": " "
+        },
+        {
+            "command": "66AP - 횡캔 1LKRP(S) - 대시 RP - LP - 3APAP",
+            "state": " "
+        },
+        {
+            "command": "횡RP(S) - 6RPLP - RPLPAK~RKLP",
+            "state": " "
+        },
+        {
+            "command": "4APAK(C)~LP - 66RKRP - 3RPLP(S) - 대시 3APAP",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "LP - 3RKAP",
+            "state": " "
+        },
+        {
+            "command": "6RPLPLP",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "1RP(C) - 대시 1AP",
+            "state": " "
+        },
+        {
+            "command": "1AP - 66RP",
+            "state": " "
+        },
+        {
+            "command": "기상RK(C) - 1RP",
+            "state": " "
+        },
+        {
+            "command": "6AK홀드(레드) 4AP(풀차지 가드시) - RP",
+            "state": " "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "6321246AP or (셋업골렘)AP",
+            "frame": "11",
+            "way": "AP",
+            "damage": "55",
+            "state": "셋업골렘은 1AK or 4APAK, 3RKAPAK 등으로 이행가능"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=c8JXFKPyd2w",
+            "combo": "https://www.youtube.com/watch?v=TNgK8LGvgf0",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236918",
+            "name": "Gigas"
+        }
+    ]
 }

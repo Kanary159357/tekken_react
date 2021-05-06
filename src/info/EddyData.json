@@ -1,68 +1,174 @@
 {
-"ComboPage":
-                
-                {
-                "combo":[
-                    {
-                        "command":"3rp 3rp3rp3rpr",
-                        "state": "겁나쎈 콤보",
-                        "damage":"62"
-                    }
-                ],
-                "extrahit":[
-                    {
-                        "state": "3rp(C)",
-                        "extra": "3lprklk"
-                            }
-                   ]
-          },
-"Punish":
-    {
-        "standing":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ],
-        "up":[
-            {   
-                "frame": "",
-                "command": "",
-                "damage":"",
-                "range":""
-            }
-        ]
-    },
-"MainMove" :[
-    {
-        "command":"3rplp",
-        "frame" : "13",
-        "state":"중중",
-        "damage":"13,42",
-        "guard":"-25",
-        "description":"으아아악!"
-    }
-],
-"Throw":[
-    {
-        "command" : "3ap",
-        "frame" : "11",
-        "way": "lp",
-        "damage" : "24",
-        "unthrow": "11",
-        "description": ""
-    }
-],
-"Info" : 
-    {
-        "punish": "youtube.com",
-        "combo": "youtube.com",
-        "dc" : "dcinside.com",
-        "img" : "/img/eddy.jpg",
-        "name": "Eddy"
-    }
-
-
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRP",
+            "damage": "18",
+            "range": "상상",
+            "hitframe": "5"
+        },
+        {
+            "frame": "12",
+            "command": "6RPLK",
+            "damage": "31",
+            "range": "상중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "13",
+            "command": "3LPLP",
+            "damage": "18",
+            "range": "중상",
+            "hitframe": "8"
+        },
+        {
+            "frame": "13",
+            "command": "4LK6",
+            "damage": "25",
+            "range": "상상",
+            "hitframe": "2"
+        },
+        {
+            "frame": "15",
+            "command": "3AK",
+            "damage": "17+@",
+            "range": "중상",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "15",
+            "range": "중중",
+            "hitframe": "8"
+        },
+        {
+            "frame": "13",
+            "command": "기상LPLK",
+            "damage": "27+@",
+            "range": "상중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "기상RP",
+            "damage": "12+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "3AK - 4LKLK - RPLK - 4RPRK(S) - 2RPLK~ LK",
+            "state": " "
+        },
+        {
+            "command": "기상LPLK - RK(S) - 8RKLK - 6AK - 4LPRKLK",
+            "state": " "
+        },
+        {
+            "command": "66RK - RP - 236RK - 4RPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "66RK - 6AK - 4LKLK - 4RPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "LK~RK - RPLK - 4RPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "그라운드 RK~LK - RP - 기상LPRK(S) ~ ",
+            "state": " "
+        },
+        {
+            "command": "그라운드 LK~RK - 4LKLK - RPLK - 4RPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "그라운드 AK - 236LK - 4RPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "횡신AK - 236LK - 4RPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "3RP(C) - 4LKLK - RPLK - 4RPRK(S) - 2RPLK~LK",
+            "state": " "
+        },
+        {
+            "command": "앉아3RK - RPLK - 4RPRK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상AK2 - LPRKRKAK ",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "2RPLK - LK",
+            "state": " "
+        },
+        {
+            "command": "4RPLKLK",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "3RP - 236LK",
+            "state": " "
+        },
+        {
+            "command": "3RK - 236LK",
+            "state": " "
+        },
+        {
+            "command": "8AP - 2RKLK",
+            "state": " "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3AP",
+            "frame": "11",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "41236AP",
+            "frame": "11",
+            "way": "AP",
+            "damage": "50",
+            "state": " "
+        },
+        {
+            "command": "(물구나무)AK",
+            "frame": "26",
+            "way": "X",
+            "damage": "40",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=ZsEl8QL42hE",
+            "combo": "https://www.youtube.com/watch?v=VBeJlZVMpK8",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236977",
+            "name": "Eddy"
+        }
+    ]
 }

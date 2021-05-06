@@ -16,14 +16,7 @@ const Throw = ({ Data }) => {
         <Wrapper>
             <Table
                 header="잡기"
-                columns={[
-                    '커맨드',
-                    '프레임',
-                    '잡기풀기',
-                    '데미지',
-                    '가드프레임',
-                    '설명',
-                ]}
+                columns={['커맨드', '프레임', '잡기풀기', '데미지', '설명']}
                 data={Data}
             />
         </Wrapper>

@@ -1,0 +1,220 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPLPRP",
+            "damage": "43",
+            "range": "상상",
+            "hitframe": "D"
+        },
+        {
+            "frame": "12",
+            "command": "6AP",
+            "damage": "23",
+            "range": "6AP",
+            "hitframe": "4"
+        },
+        {
+            "frame": "13",
+            "command": "3LPRP",
+            "damage": "34",
+            "range": "중중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "14",
+            "command": "6n23RP",
+            "damage": "23+@",
+            "range": "상",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "236RP",
+            "damage": "30",
+            "range": "중",
+            "hitframe": "D"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "특중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RKRK",
+            "damage": "17",
+            "range": "중",
+            "hitframe": "0"
+        },
+        {
+            "frame": "14",
+            "command": "기상LP+@",
+            "damage": "20",
+            "range": "중중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "횡6n23RP",
+            "damage": "23",
+            "range": "중",
+            "hitframe": "D"
+        }
+    ],
+    "combo": [
+        {
+            "command": "6n23RP - 6n23RP - 6RPLK - 46RPLK(S) - 46RPLP",
+            "state": " "
+        },
+        {
+            "command": "6n23RP -6n23RP - 46RPLK(S) - 대시 6n23RKRKLP",
+            "state": " "
+        },
+        {
+            "command": "66LK - 46RPLK(S) - 대시 6n23RKRKLP - 6LK (2LP)",
+            "state": " "
+        },
+        {
+            "command": "66RP - 6n23RP - 6RPLK - 46RPLK(S) - 6AK~RPLP",
+            "state": " "
+        },
+        {
+            "command": "9LKRK(S) - 대시 6n23RKRKLP - LP4RP",
+            "state": " "
+        },
+        {
+            "command": "기상LKAP - 4LKRP - 46RPLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "6LK(C) - 4LKRP - 46RPLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "6n23RKnRK - 46RPLK(S) - 대시 6n23RKRKLP - 2LP",
+            "state": " "
+        },
+        {
+            "command": "6n23RKRKnRK - 3LP - 4LPRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "6N23RKRKRKnRK - 46RKLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "3RP(C) - 3LPLP - 46RPLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "기상RP(C) - 반시계 6n23RKnRK - 46RPLK(S) ~",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - 대시 6n23RKRKRKnRKLP - LP4RP",
+            "state": " "
+        },
+        {
+            "command": "4RK(C) - 대시 6n23RP - 6lk - 6n23RP - 6lk",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "4LKRP - 6AP",
+            "state": " "
+        },
+        {
+            "command": "LP - 2RK",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "기상LP - 236RP",
+            "state": " "
+        },
+        {
+            "command": "기상LP - 6n3LP",
+            "state": "어려움"
+        },
+        {
+            "command": "6AP - 236RP",
+            "state": " "
+        },
+        {
+            "command": "6AP - 6n3LP",
+            "state": "어려움"
+        },
+        {
+            "command": "앉아3RK - 66RP",
+            "state": " "
+        },
+        {
+            "command": "6n23LK - 66RP",
+            "state": " "
+        },
+        {
+            "command": "6RK(C) - 대시 2RK",
+            "state": " "
+        },
+        {
+            "command": "6RK - 3LPRP",
+            "state": "6RK 앉아서 히트시"
+        },
+        {
+            "command": "3AP - 대시 6n23 66RP",
+            "state": " "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "3RP+LK",
+            "frame": "12",
+            "way": "RP",
+            "damage": "25",
+            "state": " "
+        },
+        {
+            "command": "66AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "35",
+            "state": " "
+        },
+        {
+            "command": "66LP+RK",
+            "frame": "12",
+            "way": "AP",
+            "damage": "30",
+            "state": " "
+        },
+        {
+            "command": "236AL",
+            "frame": "15",
+            "way": "LP",
+            "damage": "45",
+            "state": " "
+        },
+        {
+            "command": "4LP+RK, 4RP+LK",
+            "frame": "3~30",
+            "way": "X",
+            "damage": "30",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=wVscmLaBrQw",
+            "combo": "https://www.youtube.com/watch?v=9dxtwCvKmPA",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236916",
+            "name": "Heihachi"
+        }
+    ]
+}

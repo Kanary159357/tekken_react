@@ -62,24 +62,21 @@ export default function VerticalTabs({ Data }) {
     const handleChange = (event, newValue) => {
         setValue(newValue)
     }
+
     return (
         <Root>
             <TabsBlock value={value} onChange={handleChange} centered>
                 <TabBlock label="딜레이캐치" {...a11yProps(0)} />
                 <TabBlock label="콤보" {...a11yProps(1)} />
-                <TabBlock label="주력기" {...a11yProps(2)} />
-                <TabBlock label="잡기" {...a11yProps(3)} />
+                <TabBlock label="잡기" {...a11yProps(2)} />
             </TabsBlock>
             <TabPanel value={value} index={0}>
-                <Punish Data={Data.Punish} />
+                <Punish Data={[Data.standing, Data.up]} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <Combo Data={Data.ComboPage} />
+                <Combo Data={[Data.combo, Data.Extrahit]} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <MainMove Data={Data.MainMove} />
-            </TabPanel>
-            <TabPanel value={value} index={3}>
                 <Throw Data={Data.Throw} />
             </TabPanel>
         </Root>

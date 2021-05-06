@@ -1,0 +1,256 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPRK",
+            "damage": "22",
+            "range": "상상",
+            "hitframe": "5"
+        },
+        {
+            "frame": "11",
+            "command": "RPRP",
+            "damage": "29",
+            "range": "중상",
+            "hitframe": "6"
+        },
+        {
+            "frame": "13",
+            "command": "9LPRP",
+            "damage": "29",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "14",
+            "command": "6RPRP",
+            "damage": "35",
+            "range": "중",
+            "hitframe": "8"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "14+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "1LP",
+            "damage": "5",
+            "range": "중",
+            "hitframe": "6"
+        },
+        {
+            "frame": "11",
+            "command": "기상RKAP",
+            "damage": "34",
+            "range": "중중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "15",
+            "command": "9RK",
+            "damage": "13",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "기상RP",
+            "damage": "15+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "3RP - 6RP - 4LPRK3~LK - 6RKRP(S) - 6RK3~AP",
+            "state": "국콤"
+        },
+        {
+            "command": "9RK - RK - 4LPRK3 - 9LPLP(S) - 대시 46APAP236RP",
+            "state": " "
+        },
+        {
+            "command": "2LP(C) - 3LP - 4LPRK3 ~ 9LPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "2LP2(C) - 기상LK - 4LPRK3 ~ 9LPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "1LK - 6LK - 4LPRK3 - 9LPLP",
+            "state": " "
+        },
+        {
+            "command": "66RKLK(S) - 반시계4LPRK3~LK - 6RKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "66RKLKRK(C) - 3LP - 4LPRK3~LK - 6RKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 3LK(S) - 대시6RK3~LK - 6RK3~LKLPRP",
+            "state": "멀면 안맞음"
+        },
+        {
+            "command": "3RP+LK(C) - 23NLK - 4LPRP3 - 9LPLP(S) ~",
+            "state": "근접이면 그냥 기상LK해도 맞음"
+        },
+        {
+            "command": "9RPLP - 23NLK - 6RK3 - 9LPLP(S) ~",
+            "state": "개어려움"
+        },
+        {
+            "command": "1RK(C) - 3LP - 4LPRK3 - 9LPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(6RK)AP(C) - 6LK - 4LPRK3~LK - 6RKRP(S)~",
+            "state": " "
+        },
+        {
+            "command": "(6RK)RP(C) - 반시계 - 4LPRK3~LK - 6RKRP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(6RK)LK - RK - 4LPRK3 - 9LPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(6RK)LKRK - 4LPRK3 - 9LPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "2AP~RP - 6LK - 4LPRK3~9LPLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "2AP~LK(S) - 대시RK - 4LPRK3~LK - 6RK3AP",
+            "state": " "
+        },
+        {
+            "command": "2AP~LPRP - 23NLK - 6LK3~3 - 6RKRP(S) ",
+            "state": "넘어려움"
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "횡신RP(C) - 66LK2RP",
+            "state": " "
+        },
+        {
+            "command": "9RPLP(C) - 66LK2RP",
+            "state": " "
+        },
+        {
+            "command": "6RPRP(C) - 66LK2RP",
+            "state": " "
+        },
+        {
+            "command": "2AP~AP(C) - 66LK2RP",
+            "state": " "
+        },
+        {
+            "command": "4LP+RK(C) - 66RP",
+            "state": " "
+        },
+        {
+            "command": "236LP(C) - 기상RKAP",
+            "state": " "
+        },
+        {
+            "command": "앉아3LK - 66LK",
+            "state": " "
+        },
+        {
+            "command": "2RP(C) - 2AK",
+            "state": " "
+        },
+        {
+            "command": "9RPLP - 2RKRP",
+            "state": " "
+        },
+        {
+            "command": "2AP~LPRP - 2RKRP",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "4LPRK~LKRK",
+            "state": " "
+        },
+        {
+            "command": "4LPRK3~AP",
+            "state": " "
+        },
+        {
+            "command": "4LPRK~AP",
+            "state": " "
+        },
+        {
+            "command": "4LPRK~AK",
+            "state": " "
+        },
+        {
+            "command": "46APAP236RP",
+            "state": " "
+        },
+        {
+            "command": "66LK2RP",
+            "state": "밟기 바닥뎀 "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "66AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "7LP",
+            "frame": "2~10",
+            "way": "X",
+            "damage": "0",
+            "state": "사실상 안씀, 상단패링, RK추가타(35뎀)"
+        },
+        {
+            "command": "4AP",
+            "frame": "6~12",
+            "way": "X",
+            "damage": "0",
+            "state": "상중단패링, 손패링 추가타RPRP(32) 발패링 추가타 23"
+        },
+        {
+            "command": "4AL, 4AR",
+            "frame": "2~12",
+            "way": "X",
+            "damage": "0",
+            "state": "손패링, 벽꽝되면 66LK2RP확정"
+        },
+        {
+            "command": "4AL,4AP",
+            "frame": "2~8",
+            "way": "6AL,6AR",
+            "damage": "25+@",
+            "state": "발패링, 자동잡기 이행"
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=Y5LEgQFXI68",
+            "combo": "https://www.youtube.com/watch?v=l1Kd1GbAQvQ",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=1236938",
+            "name": "Leo"
+        }
+    ]
+}

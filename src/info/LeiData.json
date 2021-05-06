@@ -1,0 +1,236 @@
+{
+    "standing": [
+        {
+            "frame": "10",
+            "command": "LPLP",
+            "damage": "22",
+            "range": "상상",
+            "hitframe": "5"
+        },
+        {
+            "frame": "12",
+            "command": "6RPRK",
+            "damage": "29",
+            "range": "중상",
+            "hitframe": "4"
+        },
+        {
+            "frame": "15",
+            "command": "3RP",
+            "damage": "12+@",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "15",
+            "command": "9RK",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "D"
+        },
+        {
+            "frame": "17",
+            "command": "66LK",
+            "damage": "15+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "up": [
+        {
+            "frame": "10",
+            "command": "기상LK",
+            "damage": "25",
+            "range": "중",
+            "hitframe": "-5"
+        },
+        {
+            "frame": "11",
+            "command": "기상RK",
+            "damage": "15",
+            "range": "중",
+            "hitframe": "7"
+        },
+        {
+            "frame": "14",
+            "command": "기상RPLP",
+            "damage": "30",
+            "range": "중중",
+            "hitframe": "4"
+        },
+        {
+            "frame": "15",
+            "command": "9RK",
+            "damage": "13+@",
+            "range": "중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "16",
+            "command": "기상AK",
+            "damage": "20+@",
+            "range": "중",
+            "hitframe": "~"
+        }
+    ],
+    "combo": [
+        {
+            "command": "3RP - 6LKLP - LK4 - LK~RK RK",
+            "state": "국콤"
+        },
+        {
+            "command": "9RK - 6LKLP - APLP - RKLP - 666LKRK",
+            "state": " "
+        },
+        {
+            "command": "9AK - 3~기상RPLP - LK4(S) - LK~RK RK",
+            "state": " "
+        },
+        {
+            "command": "66LK - 6LKLP - LK4(S) ~",
+            "state": " "
+        },
+        {
+            "command": "66LK4 - 9_RK - 9LP - APLP - RKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "1RK6 - LKAP(S) - 66LK - RKLP",
+            "state": " "
+        },
+        {
+            "command": "6LKLPRP - LK4(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(2RP+LK)LK시계횡 - 반시계 - 표형RP - RP - APLP - RKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(2RP+LK)RK - 9_RK - LP - APLP - RKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(2RP+LK)AK - 6LKLP - LK4(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(2AP) LK~RK - 8N기상RK - 66LK4 - RKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(2AK) LK - 4RKLP(S) - 대시 APLP - RKRK",
+            "state": " "
+        },
+        {
+            "command": "RK(C) - 6NRP - 6NRP - 66RP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "9LK(C) - LK - 9LP - APLP - RKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "6NLPRPLPRPLK - 4RKLP(S) - 대시 9LP - APLP - RKRK",
+            "state": " "
+        },
+        {
+            "command": "4RPRK(C) - 대시 6LKLP - APLP - RKRK",
+            "state": " "
+        },
+        {
+            "command": "(호형)RK - 6LKLP - APLP - RKLP(S) ~",
+            "state": " "
+        },
+        {
+            "command": "(호형)RPRP(S) - 6LKLP - 6LKLPRP",
+            "state": " "
+        },
+        {
+            "command": "(표형)RP - 6LKLP - LK4(S) ~",
+            "state": " "
+        }
+    ],
+    "Extrahit": [
+        {
+            "command": "(학형)RK(C) - 9RP",
+            "state": " "
+        },
+        {
+            "command": "(2LP+RK) RK~LK - RK",
+            "state": " "
+        },
+        {
+            "command": "(2AK) LK - 기상LK",
+            "state": " "
+        },
+        {
+            "command": "앉아3RK(C) - 대시 앉아3RK",
+            "state": " "
+        }
+    ],
+    "WallCombo": [
+        {
+            "command": "6LKLP - 3RP6~",
+            "state": "걍 이게 베스트"
+        },
+        {
+            "command": "6LKLP - 7RK",
+            "state": " "
+        },
+        {
+            "command": "2_3RPLPRK - RP",
+            "state": " "
+        },
+        {
+            "command": "4RP - 기상LK(기상RK)",
+            "state": " "
+        },
+        {
+            "command": "66LKRK",
+            "state": " "
+        },
+        {
+            "command": "66LK4 - 2LK",
+            "state": " "
+        }
+    ],
+    "Throw": [
+        {
+            "command": "9AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
+        },
+        {
+            "command": "66AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "38",
+            "state": "일부캐릭 2RK 확정"
+        },
+        {
+            "command": "(용형)LP",
+            "frame": "25",
+            "way": "LP",
+            "damage": "35",
+            "state": " "
+        },
+        {
+            "command": "(취보)LP+LK",
+            "frame": "15",
+            "way": "AP",
+            "damage": "33",
+            "state": " "
+        }
+    ],
+    "Info": [
+        {
+            "punish": "https://www.youtube.com/watch?v=0OD0gji5yAI",
+            "combo": "https://www.youtube.com/watch?v=zI2U5zLRvj4",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=2863527&page=3",
+            "name": "Lei"
+        }
+    ]
+}
