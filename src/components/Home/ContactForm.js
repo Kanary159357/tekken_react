@@ -42,6 +42,9 @@ const CustomIcon = styled(FontAwesomeIcon)`
     color: ${(props) => props.color};
     display: block;
     padding-bottom: 20px;
+    @media all and (max-width: 768px) {
+        font-size: 1.5em;
+    }
 `
 const ContactForm = () => (
     <ContactWrapper>

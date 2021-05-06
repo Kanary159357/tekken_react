@@ -74,7 +74,6 @@ const Sidebar = ({ toggle, Data }) => {
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
-            <SidebarItem path="Jin" />
             {Object.keys(Data).map((element, index) => (
                 <SidebarItem path={element} key={index} />
             ))}

@@ -9,7 +9,7 @@ const MainWrapper = styled.div`
     background: #fff;
 
     @media all and (max-width: 1140px) {
-        height: 93%;
+        height: calc(100% - 50px);
         width: 100%;
     }
 `

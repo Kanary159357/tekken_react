@@ -36,11 +36,13 @@ import Paul from '../info/PaulData.json'
 import Shaheen from '../info/ShaheenData.json'
 import Steve from '../info/SteveData.json'
 import Xiaoyu from '../info/XiaoyuData.json'
+import Hworang from '../info/HworangData.json'
 import Yoshimitsu from '../info/YoshimitsuData.json'
 import Kunimitsu from '../info/KunimitsuData.json'
 import Noctis from '../info/NoctisData.json'
 import Negan from '../info/NeganData.json'
 import Lidia from '../info/LidiaData.json'
+import Heihachi from '../info/HeihachiData.json'
 
 const CharData = {
     Akuma: Akuma,
@@ -58,7 +60,10 @@ const CharData = {
     Feng: Feng,
     Geese: Geese,
     Gigas: Gigas,
+    Heihachi: Heihachi,
+    Hworang: Hworang,
     Jin: Jin,
+    Josie: Josie,
     Julia: Julia,
     Katarina: Katarina,
     Kazumi: Kazumi,

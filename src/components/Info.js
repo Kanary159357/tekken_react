@@ -10,7 +10,8 @@ const InfoWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     @media all and (max-width: 1140px) {
-        height: 7%;
+        height: 50px;
+        line-height: 50px;
         width: 100%;
         border-bottom: 1px solid black;
         flex-direction: row;
@@ -113,15 +114,23 @@ const Info = ({ data }) => {
                 <h2>{data[0].name}</h2>
             </div>
             <div className="link">
-                <a target="_blank" rel="noopener noreferrer" href={data.punish}>
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data[0].punish}
+                >
                     <img src={youtubeImg} alt="youtube" />
                     딜캐
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href={data.combo}>
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data[0].combo}
+                >
                     <img src={youtubeImg} alt="youtube" />
                     콤보
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href={data.dc}>
+                <a target="_blank" rel="noopener noreferrer" href={data[0].dc}>
                     <img src={dcImg} alt="dc" />
                     철마갤 캐릭터 팁
                 </a>

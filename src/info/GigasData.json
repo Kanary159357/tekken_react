@@ -3,7 +3,7 @@
         {
             "frame": "10",
             "command": "LPRP",
-            "damage": "43",
+            "damage": "35",
             "range": "상상",
             "hitframe": "D"
         },
@@ -69,8 +69,20 @@
             "state": "벽보내기 국콤"
         },
         {
+            "command": "2RP - 6RPLP - 1LKRP(S) - 3APAP",
+            "state": "시즌3 국콤"
+        },
+        {
+            "command": "2RP - 6RPLP - 6LP -1LKRP(S) - 3APAP",
+            "state": "벽 더 멀리 보내는 콤보"
+        },
+        {
+            "command": "2RP - 6RPLP - 6LP -1LKRP(S) - 66APAP",
+            "state": "벽몰이"
+        },
+        {
             "command": "앉아3RP - 횡캔 1LKRP(S) - 66RKRP - 3RPLP",
-            "state": " "
+            "state": "  "
         },
         {
             "command": "66AP - 횡캔 1LKRP(S) - 대시 RP - LP - 3APAP",
@@ -79,6 +91,10 @@
         {
             "command": "횡RP(S) - 6RPLP - RPLPAK~RKLP",
             "state": " "
+        },
+        {
+            "command": "횡RP(S) - 6RPLP - RP - 6LP - 3APAP",
+            "state": "필드 국콤"
         },
         {
             "command": "4APAK(C)~LP - 66RKRP - 3RPLP(S) - 대시 3APAP",
@@ -111,6 +127,10 @@
         {
             "command": "6AK홀드(레드) 4AP(풀차지 가드시) - RP",
             "state": " "
+        },
+        {
+            "command": "3LKLP(C) - LPRP",
+            "state": "2타카운터"
         }
     ],
     "Throw": [
@@ -119,7 +139,7 @@
             "frame": "11",
             "way": "AP",
             "damage": "55",
-            "state": "셋업골렘은 1AK or 4APAK, 3RKAPAK 등으로 이행가능"
+            "state": "셋업골렘은 1AK or 4APAK, 3RKAPAK 등으로 이행, 벽꽝시 데미지70"
         }
     ],
     "Info": [
