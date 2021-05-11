@@ -2,11 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import Punish from './Punish'
-import Combo from './Combo'
 import styled from 'styled-components'
-import MainMove from './MainMove'
-import Throw from './Throw'
+import TabInfo from './TabInfo'
 const TabPanelBlock = styled.div`
     ${({ value }) => (value ? `width:100%;  height:90%;` : 'width:0%')};
     overflow-y: scroll;
@@ -63,6 +60,40 @@ export default function VerticalTabs({ Data }) {
         setValue(newValue)
     }
 
+    const PunishInfo = [
+        {
+            header: '선자세 딜캐',
+            columns: ['프레임', '커맨드', '데미지', '판정', '히트이득'],
+            data: Data.standing,
+        },
+        {
+            header: '앉은자세 딜캐',
+            columns: ['프레임', '커맨드', '데미지', '판정', '히트이득'],
+            data: Data.up,
+        },
+    ]
+
+    const ThrowInfo = [
+        {
+            header: '잡기',
+            columns: ['커맨드', '프레임', '잡기풀기', '데미지', '설명'],
+            data: Data.Throw,
+        },
+    ]
+
+    const ComboInfo = [
+        {
+            header: '추가타',
+            columns: ['상황', '커맨드'],
+            data: Data.combo,
+        },
+        {
+            header: '추가타',
+            columns: ['상황', '커맨드'],
+            data: Data.Extrahit,
+        },
+    ]
+
     return (
         <Root>
             <TabsBlock value={value} onChange={handleChange} centered>
@@ -71,13 +102,13 @@ export default function VerticalTabs({ Data }) {
                 <TabBlock label="잡기" {...a11yProps(2)} />
             </TabsBlock>
             <TabPanel value={value} index={0}>
-                <Punish Data={[Data.standing, Data.up]} />
+                <TabInfo data={PunishInfo} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <Combo Data={[Data.combo, Data.Extrahit]} />
+                <TabInfo data={ComboInfo} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Throw Data={Data.Throw} />
+                <TabInfo data={ThrowInfo} />
             </TabPanel>
         </Root>
     )

@@ -2,196 +2,205 @@
     "standing": [
         {
             "frame": "10",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "command": "LPRP",
+            "damage": "19",
+            "range": "상상",
+            "hitframe": "+6"
         },
         {
             "frame": "10",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "command": "LPRPRP",
+            "damage": "27",
+            "range": "상상상",
+            "hitframe": "+1"
         },
         {
             "frame": "12",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
-        },
-        {
-            "frame": "12",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "command": "4LPRP",
+            "damage": "31",
+            "range": "상상",
+            "hitframe": "+7"
         },
         {
             "frame": "14",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "command": "4RPAP",
+            "damage": "37",
+            "range": "상",
+            "hitframe": "+4"
+        },
+        {
+            "frame": "14",
+            "command": "4LKRP",
+            "damage": "37",
+            "range": "상중",
+            "hitframe": "D"
         },
         {
             "frame": "15",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
-        },
-        {
-            "frame": "15",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "command": "3RP",
+            "damage": "20",
+            "range": "중",
+            "hitframe": "~"
         }
     ],
     "up": [
         {
-            "frame": "10",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
-        },
-        {
             "frame": "11",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "command": "기상RK",
+            "damage": "15",
+            "range": "중",
+            "hitframe": "5"
         },
         {
-            "frame": "12",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
-        },
-        {
-            "frame": "12",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "frame": "13",
+            "command": "기상LPRP",
+            "damage": "33",
+            "range": "중중",
+            "hitframe": "+2"
         },
         {
             "frame": "15",
-            "command": "대신럭키",
-            "damage": "대신럭키",
-            "range": "대신럭키",
-            "hitframe": "대신럭키"
+            "command": "기상RPRP",
+            "damage": "38",
+            "range": "중중",
+            "hitframe": "~"
+        },
+        {
+            "frame": "17",
+            "command": "9LK",
+            "damage": "34",
+            "range": "중",
+            "hitframe": "~"
         }
     ],
     "combo": [
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "3RP - RKRP - RPRPRP(S) - RPRPRPRPRP",
+            "state": "철권 입문자용 콤보"
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "3RP - RKRP - 딜레이 RP - LP - 대시 LP - 66AP(S) - 66RK",
+            "state": " "
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "3RP - 3LP - RKRP - RPRPRP(S) - (대시 LP) - 66RK",
+            "state": "대시 잽 빼도 됨"
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "3RP - 3RKRP - 9LK9~ - RPRPRP(S) - 66RK",
+            "state": "컷킥이 안맞는경우가 종종 있음"
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "1ap - 3ap(S) - 짧대쉬 rkrp - 딜레이 RP - RPRPRPRPRP",
+            "state": "마지막 RPRP4RP가 후상황이 더 좋음"
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "9rp - 3ap(S) - 대시 RKRP - 딜레이 RP - RPRPRPRPRP",
+            "state": "마지막 RPRP4RP가 후상황이 더 좋음"
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "9LK - LK - LP - AP - 대시 LP - 66LK",
+            "state": "컷킥 이후 자동 앉은자세라 기상 LK가 나가야 정상"
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "9LK - 8nLP - 9LK9~ - RPRPRP - RPRP4RP",
+            "state": " "
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "9RK - 8n2RPRP - 대시 RKRP - 딜레이 RP - RPRP4RP",
+            "state": "횡캔대신 짧대시도 가능"
+        },
+        {
+            "command": "기상RPRP - 대시 RKRP - RPRPRP(S) - RPRP4RP",
+            "state": " "
+        },
+        {
+            "command": "흘리기 - 3RKRP - 3RKRPRK - 대시LP - 66RK",
+            "state": " "
+        },
+        {
+            "command": "흘리기 - 3LPRK - LP - 대시 LP - LPRP AP(S) - RPRP4RP",
+            "state": " "
+        },
+        {
+            "command": "9LP(C) - 반시계 3RKRP - 3RKRPRK - 대시 LP - 66RK",
+            "state": " "
+        },
+        {
+            "command": "9LP(C) - 반시계 3RKRP - 9LK9~ - RPRPRP - 66RK",
+            "state": "컷킥이 축틀리면 잘 안맞음"
+        },
+        {
+            "command": "1RP(C) - 1LPAP - 2RPRP - 1LP6~LP",
+            "state": "뚱캐 + 파쿰람은 확정이고 타 캐릭은 기상방법따라 건져짐"
+        },
+        {
+            "command": "66AP(C) - 대시 3LP - RKRP - 딜레이 RP - RPRPRPRPRP",
+            "state": " "
+        },
+        {
+            "command": "66AP(C) - 점프 늦은 RP - RPRP6RP - RPRP4RP",
+            "state": "주딱 리리고가 개발"
+        },
+        {
+            "command": "4LPRP(C) - 3AP - 대시 RKRP - 딜레이 RP - RPRPRPRPRP",
+            "state": "2타 단독 카운터시 콤보"
         }
     ],
     "WallCombo": [
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "2RKLPAP",
+            "state": "저스트 사용시 압도적 최대대미지, 아니어도 최대대미지"
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "3RKRP - 6AP",
+            "state": "3RKRP 이후 최대대미지. 후상황 불리"
+        },
+        {
+            "command": "3RKRP - 1LPAP",
+            "state": "무난한 벽콤. 후상황 매우 유리"
         }
     ],
     "Extrahit": [
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "6RP+LK - 6AP",
+            "state": " "
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "6AK~AK - 1AP",
+            "state": " "
         },
         {
-            "command": "대신럭키",
-            "state": "대신럭키"
+            "command": "1RP(C) - 1AP",
+            "state": " "
+        },
+        {
+            "command": "4RP+LK - 1AP",
+            "state": "손패링시 오라 확정"
         }
     ],
     "Throw": [
         {
-            "command": "대신럭키",
-            "frame": "대신럭키",
-            "way": "대신럭키",
-            "damage": "대신럭키",
-            "state": "대신럭키"
+            "command": "4AP",
+            "frame": "12",
+            "way": "AP",
+            "damage": "40",
+            "state": " "
         },
         {
-            "command": "대신럭키",
-            "frame": "대신럭키",
-            "way": "대신럭키",
-            "damage": "대신럭키",
-            "state": "대신럭키"
-        },
-        {
-            "command": "대신럭키",
-            "frame": "대신럭키",
-            "way": "대신럭키",
-            "damage": "대신럭키",
-            "state": "대신럭키"
-        },
-        {
-            "command": "대신럭키",
-            "frame": "대신럭키",
-            "way": "대신럭키",
-            "damage": "대신럭키",
-            "state": "대신럭키"
-        },
-        {
-            "command": "대신럭키",
-            "frame": "대신럭키",
-            "way": "대신럭키",
-            "damage": "대신럭키",
-            "state": "대신럭키"
+            "command": "4AL, 4AR",
+            "frame": "3~10",
+            "way": "x",
+            "damage": "30",
+            "state": "관절기 반격불가, 벽꽝가능"
         }
     ],
     "Info": [
         {
-            "punish": "https://gall.dcinside.com/mgallery/board/view/?id=tekken7&no=995167&s_type=search_subject_memo&s_keyword=%EB%8C%80%EC%8B%A0%EB%9F%AD%ED%82%A4&page=1",
-            "combo": "https://gall.dcinside.com/mgallery/board/view/?id=tekken7&no=995167&s_type=search_subject_memo&s_keyword=%EB%8C%80%EC%8B%A0%EB%9F%AD%ED%82%A4&page=1",
-            "dc": "https://gall.dcinside.com/mgallery/board/view/?id=tekken7&no=995167&s_type=search_subject_memo&s_keyword=%EB%8C%80%EC%8B%A0%EB%9F%AD%ED%82%A4&page=1",
-            "name": "Lucky"
+            "punish": "https://www.youtube.com/watch?v=9gN8dYkB_QE",
+            "combo": "https://www.youtube.com/watch?v=zoX0MLxEkFk",
+            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=2169015",
+            "name": "Noctis"
         }
     ]
 }
