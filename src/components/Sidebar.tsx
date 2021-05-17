@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-const Wrapper = styled.div`
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+const Wrapper = styled.div<{ toggle: boolean }>`
     width: 240px;
     background: #212529;
     position: fixed;
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
             color: #fff;
         }
     }
-`
+`;
 
 const SideItemLink = styled.li`
     display: flex;
@@ -57,18 +57,27 @@ const SideItemLink = styled.li`
         background: #333;
         color: #fff;
     }
-`
+`;
 
-const SidebarItem = ({ path }) => {
-    const checkedPath = path.replace('_', ' ')
+interface itemProps {
+    path: string;
+}
+
+const SidebarItem = ({ path }: itemProps) => {
+    const checkedPath = path.replace('_', ' ');
     return (
         <SideItemLink>
             <Link to={'/' + path}>{checkedPath}</Link>
         </SideItemLink>
-    )
+    );
+};
+
+interface Props {
+    toggle: boolean;
+    Data: any;
 }
 
-const Sidebar = ({ toggle, Data }) => {
+const Sidebar = ({ toggle, Data }: Props) => {
     return (
         <Wrapper toggle={toggle}>
             <div className="Main">
@@ -78,7 +87,7 @@ const Sidebar = ({ toggle, Data }) => {
                 <SidebarItem path={element} key={index} />
             ))}
         </Wrapper>
-    )
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;

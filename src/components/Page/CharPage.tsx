@@ -1,7 +1,8 @@
 import React from 'react'
-import Info from './Info'
-import Main from './Main'
+import Info from '../pageComponents/Info'
+import Main from '../pageComponents/Main'
 import styled from 'styled-components'
+import { CharProps } from '../../types/CharProps'
 
 const CharWrap = styled.div`
     display: flex;
@@ -14,7 +15,7 @@ const CharWrap = styled.div`
     }
 `
 
-const Page = ({ data }) => {
+const Page = ({ data }: any) => {
     return (
         <CharWrap>
             <Info data={data.Info} />

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import ContactFrom from './Home/ContactForm'
-import CommandDescription from './Home/CommandDescription'
-import SiteUsage from './Home/SiteUsage'
+import ContactFrom from '../pageComponents/ContactForm'
+import CommandDescription from '../pageComponents/CommandDescription'
+import SiteUsage from '../pageComponents/SiteUsage'
 const HomeWrapper = styled.div`
     display: flex;
     width: 100%;

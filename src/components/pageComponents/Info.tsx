@@ -1,7 +1,6 @@
-import styled from 'styled-components'
-import dcImg from '../img/dc.png'
-import youtubeImg from '../img/youtube.png'
-import React from 'react'
+import styled from 'styled-components';
+
+import React from 'react';
 const InfoWrapper = styled.div`
     display: flex;
     background: #fff;
@@ -100,10 +99,10 @@ const InfoWrapper = styled.div`
             text-align: center;
         }
     }
-`
+`;
 
-const Info = ({ data }) => {
-    console.log(data[0].name)
+const Info = ({ data }: any) => {
+    console.log(data[0].name);
     return (
         <InfoWrapper>
             <div className="info_img">
@@ -119,7 +118,10 @@ const Info = ({ data }) => {
                     rel="noopener noreferrer"
                     href={data[0].punish}
                 >
-                    <img src={youtubeImg} alt="youtube" />
+                    <img
+                        src={process.env.PUBLIC_URL + `/img/youtube.png`}
+                        alt="youtube"
+                    />
                     딜캐
                 </a>
                 <a
@@ -127,16 +129,22 @@ const Info = ({ data }) => {
                     rel="noopener noreferrer"
                     href={data[0].combo}
                 >
-                    <img src={youtubeImg} alt="youtube" />
+                    <img
+                        src={process.env.PUBLIC_URL + `/img/youtube.png`}
+                        alt="youtube"
+                    />
                     콤보
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={data[0].dc}>
-                    <img src={dcImg} alt="dc" />
+                    <img
+                        src={process.env.PUBLIC_URL + `/img/dc.png`}
+                        alt="dc"
+                    />
                     철마갤 캐릭터 팁
                 </a>
             </div>
         </InfoWrapper>
-    )
-}
+    );
+};
 
-export default Info
+export default Info;

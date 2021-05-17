@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import React from 'react'
+import styled from 'styled-components';
+import React from 'react';
 
-import ExTabs from './CharInfo/ExTabs'
+import ExTabs from '../CharInfo/ExTabs';
 const MainWrapper = styled.div`
     display: flex;
     height: 90%;
@@ -12,14 +12,14 @@ const MainWrapper = styled.div`
         height: calc(100% - 50px);
         width: 100%;
     }
-`
+`;
 
-const Main = ({ data }) => {
+const Main = ({ data }: any) => {
     return (
         <MainWrapper>
             <ExTabs Data={data} />
         </MainWrapper>
-    )
-}
+    );
+};
 
-export default Main
+export default Main;
