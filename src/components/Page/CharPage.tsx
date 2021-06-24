@@ -3,7 +3,7 @@ import Info from '../pageComponents/Info'
 import Main from '../pageComponents/Main'
 import styled from 'styled-components'
 import { CharProps } from '../../types/CharProps'
-
+import { InfoProps } from '../../types/CharProps'
 const CharWrap = styled.div`
     display: flex;
     width: 100%;
@@ -15,7 +15,11 @@ const CharWrap = styled.div`
     }
 `
 
-const Page = ({ data }: any) => {
+interface PageProps {
+    data: any
+}
+
+const Page = ({ data }: PageProps) => {
     return (
         <CharWrap>
             <Info data={data.Info} />

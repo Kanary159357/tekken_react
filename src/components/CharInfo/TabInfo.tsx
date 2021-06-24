@@ -22,7 +22,6 @@ const TabInfo = ({ data }: TabInfoProps) => {
     return (
         <Wrapper>
             {data.map((item) => {
-                console.log(item);
                 return (
                     <Table
                         header={item.header}

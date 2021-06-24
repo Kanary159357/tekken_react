@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Ops } from '../types/CharProps';
 const Wrapper = styled.div<{ toggle: boolean }>`
     width: 240px;
     background: #212529;
@@ -46,6 +47,7 @@ const SideItemLink = styled.li`
         color: white;
         line-height: 3;
         user-select: none;
+        cursor: pointer;
         text-decoration: none;
         &:active,
         &:link,
@@ -61,31 +63,42 @@ const SideItemLink = styled.li`
 
 interface itemProps {
     path: string;
+    onCharChange: (text: string) => void;
 }
 
-const SidebarItem = ({ path }: itemProps) => {
+const SidebarItem = ({ path, onCharChange }: itemProps) => {
     const checkedPath = path.replace('_', ' ');
+    const handleChange = () => {
+        onCharChange(path);
+    };
     return (
-        <SideItemLink>
-            <Link to={'/' + path}>{checkedPath}</Link>
+        <SideItemLink onClick={handleChange}>
+            <Link to="/data">{checkedPath}</Link>
         </SideItemLink>
     );
 };
 
 interface Props {
     toggle: boolean;
-    Data: any;
+    Data: string[];
+    onCharChange: (text: string) => void;
 }
 
-const Sidebar = ({ toggle, Data }: Props) => {
+const Sidebar = ({ toggle, Data, onCharChange }: Props) => {
     return (
         <Wrapper toggle={toggle}>
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
-            {Object.keys(Data).map((element, index) => (
-                <SidebarItem path={element} key={index} />
-            ))}
+            {Data.map((element, index) => {
+                return (
+                    <SidebarItem
+                        path={element}
+                        key={index}
+                        onCharChange={onCharChange}
+                    />
+                );
+            })}
         </Wrapper>
     );
 };

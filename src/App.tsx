@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Page/Home';
 import Sidebar from './components/Sidebar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Page from './components/Page/CharPage';
 import Data from './components/Data';
 import React from 'react';
@@ -13,7 +13,7 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { CharProps } from './types/CharProps';
+import db from './firebaseInit';
 
 const Wrapper = styled.div`
     background: #e8e8e8;
@@ -61,9 +61,82 @@ const Overlay = styled.div<{ toggle: boolean }>`
 type Ops = {
     [key: string]: Object;
 };
+
+const CharNames = [
+    'Akuma',
+    'Alisa',
+    'Anna',
+    'ArmorKing',
+    'Asuka',
+    'Bob',
+    'Bryan',
+    'Cladio',
+    'DevilJin',
+    'Dragunov',
+    'Eddy',
+    'Eliza',
+    'Feng',
+    'Geese',
+    'Gigas',
+    'Heihachi',
+    'Hworang',
+    'Jack7',
+    'Jin',
+    'Josie',
+    'Julia',
+    'Katarina',
+    'Kazumi',
+    'Kazuya',
+    'King',
+    'Kuma',
+    'Kunimitsu',
+    'Lars',
+    'Law',
+    'Lee',
+    'Lei',
+    'Leo',
+    'Lidia',
+    'Lili',
+    'Lucky',
+    'Marduk',
+    'MasterRaven',
+    'Miguel',
+    'Negan',
+    'Nina',
+    'Noctis',
+    'Paul',
+    'Shaheen',
+    'Steve',
+    'Xiaoyu',
+    'Yoshimitsu',
+];
+
 function App() {
     const [toggle, setToggle] = useState(false);
+    const [curChar, setCurChar] = useState('Jin');
+    const [loading, setLoading] = useState(false);
     const Opdata: Ops = Data;
+    const [data, setData] = useState<any>();
+    useEffect(() => {
+        async function getFromDocs() {
+            const data = await db
+                .collection('Character')
+                .doc(curChar)
+                .get()
+                .then((snap) => {
+                    return snap.data();
+                });
+            console.log(data);
+            setData(data);
+        }
+        getFromDocs();
+    }, [curChar]);
+    const onCharChange = (text: string) => {
+        setCurChar(text);
+    };
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
     return (
         <>
             <title>Tekken_info 0.1.0</title>
@@ -73,26 +146,26 @@ function App() {
                     icon={toggle ? faTimes : faBars}
                     onClick={() => {
                         setToggle(!toggle);
-                        console.log(toggle);
                     }}
                 />
-                <Sidebar toggle={toggle} Data={Opdata} />
+                <Sidebar
+                    toggle={toggle}
+                    Data={CharNames}
+                    onCharChange={onCharChange}
+                />
                 <Overlay
                     toggle={toggle}
                     onClick={() => {
                         setToggle(!toggle);
-                        console.log(toggle);
                     }}
                 />
                 <PageContent>
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
 
-                        {Object.keys(Opdata).map((element, index) => (
-                            <Route key={index} path={`/${element}`}>
-                                <Page data={Opdata[element]} />
-                            </Route>
-                        ))}
+                        <Route path="/Data" exact={true}>
+                            <Page data={data} />
+                        </Route>
                     </Switch>
                 </PageContent>
             </Wrapper>

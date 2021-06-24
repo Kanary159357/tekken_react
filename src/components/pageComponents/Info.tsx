@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import React from 'react';
+import { InfoProps } from '../../types/CharProps';
 const InfoWrapper = styled.div`
     display: flex;
     background: #fff;
@@ -101,41 +102,32 @@ const InfoWrapper = styled.div`
     }
 `;
 
-const Info = ({ data }: any) => {
-    console.log(data[0].name);
+const Info = ({ punish, combo, dc, name }: any) => {
     return (
         <InfoWrapper>
             <div className="info_img">
                 <img
-                    src={process.env.PUBLIC_URL + `/img/${data[0].name}.jpg`}
+                    src={process.env.PUBLIC_URL + `/img/${name}.jpg`}
                     alt="char"
                 />
-                <h2>{data[0].name}</h2>
+                <h2>{name}</h2>
             </div>
             <div className="link">
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={data[0].punish}
-                >
+                <a target="_blank" rel="noopener noreferrer" href={punish}>
                     <img
                         src={process.env.PUBLIC_URL + `/img/youtube.png`}
                         alt="youtube"
                     />
                     딜캐
                 </a>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={data[0].combo}
-                >
+                <a target="_blank" rel="noopener noreferrer" href={combo}>
                     <img
                         src={process.env.PUBLIC_URL + `/img/youtube.png`}
                         alt="youtube"
                     />
                     콤보
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href={data[0].dc}>
+                <a target="_blank" rel="noopener noreferrer" href={dc}>
                     <img
                         src={process.env.PUBLIC_URL + `/img/dc.png`}
                         alt="dc"

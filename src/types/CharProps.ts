@@ -4,7 +4,7 @@ export interface CharProps {
     Combos: Combo[];
     WallCombos: WallCombo[];
     Throws: Throw[];
-    Info: Info;
+    Info: InfoProps;
 }
 
 export interface Standing {
@@ -41,9 +41,13 @@ export interface Throw {
     state: string;
 }
 
-export interface Info {
+export interface InfoProps {
     punish: string;
     combo: string;
     dc: string;
     name: string;
 }
+
+export type Ops = {
+    [key: string]: Object;
+};

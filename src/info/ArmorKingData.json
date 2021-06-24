@@ -256,12 +256,10 @@
             "state": " "
         }
     ],
-    "Info": [
-        {
-            "punish": "https://www.youtube.com/watch?v=U93n6pPm0lQ",
-            "combo": "https://www.youtube.com/watch?v=1lg-0ffZNmA&t=7s",
-            "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=2926673",
-            "name": "ArmorKing"
-        }
-    ]
+    "Info": {
+        "punish": "https://www.youtube.com/watch?v=U93n6pPm0lQ",
+        "combo": "https://www.youtube.com/watch?v=1lg-0ffZNmA&t=7s",
+        "dc": "https://gall.dcinside.com/board/view/?id=fightgametekken&no=2926673",
+        "name": "ArmorKing"
+    }
 }
