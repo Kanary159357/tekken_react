@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
 import db from './firebaseInit';
+import { CharProps } from './types/CharProps';
 
 const Wrapper = styled.div`
     background: #e8e8e8;
@@ -116,17 +117,35 @@ function App() {
     const [curChar, setCurChar] = useState('Jin');
     const [loading, setLoading] = useState(false);
     const Opdata: Ops = Data;
-    const [data, setData] = useState<any>();
+    const [data, setData] = useState<CharProps>();
     useEffect(() => {
         async function getFromDocs() {
+            const ascorder = (arr: any[]) => {
+                return arr.map((cur: { [key: string]: string }) =>
+                    Object.keys(cur)
+                        .sort()
+                        .reduce((obj: any, key: string) => {
+                            obj[key] = cur[key];
+                            return obj;
+                        }, {})
+                );
+            };
+
             const data = await db
                 .collection('Character')
                 .doc(curChar)
                 .get()
                 .then((snap) => {
-                    return snap.data();
+                    return snap.data() as CharProps;
                 });
-            console.log(data);
+
+            data.combo = ascorder(data.combo);
+            data.WallCombo = ascorder(data.combo);
+            data.Throw = ascorder(data.Throw);
+            data.up = ascorder(data.up);
+            data.standing = ascorder(data.standing);
+            data.Extrahit = ascorder(data.Extrahit);
+            console.log(data.combo);
             setData(data);
         }
         getFromDocs();
