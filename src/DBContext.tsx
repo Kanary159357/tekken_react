@@ -1,31 +1,46 @@
-import React, {
-    createContext,
-    Dispatch,
-    useContext,
-    useReducer,
-    useState,
-} from 'react';
+import firebase from 'firebase';
+import React, { createContext, Dispatch, useContext, useReducer } from 'react';
 import db from './firebaseInit';
 import { CharProps } from './types/CharProps';
 
-const InitialState: CharProps = {
-    standing: [],
-    up: [],
-    combo: [],
-    WallCombo: [],
-    Throw: [],
-    Extrahit: [],
-    Info: [],
+interface StateProps {
+    charProps: CharProps;
+    loading: boolean;
+}
+
+const InitialState: StateProps = {
+    charProps: {
+        standing: [],
+        up: [],
+        combo: [],
+        WallCombo: [],
+        Throw: [],
+        Extrahit: [],
+        Info: [],
+    },
+    loading: false,
 };
 
-type Action = { type: 'LOAD'; char: string } | { type: 'ADD' };
+type Action = { type: 'LOAD'; payload: any } | { type: 'ADD' };
 
 type StateDispatch = Dispatch<Action>;
 
-const LoadData = (char: string) => {
-    console.log('hi');
+const DataContext = createContext<StateProps | null>(null);
+const DataDispatchContext = createContext<StateDispatch | null>(null);
 
-    let tempData = InitialState;
+function reducer(state: StateProps, action: Action) {
+    switch (action.type) {
+        case 'LOAD':
+            return {
+                ...state,
+                charProps: action.payload,
+            };
+        default:
+            return state;
+    }
+}
+
+export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     const Loader = async () => {
         const ascorder = (arr: any[]) => {
             return arr.map((cur: { [key: string]: string }) =>
@@ -50,30 +65,24 @@ const LoadData = (char: string) => {
         data.up = ascorder(data.up);
         data.standing = ascorder(data.standing);
         data.Extrahit = ascorder(data.Extrahit);
-        tempData = data;
+        dispatch({ type: 'LOAD', payload: data });
     };
     Loader();
-    console.log('hi');
-    return tempData as CharProps;
-};
+}
 
-const DataContext = createContext<CharProps | null>(null);
-const DataDispatchContext = createContext<StateDispatch | null>(null);
-
-function reducer(state: any, action: Action) {
-    switch (action.type) {
-        case 'LOAD':
-            return {
-                state: LoadData(action.char),
-            };
-        default:
-            return state;
-    }
+export function AddData(tag: string, data: Object) {
+    db.collection('Character')
+        .doc('Akuma')
+        .update({
+            Extrahit: firebase.firestore.FieldValue.arrayUnion({
+                command: '엄마럭키',
+                state: '아빠럭키',
+            }),
+        });
 }
 
 export function StateProvider({ children }: { children: React.ReactNode }) {
     const [state, dispatch] = useReducer(reducer, InitialState);
-
     return (
         <DataContext.Provider value={state}>
             <DataDispatchContext.Provider value={dispatch}>
@@ -82,7 +91,6 @@ export function StateProvider({ children }: { children: React.ReactNode }) {
         </DataContext.Provider>
     );
 }
-
 export function useDBData() {
     const data = useContext(DataContext);
     if (!data) throw new Error('Cannot find Provider');
