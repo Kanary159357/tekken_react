@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 
 import ExTabs from '../CharInfo/ExTabs';
+import { CharProps } from '../../types/CharProps';
 const MainWrapper = styled.div`
     display: flex;
     height: 90%;
@@ -14,7 +15,11 @@ const MainWrapper = styled.div`
     }
 `;
 
-const Main = ({ data }: any) => {
+interface MainProps {
+    data: CharProps;
+}
+
+const Main = ({ data }: MainProps) => {
     return (
         <MainWrapper>
             <ExTabs Data={data} />

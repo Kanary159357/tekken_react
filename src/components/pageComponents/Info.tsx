@@ -102,32 +102,42 @@ const InfoWrapper = styled.div`
     }
 `;
 
-const Info = ({ punish, combo, dc, name }: any) => {
+interface InfoInterface {
+    data: InfoProps[] | undefined;
+}
+
+const Info = ({ data }: InfoInterface) => {
+    const info = data === undefined ? null : data[0];
+
     return (
         <InfoWrapper>
             <div className="info_img">
                 <img
-                    src={process.env.PUBLIC_URL + `/img/${name}.jpg`}
+                    src={process.env.PUBLIC_URL + `/img/${info?.name}.jpg`}
                     alt="char"
                 />
-                <h2>{name}</h2>
+                <h2>{info?.name}</h2>
             </div>
             <div className="link">
-                <a target="_blank" rel="noopener noreferrer" href={punish}>
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={info?.punish}
+                >
                     <img
                         src={process.env.PUBLIC_URL + `/img/youtube.png`}
                         alt="youtube"
                     />
                     딜캐
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href={combo}>
+                <a target="_blank" rel="noopener noreferrer" href={info?.combo}>
                     <img
                         src={process.env.PUBLIC_URL + `/img/youtube.png`}
                         alt="youtube"
                     />
                     콤보
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href={dc}>
+                <a target="_blank" rel="noopener noreferrer" href={info?.dc}>
                     <img
                         src={process.env.PUBLIC_URL + `/img/dc.png`}
                         alt="dc"

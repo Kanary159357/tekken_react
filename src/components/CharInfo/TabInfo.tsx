@@ -10,25 +10,20 @@ const Wrapper = styled.div`
 `;
 
 interface TabInfoProps {
-    data: Item[];
+    data: TableItemProps[];
 }
-interface Item {
+export interface TableItemProps {
     header: string;
     columns: string[];
     data: any;
+    tag: { description: string; detail: string[] };
 }
 
 const TabInfo = ({ data }: TabInfoProps) => {
     return (
         <Wrapper>
             {data.map((item) => {
-                return (
-                    <Table
-                        header={item.header}
-                        columns={item.columns}
-                        data={item.data}
-                    />
-                );
+                return <Table item={item} />;
             })}
         </Wrapper>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Ops } from '../types/CharProps';
 const Wrapper = styled.div<{ toggle: boolean }>`
     width: 240px;
     background: #212529;
@@ -73,7 +72,7 @@ const SidebarItem = ({ path, onCharChange }: itemProps) => {
     };
     return (
         <SideItemLink onClick={handleChange}>
-            <Link to="/data">{checkedPath}</Link>
+            <Link to={`/data/:${checkedPath}`}>{checkedPath}</Link>
         </SideItemLink>
     );
 };

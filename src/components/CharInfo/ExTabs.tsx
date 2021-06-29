@@ -56,12 +56,6 @@ interface TabsProps {
     Data: any;
 }
 
-interface dataProps {
-    header: string;
-    columns: string[];
-    data: any;
-}
-
 export default function VerticalTabs({ Data }: TabsProps) {
     const [value, setValue] = React.useState(0);
     const handleChange = (event: any, newValue: number) => {
@@ -70,11 +64,19 @@ export default function VerticalTabs({ Data }: TabsProps) {
 
     const PunishInfo = [
         {
+            tag: {
+                description: 'standing',
+                detail: ['frame', 'command', 'damage', 'range', 'hitframe'],
+            },
             header: '선자세 딜캐',
             columns: ['프레임', '커맨드', '데미지', '판정', '히트이득'],
             data: Data.standing,
         },
         {
+            tag: {
+                description: 'up',
+                detail: ['frame', 'command', 'damage', 'range', 'hitframe'],
+            },
             header: '앉은자세 딜캐',
             columns: ['프레임', '커맨드', '데미지', '판정', '히트이득'],
             data: Data.up,
@@ -83,19 +85,25 @@ export default function VerticalTabs({ Data }: TabsProps) {
 
     const ThrowInfo = [
         {
+            tag: {
+                description: 'Throw',
+                detail: ['command', 'damage', 'frame', 'description', 'way'],
+            },
             header: '잡기',
-            columns: ['커맨드', '프레임', '잡기풀기', '데미지', '설명'],
+            columns: ['커맨드', '데미지', '프레임', '설명', '잡기풀기'],
             data: Data.Throw,
         },
     ];
 
     const ComboInfo = [
         {
-            header: '추가타',
+            tag: { description: 'Combo', detail: ['state', 'command'] },
+            header: '콤보',
             columns: ['상황', '커맨드'],
             data: Data.combo,
         },
         {
+            tag: { description: 'Extrahit', detail: ['state', 'command'] },
             header: '추가타',
             columns: ['상황', '커맨드'],
             data: Data.Extrahit,

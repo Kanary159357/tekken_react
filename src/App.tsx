@@ -4,7 +4,6 @@ import Home from './components/Page/Home';
 import Sidebar from './components/Sidebar';
 import { useEffect, useState } from 'react';
 import Page from './components/Page/CharPage';
-import Data from './components/Data';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -15,7 +14,7 @@ import {
 import { GlobalStyle } from './styles/GlobalStyle';
 import db from './firebaseInit';
 import { CharProps } from './types/CharProps';
-
+import { StateProvider } from './DBContext';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -58,10 +57,6 @@ const Overlay = styled.div<{ toggle: boolean }>`
     background: rgba(122, 122, 122, 0.5);
     visibility: ${(props) => (props.toggle ? 'visible' : 'hidden')};
 `;
-
-type Ops = {
-    [key: string]: Object;
-};
 
 const CharNames = [
     'Akuma',
@@ -115,8 +110,6 @@ const CharNames = [
 function App() {
     const [toggle, setToggle] = useState(false);
     const [curChar, setCurChar] = useState('Jin');
-    const [loading, setLoading] = useState(false);
-    const Opdata: Ops = Data;
     const [data, setData] = useState<CharProps>();
     useEffect(() => {
         async function getFromDocs() {
@@ -130,7 +123,6 @@ function App() {
                         }, {})
                 );
             };
-
             const data = await db
                 .collection('Character')
                 .doc(curChar)
@@ -138,14 +130,12 @@ function App() {
                 .then((snap) => {
                     return snap.data() as CharProps;
                 });
-
             data.combo = ascorder(data.combo);
             data.WallCombo = ascorder(data.combo);
             data.Throw = ascorder(data.Throw);
             data.up = ascorder(data.up);
             data.standing = ascorder(data.standing);
             data.Extrahit = ascorder(data.Extrahit);
-            console.log(data.combo);
             setData(data);
         }
         getFromDocs();
@@ -153,11 +143,9 @@ function App() {
     const onCharChange = (text: string) => {
         setCurChar(text);
     };
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
+
     return (
-        <>
+        <StateProvider>
             <title>Tekken_info 0.1.0</title>
             <GlobalStyle />
             <Wrapper>
@@ -182,13 +170,13 @@ function App() {
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
 
-                        <Route path="/Data" exact={true}>
+                        <Route path="/data/:char" exact={true}>
                             <Page data={data} />
                         </Route>
                     </Switch>
                 </PageContent>
             </Wrapper>
-        </>
+        </StateProvider>
     );
 }
 

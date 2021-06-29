@@ -5,7 +5,7 @@ export interface CharProps {
     WallCombo: WallCombo[];
     Throw: Throw[];
     Extrahit: Extrahit[];
-    Info: InfoProps;
+    Info: InfoProps[];
 }
 
 export interface Standing {

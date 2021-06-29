@@ -1,9 +1,11 @@
-import React from 'react'
-import Info from '../pageComponents/Info'
-import Main from '../pageComponents/Main'
-import styled from 'styled-components'
-import { CharProps } from '../../types/CharProps'
-import { InfoProps } from '../../types/CharProps'
+import React, { useEffect } from 'react';
+import Info from '../pageComponents/Info';
+import Main from '../pageComponents/Main';
+import styled from 'styled-components';
+import { CharProps } from '../../types/CharProps';
+import { useParams } from 'react-router';
+import { AddData, LoadData, useDBData, useDBDispatch } from '../../DBContext';
+
 const CharWrap = styled.div`
     display: flex;
     width: 100%;
@@ -13,19 +15,27 @@ const CharWrap = styled.div`
     @media all and (max-width: 1140px) {
         flex-direction: column;
     }
-`
+`;
 
 interface PageProps {
-    data: any
+    data: CharProps | undefined;
 }
 
 const Page = ({ data }: PageProps) => {
+    let { char }: { char: string } = useParams();
+    const charName = char.substring(1);
+    const tempdata = useDBData().charProps;
+    const tempDispatch = useDBDispatch();
+    useEffect(() => {
+        LoadData(charName, tempDispatch);
+    }, [charName]);
+
     return (
         <CharWrap>
-            <Info data={data.Info} />
-            <Main data={data} />
+            <Info data={tempdata?.Info} />
+            <Main data={tempdata!} />
         </CharWrap>
-    )
-}
+    );
+};
 
-export default Page
+export default Page;
