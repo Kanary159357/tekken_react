@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { AddData } from '../../DBContext';
 import { CharProps } from '../../types/CharProps';
 import { TableItemProps } from './TabInfo';
+import TableRowData from './TableRow';
 
 const TableContent = styled.table`
     width: 90%;
@@ -31,20 +32,25 @@ const TableData = styled.td`
     padding: 10px 5px;
 `;
 
-const TableEdit = styled.td`
-    border-collapse: collapse;
+const TableControl = styled.td`
+    width: 30px;
 `;
 
-const TableAdd = styled.td`
-    visibility: hidden;
+const TableEdit = styled.td`
+    border-collapse: collapse;
+    height: 100%;
+    position: relative;
 `;
 
 const Input = styled.textarea`
     width: 100%;
-    display: inline-block;
+    min-height: 100%;
+    display: block;
     border: none;
+    font-size: 18px;
     resize: none;
     overflow: auto;
+    font: inherit;
     box-sizing: border-box;
     &:focus {
         outline: none;
@@ -81,7 +87,7 @@ const Table = ({ item }: dataProps) => {
     const { header, columns, data, tag } = item;
 
     const initialValue: tagProperty = tag.detail.reduce(
-        (acc: any, cur) => ((acc[cur] = '2'), acc),
+        (acc: any, cur) => ((acc[cur] = ''), acc),
         {}
     );
     const [values, setValue] = useState(initialValue);
@@ -109,23 +115,24 @@ const Table = ({ item }: dataProps) => {
                 </thead>
                 <tbody>
                     {data.map((row: any, index: number) => (
-                        <TableRow key={index}>
-                            {Object.values(row).map((content: any, i) => (
-                                <TableData key={header + index + i}>
-                                    {content}
-                                </TableData>
-                            ))}
-                        </TableRow>
+                        <TableRowData
+                            key={index}
+                            row={row}
+                            index={index}
+                            header={header}
+                        />
                     ))}
                     <TableRow>
                         {Object.entries(values).map(([key, value]) => (
                             <TableEdit>
-                                <Input
-                                    placeholder="입력"
-                                    value={value}
-                                    name={key}
-                                    onChange={handleChange}
-                                />
+                                <form>
+                                    <Input
+                                        placeholder="입력"
+                                        value={value}
+                                        name={key}
+                                        onChange={handleChange}
+                                    />
+                                </form>
                             </TableEdit>
                         ))}
                     </TableRow>

@@ -17,11 +17,7 @@ const CharWrap = styled.div`
     }
 `;
 
-interface PageProps {
-    data: CharProps | undefined;
-}
-
-const Page = ({ data }: PageProps) => {
+const Page = () => {
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
     const tempdata = useDBData().charProps;

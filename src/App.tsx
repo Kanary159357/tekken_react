@@ -171,7 +171,7 @@ function App() {
                         <Route path="/" exact={true} component={Home} />
 
                         <Route path="/data/:char" exact={true}>
-                            <Page data={data} />
+                            <Page />
                         </Route>
                     </Switch>
                 </PageContent>
