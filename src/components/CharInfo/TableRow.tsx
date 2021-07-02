@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { DeleteData, EditData } from '../../DBContext';
 import { tagProperty } from './Table';
 import TableEdit from './TableEdit';
 const TableRow = styled.tr`
@@ -23,9 +24,11 @@ interface RowProps {
     header: string;
     row: tagProperty;
     index: number;
+    charName: string;
+    tag: string;
 }
 
-const TableRowData = ({ header, row, index }: RowProps) => {
+const TableRowData = ({ header, row, index, charName, tag }: RowProps) => {
     const [edit, setEdit] = useState(false);
     const [values, setValue] = useState(row);
 
@@ -55,7 +58,11 @@ const TableRowData = ({ header, row, index }: RowProps) => {
                         />
                     ))}
 
-                    <TableControl>Y</TableControl>
+                    <TableControl
+                        onClick={() => EditData(tag, row, values, charName)}
+                    >
+                        Y
+                    </TableControl>
                     <TableControl onClick={() => setEdit(false)}>
                         N
                     </TableControl>
@@ -67,7 +74,11 @@ const TableRowData = ({ header, row, index }: RowProps) => {
                             {content}
                         </TableData>
                     ))}
-                    <TableControl>R</TableControl>
+                    <TableControl
+                        onClick={() => DeleteData(tag, row, charName)}
+                    >
+                        R
+                    </TableControl>
 
                     <TableControl onClick={() => setEdit(!edit)}>
                         E

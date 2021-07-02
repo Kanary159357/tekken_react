@@ -90,6 +90,8 @@ const Table = ({ item }: dataProps) => {
                             row={row}
                             index={index}
                             header={header}
+                            charName={charName}
+                            tag={tag.description}
                         />
                     ))}
                     {edit && (

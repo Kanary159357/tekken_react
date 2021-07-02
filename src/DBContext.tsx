@@ -76,12 +76,45 @@ export function AddData(tag: string, data: Object, char: string) {
         });
 }
 
-export function EditData(tag: string, data: Object, char: string) {
-    db.collection('Character')
-        .doc(char)
-        .update({
-            [tag]: firebase.firestore.FieldValue.arrayUnion(data),
-        });
+export async function DeleteData(tag: string, data: Object, char: string) {
+    try {
+        await db
+            .collection('Character')
+            .doc(char)
+            .update({
+                [tag]: firebase.firestore.FieldValue.arrayRemove(data),
+            });
+    } catch {}
+}
+
+export function EditData(
+    tag: string,
+    old: Object,
+    newData: Object,
+    char: string
+) {
+    async function Edit() {
+        try {
+            await db
+                .collection('Character')
+                .doc(char)
+                .update({
+                    [tag]: firebase.firestore.FieldValue.arrayRemove(newData),
+                });
+        } catch {}
+        try {
+            await db
+                .collection('Character')
+                .doc(char)
+                .update({
+                    [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
+                });
+        } catch {}
+        Edit();
+    }
+
+    /**/
+    console.log(tag, old, newData, char);
 }
 
 function reducer(state: StateProps, action: Action) {
