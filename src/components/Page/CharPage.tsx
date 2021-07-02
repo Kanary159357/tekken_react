@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import Info from '../pageComponents/Info';
 import Main from '../pageComponents/Main';
 import styled from 'styled-components';
-import { CharProps } from '../../types/CharProps';
 import { useParams } from 'react-router';
-import { AddData, LoadData, useDBData, useDBDispatch } from '../../DBContext';
+import { LoadData, useDBData, useDBDispatch } from '../../DBContext';
 
 const CharWrap = styled.div`
     display: flex;

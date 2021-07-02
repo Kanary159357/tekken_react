@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { AddData } from '../../DBContext';
-import { CharProps } from '../../types/CharProps';
+
 import { TableItemProps } from './TabInfo';
 import TableRowData from './TableRow';
+import TableEdit from './TableEdit';
+import { useParams } from 'react-router';
+import { AddData } from '../../DBContext';
 
 const TableContent = styled.table`
     width: 90%;
@@ -11,7 +13,7 @@ const TableContent = styled.table`
     border-collapse: collapse;
     border-radius: 10px;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 `;
 
 const TableHead = styled.th`
@@ -27,53 +29,19 @@ const TableRow = styled.tr`
         background: #efefef;
     }
 `;
-const TableData = styled.td`
-    border-collapse: collapse;
-    padding: 10px 5px;
-`;
-
 const TableControl = styled.td`
     width: 30px;
+    text-align: center;
 `;
-
-const TableEdit = styled.td`
-    border-collapse: collapse;
-    height: 100%;
-    position: relative;
-`;
-
-const Input = styled.textarea`
-    width: 100%;
-    min-height: 100%;
-    display: block;
-    border: none;
-    font-size: 18px;
-    resize: none;
-    overflow: auto;
-    font: inherit;
-    box-sizing: border-box;
-    &:focus {
-        outline: none;
-    }
-    &::-webkit-scrollbar {
-        width: 0.3em;
-    }
-
-    &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(104, 104, 104, 0.3);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: darkgrey;
-        outline: 1px solid slategrey;
-    }
+const TableAdd = styled.div`
+    text-align: center;
 `;
 
 interface dataProps {
     item: TableItemProps;
 }
 
-interface tagProperty {
+export interface tagProperty {
     command?: string;
     frame?: string;
     damage?: string;
@@ -86,13 +54,14 @@ interface tagProperty {
 const Table = ({ item }: dataProps) => {
     const { header, columns, data, tag } = item;
 
+    const [edit, setEdit] = useState(false);
     const initialValue: tagProperty = tag.detail.reduce(
         (acc: any, cur) => ((acc[cur] = ''), acc),
         {}
     );
     const [values, setValue] = useState(initialValue);
-    console.log(values);
-
+    let { char }: { char: string } = useParams();
+    const charName = char.substring(1);
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setValue({
@@ -100,6 +69,7 @@ const Table = ({ item }: dataProps) => {
             [name]: value,
         });
     };
+
     return (
         <>
             <h2>{header}</h2>
@@ -116,28 +86,38 @@ const Table = ({ item }: dataProps) => {
                 <tbody>
                     {data.map((row: any, index: number) => (
                         <TableRowData
-                            key={index}
+                            key={index + charName}
                             row={row}
                             index={index}
                             header={header}
                         />
                     ))}
-                    <TableRow>
-                        {Object.entries(values).map(([key, value]) => (
-                            <TableEdit>
-                                <form>
-                                    <Input
-                                        placeholder="입력"
-                                        value={value}
-                                        name={key}
-                                        onChange={handleChange}
-                                    />
-                                </form>
-                            </TableEdit>
-                        ))}
-                    </TableRow>
+                    {edit && (
+                        <TableRow>
+                            {Object.entries(values).map(([key, value]) => (
+                                <TableEdit
+                                    value={value}
+                                    name={key}
+                                    key={key + charName}
+                                    handleChange={handleChange}
+                                />
+                            ))}
+
+                            <TableControl
+                                onClick={() =>
+                                    AddData(tag.description, values, charName)
+                                }
+                            >
+                                Y
+                            </TableControl>
+                            <TableControl onClick={() => setEdit(false)}>
+                                N
+                            </TableControl>
+                        </TableRow>
+                    )}
                 </tbody>
             </TableContent>
+            {!edit && <TableAdd onClick={() => setEdit(true)}>+</TableAdd>}
         </>
     );
 };

@@ -22,8 +22,8 @@ export interface TableItemProps {
 const TabInfo = ({ data }: TabInfoProps) => {
     return (
         <Wrapper>
-            {data.map((item) => {
-                return <Table item={item} />;
+            {data.map((item, index) => {
+                return <Table key={index} item={item} />;
             })}
         </Wrapper>
     );

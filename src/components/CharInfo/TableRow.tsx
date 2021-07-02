@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { tagProperty } from './Table';
+import TableEdit from './TableEdit';
 const TableRow = styled.tr`
     margin-bottom: -1px;
     border-bottom: 1px solid #d1d1d1;
@@ -14,23 +16,64 @@ const TableData = styled.td`
 `;
 const TableControl = styled.td`
     width: 30px;
+    text-align: center;
 `;
 
 interface RowProps {
     header: string;
-    row: any;
+    row: tagProperty;
     index: number;
 }
 
 const TableRowData = ({ header, row, index }: RowProps) => {
     const [edit, setEdit] = useState(false);
+    const [values, setValue] = useState(row);
+
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        console.log(values);
+        setValue({
+            ...values,
+            [name]: value,
+        });
+    };
+
+    useEffect(() => {
+        setValue(row);
+    }, [row]);
+
     return (
         <TableRow key={index}>
-            {Object.values(row).map((content: any, i) => (
-                <TableData key={header + index + i}>{content}</TableData>
-            ))}
-            <TableControl>E</TableControl>
-            <TableControl>R</TableControl>
+            {edit ? (
+                <>
+                    {Object.entries(values).map(([key, value], index) => (
+                        <TableEdit
+                            name={key}
+                            key={index}
+                            value={value}
+                            handleChange={handleChange}
+                        />
+                    ))}
+
+                    <TableControl>Y</TableControl>
+                    <TableControl onClick={() => setEdit(false)}>
+                        N
+                    </TableControl>
+                </>
+            ) : (
+                <>
+                    {Object.values(row).map((content: any, i) => (
+                        <TableData key={header + index + i}>
+                            {content}
+                        </TableData>
+                    ))}
+                    <TableControl>R</TableControl>
+
+                    <TableControl onClick={() => setEdit(!edit)}>
+                        E
+                    </TableControl>
+                </>
+            )}
         </TableRow>
     );
 };

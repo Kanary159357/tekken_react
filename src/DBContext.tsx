@@ -6,6 +6,7 @@ import { CharProps } from './types/CharProps';
 interface StateProps {
     charProps: CharProps;
     loading: boolean;
+    error: any;
 }
 
 const InitialState: StateProps = {
@@ -19,26 +20,18 @@ const InitialState: StateProps = {
         Info: [],
     },
     loading: false,
+    error: null,
 };
 
-type Action = { type: 'LOAD'; payload: any } | { type: 'ADD' };
+type Action =
+    | { type: 'LOAD'; payload: any }
+    | { type: 'ADD' }
+    | { type: 'ERROR'; error: any };
 
 type StateDispatch = Dispatch<Action>;
 
 const DataContext = createContext<StateProps | null>(null);
 const DataDispatchContext = createContext<StateDispatch | null>(null);
-
-function reducer(state: StateProps, action: Action) {
-    switch (action.type) {
-        case 'LOAD':
-            return {
-                ...state,
-                charProps: action.payload,
-            };
-        default:
-            return state;
-    }
-}
 
 export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     const Loader = async () => {
@@ -52,33 +45,60 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
                     }, {})
             );
         };
-        const data = await db
-            .collection('Character')
-            .doc(char)
-            .get()
-            .then((snap) => {
-                return snap.data() as CharProps;
-            });
-        data.combo = ascorder(data.combo);
-        data.WallCombo = ascorder(data.combo);
-        data.Throw = ascorder(data.Throw);
-        data.up = ascorder(data.up);
-        data.standing = ascorder(data.standing);
-        data.Extrahit = ascorder(data.Extrahit);
-        dispatch({ type: 'LOAD', payload: data });
+        try {
+            const data = await db
+                .collection('Character')
+                .doc(char)
+                .get()
+                .then((snap) => {
+                    return snap.data() as CharProps;
+                });
+
+            data.combo = ascorder(data.combo);
+            data.WallCombo = ascorder(data.combo);
+            data.Throw = ascorder(data.Throw);
+            data.up = ascorder(data.up);
+            data.standing = ascorder(data.standing);
+            data.Extrahit = ascorder(data.Extrahit);
+            dispatch({ type: 'LOAD', payload: data });
+        } catch (err) {
+            dispatch({ type: 'ERROR', error: err });
+        }
     };
     Loader();
 }
 
-export function AddData(tag: string, data: Object) {
+export function AddData(tag: string, data: Object, char: string) {
     db.collection('Character')
-        .doc('Akuma')
+        .doc(char)
         .update({
-            Extrahit: firebase.firestore.FieldValue.arrayUnion({
-                command: '엄마럭키',
-                state: '아빠럭키',
-            }),
+            [tag]: firebase.firestore.FieldValue.arrayUnion(data),
         });
+}
+
+export function EditData(tag: string, data: Object, char: string) {
+    db.collection('Character')
+        .doc(char)
+        .update({
+            [tag]: firebase.firestore.FieldValue.arrayUnion(data),
+        });
+}
+
+function reducer(state: StateProps, action: Action) {
+    switch (action.type) {
+        case 'LOAD':
+            return {
+                ...state,
+                charProps: action.payload,
+            };
+        case 'ERROR':
+            return {
+                ...state,
+                error: action.error,
+            };
+        default:
+            return state;
+    }
 }
 
 export function StateProvider({ children }: { children: React.ReactNode }) {

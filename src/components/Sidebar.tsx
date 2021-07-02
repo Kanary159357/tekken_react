@@ -62,16 +62,13 @@ const SideItemLink = styled.li`
 
 interface itemProps {
     path: string;
-    onCharChange: (text: string) => void;
 }
 
-const SidebarItem = ({ path, onCharChange }: itemProps) => {
+const SidebarItem = ({ path }: itemProps) => {
     const checkedPath = path.replace('_', ' ');
-    const handleChange = () => {
-        onCharChange(path);
-    };
+
     return (
-        <SideItemLink onClick={handleChange}>
+        <SideItemLink>
             <Link to={`/data/:${checkedPath}`}>{checkedPath}</Link>
         </SideItemLink>
     );
@@ -80,23 +77,16 @@ const SidebarItem = ({ path, onCharChange }: itemProps) => {
 interface Props {
     toggle: boolean;
     Data: string[];
-    onCharChange: (text: string) => void;
 }
 
-const Sidebar = ({ toggle, Data, onCharChange }: Props) => {
+const Sidebar = ({ toggle, Data }: Props) => {
     return (
         <Wrapper toggle={toggle}>
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
             {Data.map((element, index) => {
-                return (
-                    <SidebarItem
-                        path={element}
-                        key={index}
-                        onCharChange={onCharChange}
-                    />
-                );
+                return <SidebarItem path={element} key={index} />;
             })}
         </Wrapper>
     );

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Home from './components/Page/Home';
 import Sidebar from './components/Sidebar';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Page from './components/Page/CharPage';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,9 +12,8 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import db from './firebaseInit';
-import { CharProps } from './types/CharProps';
-import { StateProvider } from './DBContext';
+import { StateProvider, useDBData } from './DBContext';
+import Error from './components/Page/Error';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -109,43 +108,10 @@ const CharNames = [
 
 function App() {
     const [toggle, setToggle] = useState(false);
-    const [curChar, setCurChar] = useState('Jin');
-    const [data, setData] = useState<CharProps>();
-    useEffect(() => {
-        async function getFromDocs() {
-            const ascorder = (arr: any[]) => {
-                return arr.map((cur: { [key: string]: string }) =>
-                    Object.keys(cur)
-                        .sort()
-                        .reduce((obj: any, key: string) => {
-                            obj[key] = cur[key];
-                            return obj;
-                        }, {})
-                );
-            };
-            const data = await db
-                .collection('Character')
-                .doc(curChar)
-                .get()
-                .then((snap) => {
-                    return snap.data() as CharProps;
-                });
-            data.combo = ascorder(data.combo);
-            data.WallCombo = ascorder(data.combo);
-            data.Throw = ascorder(data.Throw);
-            data.up = ascorder(data.up);
-            data.standing = ascorder(data.standing);
-            data.Extrahit = ascorder(data.Extrahit);
-            setData(data);
-        }
-        getFromDocs();
-    }, [curChar]);
-    const onCharChange = (text: string) => {
-        setCurChar(text);
-    };
-
+    const { loading, error } = useDBData();
+    console.log(loading);
     return (
-        <StateProvider>
+        <>
             <title>Tekken_info 0.1.0</title>
             <GlobalStyle />
             <Wrapper>
@@ -155,11 +121,7 @@ function App() {
                         setToggle(!toggle);
                     }}
                 />
-                <Sidebar
-                    toggle={toggle}
-                    Data={CharNames}
-                    onCharChange={onCharChange}
-                />
+                <Sidebar toggle={toggle} Data={CharNames} />
                 <Overlay
                     toggle={toggle}
                     onClick={() => {
@@ -171,12 +133,15 @@ function App() {
                         <Route path="/" exact={true} component={Home} />
 
                         <Route path="/data/:char" exact={true}>
-                            <Page />
+                            {error ? <Redirect to="/404" /> : <Page />}
+                        </Route>
+                        <Route path="/404" exact={true}>
+                            <Error />
                         </Route>
                     </Switch>
                 </PageContent>
             </Wrapper>
-        </StateProvider>
+        </>
     );
 }
 
