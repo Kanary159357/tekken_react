@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 
 import { TableItemProps } from './TabInfo';
 import TableRowData from './TableRow';
 import TableEdit from './TableEdit';
 import { useParams } from 'react-router';
-import { AddData } from '../../DBContext';
+import { AddData } from '../../Context/DBContext';
 
 const TableContent = styled.table`
     width: 90%;
-    border: 1px solid #d1d1d1;
+    border: 1px solid ${(props) => props.theme.palette.border_1};
     border-collapse: collapse;
     border-radius: 10px;
     margin: 0 auto;

@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import React, { createContext, Dispatch, useContext, useReducer } from 'react';
-import db from './firebaseInit';
-import { CharProps } from './types/CharProps';
+import db from '../firebaseInit';
+import { CharProps } from '../types/CharProps';
 
 interface StateProps {
     charProps: CharProps;
@@ -87,34 +87,28 @@ export async function DeleteData(tag: string, data: Object, char: string) {
     } catch {}
 }
 
-export function EditData(
+export async function EditData(
     tag: string,
     old: Object,
     newData: Object,
     char: string
 ) {
-    async function Edit() {
-        try {
-            await db
-                .collection('Character')
-                .doc(char)
-                .update({
-                    [tag]: firebase.firestore.FieldValue.arrayRemove(newData),
-                });
-        } catch {}
-        try {
-            await db
-                .collection('Character')
-                .doc(char)
-                .update({
-                    [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
-                });
-        } catch {}
-        Edit();
-    }
-
-    /**/
-    console.log(tag, old, newData, char);
+    try {
+        await db
+            .collection('Character')
+            .doc(char)
+            .update({
+                [tag]: firebase.firestore.FieldValue.arrayRemove(newData),
+            });
+    } catch {}
+    try {
+        await db
+            .collection('Character')
+            .doc(char)
+            .update({
+                [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
+            });
+    } catch {}
 }
 
 function reducer(state: StateProps, action: Action) {

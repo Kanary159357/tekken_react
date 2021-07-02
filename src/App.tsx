@@ -12,8 +12,10 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { StateProvider, useDBData } from './DBContext';
+import { StateProvider, useDBData } from './Context/DBContext';
 import Error from './components/Page/Error';
+import Modal from './components/Modal';
+import { useModalData } from './Context/ModalContext';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -109,7 +111,8 @@ const CharNames = [
 function App() {
     const [toggle, setToggle] = useState(false);
     const { loading, error } = useDBData();
-    console.log(loading);
+    const modal = useModalData().modalOpen;
+    console.log(modal);
     return (
         <>
             <title>Tekken_info 0.1.0</title>
@@ -140,6 +143,7 @@ function App() {
                         </Route>
                     </Switch>
                 </PageContent>
+                {modal && <Modal />}
             </Wrapper>
         </>
     );

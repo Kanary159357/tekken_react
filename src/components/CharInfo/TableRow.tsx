@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { DeleteData, EditData } from '../../DBContext';
+import { DeleteData, EditData } from '../../Context/DBContext';
 import { tagProperty } from './Table';
 import TableEdit from './TableEdit';
 const TableRow = styled.tr`

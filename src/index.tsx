@@ -3,14 +3,33 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { StateProvider } from './DBContext';
+import { StateProvider } from './Context/DBContext';
+import { ModalProvider } from './Context/ModalContext';
+import { ThemeProvider } from 'styled-components';
+import customTheme from './styles/customTheme';
+const AppProvider = ({
+    contexts,
+    children,
+}: {
+    contexts: any;
+    children: any;
+}) =>
+    contexts.reduce(
+        (prev: any, context: any) =>
+            React.createElement(context, {
+                children: prev,
+            }),
+        children
+    );
 
 ReactDOM.render(
     <BrowserRouter>
         <React.StrictMode>
-            <StateProvider>
-                <App />
-            </StateProvider>
+            <AppProvider contexts={[StateProvider, ModalProvider]}>
+                <ThemeProvider theme={customTheme}>
+                    <App />
+                </ThemeProvider>
+            </AppProvider>
         </React.StrictMode>
     </BrowserRouter>,
     document.getElementById('root')

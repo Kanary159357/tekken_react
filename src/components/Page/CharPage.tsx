@@ -3,7 +3,7 @@ import Info from '../pageComponents/Info';
 import Main from '../pageComponents/Main';
 import styled from 'styled-components';
 import { useParams } from 'react-router';
-import { LoadData, useDBData, useDBDispatch } from '../../DBContext';
+import { LoadData, useDBData, useDBDispatch } from '../../Context/DBContext';
 
 const CharWrap = styled.div`
     display: flex;
