@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../styles/Button';
-import { useModalData } from '../Context/ModalContext';
+import { useModalData, useModalDispatch } from '../Context/ModalContext';
+import { AddData } from '../Context/DBContext';
 
 const Overlay = styled.div`
     position: fixed;
@@ -61,12 +62,17 @@ const CustomButton = styled(Button)`
 `;
 
 const Modal = () => {
-    const { setModal } = useModalData();
-
+    const modal = useModalData();
+    const dispatch = useModalDispatch();
     const CloseModal = () => {
-        setModal(false);
+        dispatch({ type: 'SET', payload: 'false' });
     };
+    console.log(modal);
 
+    const funPick = () => {};
+    const ContentAdd = () => {
+        AddData('combo', { command: '', state: '' }, 'Alisa');
+    };
     return (
         <>
             <ModalBox>
@@ -79,17 +85,15 @@ const Modal = () => {
                     </ModalContent>
                     <ModalControl>
                         <ControlContent>
-                            <CustomButton>Yes</CustomButton>
+                            <CustomButton onClick={ContentAdd}>
+                                Yes
+                            </CustomButton>
                             <CustomButton onClick={CloseModal}>No</CustomButton>
                         </ControlContent>
                     </ModalControl>
                 </div>
             </ModalBox>
-            <Overlay
-                onClick={() => {
-                    setModal(false);
-                }}
-            ></Overlay>
+            <Overlay onClick={CloseModal}></Overlay>
         </>
     );
 };

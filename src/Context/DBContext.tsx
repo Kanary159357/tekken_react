@@ -35,10 +35,7 @@ const DataDispatchContext = createContext<StateDispatch | null>(null);
 
 export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     const Loader = async () => {
-        const ascorder = (
-            arr: any[],
-            ordering?: (a: any, b: any) => number
-        ) => {
+        const order = (arr: any[], ordering?: (a: any, b: any) => number) => {
             return arr.map((cur: { [key: string]: string }) =>
                 Object.keys(cur)
                     .sort(ordering)
@@ -69,13 +66,12 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
                     return snap.data() as CharProps;
                 });
 
-            data.combo = ascorder(data.combo);
-            data.WallCombo = ascorder(data.combo);
-            data.Throw = ascorder(data.Throw);
-            data.up = ascorder(data.up, frameOrder);
-            data.standing = ascorder(data.standing, frameOrder);
-            console.log(data.up);
-            data.Extrahit = ascorder(data.Extrahit);
+            data.combo = order(data.combo);
+            data.WallCombo = order(data.combo);
+            data.Throw = order(data.Throw);
+            data.up = order(data.up, frameOrder);
+            data.standing = order(data.standing, frameOrder);
+            data.Extrahit = order(data.Extrahit);
             dispatch({ type: 'LOAD', payload: data });
         } catch (err) {
             dispatch({ type: 'ERROR', error: err });
@@ -84,13 +80,13 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     Loader();
 }
 
-export function AddData(tag: string, data: Object, char: string) {
+export const AddData = async (tag: string, data: Object, char: string) => {
     db.collection('Character')
         .doc(char)
         .update({
             [tag]: firebase.firestore.FieldValue.arrayUnion(data),
         });
-}
+};
 
 export async function DeleteData(tag: string, data: Object, char: string) {
     try {
@@ -107,24 +103,15 @@ export async function EditData(
     tag: string,
     old: Object,
     newData: Object,
-    char: string
+    char: string,
+    dispatch: React.Dispatch<any>
 ) {
-    try {
-        await db
-            .collection('Character')
-            .doc(char)
-            .update({
-                [tag]: firebase.firestore.FieldValue.arrayRemove(newData),
-            });
-    } catch {}
-    try {
-        await db
-            .collection('Character')
-            .doc(char)
-            .update({
-                [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
-            });
-    } catch {}
+    DeleteData(tag, old, char);
+    LoadData(char, dispatch);
+}
+
+export async function tempta() {
+    console.log('hi');
 }
 
 function reducer(state: StateProps, action: Action) {

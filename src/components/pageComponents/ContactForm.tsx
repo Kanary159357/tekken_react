@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faExclamationCircle,
     faScroll,
     faClone,
-} from '@fortawesome/free-solid-svg-icons'
+} from '@fortawesome/free-solid-svg-icons';
 
 const ContactWrapper = styled.div`
     display: flex;
@@ -16,7 +16,7 @@ const ContactWrapper = styled.div`
         flex-direction: row;
         justify-content: space-around;
     }
-`
+`;
 
 const Contact = styled.a`
     &:link,
@@ -35,7 +35,7 @@ const Contact = styled.a`
             padding-left: 20px;
         }
     }
-`
+`;
 
 const CustomIcon = styled(FontAwesomeIcon)`
     font-size: 3em;
@@ -45,7 +45,7 @@ const CustomIcon = styled(FontAwesomeIcon)`
     @media all and (max-width: 768px) {
         font-size: 1.5em;
     }
-`
+`;
 const ContactForm = () => (
     <ContactWrapper>
         <Contact
@@ -56,23 +56,7 @@ const ContactForm = () => (
             <CustomIcon icon={faExclamationCircle} color="#de5842" />
             사이트 오류 및 건의사항
         </Contact>
-        <Contact
-            href="//docs.google.com/forms/d/e/1FAIpQLSfAFV-vqdrLyLw8vParLZo6vQC_GHsX1q1K3u4FCfYwQpSGWw/viewform?usp=sf_link"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <CustomIcon icon={faClone} color="#fcd059" />
-            캐릭터 정보 수정 및 추가
-        </Contact>
-        <Contact
-            href="//drive.google.com/drive/folders/1BYGo3QGapN_uaW6rYi6nQ2By6IbYE6dc?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <CustomIcon icon={faScroll} color="#bfe1bf" />
-            캐릭터 파일 다운로드
-        </Contact>
     </ContactWrapper>
-)
+);
 
-export default ContactForm
+export default ContactForm;

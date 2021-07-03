@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Header = styled.div`
     font-size: 40px;
@@ -13,7 +13,7 @@ const Header = styled.div`
         font-size: 20px;
         margin-bottom: 10px;
     }
-`
+`;
 
 const Description = styled.div`
     line-height: 40px;
@@ -25,7 +25,7 @@ const Description = styled.div`
     @media all and (max-width: 500px) {
         font-size: 0.5em;
     }
-`
+`;
 
 const SiteUsage = () => (
     <>
@@ -38,6 +38,6 @@ const SiteUsage = () => (
             ddasfasd123@gmail.com 으로
         </Description>
     </>
-)
+);
 
-export default SiteUsage
+export default SiteUsage;

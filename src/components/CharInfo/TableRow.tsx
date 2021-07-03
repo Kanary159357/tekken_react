@@ -26,9 +26,10 @@ interface RowProps {
     row: tagProperty;
     charName: string;
     tag: string;
+    dispatch: React.Dispatch<any>;
 }
 
-const TableRowData = ({ row, charName, tag }: RowProps) => {
+const TableRowData = ({ row, charName, tag, dispatch }: RowProps) => {
     const [edit, setEdit] = useState(false);
     const { values, handleChange, setValue } = useEditValue(row);
 
@@ -38,7 +39,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
     }, [row]);
 
     const RowEdit = () => {
-        EditData(tag, row, values, charName);
+        EditData(tag, row, values, charName, dispatch);
     };
     return (
         <TableRow>
@@ -49,7 +50,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                         values={values}
                         handleChange={handleChange}
                         charName={charName}
-                        func={RowEdit}
+                        action={RowEdit}
                     />
                 </>
             ) : (

@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styled, { DefaultTheme } from 'styled-components';
+import React, { useCallback, useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import { TableItemProps } from './TabInfo';
 import TableRowData from './TableRow';
-import TableEdit from './TableEdit';
 import { useParams } from 'react-router';
-import { AddData } from '../../Context/DBContext';
-import { useModalData } from '../../Context/ModalContext';
+import { AddData, tempta, useDBDispatch } from '../../Context/DBContext';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
 
@@ -72,9 +70,12 @@ const Table = ({ item }: dataProps) => {
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
     const colSpan = tag.detail.length;
+    const dispatch = useDBDispatch();
+
     const ContentAdd = () => {
         AddData(tag.description, values, charName);
     };
+    console.log(ContentAdd);
     return (
         <>
             <h2>{header}</h2>
@@ -95,6 +96,7 @@ const Table = ({ item }: dataProps) => {
                             row={row}
                             charName={charName}
                             tag={tag.description}
+                            dispatch={dispatch}
                         />
                     ))}
                     {edit ? (
@@ -104,7 +106,7 @@ const Table = ({ item }: dataProps) => {
                                 values={values}
                                 handleChange={handleChange}
                                 charName={charName}
-                                func={ContentAdd}
+                                action={AddData}
                             />
                         </TableRow>
                     ) : (
