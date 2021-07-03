@@ -6,10 +6,12 @@ import TableRowData from './TableRow';
 import TableEdit from './TableEdit';
 import { useParams } from 'react-router';
 import { AddData } from '../../Context/DBContext';
+import { useModalData } from '../../Context/ModalContext';
+import TableEdits from './TableEdits';
+import useEditValue from '../../hooks/useInputValue';
 
 const TableContent = styled.table`
     width: 90%;
-    border: 1px solid ${(props) => props.theme.palette.border_1};
     border-collapse: collapse;
     border-radius: 10px;
     margin: 0 auto;
@@ -23,18 +25,23 @@ const TableHead = styled.th`
 `;
 const TableRow = styled.tr`
     margin-bottom: -1px;
-    border-bottom: 1px solid #d1d1d1;
+    border: 1px solid ${(props) => props.theme.palette.border_1};
+
     box-sizing: border-box;
     &:hover {
         background: #efefef;
     }
 `;
-const TableControl = styled.td`
+export const TableControl = styled.td`
     width: 30px;
     text-align: center;
 `;
-const TableAdd = styled.div`
-    text-align: center;
+const TableAdd = styled.tr`
+    border: none;
+    width: 100%;
+    td {
+        text-align: center;
+    }
 `;
 
 interface dataProps {
@@ -54,22 +61,20 @@ export interface tagProperty {
 const Table = ({ item }: dataProps) => {
     const { header, columns, data, tag } = item;
 
-    const [edit, setEdit] = useState(false);
     const initialValue: tagProperty = tag.detail.reduce(
         (acc: any, cur) => ((acc[cur] = ''), acc),
         {}
     );
-    const [values, setValue] = useState(initialValue);
+
+    const [edit, setEdit] = useState(false);
+    const { values, handleChange } = useEditValue(initialValue);
+
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setValue({
-            ...values,
-            [name]: value,
-        });
+    const colSpan = tag.detail.length;
+    const ContentAdd = () => {
+        AddData(tag.description, values, charName);
     };
-
     return (
         <>
             <h2>{header}</h2>
@@ -86,40 +91,29 @@ const Table = ({ item }: dataProps) => {
                 <tbody>
                     {data.map((row: any, index: number) => (
                         <TableRowData
-                            key={index + charName}
+                            key={index}
                             row={row}
-                            index={index}
-                            header={header}
                             charName={charName}
                             tag={tag.description}
                         />
                     ))}
-                    {edit && (
+                    {edit ? (
                         <TableRow>
-                            {Object.entries(values).map(([key, value]) => (
-                                <TableEdit
-                                    value={value}
-                                    name={key}
-                                    key={key + charName}
-                                    handleChange={handleChange}
-                                />
-                            ))}
-
-                            <TableControl
-                                onClick={() =>
-                                    AddData(tag.description, values, charName)
-                                }
-                            >
-                                Y
-                            </TableControl>
-                            <TableControl onClick={() => setEdit(false)}>
-                                N
-                            </TableControl>
+                            <TableEdits
+                                setEdit={setEdit}
+                                values={values}
+                                handleChange={handleChange}
+                                charName={charName}
+                                func={ContentAdd}
+                            />
                         </TableRow>
+                    ) : (
+                        <TableAdd onClick={() => setEdit(true)}>
+                            <td colSpan={colSpan}>+</td>
+                        </TableAdd>
                     )}
                 </tbody>
             </TableContent>
-            {!edit && <TableAdd onClick={() => setEdit(true)}>+</TableAdd>}
         </>
     );
 };

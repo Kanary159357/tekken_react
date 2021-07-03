@@ -111,8 +111,8 @@ const CharNames = [
 function App() {
     const [toggle, setToggle] = useState(false);
     const { loading, error } = useDBData();
-    const modal = useModalData().modalOpen;
-    console.log(modal);
+    const { modalOpen } = useModalData();
+
     return (
         <>
             <title>Tekken_info 0.1.0</title>
@@ -143,7 +143,7 @@ function App() {
                         </Route>
                     </Switch>
                 </PageContent>
-                {modal && <Modal />}
+                {modalOpen && <Modal />}
             </Wrapper>
         </>
     );

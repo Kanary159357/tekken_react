@@ -18,32 +18,54 @@ const ModalBox = styled.div`
     width: 500px;
     height: 200px;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     top: 30%;
     left: 50%;
     border-radius: 10px;
     transform: translate(-50%, -30%);
     z-index: 99999;
     .box {
-        margin: 0 10px;
+        margin: 0 40px;
         height: 100%;
         position: relative;
     }
 `;
 
 const ModalContent = styled.div`
-    margin-top: 50px;
+    margin-top: 30px;
     .title {
         font-size: 18px;
         font-weight: 700;
         color: #757575;
     }
     .description {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-size: 18px;
     }
 `;
 
-const ModalControl = styled.div``;
+const ModalControl = styled.div`
+    display: flex;
+`;
+
+const ControlContent = styled.div`
+    margin-left: auto;
+    display: flex;
+`;
+
+const CustomButton = styled(Button)`
+    margin-left: 10px;
+`;
+
 const Modal = () => {
     const { setModal } = useModalData();
+
+    const CloseModal = () => {
+        setModal(false);
+    };
 
     return (
         <>
@@ -56,7 +78,10 @@ const Modal = () => {
                         </div>
                     </ModalContent>
                     <ModalControl>
-                        <Button>Yes</Button>
+                        <ControlContent>
+                            <CustomButton>Yes</CustomButton>
+                            <CustomButton onClick={CloseModal}>No</CustomButton>
+                        </ControlContent>
                     </ModalControl>
                 </div>
             </ModalBox>

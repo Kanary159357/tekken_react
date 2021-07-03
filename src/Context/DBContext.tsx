@@ -92,10 +92,6 @@ export function AddData(tag: string, data: Object, char: string) {
         });
 }
 
-export function AddRow(){
-    db.collection('Character').
-}
-
 export async function DeleteData(tag: string, data: Object, char: string) {
     try {
         await db

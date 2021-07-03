@@ -13,19 +13,13 @@ const ButtonWrapper = styled.div<{
     background: ${(props) => (props.color ? props.color : '#eb5e34')};
 `;
 
-interface ButtonProps {
-    width?: number;
-    height?: number;
-    color?: string;
-    children: any;
+interface Props extends React.HtmlHTMLAttributes<HTMLElement> {
+    children: React.ReactNode;
 }
 
-const Button = ({ width, height, color, children }: ButtonProps) => {
-    return (
-        <ButtonWrapper width={width} height={height} color={color}>
-            {children}
-        </ButtonWrapper>
-    );
+const Button = (props: Props) => {
+    const { children, ...rest } = props;
+    return <ButtonWrapper {...rest}>{children}</ButtonWrapper>;
 };
 
 export default Button;

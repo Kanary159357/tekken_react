@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DeleteData, EditData } from '../../Context/DBContext';
+import useEditValue from '../../hooks/useInputValue';
 import { tagProperty } from './Table';
 import TableEdit from './TableEdit';
+import TableEdits from './TableEdits';
 const TableRow = styled.tr`
     margin-bottom: -1px;
     border-bottom: 1px solid #d1d1d1;
@@ -21,65 +23,45 @@ const TableControl = styled.td`
 `;
 
 interface RowProps {
-    header: string;
     row: tagProperty;
-    index: number;
     charName: string;
     tag: string;
 }
 
-const TableRowData = ({ header, row, index, charName, tag }: RowProps) => {
+const TableRowData = ({ row, charName, tag }: RowProps) => {
     const [edit, setEdit] = useState(false);
-    const [values, setValue] = useState(row);
-
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        console.log(values);
-        setValue({
-            ...values,
-            [name]: value,
-        });
-    };
+    const { values, handleChange, setValue } = useEditValue(row);
 
     useEffect(() => {
         setValue(row);
+        setEdit(false);
     }, [row]);
 
+    const RowEdit = () => {
+        EditData(tag, row, values, charName);
+    };
     return (
-        <TableRow key={index}>
+        <TableRow>
             {edit ? (
                 <>
-                    {Object.entries(values).map(([key, value], index) => (
-                        <TableEdit
-                            name={key}
-                            key={index}
-                            value={value}
-                            handleChange={handleChange}
-                        />
-                    ))}
-
-                    <TableControl
-                        onClick={() => EditData(tag, row, values, charName)}
-                    >
-                        Y
-                    </TableControl>
-                    <TableControl onClick={() => setEdit(false)}>
-                        N
-                    </TableControl>
+                    <TableEdits
+                        setEdit={setEdit}
+                        values={values}
+                        handleChange={handleChange}
+                        charName={charName}
+                        func={RowEdit}
+                    />
                 </>
             ) : (
                 <>
                     {Object.values(row).map((content: any, i) => (
-                        <TableData key={header + index + i}>
-                            {content}
-                        </TableData>
+                        <TableData key={i}>{content}</TableData>
                     ))}
                     <TableControl
                         onClick={() => DeleteData(tag, row, charName)}
                     >
                         R
                     </TableControl>
-
                     <TableControl onClick={() => setEdit(!edit)}>
                         E
                     </TableControl>
