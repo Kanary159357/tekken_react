@@ -35,16 +35,31 @@ const DataDispatchContext = createContext<StateDispatch | null>(null);
 
 export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     const Loader = async () => {
-        const ascorder = (arr: any[]) => {
+        const ascorder = (
+            arr: any[],
+            ordering?: (a: any, b: any) => number
+        ) => {
             return arr.map((cur: { [key: string]: string }) =>
                 Object.keys(cur)
-                    .sort()
+                    .sort(ordering)
                     .reduce((obj: any, key: string) => {
                         obj[key] = cur[key];
                         return obj;
                     }, {})
             );
         };
+        const frameOrder = (a: any, b: any) => {
+            const order = [
+                'frame',
+                'command',
+                'damage',
+                'range',
+                'hitframe',
+                'state',
+            ];
+            return order.indexOf(a) - order.indexOf(b);
+        };
+
         try {
             const data = await db
                 .collection('Character')
@@ -57,8 +72,9 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
             data.combo = ascorder(data.combo);
             data.WallCombo = ascorder(data.combo);
             data.Throw = ascorder(data.Throw);
-            data.up = ascorder(data.up);
-            data.standing = ascorder(data.standing);
+            data.up = ascorder(data.up, frameOrder);
+            data.standing = ascorder(data.standing, frameOrder);
+            console.log(data.up);
             data.Extrahit = ascorder(data.Extrahit);
             dispatch({ type: 'LOAD', payload: data });
         } catch (err) {
@@ -74,6 +90,10 @@ export function AddData(tag: string, data: Object, char: string) {
         .update({
             [tag]: firebase.firestore.FieldValue.arrayUnion(data),
         });
+}
+
+export function AddRow(){
+    db.collection('Character').
 }
 
 export async function DeleteData(tag: string, data: Object, char: string) {
