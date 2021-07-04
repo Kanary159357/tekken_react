@@ -72,10 +72,14 @@ const Table = ({ item }: dataProps) => {
     const colSpan = tag.detail.length;
     const dispatch = useDBDispatch();
 
-    const ContentAdd = () => {
-        AddData(tag.description, values, charName);
+    const modalProps = {
+        action: 'ADD',
+        props: {
+            description: tag.description,
+            values: values,
+            charName: charName,
+        },
     };
-    console.log(ContentAdd);
     return (
         <>
             <h2>{header}</h2>
@@ -106,7 +110,7 @@ const Table = ({ item }: dataProps) => {
                                 values={values}
                                 handleChange={handleChange}
                                 charName={charName}
-                                action={AddData}
+                                modalProps={modalProps}
                             />
                         </TableRow>
                     ) : (

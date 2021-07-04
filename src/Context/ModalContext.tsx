@@ -1,30 +1,74 @@
-import React, {
-    createContext,
-    Dispatch,
-    useContext,
-    useEffect,
-    useReducer,
-    useState,
-} from 'react';
+import React, { createContext, Dispatch, useContext, useReducer } from 'react';
+
+export interface ParaProps {
+    description: string;
+    values: Object;
+    oldvalues?: Object;
+    charName: string;
+}
 
 interface ModalProps {
     modalAction: any;
-    modalOpen: boolean;
+    props: ParaProps;
+    open: boolean;
 }
-type Action = { type: 'SET'; payload: any } | { type: 'ADD'; payload: any };
+
+function reducer(state: ModalProps, action: Action) {
+    switch (action.type) {
+        case 'SET':
+            return {
+                ...state,
+                open: action.payload,
+            };
+        case 'ADD':
+            return {
+                modalAction: 'add',
+                props: action.payload,
+                open: true,
+            };
+        case 'DELETE':
+            return {
+                modalAction: 'delete',
+                props: action.payload,
+                open: true,
+            };
+        case 'EDIT':
+            return {
+                modalAction: 'edit',
+                props: action.payload,
+                open: true,
+            };
+    }
+}
+
+export type Action =
+    | { type: 'SET'; payload: any }
+    | { type: 'ADD'; payload: ParaProps }
+    | { type: 'DELETE'; payload: ParaProps }
+    | { type: 'EDIT'; payload: ParaProps };
 
 type ModalDispatch = Dispatch<Action>;
+
 const ModalContext = createContext<ModalProps | null>(null);
 const ModalDispatchContext = createContext<ModalDispatch | null>(null);
-
-const initialState = {
+const initialState: ModalProps = {
     modalAction: 'add',
-    modalOpen: false,
+    props: {
+        description: '',
+        values: '',
+        charName: '',
+    },
+    open: false,
 };
 
 export function ModalProvider({ children }: { children: React.ReactNode }) {
+    const [state, dispatch] = useReducer(reducer, initialState);
     return (
-        <ModalContext.Provider value={state}>{children}</ModalContext.Provider>
+        <ModalContext.Provider value={state}>
+            <ModalDispatchContext.Provider value={dispatch}>
+                {children}
+            </ModalDispatchContext.Provider>
+        </ModalContext.Provider>
     );
 }
 

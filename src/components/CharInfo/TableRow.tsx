@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DeleteData, EditData } from '../../Context/DBContext';
+import { useModalDispatch } from '../../Context/ModalContext';
 import useEditValue from '../../hooks/useInputValue';
 import { tagProperty } from './Table';
-import TableEdit from './TableEdit';
 import TableEdits from './TableEdits';
 const TableRow = styled.tr`
     margin-bottom: -1px;
@@ -38,9 +38,22 @@ const TableRowData = ({ row, charName, tag, dispatch }: RowProps) => {
         setEdit(false);
     }, [row]);
 
-    const RowEdit = () => {
-        EditData(tag, row, values, charName, dispatch);
+    const modalProps = {
+        action: 'EDIT',
+        props: {
+            description: tag,
+            oldvalues: row,
+            values: values,
+            charName: charName,
+        },
     };
+    const modalDispatch = useModalDispatch();
+    const handleModal = () => {
+        const { props } = modalProps;
+        modalDispatch({ type: 'DELETE', payload: props });
+        setEdit(false);
+    };
+
     return (
         <TableRow>
             {edit ? (
@@ -50,7 +63,7 @@ const TableRowData = ({ row, charName, tag, dispatch }: RowProps) => {
                         values={values}
                         handleChange={handleChange}
                         charName={charName}
-                        action={RowEdit}
+                        modalProps={modalProps}
                     />
                 </>
             ) : (
@@ -58,11 +71,7 @@ const TableRowData = ({ row, charName, tag, dispatch }: RowProps) => {
                     {Object.values(row).map((content: any, i) => (
                         <TableData key={i}>{content}</TableData>
                     ))}
-                    <TableControl
-                        onClick={() => DeleteData(tag, row, charName)}
-                    >
-                        R
-                    </TableControl>
+                    <TableControl onClick={handleModal}>R</TableControl>
                     <TableControl onClick={() => setEdit(!edit)}>
                         E
                     </TableControl>

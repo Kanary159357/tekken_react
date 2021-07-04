@@ -1,6 +1,9 @@
 import React from 'react';
-import { AddData, tempta, useDBDispatch } from '../../Context/DBContext';
-import { useModalData, useModalDispatch } from '../../Context/ModalContext';
+import {
+    Action,
+    ParaProps,
+    useModalDispatch,
+} from '../../Context/ModalContext';
 import { TableControl } from './Table';
 import TableEdit from './TableEdit';
 
@@ -9,7 +12,10 @@ interface Props {
     charName: string;
     handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     setEdit: (open: boolean) => void;
-    action: any;
+    modalProps: {
+        action: any;
+        props: ParaProps;
+    };
 }
 
 const TableEdits = ({
@@ -17,14 +23,13 @@ const TableEdits = ({
     charName,
     handleChange,
     setEdit,
-    action,
+    modalProps,
 }: Props) => {
-    console.log(action);
     const dispatch = useModalDispatch();
-
     const handleModal = () => {
-        dispatch({ type: 'ADD', payload: action });
-        dispatch({ type: 'SET', payload: true });
+        const { action, props } = modalProps;
+        dispatch({ type: action, payload: props });
+        setEdit(false);
     };
     return (
         <>

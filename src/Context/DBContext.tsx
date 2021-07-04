@@ -99,15 +99,60 @@ export async function DeleteData(tag: string, data: Object, char: string) {
     } catch {}
 }
 
+export async function AddProperty() {
+    const load = async () => {
+        const data = await db
+            .collection('user')
+            .doc('SET')
+            .get()
+            .then((snap) => {
+                return snap.data();
+            });
+        return data as any;
+    };
+
+    const data = await load();
+    console.log(data);
+    const arr: any = {
+        combo,
+        Extrahit: ['state', 'command'],
+        Punish: ['frame', 'command', 'damage', 'range', 'hitframe'],
+    };
+    Object.entries(data).map(([key, category]) => {
+        const result = data[key].map((content: any) => {
+            arr[key].forEach((item: any) => {
+                content = !content.hasOwnProperty(item)
+                    ? { ...content, [item]: '' }
+                    : content;
+            });
+            return content;
+        });
+        console.log(result);
+    });
+    /*data.combo = data.combo.map((content: any) => {
+        arr.forEach((item) => {
+            content = !content.hasOwnProperty(item)
+                ? { ...content, [item]: '' }
+                : content;
+        });
+        return content;
+    });*/
+    /*const update = async () => {
+        await db.collection('user').doc('SET').update({
+            combo: data.combo,
+        });
+    };
+    await update();*/
+}
+
 export async function EditData(
     tag: string,
     old: Object,
     newData: Object,
-    char: string,
-    dispatch: React.Dispatch<any>
+    char: string
 ) {
     DeleteData(tag, old, char);
-    LoadData(char, dispatch);
+    AddData(tag, newData, char);
 }
 
 export async function tempta() {

@@ -12,7 +12,7 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { StateProvider, useDBData } from './Context/DBContext';
+import { AddProperty, StateProvider, useDBData } from './Context/DBContext';
 import Error from './components/Page/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
@@ -111,7 +111,7 @@ const CharNames = [
 function App() {
     const [toggle, setToggle] = useState(false);
     const { loading, error } = useDBData();
-    const { modalOpen } = useModalData();
+    const { open } = useModalData();
 
     return (
         <>
@@ -131,7 +131,10 @@ function App() {
                         setToggle(!toggle);
                     }}
                 />
+
                 <PageContent>
+                    <button onClick={AddProperty}>안녕</button>
+
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
 
@@ -143,7 +146,7 @@ function App() {
                         </Route>
                     </Switch>
                 </PageContent>
-                {modalOpen && <Modal />}
+                {open && <Modal />}
             </Wrapper>
         </>
     );

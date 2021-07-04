@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../styles/Button';
 import { useModalData, useModalDispatch } from '../Context/ModalContext';
-import { AddData } from '../Context/DBContext';
+import {
+    AddData,
+    DeleteData,
+    EditData,
+    LoadData,
+    useDBDispatch,
+} from '../Context/DBContext';
 
 const Overlay = styled.div`
     position: fixed;
@@ -62,16 +68,30 @@ const CustomButton = styled(Button)`
 `;
 
 const Modal = () => {
-    const modal = useModalData();
-    const dispatch = useModalDispatch();
+    const { modalAction, props } = useModalData();
+    const modalDispatch = useModalDispatch();
+    const dbDispatch = useDBDispatch();
     const CloseModal = () => {
-        dispatch({ type: 'SET', payload: 'false' });
+        modalDispatch({ type: 'SET', payload: false });
     };
-    console.log(modal);
-
-    const funPick = () => {};
-    const ContentAdd = () => {
-        AddData('combo', { command: '', state: '' }, 'Alisa');
+    const { description, values, oldvalues, charName } = props;
+    const ModalAction = () => {
+        console.log(ModalAction, props);
+        switch (modalAction) {
+            case 'add':
+                AddData(description, values, charName);
+                LoadData(charName, dbDispatch);
+                break;
+            case 'delete':
+                DeleteData(description, values, charName);
+                LoadData(charName, dbDispatch);
+                break;
+            case 'edit':
+                EditData(description, oldvalues!, values, charName);
+                LoadData(charName, dbDispatch);
+                break;
+        }
+        CloseModal();
     };
     return (
         <>
@@ -85,7 +105,7 @@ const Modal = () => {
                     </ModalContent>
                     <ModalControl>
                         <ControlContent>
-                            <CustomButton onClick={ContentAdd}>
+                            <CustomButton onClick={ModalAction}>
                                 Yes
                             </CustomButton>
                             <CustomButton onClick={CloseModal}>No</CustomButton>

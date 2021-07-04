@@ -20,7 +20,7 @@ const Error = () => {
         setTimeout(() => {
             history.push('/');
         }, 3000);
-    }, []);
+    }, [history]);
     return <CharWrap>Error!</CharWrap>;
 };
 
