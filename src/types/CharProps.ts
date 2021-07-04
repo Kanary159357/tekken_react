@@ -6,6 +6,13 @@ export interface CharProps {
     Throw: Throw[];
     Extrahit: Extrahit[];
     Info: InfoProps[];
+    [key: string]:
+        | Standing[]
+        | Up[]
+        | Combo[]
+        | Throw[]
+        | Extrahit[]
+        | InfoProps[];
 }
 
 export interface Standing {

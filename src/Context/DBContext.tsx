@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import React, { createContext, Dispatch, useContext, useReducer } from 'react';
+import { updateProperty } from 'typescript';
 import db from '../firebaseInit';
 import { CharProps } from '../types/CharProps';
 
@@ -100,49 +101,42 @@ export async function DeleteData(tag: string, data: Object, char: string) {
 }
 
 export async function AddProperty() {
-    const load = async () => {
+    const arr: any = {
+        Extrahit: ['state', 'command'],
+        combo: ['state', 'command'],
+        WallCombo: ['state', 'command'],
+        up: ['frame', 'command', 'damage', 'range', 'hitframe'],
+        standing: ['frame', 'command', 'damage', 'range', 'hitframe'],
+        Throw: ['command', 'damage', 'frame', 'description', 'way'],
+        Info: ['combo', 'dc', 'name', 'punish'],
+    };
+    const updateProperty = async (id: string) => {
         const data = await db
-            .collection('user')
-            .doc('SET')
+            .collection('Character')
+            .doc(id)
             .get()
             .then((snap) => {
-                return snap.data();
+                return snap.data() as CharProps;
             });
-        return data as any;
-    };
 
-    const data = await load();
-    console.log(data);
-    const arr: any = {
-        combo,
-        Extrahit: ['state', 'command'],
-        Punish: ['frame', 'command', 'damage', 'range', 'hitframe'],
-    };
-    Object.entries(data).map(([key, category]) => {
-        const result = data[key].map((content: any) => {
-            arr[key].forEach((item: any) => {
-                content = !content.hasOwnProperty(item)
-                    ? { ...content, [item]: '' }
-                    : content;
+        const newData = Object.keys(data).reduce((acc: any, cur) => {
+            acc[cur] = data[cur].map((content: any) => {
+                arr[cur].forEach((item: any) => {
+                    content = !content.hasOwnProperty(item)
+                        ? { ...content, [item]: '' }
+                        : content;
+                });
+                return content;
             });
-            return content;
-        });
-        console.log(result);
-    });
-    /*data.combo = data.combo.map((content: any) => {
-        arr.forEach((item) => {
-            content = !content.hasOwnProperty(item)
-                ? { ...content, [item]: '' }
-                : content;
-        });
-        return content;
-    });*/
-    /*const update = async () => {
-        await db.collection('user').doc('SET').update({
-            combo: data.combo,
-        });
+            return acc;
+        }, {});
+        await db.collection('Character').doc(id).update(newData);
     };
-    await update();*/
+    const documents = await db.collection('Character').get();
+    documents.forEach((document) => {
+        console.log(document.id);
+        updateProperty(document.id);
+    });
 }
 
 export async function EditData(
