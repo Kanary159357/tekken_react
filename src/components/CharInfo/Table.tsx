@@ -55,16 +55,16 @@ const AnimatedIcon = styled(CustomIcon)`
             transform: rotate(0deg);
         }
         25% {
-            -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+            -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
         }
         50% {
             -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
         }
         75% {
-            -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+            -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
         }
         100% {
             -webkit-transform: rotate(0deg);
@@ -148,7 +148,8 @@ const Table = ({ item }: dataProps) => {
                                 <AnimatedIcon
                                     icon={faPlus}
                                     data-fa-transform="rotate-45"
-                                    color={palette.gray_2}
+                                    color={palette.gray_1}
+                                    hoverColor={palette.gray_2}
                                 />
                             </td>
                         </TableAdd>

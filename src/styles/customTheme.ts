@@ -10,15 +10,15 @@ export const FontSize: FontSizeProps = {
 };
 
 export const palette: paletteProps = {
-    white_1: '#efefef',
+    white_1: '#ffffff',
     border_1: '#d1d1d1',
     font_white: '#ffffff',
     icon_red_1: '#ff937d',
     icon_red_2: '#b35440',
     icon_green_1: '#b1e36f',
     icon_green_2: '#93ad74',
-    gray_1: '',
-    gray_2: '#c9c9c9',
+    gray_1: '#c9c9c9',
+    gray_2: '#8a8a8a',
 };
 
 const customTheme: DefaultTheme = {

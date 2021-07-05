@@ -10,6 +10,7 @@ interface IconProps {
 }
 
 const IconWrapper = styled(FontAwesomeIcon)<IconProps>`
+    color: ${(props) => props.color || props.theme.palette.white_1};
     &:hover {
         color: ${(props) => props.hoverColor};
     }

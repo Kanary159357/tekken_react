@@ -70,18 +70,19 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                     {Object.values(row).map((content: any, i) => (
                         <TableData key={i}>{content}</TableData>
                     ))}
-                    <TableControl onClick={handleModal}>
-                        <CustomIcon
-                            icon={faEraser}
-                            color={palette.icon_red_1}
-                            hoverColor={palette.icon_red_2}
-                        ></CustomIcon>
-                    </TableControl>
+
                     <TableControl onClick={() => setEdit(!edit)}>
                         <CustomIcon
                             icon={faEdit}
                             color={palette.icon_green_1}
                             hoverColor={palette.icon_green_2}
+                        ></CustomIcon>
+                    </TableControl>
+                    <TableControl onClick={handleModal}>
+                        <CustomIcon
+                            icon={faEraser}
+                            color={palette.icon_red_1}
+                            hoverColor={palette.icon_red_2}
                         ></CustomIcon>
                     </TableControl>
                 </>

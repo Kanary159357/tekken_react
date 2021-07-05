@@ -2,13 +2,10 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
 import { ParaProps, useModalDispatch } from '../../Context/ModalContext';
+import customTheme from '../../styles/customTheme';
 import CustomIcon from '../../styles/Icon';
 import { TableControl } from './Table';
 import TableEdit from './TableEdit';
-
-const ADTableControl = styled(TableControl)`
-    background: ${(props) => props.theme.};
-`;
 
 interface Props {
     values: Object;
@@ -20,6 +17,13 @@ interface Props {
         props: ParaProps;
     };
 }
+
+const EditTableControl = styled.td<{ backcolor?: string }>`
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+    background-color: ${(props) => props.backcolor};
+`;
 
 const TableEdits = ({
     values,
@@ -45,12 +49,18 @@ const TableEdits = ({
                 />
             ))}
 
-            <TableControl onClick={handleModal}>
+            <EditTableControl
+                backcolor={customTheme.palette.icon_green_1}
+                onClick={handleModal}
+            >
                 <CustomIcon icon={faCheck} />
-            </TableControl>
-            <TableControl onClick={() => setEdit(false)}>
+            </EditTableControl>
+            <EditTableControl
+                backcolor={customTheme.palette.icon_red_1}
+                onClick={() => setEdit(false)}
+            >
                 <CustomIcon icon={faTimes} />
-            </TableControl>
+            </EditTableControl>
         </>
     );
 };
