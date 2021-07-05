@@ -1,12 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { TableItemProps } from './TabInfo';
 import TableRowData from './TableRow';
 import { useParams } from 'react-router';
-import { AddData, useDBDispatch } from '../../Context/DBContext';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
+import CustomIcon from '../../styles/Icon';
+import { faPalette, faPlus } from '@fortawesome/free-solid-svg-icons';
+import customTheme, { palette } from '../../styles/customTheme';
 
 const TableContent = styled.table`
     width: 90%;
@@ -24,21 +26,50 @@ const TableHead = styled.th`
 const TableRow = styled.tr`
     margin-bottom: -1px;
     border: 1px solid ${(props) => props.theme.palette.border_1};
-
     box-sizing: border-box;
-    &:hover {
-        background: #efefef;
-    }
 `;
 export const TableControl = styled.td`
     width: 30px;
     text-align: center;
+    cursor: pointer;
 `;
 const TableAdd = styled.tr`
     border: none;
     width: 100%;
     td {
         text-align: center;
+        font-size: 2rem;
+        color: red;
+    }
+`;
+
+const AnimatedIcon = styled(CustomIcon)`
+    cursor: pointer;
+
+    &:hover {
+        animation: fa-spin 0.5s linear;
+    }
+    @keyframes fa-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        25% {
+            -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+        }
+        50% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        75% {
+            -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+        }
+        100% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
     }
 `;
 
@@ -70,7 +101,6 @@ const Table = ({ item }: dataProps) => {
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
     const colSpan = tag.detail.length;
-    const dispatch = useDBDispatch();
 
     const modalProps = {
         action: 'ADD',
@@ -100,7 +130,6 @@ const Table = ({ item }: dataProps) => {
                             row={row}
                             charName={charName}
                             tag={tag.description}
-                            dispatch={dispatch}
                         />
                     ))}
                     {edit ? (
@@ -114,8 +143,14 @@ const Table = ({ item }: dataProps) => {
                             />
                         </TableRow>
                     ) : (
-                        <TableAdd onClick={() => setEdit(true)}>
-                            <td colSpan={colSpan}>+</td>
+                        <TableAdd>
+                            <td onClick={() => setEdit(true)} colSpan={colSpan}>
+                                <AnimatedIcon
+                                    icon={faPlus}
+                                    data-fa-transform="rotate-45"
+                                    color={palette.gray_2}
+                                />
+                            </td>
                         </TableAdd>
                     )}
                 </tbody>

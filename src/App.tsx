@@ -16,6 +16,7 @@ import { AddProperty, RemoveProperty, useDBData } from './Context/DBContext';
 import Error from './components/Page/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
+import CustomIcon from './styles/Icon';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -37,7 +38,7 @@ interface MenuProps {
     icon: IconDefinition;
 }
 
-const MenuButtonBlock = styled(FontAwesomeIcon)<MenuProps>`
+const MenuButtonBlock = styled(CustomIcon)<MenuProps>`
     position: fixed;
     top: 2.5%;
     left: 20px;

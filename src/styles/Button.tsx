@@ -13,7 +13,7 @@ const ButtonWrapper = styled.div<{
     background: ${(props) => (props.color ? props.color : '#eb5e34')};
 `;
 
-interface Props extends React.HtmlHTMLAttributes<HTMLElement> {
+export interface Props extends React.HtmlHTMLAttributes<HTMLElement> {
     children: React.ReactNode;
 }
 
