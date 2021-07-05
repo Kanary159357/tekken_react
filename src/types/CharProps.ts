@@ -21,6 +21,7 @@ export interface Standing {
     command: string;
     range: string;
     hitframe: any;
+    state: string;
 }
 
 export interface Up {
@@ -29,6 +30,7 @@ export interface Up {
     command: string;
     range: string;
     hitframe: any;
+    state: string;
 }
 
 export interface Combo {

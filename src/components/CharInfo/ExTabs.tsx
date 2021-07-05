@@ -66,19 +66,33 @@ export default function VerticalTabs({ Data }: TabsProps) {
         {
             tag: {
                 description: 'standing',
-                detail: ['frame', 'command', 'damage', 'range', 'hitframe'],
+                detail: [
+                    'frame',
+                    'command',
+                    'damage',
+                    'range',
+                    'hitframe',
+                    'state',
+                ],
             },
             header: '선자세 딜캐',
-            columns: ['프레임', '커맨드', '데미지', '판정', '히트이득'],
+            columns: ['프레임', '커맨드', '데미지', '판정', '히트이득', '설명'],
             data: Data.standing,
         },
         {
             tag: {
                 description: 'up',
-                detail: ['frame', 'command', 'damage', 'range', 'hitframe'],
+                detail: [
+                    'frame',
+                    'command',
+                    'damage',
+                    'range',
+                    'hitframe',
+                    'state',
+                ],
             },
             header: '앉은자세 딜캐',
-            columns: ['프레임', '커맨드', '데미지', '판정', '히트이득'],
+            columns: ['프레임', '커맨드', '데미지', '판정', '히트이득', '설명'],
             data: Data.up,
         },
     ];
@@ -87,7 +101,7 @@ export default function VerticalTabs({ Data }: TabsProps) {
         {
             tag: {
                 description: 'Throw',
-                detail: ['command', 'damage', 'frame', 'description', 'way'],
+                detail: ['command', 'damage', 'frame', 'state', 'way'],
             },
             header: '잡기',
             columns: ['커맨드', '데미지', '프레임', '설명', '잡기풀기'],
@@ -99,13 +113,13 @@ export default function VerticalTabs({ Data }: TabsProps) {
         {
             tag: { description: 'Combo', detail: ['state', 'command'] },
             header: '콤보',
-            columns: ['상황', '커맨드'],
+            columns: ['커맨드', '상황'],
             data: Data.combo,
         },
         {
             tag: { description: 'Extrahit', detail: ['state', 'command'] },
             header: '추가타',
-            columns: ['상황', '커맨드'],
+            columns: ['커맨드', '상황'],
             data: Data.Extrahit,
         },
     ];

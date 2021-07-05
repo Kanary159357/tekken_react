@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { DeleteData, EditData } from '../../Context/DBContext';
 import { useModalDispatch } from '../../Context/ModalContext';
 import useEditValue from '../../hooks/useInputValue';
 import { tagProperty } from './Table';

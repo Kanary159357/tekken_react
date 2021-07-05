@@ -82,11 +82,16 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
 }
 
 export const AddData = async (tag: string, data: Object, char: string) => {
-    db.collection('Character')
-        .doc(char)
-        .update({
-            [tag]: firebase.firestore.FieldValue.arrayUnion(data),
-        });
+    try {
+        db.collection('Character')
+            .doc(char)
+            .update({
+                [tag]: firebase.firestore.FieldValue.arrayUnion(data),
+            });
+    } catch (err) {
+        alert('정보를 삭제하는데 실패했습니다');
+        console.log('에러정보 ' + err);
+    }
 };
 
 export async function DeleteData(tag: string, data: Object, char: string) {
@@ -97,7 +102,10 @@ export async function DeleteData(tag: string, data: Object, char: string) {
             .update({
                 [tag]: firebase.firestore.FieldValue.arrayRemove(data),
             });
-    } catch {}
+    } catch (err) {
+        alert('정보를 삭제하는데 실패했습니다');
+        console.log('에러정보 ' + err);
+    }
 }
 
 export async function AddProperty() {
@@ -105,38 +113,99 @@ export async function AddProperty() {
         Extrahit: ['state', 'command'],
         combo: ['state', 'command'],
         WallCombo: ['state', 'command'],
-        up: ['frame', 'command', 'damage', 'range', 'hitframe'],
-        standing: ['frame', 'command', 'damage', 'range', 'hitframe'],
-        Throw: ['command', 'damage', 'frame', 'description', 'way'],
+        up: ['frame', 'command', 'damage', 'range', 'hitframe', 'state'],
+        standing: ['frame', 'command', 'damage', 'range', 'hitframe', 'state'],
+        Throw: ['command', 'damage', 'frame', 'state', 'way'],
         Info: ['combo', 'dc', 'name', 'punish'],
     };
     const updateProperty = async (id: string) => {
-        const data = await db
-            .collection('Character')
-            .doc(id)
-            .get()
-            .then((snap) => {
-                return snap.data() as CharProps;
-            });
-
-        const newData = Object.keys(data).reduce((acc: any, cur) => {
-            acc[cur] = data[cur].map((content: any) => {
-                arr[cur].forEach((item: any) => {
-                    content = !content.hasOwnProperty(item)
-                        ? { ...content, [item]: '' }
-                        : content;
+        try {
+            const data = await db
+                .collection('Character')
+                .doc(id)
+                .get()
+                .then((snap) => {
+                    return snap.data() as CharProps;
                 });
-                return content;
-            });
-            return acc;
-        }, {});
-        await db.collection('Character').doc(id).update(newData);
+            const newData = Object.keys(data).reduce((acc: any, cur) => {
+                acc[cur] = data[cur].map((content: any) => {
+                    arr[cur].forEach((item: any) => {
+                        content = !content.hasOwnProperty(item)
+                            ? { ...content, [item]: '' }
+                            : content;
+                    });
+                    return content;
+                });
+                return acc;
+            }, {});
+            try {
+                await db.collection('Character').doc(id).update(newData);
+            } catch (err) {
+                alert(id + '의 정보를 받아오는데 실패했습니다');
+                console.log('에러 정보' + err);
+            }
+        } catch (err) {
+            alert(id + '의 정보를 업데이트하는데 실패했습니다');
+            console.log('에러 정보' + err);
+        }
     };
-    const documents = await db.collection('Character').get();
-    documents.forEach((document) => {
-        console.log(document.id);
-        updateProperty(document.id);
-    });
+    try {
+        const documents = await db.collection('Character').get();
+
+        documents.forEach((document) => {
+            updateProperty(document.id);
+        });
+    } catch (err) {
+        alert('캐릭터들의 정보를 받아오는데 실패했습니다');
+        console.log('에러 정보' + err);
+    }
+}
+
+export async function RemoveProperty(category: string, property: string) {
+    const deleteProperty = async (id: string) => {
+        try {
+            const data = await db
+                .collection('Character')
+                .doc(id)
+                .get()
+                .then((snap) => {
+                    return snap.data() as CharProps;
+                });
+            const delObj = data[category];
+            const newData = delObj.map((item: any) => {
+                return Object.keys(item)
+                    .filter((key) => key !== property)
+                    .reduce((acc: any, cur) => {
+                        acc[cur] = item[cur];
+                        return acc;
+                    }, {});
+            });
+            try {
+                await db
+                    .collection('Character')
+                    .doc(id)
+                    .update({
+                        [category]: newData,
+                    });
+            } catch (err) {
+                alert(id + '의 정보를 받아오는데 실패했습니다');
+                console.log('에러 정보' + err);
+            }
+        } catch (err) {
+            alert(id + '의 정보를 업데이트하는데 실패했습니다');
+            console.log('에러 정보' + err);
+        }
+    };
+    try {
+        const documents = await db.collection('Character').get();
+
+        documents.forEach((document) => {
+            deleteProperty(document.id);
+        });
+    } catch (err) {
+        alert('캐릭터들의 정보를 받아오는데 실패했습니다');
+        console.log('에러 정보' + err);
+    }
 }
 
 export async function EditData(
@@ -147,10 +216,6 @@ export async function EditData(
 ) {
     DeleteData(tag, old, char);
     AddData(tag, newData, char);
-}
-
-export async function tempta() {
-    console.log('hi');
 }
 
 function reducer(state: StateProps, action: Action) {

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { TableItemProps } from './TabInfo';
 import TableRowData from './TableRow';
 import { useParams } from 'react-router';
-import { AddData, tempta, useDBDispatch } from '../../Context/DBContext';
+import { AddData, useDBDispatch } from '../../Context/DBContext';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
 

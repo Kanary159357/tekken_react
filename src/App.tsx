@@ -12,7 +12,7 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { AddProperty, StateProvider, useDBData } from './Context/DBContext';
+import { AddProperty, RemoveProperty, useDBData } from './Context/DBContext';
 import Error from './components/Page/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
@@ -133,8 +133,6 @@ function App() {
                 />
 
                 <PageContent>
-                    <button onClick={AddProperty}>안녕</button>
-
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
 

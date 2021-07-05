@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    Action,
-    ParaProps,
-    useModalDispatch,
-} from '../../Context/ModalContext';
+import { ParaProps, useModalDispatch } from '../../Context/ModalContext';
 import { TableControl } from './Table';
 import TableEdit from './TableEdit';
 
