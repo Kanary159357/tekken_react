@@ -1,8 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import ContactFrom from '../pageComponents/ContactForm'
-import CommandDescription from '../pageComponents/CommandDescription'
-import SiteUsage from '../pageComponents/SiteUsage'
+import React from 'react';
+import styled from 'styled-components';
+import ContactFrom from './pageComponents/ContactForm';
+import CommandDescription from './pageComponents/CommandDescription';
 const HomeWrapper = styled.div`
     display: flex;
     width: 100%;
@@ -20,14 +19,13 @@ const HomeWrapper = styled.div`
             height: 100%;
         }
     }
-`
+`;
 
 const Header = styled.div`
     width: 100%;
     font-size: 50px;
     font-weight: 900;
     height: 15%;
-    padding-top: 5%;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
@@ -38,7 +36,7 @@ const Header = styled.div`
         background-color: #333;
         color: #fff;
     }
-`
+`;
 
 const Content = styled.div`
     width: 100%;
@@ -55,14 +53,14 @@ const Content = styled.div`
         display: flex;
         flex-direction: column;
     }
-`
+`;
 const ContentItem = styled.div`
     border: 1px solid black;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25%;
+    width: 45%;
     height: 80%;
     font-size: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -81,7 +79,7 @@ const ContentItem = styled.div`
         border-radius: 0;
         border: 0 0 0 1px solid black;
     }
-`
+`;
 
 const Home = () => {
     return (
@@ -89,21 +87,11 @@ const Home = () => {
             <div className="wrapper">
                 <Header>Tekken Info</Header>
                 <Content>
-                    <ContentItem>
-                        <CommandDescription />
-                    </ContentItem>
-                    <ContentItem>
-                        {' '}
-                        <SiteUsage />
-                    </ContentItem>
-                    <ContentItem>
-                        {' '}
-                        <ContactFrom />
-                    </ContentItem>
+                    <ContentItem></ContentItem>
                 </Content>
             </div>
         </HomeWrapper>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
-import Info from '../pageComponents/Info';
-import Main from '../pageComponents/Main';
+import Info from './pageComponents/Info';
+import Main from './pageComponents/Main';
 import styled from 'styled-components';
 import { useParams } from 'react-router';
 import { LoadData, useDBData, useDBDispatch } from '../../Context/DBContext';
 
 const CharWrap = styled.div`
     display: flex;
-    width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;

@@ -38,6 +38,12 @@ function reducer(state: ModalProps, action: Action) {
                 props: action.payload,
                 open: true,
             };
+        case 'NOTUSER':
+            return {
+                ...state,
+                modalAction: 'notuser',
+                open: true,
+            };
     }
 }
 
@@ -45,12 +51,14 @@ export type Action =
     | { type: 'SET'; payload: any }
     | { type: 'ADD'; payload: ParaProps }
     | { type: 'DELETE'; payload: ParaProps }
-    | { type: 'EDIT'; payload: ParaProps };
+    | { type: 'EDIT'; payload: ParaProps }
+    | { type: 'NOTUSER' };
 
 type ModalDispatch = Dispatch<Action>;
 
 const ModalContext = createContext<ModalProps | null>(null);
 const ModalDispatchContext = createContext<ModalDispatch | null>(null);
+
 const initialState: ModalProps = {
     modalAction: 'add',
     props: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import UserProfile from './UserProfile';
 const Wrapper = styled.div<{ toggle: boolean }>`
     width: 240px;
     background: #212529;
@@ -85,6 +86,7 @@ const Sidebar = ({ toggle, Data }: Props) => {
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
+            <UserProfile />
             {Data.map((element, index) => {
                 return <SidebarItem path={element} key={index} />;
             })}

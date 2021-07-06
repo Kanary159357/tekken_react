@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 import React, { createContext, Dispatch, useContext, useReducer } from 'react';
-import { updateProperty } from 'typescript';
 import db from '../firebaseInit';
 import { CharProps } from '../types/CharProps';
 
@@ -36,6 +35,11 @@ const DataDispatchContext = createContext<StateDispatch | null>(null);
 
 export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     const Loader = async () => {
+        const sortbyKey = (key: any) => {
+            return function (a: any, b: any) {
+                return a[key] < b[key] ? -1 : 1;
+            };
+        };
         const order = (arr: any[], ordering?: (a: any, b: any) => number) => {
             return arr.map((cur: { [key: string]: string }) =>
                 Object.keys(cur)
@@ -69,9 +73,11 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
 
             data.combo = order(data.combo);
             data.WallCombo = order(data.combo);
-            data.Throw = order(data.Throw);
-            data.up = order(data.up, frameOrder);
-            data.standing = order(data.standing, frameOrder);
+            data.Throw = order(data.Throw).sort();
+            data.up = order(data.up, frameOrder).sort(sortbyKey('frame'));
+            data.standing = order(data.standing, frameOrder).sort(
+                sortbyKey('frame')
+            );
             data.Extrahit = order(data.Extrahit);
             dispatch({ type: 'LOAD', payload: data });
         } catch (err) {
@@ -81,26 +87,99 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     Loader();
 }
 
-export const AddData = async (tag: string, data: Object, char: string) => {
+export const AddData = async (
+    tag: string,
+    data: Object,
+    char: string,
+    uid: string
+) => {
+    console.log(uid);
     try {
-        db.collection('Character')
+        await db
+            .collection('Character')
             .doc(char)
             .update({
                 [tag]: firebase.firestore.FieldValue.arrayUnion(data),
             });
     } catch (err) {
-        alert('정보를 삭제하는데 실패했습니다');
+        alert('정보를 추가하는데 실패했습니다');
         console.log('에러정보 ' + err);
     }
+    try {
+        const history = {
+            char: char,
+            data: data,
+            time: firebase.firestore.Timestamp,
+        };
+        const document = await db.collection('User').doc(uid).get();
+        if (document.exists && document) {
+            console.log('hi');
+            await document.ref.update({
+                ADD: firebase.firestore.FieldValue.arrayUnion(history),
+            });
+        } else {
+            await db
+                .collection('User')
+                .doc(uid)
+                .set({
+                    ADD: firebase.firestore.FieldValue.arrayUnion(history),
+                });
+        }
+    } catch {}
 };
 
-export async function DeleteData(tag: string, data: Object, char: string) {
+export async function DeleteData(
+    tag: string,
+    data: Object,
+    char: string,
+    uid: string
+) {
     try {
         await db
             .collection('Character')
             .doc(char)
             .update({
                 [tag]: firebase.firestore.FieldValue.arrayRemove(data),
+            });
+    } catch (err) {
+        alert('정보를 삭제하는데 실패했습니다');
+        console.log('에러정보 ' + err);
+    }
+}
+
+export async function EditData(
+    tag: string,
+    old: Object,
+    newData: Object,
+    char: string,
+    uid: string
+) {
+    try {
+        await db
+            .collection('Character')
+            .doc(char)
+            .update({
+                [tag]: firebase.firestore.FieldValue.arrayRemove(old),
+            });
+    } catch (err) {
+        alert('정보를 삭제하는데 실패했습니다');
+        console.log('에러정보 ' + err);
+    }
+    try {
+        db.collection('Character')
+            .doc(char)
+            .update({
+                [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
+            });
+    } catch (err) {
+        alert('정보를 삭제하는데 실패했습니다');
+        console.log('에러정보 ' + err);
+    }
+    try {
+        db.collection('Character')
+            .doc(char)
+            .update({
+                [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
             });
     } catch (err) {
         alert('정보를 삭제하는데 실패했습니다');
@@ -206,16 +285,6 @@ export async function RemoveProperty(category: string, property: string) {
         alert('캐릭터들의 정보를 받아오는데 실패했습니다');
         console.log('에러 정보' + err);
     }
-}
-
-export async function EditData(
-    tag: string,
-    old: Object,
-    newData: Object,
-    char: string
-) {
-    DeleteData(tag, old, char);
-    AddData(tag, newData, char);
 }
 
 function reducer(state: StateProps, action: Action) {

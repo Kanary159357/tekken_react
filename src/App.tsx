@@ -17,6 +17,7 @@ import Error from './components/Page/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
 import CustomIcon from './styles/Icon';
+import { logOut, signInWithGoogle } from './firebaseInit';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -26,7 +27,6 @@ const PageContent = styled.div`
     height: 100%;
     width: calc(100% - 240px);
     left: 240px;
-    background: #808080;
     @media all and (max-width: 1140px) {
         left: 0;
         width: 100%;
@@ -136,7 +136,6 @@ function App() {
                 <PageContent>
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
-
                         <Route path="/data/:char" exact={true}>
                             {error ? <Redirect to="/404" /> : <Page />}
                         </Route>

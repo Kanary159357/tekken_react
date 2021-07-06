@@ -9,6 +9,8 @@ const Input = styled.textarea`
     width: 100%;
     display: block;
     border: none;
+    border-left: 1px solid ${(props) => props.theme.palette.gray_1};
+    margin-left: -1px;
     padding: 10px 5px;
     font-size: 14px;
     resize: none;

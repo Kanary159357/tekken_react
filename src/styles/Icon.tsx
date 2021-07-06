@@ -6,13 +6,13 @@ import styled from 'styled-components';
 interface IconProps {
     icon: IconDefinition;
     color?: string;
-    hoverColor?: string;
+    hovercolor?: string;
 }
 
 const IconWrapper = styled(FontAwesomeIcon)<IconProps>`
     color: ${(props) => props.color || props.theme.palette.white_1};
     &:hover {
-        color: ${(props) => props.hoverColor};
+        color: ${(props) => props.hovercolor};
     }
 `;
 

@@ -13,3 +13,19 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 export default db;
+
+export const auth = firebase.auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const signInWithGoogle = () => {
+    auth.signInWithPopup(googleProvider);
+};
+
+export const logOut = () => {
+    auth.signOut()
+        .then(() => {
+            console.log('logged out');
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+};

@@ -2,6 +2,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
 import { ParaProps, useModalDispatch } from '../../Context/ModalContext';
+import { useUserData } from '../../Context/UserContext';
 import customTheme from '../../styles/customTheme';
 import CustomIcon from '../../styles/Icon';
 import { TableControl } from './Table';
@@ -12,6 +13,7 @@ interface Props {
     charName: string;
     handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     setEdit: (open: boolean) => void;
+    setValue: (value: any) => void;
     modalProps: {
         action: any;
         props: ParaProps;
@@ -30,12 +32,20 @@ const TableEdits = ({
     charName,
     handleChange,
     setEdit,
+    setValue,
     modalProps,
 }: Props) => {
+    const user = useUserData();
+    console.log(user);
     const dispatch = useModalDispatch();
     const handleModal = () => {
         const { action, props } = modalProps;
-        dispatch({ type: action, payload: props });
+        if (user !== null) {
+            console.log(null);
+            dispatch({ type: action, payload: props });
+        } else {
+            dispatch({ type: 'NOTUSER' });
+        }
         setEdit(false);
     };
     return (

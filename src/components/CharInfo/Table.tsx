@@ -96,7 +96,7 @@ const Table = ({ item }: dataProps) => {
     );
 
     const [edit, setEdit] = useState(false);
-    const { values, handleChange } = useEditValue(initialValue);
+    const { values, setValue, handleChange } = useEditValue(initialValue);
 
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
@@ -139,6 +139,7 @@ const Table = ({ item }: dataProps) => {
                                 values={values}
                                 handleChange={handleChange}
                                 charName={charName}
+                                setValue={setValue}
                                 modalProps={modalProps}
                             />
                         </TableRow>
@@ -147,9 +148,8 @@ const Table = ({ item }: dataProps) => {
                             <td onClick={() => setEdit(true)} colSpan={colSpan}>
                                 <AnimatedIcon
                                     icon={faPlus}
-                                    data-fa-transform="rotate-45"
                                     color={palette.gray_1}
-                                    hoverColor={palette.gray_2}
+                                    hovercolor={palette.gray_2}
                                 />
                             </td>
                         </TableAdd>

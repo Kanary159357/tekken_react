@@ -7,6 +7,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useModalDispatch } from '../../Context/ModalContext';
+import { useUserData } from '../../Context/UserContext';
 import useEditValue from '../../hooks/useInputValue';
 import customTheme from '../../styles/customTheme';
 import CustomIcon from '../../styles/Icon';
@@ -47,9 +48,12 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
         },
     };
     const modalDispatch = useModalDispatch();
+    const user = useUserData();
     const handleModal = () => {
         const { props } = modalProps;
-        modalDispatch({ type: 'DELETE', payload: props });
+        if (user !== null) modalDispatch({ type: 'DELETE', payload: props });
+        else modalDispatch({ type: 'NOTUSER' });
+        setValue(row);
         setEdit(false);
     };
     const { palette } = customTheme;
@@ -63,6 +67,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                         handleChange={handleChange}
                         charName={charName}
                         modalProps={modalProps}
+                        setValue={setValue}
                     />
                 </>
             ) : (
@@ -75,14 +80,14 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                         <CustomIcon
                             icon={faEdit}
                             color={palette.icon_green_1}
-                            hoverColor={palette.icon_green_2}
+                            hovercolor={palette.icon_green_2}
                         ></CustomIcon>
                     </TableControl>
                     <TableControl onClick={handleModal}>
                         <CustomIcon
                             icon={faEraser}
                             color={palette.icon_red_1}
-                            hoverColor={palette.icon_red_2}
+                            hovercolor={palette.icon_red_2}
                         ></CustomIcon>
                     </TableControl>
                 </>

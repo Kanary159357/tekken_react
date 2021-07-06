@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 import React from 'react';
-import { InfoProps } from '../../types/CharProps';
+import { InfoProps } from '../../../types/CharProps';
 const InfoWrapper = styled.div`
     display: flex;
-    background: #fff;
-    height: 90%;
+    height: 100%;
+    width: 300px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -85,6 +85,7 @@ const InfoWrapper = styled.div`
         align-items: center;
         margin-left: 10px;
         border-radius: 30%;
+        margin-right: 10px;
         @media all and (max-width: 1140px) {
             width: 1em;
             height: 1em;

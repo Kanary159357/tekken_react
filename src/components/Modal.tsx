@@ -9,6 +9,11 @@ import {
     LoadData,
     useDBDispatch,
 } from '../Context/DBContext';
+import CustomIcon from '../styles/Icon';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { palette } from '../styles/customTheme';
+import { signInWithGoogle } from '../firebaseInit';
+import { useUserData } from '../Context/UserContext';
 
 const Overlay = styled.div`
     position: fixed;
@@ -22,7 +27,9 @@ const Overlay = styled.div`
 
 const ModalBox = styled.div`
     background: #efefef;
-    width: 500px;
+    min-width: 400px;
+    width: 30%;
+    max-width: 500px;
     height: 200px;
     position: absolute;
     display: flex;
@@ -41,21 +48,20 @@ const ModalBox = styled.div`
 `;
 
 const ModalContent = styled.div`
-    margin-top: 30px;
-    .title {
+    padding-top: 20px;
+    font-size: 50px;
+
+    .description {
         font-size: 18px;
         font-weight: 700;
+        padding-top: 30px;
         color: #757575;
-    }
-    .description {
-        margin-top: 40px;
-        margin-bottom: 40px;
-        font-size: 18px;
     }
 `;
 
 const ModalControl = styled.div`
     display: flex;
+    padding-top: 20px;
 `;
 
 const ControlContent = styled.div`
@@ -67,45 +73,81 @@ const CustomButton = styled(Button)`
     margin-left: 10px;
 `;
 
+interface TextProps {}
+
 const Modal = () => {
     const { modalAction, props } = useModalData();
     const modalDispatch = useModalDispatch();
     const dbDispatch = useDBDispatch();
+    const user = useUserData()!;
     const CloseModal = () => {
         modalDispatch({ type: 'SET', payload: false });
     };
     const { description, values, oldvalues, charName } = props;
-    const ModalAction = () => {
+    const ModalAction = async () => {
         console.log(ModalAction, props);
+        if (user === null) {
+            modalDispatch({ type: 'NOTUSER' });
+            return;
+        }
+        const { uid } = user;
         switch (modalAction) {
             case 'add':
-                AddData(description, values, charName);
+                await AddData(description, values, charName, uid);
                 LoadData(charName, dbDispatch);
                 break;
             case 'delete':
-                DeleteData(description, values, charName);
+                await DeleteData(description, values, charName, uid);
                 LoadData(charName, dbDispatch);
                 break;
             case 'edit':
-                EditData(description, oldvalues!, values, charName);
+                await EditData(description, oldvalues!, values, charName, uid);
                 LoadData(charName, dbDispatch);
+                break;
+            case 'notuser':
+                signInWithGoogle();
+                break;
+            default:
+                alert('알수 없는 행동입니다!');
                 break;
         }
         CloseModal();
+    };
+    const modalText: { [key: string]: { description: string } } = {
+        add: {
+            description: '추가하시겠습니까?',
+        },
+        delete: {
+            description: '삭제하시겠습니까?',
+        },
+        edit: {
+            description: '수정하시겠습니까?',
+        },
+        notuser: {
+            description:
+                '정보를 수정하기 위해서는 로그인해야합니다. 하시겠습니까?',
+        },
     };
     return (
         <>
             <ModalBox>
                 <div className="box">
                     <ModalContent>
-                        <div className="title">엄마의 따듯한 집밥</div>
+                        <CustomIcon
+                            icon={faExclamationTriangle}
+                            color={palette.icon_red_1}
+                        />
+
                         <div className="description">
-                            버튼을 누르면 지금 당장 먹을수 있습니다
+                            {modalText[modalAction].description}
                         </div>
                     </ModalContent>
                     <ModalControl>
                         <ControlContent>
-                            <CustomButton onClick={ModalAction}>
+                            <CustomButton
+                                backColor={palette.icon_red_1}
+                                onClick={ModalAction}
+                            >
                                 Yes
                             </CustomButton>
                             <CustomButton onClick={CloseModal}>No</CustomButton>

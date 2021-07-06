@@ -7,6 +7,7 @@ import { StateProvider } from './Context/DBContext';
 import { ModalProvider } from './Context/ModalContext';
 import { ThemeProvider } from 'styled-components';
 import customTheme from './styles/customTheme';
+import UserProvider from './Context/UserContext';
 const AppProvider = ({
     contexts,
     children,
@@ -25,7 +26,9 @@ const AppProvider = ({
 ReactDOM.render(
     <BrowserRouter>
         <React.StrictMode>
-            <AppProvider contexts={[StateProvider, ModalProvider]}>
+            <AppProvider
+                contexts={[StateProvider, ModalProvider, UserProvider]}
+            >
                 <ThemeProvider theme={customTheme}>
                     <App />
                 </ThemeProvider>

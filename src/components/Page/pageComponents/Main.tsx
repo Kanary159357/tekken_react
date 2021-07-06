@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import React from 'react';
 
-import ExTabs from '../CharInfo/ExTabs';
-import { CharProps } from '../../types/CharProps';
+import ExTabs from '../../CharInfo/ExTabs';
+import { CharProps } from '../../../types/CharProps';
 const MainWrapper = styled.div`
     display: flex;
-    height: 90%;
-    width: 70%;
+    height: 100%;
+    width: 100%;
     background: #fff;
 
     @media all and (max-width: 1140px) {
