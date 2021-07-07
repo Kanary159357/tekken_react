@@ -5,8 +5,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { StateProvider } from './Context/DBContext';
 import { ModalProvider } from './Context/ModalContext';
-import { ThemeProvider } from 'styled-components';
-import customTheme from './styles/customTheme';
 import UserProvider from './Context/UserContext';
 const AppProvider = ({
     contexts,
@@ -29,9 +27,7 @@ ReactDOM.render(
             <AppProvider
                 contexts={[StateProvider, ModalProvider, UserProvider]}
             >
-                <ThemeProvider theme={customTheme}>
-                    <App />
-                </ThemeProvider>
+                <App />
             </AppProvider>
         </React.StrictMode>
     </BrowserRouter>,

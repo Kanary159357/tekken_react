@@ -1,6 +1,6 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Props } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface IconProps {
@@ -10,7 +10,7 @@ interface IconProps {
 }
 
 const IconWrapper = styled(FontAwesomeIcon)<IconProps>`
-    color: ${(props) => props.color || props.theme.palette.white_1};
+    color: ${(props) => props.color || '#ffffff'};
     &:hover {
         color: ${(props) => props.hovercolor};
     }
@@ -20,4 +20,4 @@ const CustomIcon = (props: IconProps) => {
     return <IconWrapper {...props} />;
 };
 
-export default CustomIcon;
+export default React.memo(CustomIcon);

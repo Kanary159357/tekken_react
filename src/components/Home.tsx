@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ContactFrom from './pageComponents/ContactForm';
 import CommandDescription from './pageComponents/CommandDescription';
+import { Device } from '../styles/theme';
 const HomeWrapper = styled.div`
     display: flex;
     width: 100%;
@@ -14,7 +15,7 @@ const HomeWrapper = styled.div`
         background: #fff;
         display: flex;
         flex-direction: column;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             width: 100%;
             height: 100%;
         }
@@ -29,7 +30,7 @@ const Header = styled.div`
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         height: 7%;
         padding: 0;
         font-size: 20px;
@@ -44,12 +45,12 @@ const Content = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         flex-direction: column;
         height: 100%;
         justify-content: space-between;
     }
-    @media all and (max-width: 768px) {
+    @media ${Device.tablet} {
         display: flex;
         flex-direction: column;
     }
@@ -65,14 +66,14 @@ const ContentItem = styled.div`
     font-size: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 10px;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         width: calc(100% - 2px);
         padding: 0;
         height: 30%;
         border-radius: 0;
         border: 0 0 0 1px solid black;
     }
-    @media all and (max-width: 768px) {
+    @media ${Device.tablet} {
         width: calc(100% - 2px);
         padding: 0;
         height: 33%;

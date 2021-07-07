@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
-import Home from './components/Page/Home';
+import Home from './components/Home';
 import Sidebar from './components/Sidebar';
 import { useState } from 'react';
-import Page from './components/Page/CharPage';
+import Page from './components/CharPage';
 import React from 'react';
 import {
     faBars,
@@ -12,10 +12,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { useDBData } from './Context/DBContext';
-import Error from './components/Page/Error';
+import Error from './components/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
 import CustomIcon from './styles/Icon';
+import { Device } from './styles/theme';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -25,7 +26,7 @@ const PageContent = styled.div`
     height: 100%;
     width: calc(100% - 240px);
     left: 240px;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         left: 0;
         width: 100%;
     }
@@ -44,7 +45,7 @@ const MenuButtonBlock = styled(CustomIcon)<MenuProps>`
     font-size: 20px;
     color: #fff;
     visibility: hidden;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         visibility: visible;
     }
 `;

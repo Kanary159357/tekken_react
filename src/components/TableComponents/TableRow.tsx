@@ -1,15 +1,10 @@
-import {
-    faEdit,
-    faEraser,
-    faTrash,
-    faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faEraser } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useModalDispatch } from '../../Context/ModalContext';
 import { useUserData } from '../../Context/UserContext';
 import useEditValue from '../../hooks/useInputValue';
-import customTheme from '../../styles/customTheme';
+import { Palette } from '../../styles/theme';
 import CustomIcon from '../../styles/Icon';
 import { TableControl, tagProperty } from './Table';
 import TableEdits from './TableEdits';
@@ -39,24 +34,27 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
     }, [row]);
 
     const modalProps = {
-        action: 'EDIT',
-        props: {
-            description: tag,
-            oldvalues: row,
-            values: values,
-            charName: charName,
-        },
+        description: tag,
+        oldvalues: row,
+        values: values,
+        charName: charName,
     };
     const modalDispatch = useModalDispatch();
     const user = useUserData();
-    const handleModal = () => {
-        const { props } = modalProps;
-        if (user !== null) modalDispatch({ type: 'DELETE', payload: props });
+    const handleDelete = () => {
+        if (user !== null)
+            modalDispatch({ type: 'DELETE', payload: modalProps });
         else modalDispatch({ type: 'NOTUSER' });
         setValue(row);
         setEdit(false);
     };
-    const { palette } = customTheme;
+    const handleUpdate = () => {
+        if (user !== null) modalDispatch({ type: 'EDIT', payload: modalProps });
+        else modalDispatch({ type: 'NOTUSER' });
+        setValue(row);
+        setEdit(false);
+    };
+
     return (
         <TableRow>
             {edit ? (
@@ -66,8 +64,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                         values={values}
                         handleChange={handleChange}
                         charName={charName}
-                        modalProps={modalProps}
-                        setValue={setValue}
+                        handleModal={handleUpdate}
                     />
                 </>
             ) : (
@@ -79,15 +76,15 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                     <TableControl onClick={() => setEdit(!edit)}>
                         <CustomIcon
                             icon={faEdit}
-                            color={palette.icon_green_1}
-                            hovercolor={palette.icon_green_2}
+                            color={Palette.icon_green_1}
+                            hovercolor={Palette.icon_green_2}
                         ></CustomIcon>
                     </TableControl>
-                    <TableControl onClick={handleModal}>
+                    <TableControl onClick={handleDelete}>
                         <CustomIcon
                             icon={faEraser}
-                            color={palette.icon_red_1}
-                            hovercolor={palette.icon_red_2}
+                            color={Palette.icon_red_1}
+                            hovercolor={Palette.icon_red_2}
                         ></CustomIcon>
                     </TableControl>
                 </>
@@ -96,4 +93,4 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
     );
 };
 
-export default TableRowData;
+export default React.memo(TableRowData);

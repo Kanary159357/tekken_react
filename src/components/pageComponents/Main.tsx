@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 import React from 'react';
 
-import ExTabs from '../../CharInfo/ExTabs';
-import { CharProps } from '../../../types/CharProps';
+import ExTabs from '../TableComponents/ExTabs';
+import { CharProps } from '../../types/CharProps';
+import { Device } from '../../styles/theme';
 const MainWrapper = styled.div`
     display: flex;
     height: 100%;
     width: 100%;
     background: #fff;
 
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         height: calc(100% - 50px);
         width: 100%;
     }

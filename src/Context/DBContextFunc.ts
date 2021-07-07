@@ -1,8 +1,9 @@
 import db from '../firebaseInit';
 import { CharProps } from '../types/CharProps';
 import firebase from 'firebase';
+import { StateDispatch } from './DBContext';
 
-export function LoadData(char: string, dispatch: React.Dispatch<any>) {
+export function LoadData(char: string, dispatch: StateDispatch) {
     const Loader = async () => {
         const sortbyKey = () => {
             return function (a: any, b: any) {
@@ -49,7 +50,7 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
             ];
             return order.indexOf(a) - order.indexOf(b);
         };
-
+        dispatch({ type: 'LOADING' });
         try {
             const data = await db
                 .collection('Character')
@@ -72,7 +73,7 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
                 }
                 return acc;
             }, {});
-            dispatch({ type: 'LOAD', payload: newObj });
+            dispatch({ type: 'LOADED', payload: newObj });
         } catch (err) {
             console.log(err);
             dispatch({ type: 'ERROR', error: err });

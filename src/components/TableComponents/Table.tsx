@@ -7,8 +7,10 @@ import { useParams } from 'react-router';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
 import CustomIcon from '../../styles/Icon';
-import { faPalette, faPlus } from '@fortawesome/free-solid-svg-icons';
-import customTheme, { palette } from '../../styles/customTheme';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Device, Palette } from '../../styles/theme';
+import { useUserData } from '../../Context/UserContext';
+import { useModalDispatch } from '../../Context/ModalContext';
 
 const TableContent = styled.table`
     width: 90%;
@@ -16,6 +18,9 @@ const TableContent = styled.table`
     border-radius: 10px;
     margin: 0 auto;
     margin-bottom: 20px;
+    @media ${Device.tablet} {
+        width: 100%;
+    }
 `;
 
 const TableHead = styled.th`
@@ -25,7 +30,7 @@ const TableHead = styled.th`
 `;
 const TableRow = styled.tr`
     margin-bottom: -1px;
-    border: 1px solid ${(props) => props.theme.palette.border_1};
+    border: 1px solid ${Palette.border_1};
     box-sizing: border-box;
 `;
 export const TableControl = styled.td`
@@ -39,37 +44,6 @@ const TableAdd = styled.tr`
     td {
         text-align: center;
         font-size: 2rem;
-        color: red;
-    }
-`;
-
-const AnimatedIcon = styled(CustomIcon)`
-    cursor: pointer;
-
-    &:hover {
-        animation: fa-spin 0.5s linear;
-    }
-    @keyframes fa-spin {
-        0% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-        25% {
-            -webkit-transform: rotate(-5deg);
-            transform: rotate(-5deg);
-        }
-        50% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-        75% {
-            -webkit-transform: rotate(5deg);
-            transform: rotate(5deg);
-        }
-        100% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
     }
 `;
 
@@ -93,22 +67,30 @@ const Table = ({ item }: dataProps) => {
         (acc: any, cur) => ((acc[cur] = ''), acc),
         {}
     );
-
-    const [edit, setEdit] = useState(false);
-    const { values, setValue, handleChange } = useEditValue(initialValue);
-
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
     const colSpan = tag.detail.length;
+    const user = useUserData();
+    const modalDispatch = useModalDispatch();
+    const [edit, setEdit] = useState(false);
+    const { values, setValue, handleChange } = useEditValue(initialValue);
 
     const modalProps = {
-        action: 'ADD',
-        props: {
-            description: tag.description,
-            values: values,
-            charName: charName,
-        },
+        description: tag.description,
+        values: values,
+        charName: charName,
     };
+
+    const handleModal = () => {
+        if (user !== null) {
+            modalDispatch({ type: 'ADD', payload: modalProps });
+        } else {
+            modalDispatch({ type: 'NOTUSER' });
+        }
+        setEdit(false);
+        setValue(initialValue);
+    };
+
     return (
         <>
             <h2>{header}</h2>
@@ -138,17 +120,16 @@ const Table = ({ item }: dataProps) => {
                                 values={values}
                                 handleChange={handleChange}
                                 charName={charName}
-                                setValue={setValue}
-                                modalProps={modalProps}
+                                handleModal={handleModal}
                             />
                         </TableRow>
                     ) : (
                         <TableAdd>
                             <td onClick={() => setEdit(true)} colSpan={colSpan}>
-                                <AnimatedIcon
+                                <CustomIcon
                                     icon={faPlus}
-                                    color={palette.gray_1}
-                                    hovercolor={palette.gray_2}
+                                    color={Palette.gray_1}
+                                    hovercolor={Palette.gray_2}
                                 />
                             </td>
                         </TableAdd>
@@ -159,4 +140,4 @@ const Table = ({ item }: dataProps) => {
     );
 };
 
-export default Table;
+export default React.memo(Table);

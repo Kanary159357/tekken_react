@@ -1,11 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import { Device } from '../../styles/theme';
 
 const DescriptionWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         flex-direction: row;
         justify-content: space-between;
     }
@@ -14,7 +15,7 @@ const DescriptionWrapper = styled.div`
         margin-bottom: 20px;
         font-weight: 800;
         text-align: center;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             margin: 0;
             font-weight: 500;
         }
@@ -22,20 +23,20 @@ const DescriptionWrapper = styled.div`
     .description {
         font-size: 1em;
         line-height: 30px;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             width: 30%;
         }
-        @media all and (max-width: 768px) {
+        @media ${Device.tablet} {
             font-size: 0.5em;
         }
     }
     .command {
         margin-top: 50px;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             margin: 0;
         }
     }
-`
+`;
 
 const CommandDescription = () => (
     <DescriptionWrapper>
@@ -60,6 +61,6 @@ const CommandDescription = () => (
             <br />
         </div>
     </DescriptionWrapper>
-)
+);
 
-export default CommandDescription
+export default CommandDescription;

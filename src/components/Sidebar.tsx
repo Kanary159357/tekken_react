@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
+import { Device } from '../styles/theme';
 const Wrapper = styled.div<{ toggle: boolean }>`
     width: 240px;
     background: #212529;
@@ -18,7 +19,7 @@ const Wrapper = styled.div<{ toggle: boolean }>`
         display: none;
     }
 
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         width: 240px;
         left: ${(props) => (props.toggle ? '0' : '-240px')};
         z-index: 997;
@@ -94,4 +95,4 @@ const Sidebar = ({ toggle, Data }: Props) => {
     );
 };
 
-export default Sidebar;
+export default React.memo(Sidebar);

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 import React from 'react';
-import { InfoProps } from '../../../types/CharProps';
+import { InfoProps } from '../../types/CharProps';
+import { Device } from '../../styles/theme';
 const InfoWrapper = styled.div`
     display: flex;
     height: 100%;
@@ -9,7 +10,7 @@ const InfoWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         height: 50px;
         line-height: 50px;
         width: 100%;
@@ -18,12 +19,12 @@ const InfoWrapper = styled.div`
         justify-content: space-around;
         background: #212529;
     }
-    @media all and (max-width: 768px) {
+    @media ${Device.tablet} {
         border-bottom: 1px solid black;
         justify-content: center;
     }
     h2 {
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             margin: 0;
             font-size: 20px;
         }
@@ -32,7 +33,7 @@ const InfoWrapper = styled.div`
     .link {
         display: flex;
         flex-direction: column;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             flex-direction: row;
             align-items: center;
             justify-content: center;
@@ -43,11 +44,11 @@ const InfoWrapper = styled.div`
         color: #333;
         img {
             width: 80%;
-            @media all and (max-width: 1140px) {
+            @media ${Device.desktop} {
                 display: none;
             }
         }
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             color: #dee2e6;
         }
     }
@@ -61,7 +62,7 @@ const InfoWrapper = styled.div`
             color: #333;
         }
         padding-bottom: 15px;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             padding-left: 10px;
             padding-bottom: 0;
             color: #dee2e6;
@@ -72,7 +73,7 @@ const InfoWrapper = styled.div`
                 color: #dee2e6;
             }
         }
-        @media all and (max-width: 768px) {
+        @media ${Device.tablet} {
             display: none;
             color: #dee2e6;
         }
@@ -86,16 +87,13 @@ const InfoWrapper = styled.div`
         margin-left: 10px;
         border-radius: 30%;
         margin-right: 10px;
-        @media all and (max-width: 1140px) {
-            width: 1em;
-            height: 1em;
-        }
-        @media all and (max-width: 1140px) {
+
+        @media ${Device.desktop} {
             width: 2em;
             height: 2em;
             text-align: center;
         }
-        @media all and (max-width: 768px) {
+        @media ${Device.tablet} {
             width: 1.5em;
             height: 1.5em;
             text-align: center;

@@ -11,7 +11,7 @@ import {
 
 import CustomIcon from '../styles/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
-import { palette } from '../styles/customTheme';
+import { Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../Context/UserContext';
 import { useDBDispatch } from '../Context/DBContext';
@@ -94,15 +94,15 @@ const Modal = () => {
         switch (modalAction) {
             case 'add':
                 await AddData(description, values, charName, uid);
-                LoadData(charName, dbDispatch);
+                await LoadData(charName, dbDispatch);
                 break;
             case 'delete':
                 await DeleteData(description, values, charName, uid);
-                LoadData(charName, dbDispatch);
+                await LoadData(charName, dbDispatch);
                 break;
             case 'edit':
                 await EditData(description, oldvalues!, values, charName, uid);
-                LoadData(charName, dbDispatch);
+                await LoadData(charName, dbDispatch);
                 break;
             case 'notuser':
                 signInWithGoogle();
@@ -135,7 +135,7 @@ const Modal = () => {
                     <ModalContent>
                         <CustomIcon
                             icon={faExclamationTriangle}
-                            color={palette.icon_red_1}
+                            color={Palette.icon_red_1}
                         />
 
                         <div className="description">
@@ -145,7 +145,7 @@ const Modal = () => {
                     <ModalControl>
                         <ControlContent>
                             <CustomButton
-                                backColor={palette.icon_red_1}
+                                backColor={Palette.icon_red_1}
                                 onClick={ModalAction}
                             >
                                 Yes

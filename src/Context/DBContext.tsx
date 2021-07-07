@@ -24,21 +24,28 @@ const InitialState: StateProps = {
 };
 
 type Action =
-    | { type: 'LOAD'; payload: any }
+    | { type: 'LOADED'; payload: CharProps }
+    | { type: 'LOADING' }
     | { type: 'ADD' }
     | { type: 'ERROR'; error: any };
 
-type StateDispatch = Dispatch<Action>;
+export type StateDispatch = Dispatch<Action>;
 
 const DataContext = createContext<StateProps | null>(null);
 const DataDispatchContext = createContext<StateDispatch | null>(null);
 
 function reducer(state: StateProps, action: Action) {
     switch (action.type) {
-        case 'LOAD':
+        case 'LOADED':
             return {
                 ...state,
                 charProps: action.payload,
+                loading: false,
+            };
+        case 'LOADING':
+            return {
+                ...state,
+                loading: true,
             };
         case 'ERROR':
             return {

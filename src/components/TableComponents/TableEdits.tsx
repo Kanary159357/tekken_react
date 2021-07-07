@@ -1,11 +1,9 @@
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import styled, { DefaultTheme } from 'styled-components';
-import { ParaProps, useModalDispatch } from '../../Context/ModalContext';
-import { useUserData } from '../../Context/UserContext';
-import customTheme from '../../styles/customTheme';
+import styled from 'styled-components';
+
+import { Palette } from '../../styles/theme';
 import CustomIcon from '../../styles/Icon';
-import { TableControl } from './Table';
 import TableEdit from './TableEdit';
 
 interface Props {
@@ -13,11 +11,7 @@ interface Props {
     charName: string;
     handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     setEdit: (open: boolean) => void;
-    setValue: (value: any) => void;
-    modalProps: {
-        action: any;
-        props: ParaProps;
-    };
+    handleModal: () => any;
 }
 
 const EditTableControl = styled.td<{ backcolor?: string }>`
@@ -32,21 +26,8 @@ const TableEdits = ({
     charName,
     handleChange,
     setEdit,
-    setValue,
-    modalProps,
+    handleModal,
 }: Props) => {
-    const user = useUserData();
-    const dispatch = useModalDispatch();
-    const handleModal = () => {
-        const { action, props } = modalProps;
-        if (user !== null) {
-            console.log(null);
-            dispatch({ type: action, payload: props });
-        } else {
-            dispatch({ type: 'NOTUSER' });
-        }
-        setEdit(false);
-    };
     return (
         <>
             {Object.entries(values).map(([key, value]) => (
@@ -59,13 +40,13 @@ const TableEdits = ({
             ))}
 
             <EditTableControl
-                backcolor={customTheme.palette.icon_green_1}
+                backcolor={Palette.icon_green_1}
                 onClick={handleModal}
             >
                 <CustomIcon icon={faCheck} />
             </EditTableControl>
             <EditTableControl
-                backcolor={customTheme.palette.icon_red_1}
+                backcolor={Palette.icon_red_1}
                 onClick={() => setEdit(false)}
             >
                 <CustomIcon icon={faTimes} />

@@ -1,15 +1,24 @@
-import { DefaultTheme } from 'styled-components';
-import { FontSizeProps, paletteProps } from '../types/styled';
-
 const calcRem = (size: number) => `${size / 16}rem`;
 
-export const FontSize: FontSizeProps = {
+export const FontSize = {
     small: calcRem(12),
     big: calcRem(16),
     base: calcRem(14),
 };
 
-export const palette: paletteProps = {
+export const BreakPoint = {
+    mobile: '720px',
+    tablet: '768px',
+    desktop: '1140px',
+};
+
+export const Device = {
+    mobile: `(max-width: ${BreakPoint.mobile})`,
+    tablet: `(max-width: ${BreakPoint.tablet})`,
+    desktop: `(max-width: ${BreakPoint.desktop})`,
+};
+
+export const Palette = {
     white_1: '#ffffff',
     border_1: '#d1d1d1',
     font_white: '#ffffff',
@@ -20,10 +29,3 @@ export const palette: paletteProps = {
     gray_1: '#c9c9c9',
     gray_2: '#8a8a8a',
 };
-
-const customTheme: DefaultTheme = {
-    FontSize,
-    palette,
-};
-
-export default customTheme;

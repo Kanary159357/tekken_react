@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Palette } from '../../styles/theme';
 
 const TableEditBox = styled.td`
     border-collapse: collapse;
@@ -9,7 +10,7 @@ const Input = styled.textarea`
     width: 100%;
     display: block;
     border: none;
-    border-left: 1px solid ${(props) => props.theme.palette.gray_1};
+    border-left: 1px solid ${Palette.gray_1};
     margin-left: -1px;
     padding: 10px 5px;
     font-size: 14px;
