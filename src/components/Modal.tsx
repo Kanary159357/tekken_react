@@ -7,13 +7,14 @@ import {
     DeleteData,
     EditData,
     LoadData,
-    useDBDispatch,
-} from '../Context/DBContext';
+} from '../Context/DBContextFunc';
+
 import CustomIcon from '../styles/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { palette } from '../styles/customTheme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../Context/UserContext';
+import { useDBDispatch } from '../Context/DBContext';
 
 const Overlay = styled.div`
     position: fixed;

@@ -1,23 +1,21 @@
 import styled from 'styled-components';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/Page/Home';
 import Sidebar from './components/Sidebar';
 import { useState } from 'react';
 import Page from './components/Page/CharPage';
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faBars,
     faTimes,
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { AddProperty, RemoveProperty, useDBData } from './Context/DBContext';
+import { useDBData } from './Context/DBContext';
 import Error from './components/Page/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
 import CustomIcon from './styles/Icon';
-import { logOut, signInWithGoogle } from './firebaseInit';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
