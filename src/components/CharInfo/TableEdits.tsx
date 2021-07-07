@@ -36,7 +36,6 @@ const TableEdits = ({
     modalProps,
 }: Props) => {
     const user = useUserData();
-    console.log(user);
     const dispatch = useModalDispatch();
     const handleModal = () => {
         const { action, props } = modalProps;

@@ -4,6 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import styled from 'styled-components';
 import TabInfo from './TabInfo';
+import { CharProps } from '../../types/CharProps';
 const TabPanelBlock = styled.div<{ shown: boolean }>`
     ${({ shown }) => (shown ? `width:100%;  height:90%;` : 'width:0%')};
     overflow-y: scroll;
@@ -53,7 +54,7 @@ const TabBlock = styled(Tab)`
 `;
 
 interface TabsProps {
-    Data: any;
+    Data: CharProps;
 }
 
 export default function VerticalTabs({ Data }: TabsProps) {
@@ -61,7 +62,6 @@ export default function VerticalTabs({ Data }: TabsProps) {
     const handleChange = (event: any, newValue: number) => {
         setValue(newValue);
     };
-
     const PunishInfo = [
         {
             tag: {
@@ -111,7 +111,7 @@ export default function VerticalTabs({ Data }: TabsProps) {
 
     const ComboInfo = [
         {
-            tag: { description: 'Combo', detail: ['state', 'command'] },
+            tag: { description: 'combo', detail: ['state', 'command'] },
             header: '콤보',
             columns: ['커맨드', '상황'],
             data: Data.combo,
@@ -121,6 +121,12 @@ export default function VerticalTabs({ Data }: TabsProps) {
             header: '추가타',
             columns: ['커맨드', '상황'],
             data: Data.Extrahit,
+        },
+        {
+            tag: { description: 'WallCombo', detail: ['state', 'command'] },
+            header: '벽콤보',
+            columns: ['커맨드', '상황'],
+            data: Data.WallCombo,
         },
     ];
 

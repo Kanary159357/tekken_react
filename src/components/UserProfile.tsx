@@ -1,8 +1,9 @@
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { useUserData } from '../Context/UserContext';
 import { logOut, signInWithGoogle } from '../firebaseInit';
 import Button from '../styles/Button';
-
+import Icon from '../styles/Icon';
 const UserProfileBox = styled.div<{ user: any }>`
     height: 150px;
     display: flex;
@@ -15,6 +16,8 @@ const ProfileImg = styled.div`
     border-radius: 25px;
     width: 60px;
     height: 60px;
+    font-size: 45px;
+    text-align: center;
     overflow: hidden;
     img {
         object-fit: cover;
@@ -44,7 +47,7 @@ const UserProfile = () => {
                 {user ? (
                     <img src={user?.photoURL} alt={'userImg'} />
                 ) : (
-                    <div className="temp"></div>
+                    <Icon icon={faUserCircle} />
                 )}
             </ProfileImg>
             <UserBox>

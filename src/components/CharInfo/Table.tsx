@@ -89,7 +89,6 @@ export interface tagProperty {
 
 const Table = ({ item }: dataProps) => {
     const { header, columns, data, tag } = item;
-
     const initialValue: tagProperty = tag.detail.reduce(
         (acc: any, cur) => ((acc[cur] = ''), acc),
         {}

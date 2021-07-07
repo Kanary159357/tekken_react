@@ -35,10 +35,29 @@ const DataDispatchContext = createContext<StateDispatch | null>(null);
 
 export function LoadData(char: string, dispatch: React.Dispatch<any>) {
     const Loader = async () => {
-        const sortbyKey = (key: any) => {
+        const sortbyKey = () => {
             return function (a: any, b: any) {
-                return a[key] < b[key] ? -1 : 1;
+                if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
+                    if (a['frame'] === b['frame']) {
+                        return a['command'] < b['command'] ? -1 : 1;
+                    } else {
+                        return a['frame'] < b['frame'] ? -1 : 1;
+                    }
+                } else {
+                    return a['command'] < b['command'] ? -1 : 1;
+                }
             };
+        };
+        const sortbyCounter = (a: any, b: any) => {
+            const av = a['command'].includes('(C)');
+            const bv = b['command'].includes('(C)');
+            if (av === bv) {
+                return a['command'] < b['command'] ? -1 : 1;
+            } else if (av === false) {
+                return -1;
+            } else {
+                return 1;
+            }
         };
         const order = (arr: any[], ordering?: (a: any, b: any) => number) => {
             return arr.map((cur: { [key: string]: string }) =>
@@ -70,30 +89,64 @@ export function LoadData(char: string, dispatch: React.Dispatch<any>) {
                 .then((snap) => {
                     return snap.data() as CharProps;
                 });
-
-            data.combo = order(data.combo);
-            data.WallCombo = order(data.combo);
-            data.Throw = order(data.Throw).sort();
-            data.up = order(data.up, frameOrder).sort(sortbyKey('frame'));
-            data.standing = order(data.standing, frameOrder).sort(
-                sortbyKey('frame')
-            );
-            data.Extrahit = order(data.Extrahit);
-            dispatch({ type: 'LOAD', payload: data });
+            const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
+                if (['Extrahit', 'combo', 'WallCombo'].includes(cur)) {
+                    acc[cur] = order(data[cur]).sort(sortbyCounter);
+                } else {
+                    if (['standing', 'up'].includes(cur)) {
+                        acc[cur] = order(data[cur], frameOrder).sort(
+                            sortbyKey()
+                        );
+                    } else {
+                        acc[cur] = order(data[cur]).sort(sortbyKey());
+                    }
+                }
+                return acc;
+            }, {});
+            dispatch({ type: 'LOAD', payload: newObj });
         } catch (err) {
+            console.log(err);
             dispatch({ type: 'ERROR', error: err });
         }
     };
     Loader();
 }
-
+async function UpdateHistory(
+    char: string,
+    data: Object,
+    uid: string,
+    type: string
+) {
+    try {
+        const history = {
+            char: char,
+            data: data,
+            time: firebase.firestore.Timestamp.fromDate(new Date()),
+        };
+        const document = await db.collection('User').doc(uid).get();
+        if (document.exists && document) {
+            await document.ref.update({
+                [type]: firebase.firestore.FieldValue.arrayUnion(history),
+            });
+        } else {
+            console.log('hihi');
+            await db
+                .collection('User')
+                .doc(uid)
+                .set({
+                    [type]: [history],
+                });
+        }
+    } catch {
+        console.log('유저 히스토리 업데이트 실패');
+    }
+}
 export const AddData = async (
     tag: string,
     data: Object,
     char: string,
     uid: string
 ) => {
-    console.log(uid);
     try {
         await db
             .collection('Character')
@@ -105,27 +158,7 @@ export const AddData = async (
         alert('정보를 추가하는데 실패했습니다');
         console.log('에러정보 ' + err);
     }
-    try {
-        const history = {
-            char: char,
-            data: data,
-            time: firebase.firestore.Timestamp,
-        };
-        const document = await db.collection('User').doc(uid).get();
-        if (document.exists && document) {
-            console.log('hi');
-            await document.ref.update({
-                ADD: firebase.firestore.FieldValue.arrayUnion(history),
-            });
-        } else {
-            await db
-                .collection('User')
-                .doc(uid)
-                .set({
-                    ADD: firebase.firestore.FieldValue.arrayUnion(history),
-                });
-        }
-    } catch {}
+    await UpdateHistory(char, data, uid, 'ADD');
 };
 
 export async function DeleteData(
@@ -145,6 +178,7 @@ export async function DeleteData(
         alert('정보를 삭제하는데 실패했습니다');
         console.log('에러정보 ' + err);
     }
+    await UpdateHistory(char, data, uid, 'Delete');
 }
 
 export async function EditData(
@@ -172,19 +206,11 @@ export async function EditData(
                 [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
             });
     } catch (err) {
-        alert('정보를 삭제하는데 실패했습니다');
+        alert('정보를 추가하는데 실패했습니다');
         console.log('에러정보 ' + err);
     }
-    try {
-        db.collection('Character')
-            .doc(char)
-            .update({
-                [tag]: firebase.firestore.FieldValue.arrayUnion(newData),
-            });
-    } catch (err) {
-        alert('정보를 삭제하는데 실패했습니다');
-        console.log('에러정보 ' + err);
-    }
+
+    await UpdateHistory(char, { old, newData }, uid, 'Edit');
 }
 
 export async function AddProperty() {

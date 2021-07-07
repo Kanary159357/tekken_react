@@ -85,7 +85,6 @@ const Modal = () => {
     };
     const { description, values, oldvalues, charName } = props;
     const ModalAction = async () => {
-        console.log(ModalAction, props);
         if (user === null) {
             modalDispatch({ type: 'NOTUSER' });
             return;

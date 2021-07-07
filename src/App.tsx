@@ -137,7 +137,7 @@ function App() {
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
                         <Route path="/data/:char" exact={true}>
-                            {error ? <Redirect to="/404" /> : <Page />}
+                            <Page />
                         </Route>
                         <Route path="/404" exact={true}>
                             <Error />
