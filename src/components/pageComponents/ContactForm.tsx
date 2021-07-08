@@ -5,6 +5,7 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { Device } from '../../styles/theme';
 
 const ContactWrapper = styled.div`
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

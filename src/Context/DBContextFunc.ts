@@ -42,8 +42,9 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         const order = [
             'frame',
             'command',
-            'damage',
             'range',
+            'damage',
+
             'hitframe',
             'guardframe',
             'state',
@@ -51,7 +52,6 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         return order.indexOf(a) - order.indexOf(b);
     };
     dispatch({ type: 'LOADING' });
-    console.log('loding');
     try {
         const data = await db
             .collection('Character')
@@ -63,20 +63,18 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
             if (['Extrahit', 'combo', 'WallCombo', 'Pattern'].includes(cur)) {
                 acc[cur] = order(data[cur]).sort(sortbyCounter);
-            }
-            if (['standing', 'up'].includes(cur)) {
+            } else if (['standing', 'up'].includes(cur)) {
+                console.log('hi');
                 acc[cur] = order(data[cur], frameOrder).sort(sortbyKey());
-            }
-            if (['MainMove'].includes(cur)) {
-                console.log('hui');
+            } else if (['MainMove'].includes(cur)) {
                 acc[cur] = order(data[cur]).sort(sortbyKey());
             } else {
                 acc[cur] = order(data[cur]).sort();
             }
             return acc;
         }, {});
+        console.log(newObj);
         dispatch({ type: 'LOADED', payload: newObj });
-        console.log('fin');
     } catch (err) {
         console.log(err);
         dispatch({ type: 'ERROR', error: err });

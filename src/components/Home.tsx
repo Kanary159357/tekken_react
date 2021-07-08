@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactFrom from './pageComponents/ContactForm';
+import ContactForm from './pageComponents/ContactForm';
 import CommandDescription from './pageComponents/CommandDescription';
-import { Device } from '../styles/theme';
+import { Device, Palette, FontColor } from '../styles/theme';
 const HomeWrapper = styled.div`
     display: flex;
     width: 100%;
@@ -12,7 +12,7 @@ const HomeWrapper = styled.div`
     .wrapper {
         width: calc(70% + 200px);
         height: 90%;
-        background: #fff;
+        background: ${Palette.white_1};
         display: flex;
         flex-direction: column;
         @media ${Device.desktop} {
@@ -34,8 +34,8 @@ const Header = styled.div`
         height: 10%;
         padding: 0;
         font-size: 20px;
-        background-color: #333;
-        color: #fff;
+        background-color: ${Palette.black_1};
+        color: ${FontColor.white};
     }
 `;
 
@@ -56,15 +56,14 @@ const Content = styled.div`
     }
 `;
 const ContentItem = styled.div`
-    border: 1px solid black;
+    border: 1px solid ${Palette.border_1};
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
     height: 80%;
     font-size: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     padding: 10px;
     @media ${Device.desktop} {
         width: calc(100% - 2px);
@@ -88,7 +87,12 @@ const Home = () => {
             <div className="wrapper">
                 <Header>Tekken Info</Header>
                 <Content>
-                    <ContentItem></ContentItem>
+                    <ContentItem>
+                        <CommandDescription />
+                    </ContentItem>
+                    <ContentItem>
+                        <ContactForm />
+                    </ContentItem>
                 </Content>
             </div>
         </HomeWrapper>

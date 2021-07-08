@@ -15,7 +15,7 @@ const TableRow = styled.tr`
 `;
 const TableData = styled.td`
     border-collapse: collapse;
-    padding: 10px 5px;
+    padding: 10px 10px;
 `;
 
 interface RowProps {

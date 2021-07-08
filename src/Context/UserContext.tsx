@@ -19,7 +19,6 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
                 const { uid, displayName, email, photoURL } = tempUser;
                 setUser({ uid, displayName, email, photoURL });
             }
-            console.log(tempUser);
         });
     }, []);
     return <UserContext.Provider value={user}>{children}</UserContext.Provider>;

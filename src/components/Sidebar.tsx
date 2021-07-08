@@ -134,7 +134,7 @@ const Sidebar = ({ toggle, handleToggle }: Props) => {
     return (
         <Wrapper toggle={toggle}>
             <div className="Main">
-                <Link to="/">Tekken-Info</Link>
+                <Link to="/">6N23RP.COM</Link>
             </div>
             <UserProfile />
             {CharNames.map((element, index) => {

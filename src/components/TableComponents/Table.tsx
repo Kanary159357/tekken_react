@@ -25,7 +25,7 @@ const TableContent = styled.table`
 
 const TableHead = styled.th`
     text-align: left;
-    padding: 5px;
+    padding: 10px;
     border-collapse: collapse;
 `;
 const TableRow = styled.tr`
@@ -63,10 +63,10 @@ export interface tagProperty {
 
 const Table = ({ item }: dataProps) => {
     const { header, columns, data, tag } = item;
-    const initialValue: tagProperty = tag.detail.reduce(
-        (acc: any, cur) => ((acc[cur] = ''), acc),
-        {}
-    );
+    const initialValue: tagProperty = tag.detail.reduce((acc: any, cur) => {
+        acc[cur] = '';
+        return acc;
+    }, {});
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
     const colSpan = tag.detail.length;
@@ -79,11 +79,12 @@ const Table = ({ item }: dataProps) => {
         values: values,
         charName: charName,
     };
-
+    console.log(data);
     const handleModal = () => {
         if (user !== null) {
             modalDispatch({ type: 'ADD', payload: modalProps });
         }
+        modalDispatch({ type: 'NOTUSER' });
         setEdit(false);
         setValue(initialValue);
     };
