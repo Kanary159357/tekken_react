@@ -3,83 +3,81 @@ import { CharProps } from '../types/CharProps';
 import firebase from 'firebase';
 import { StateDispatch } from './DBContext';
 
-export function LoadData(char: string, dispatch: StateDispatch) {
-    const Loader = async () => {
-        const sortbyKey = () => {
-            return function (a: any, b: any) {
-                if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
-                    if (a['frame'] === b['frame']) {
-                        return a['command'] < b['command'] ? -1 : 1;
-                    } else {
-                        return a['frame'] < b['frame'] ? -1 : 1;
-                    }
-                } else {
+export async function LoadData(char: string, dispatch: StateDispatch) {
+    const sortbyKey = () => {
+        return function (a: any, b: any) {
+            if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
+                if (a['frame'] === b['frame']) {
                     return a['command'] < b['command'] ? -1 : 1;
+                } else {
+                    return a['frame'] < b['frame'] ? -1 : 1;
                 }
-            };
-        };
-        const sortbyCounter = (a: any, b: any) => {
-            const av = a['command'].includes('(C)');
-            const bv = b['command'].includes('(C)');
-            if (av === bv) {
-                return a['command'] < b['command'] ? -1 : 1;
-            } else if (av === false) {
-                return -1;
             } else {
-                return 1;
+                return a['command'] < b['command'] ? -1 : 1;
             }
         };
-        const order = (arr: any[], ordering?: (a: any, b: any) => number) => {
-            return arr.map((cur: { [key: string]: string }) =>
-                Object.keys(cur)
-                    .sort(ordering)
-                    .reduce((obj: any, key: string) => {
-                        obj[key] = cur[key];
-                        return obj;
-                    }, {})
-            );
-        };
-        const frameOrder = (a: any, b: any) => {
-            const order = [
-                'frame',
-                'command',
-                'damage',
-                'range',
-                'hitframe',
-                'state',
-            ];
-            return order.indexOf(a) - order.indexOf(b);
-        };
-        dispatch({ type: 'LOADING' });
-        try {
-            const data = await db
-                .collection('Character')
-                .doc(char)
-                .get()
-                .then((snap) => {
-                    return snap.data() as CharProps;
-                });
-            const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
-                if (['Extrahit', 'combo', 'WallCombo'].includes(cur)) {
-                    acc[cur] = order(data[cur]).sort(sortbyCounter);
-                } else {
-                    if (['standing', 'up'].includes(cur)) {
-                        acc[cur] = order(data[cur], frameOrder).sort(
-                            sortbyKey()
-                        );
-                    } else {
-                        acc[cur] = order(data[cur]).sort(sortbyKey());
-                    }
-                }
-                return acc;
-            }, {});
-            dispatch({ type: 'LOADED', payload: newObj });
-        } catch (err) {
-            console.log(err);
-            dispatch({ type: 'ERROR', error: err });
+    };
+    const sortbyCounter = (a: any, b: any) => {
+        const av = a['command'].includes('(C)');
+        const bv = b['command'].includes('(C)');
+        if (av === bv) {
+            return a['command'] < b['command'] ? -1 : 1;
+        } else if (av === false) {
+            return -1;
+        } else {
+            return 1;
         }
     };
-    Loader();
+    const order = (arr: any[], ordering?: (a: any, b: any) => number) => {
+        return arr.map((cur: { [key: string]: string }) =>
+            Object.keys(cur)
+                .sort(ordering)
+                .reduce((obj: any, key: string) => {
+                    obj[key] = cur[key];
+                    return obj;
+                }, {})
+        );
+    };
+    const frameOrder = (a: any, b: any) => {
+        const order = [
+            'frame',
+            'command',
+            'damage',
+            'range',
+            'hitframe',
+            'guardframe',
+            'state',
+        ];
+        return order.indexOf(a) - order.indexOf(b);
+    };
+    dispatch({ type: 'LOADING' });
+    console.log('loding');
+    try {
+        const data = await db
+            .collection('Character')
+            .doc(char)
+            .get()
+            .then((snap) => {
+                return snap.data() as CharProps;
+            });
+        const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
+            if (['Extrahit', 'combo', 'WallCombo', 'Pattern'].includes(cur)) {
+                acc[cur] = order(data[cur]).sort(sortbyCounter);
+            } else {
+                if (['standing', 'up'].includes(cur)) {
+                    acc[cur] = order(data[cur], frameOrder).sort(sortbyKey());
+                } else {
+                    acc[cur] = order(data[cur]).sort(sortbyKey());
+                }
+            }
+            return acc;
+        }, {});
+        dispatch({ type: 'LOADED', payload: newObj });
+        console.log('fin');
+    } catch (err) {
+        console.log(err);
+        dispatch({ type: 'ERROR', error: err });
+    }
 }
 async function UpdateHistory(
     char: string,
@@ -170,6 +168,47 @@ async function UpdateCharsFunc(order: any, category: string) {
         const documents = await db.collection('Character').get();
         documents.forEach((document) => {
             UpdatePropsFunc(order, document.id, category);
+        });
+    } catch (err) {
+        alert('캐릭터들의 정보를 받아오는데 실패했습니다');
+        console.log('에러 정보' + err);
+    }
+}
+
+export async function NewProps() {
+    async function UpdatePropsFunc(id: string) {
+        try {
+            try {
+                await db
+                    .collection('Character')
+                    .doc(id)
+                    .update({
+                        MainMove: [
+                            {
+                                frame: '',
+                                command: '',
+                                damage: '',
+                                hitframe: '',
+                                guardframe: '',
+                                range: '',
+                                state: '',
+                            },
+                        ],
+                    });
+            } catch (err) {
+                alert(id + '의 정보를 받아오는데 실패했습니다');
+                console.log('에러 정보' + err);
+            }
+        } catch (err) {
+            alert(id + '의 정보를 업데이트하는데 실패했습니다');
+            console.log('에러 정보' + err);
+        }
+    }
+
+    try {
+        const documents = await db.collection('Character').get();
+        documents.forEach((document) => {
+            UpdatePropsFunc(document.id);
         });
     } catch (err) {
         alert('캐릭터들의 정보를 받아오는데 실패했습니다');
