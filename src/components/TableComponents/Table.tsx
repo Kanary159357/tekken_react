@@ -84,8 +84,6 @@ const Table = ({ item }: dataProps) => {
     const handleModal = () => {
         if (user !== null) {
             modalDispatch({ type: 'ADD', payload: modalProps });
-        } else {
-            modalDispatch({ type: 'NOTUSER' });
         }
         setEdit(false);
         setValue(initialValue);

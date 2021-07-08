@@ -76,15 +76,15 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                     <TableControl onClick={() => setEdit(!edit)}>
                         <CustomIcon
                             icon={faEdit}
-                            color={Palette.icon_green_1}
-                            hovercolor={Palette.icon_green_2}
+                            color={Palette.green_1}
+                            hovercolor={Palette.green_2}
                         ></CustomIcon>
                     </TableControl>
                     <TableControl onClick={handleDelete}>
                         <CustomIcon
                             icon={faEraser}
-                            color={Palette.icon_red_1}
-                            hovercolor={Palette.icon_red_2}
+                            color={Palette.red_1}
+                            hovercolor={Palette.red_2}
                         ></CustomIcon>
                     </TableControl>
                 </>

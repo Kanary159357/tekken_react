@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import React from 'react';
 import { InfoProps } from '../../types/CharProps';
-import { Device } from '../../styles/theme';
+import { Device, FontColor, Palette } from '../../styles/theme';
 const InfoWrapper = styled.div`
     display: flex;
     height: 100%;
@@ -12,16 +12,16 @@ const InfoWrapper = styled.div`
     justify-content: center;
     @media ${Device.desktop} {
         height: 50px;
-        line-height: 50px;
+        line-height: 49px;
         width: 100%;
-        border-bottom: 1px solid black;
         flex-direction: row;
         justify-content: space-around;
-        background: #212529;
+        background: ${Palette.black_1};
     }
     @media ${Device.tablet} {
-        border-bottom: 1px solid black;
+        height: 100px;
         justify-content: center;
+        flex-direction: column;
     }
     h2 {
         @media ${Device.desktop} {
@@ -41,41 +41,37 @@ const InfoWrapper = styled.div`
     }
     .info_img {
         text-align: center;
-        color: #333;
+        color: ${FontColor.black};
+        @media ${Device.desktop} {
+            color: ${FontColor.white};
+        }
         img {
             width: 80%;
             @media ${Device.desktop} {
                 display: none;
             }
         }
-        @media ${Device.desktop} {
-            color: #dee2e6;
-        }
     }
     .link a {
         display: flex;
         text-decoration: none;
         align-items: center;
+        &,
         &:active,
         &:link,
         &:visited {
-            color: #333;
+            color: ${FontColor.black};
         }
         padding-bottom: 15px;
         @media ${Device.desktop} {
             padding-left: 10px;
             padding-bottom: 0;
-            color: #dee2e6;
-
+            &,
             &:active,
             &:link,
             &:visited {
-                color: #dee2e6;
+                color: ${FontColor.white};
             }
-        }
-        @media ${Device.tablet} {
-            display: none;
-            color: #dee2e6;
         }
     }
 

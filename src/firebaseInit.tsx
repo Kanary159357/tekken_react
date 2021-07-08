@@ -17,7 +17,14 @@ export default db;
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => {
-    auth.signInWithPopup(googleProvider);
+    auth.signInWithRedirect(googleProvider)
+        .then(() => {
+            console.log('안녕하세요');
+        })
+        .catch((err) => {
+            console.log(err);
+            alert('로그인 중 오류 발생. 에러 코드 ' + err);
+        });
 };
 
 export const logOut = () => {

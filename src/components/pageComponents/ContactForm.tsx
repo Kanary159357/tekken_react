@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { Device } from '../../styles/theme';
 
 const ContactWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         flex-direction: row;
         justify-content: space-around;
     }
@@ -25,7 +26,7 @@ const Contact = styled.a`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         justify-content: center;
         & + & {
             padding-left: 20px;
@@ -38,7 +39,7 @@ const CustomIcon = styled(FontAwesomeIcon)`
     color: ${(props) => props.color};
     display: block;
     padding-bottom: 20px;
-    @media all and (max-width: 768px) {
+    @media ${Device.tablet} {
         font-size: 1.5em;
     }
 `;

@@ -20,16 +20,18 @@ const CharWrap = styled.div`
 const Page = () => {
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
-    const tempdata = useDBData().charProps;
+    const { charProps } = useDBData();
     const tempDispatch = useDBDispatch();
     useEffect(() => {
+        console.log('temp');
         LoadData(charName, tempDispatch);
+        console.log(charProps);
     }, [charName]);
 
     return (
         <CharWrap>
-            <Info data={tempdata?.Info} />
-            <Main data={tempdata!} />
+            <Info data={charProps?.Info} />
+            <Main data={charProps!} />
         </CharWrap>
     );
 };

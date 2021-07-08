@@ -31,7 +31,7 @@ const Header = styled.div`
     vertical-align: middle;
     text-align: center;
     @media ${Device.desktop} {
-        height: 7%;
+        height: 10%;
         padding: 0;
         font-size: 20px;
         background-color: #333;

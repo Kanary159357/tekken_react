@@ -11,7 +11,7 @@ import {
 
 import CustomIcon from '../styles/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
-import { Palette } from '../styles/theme';
+import { FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../Context/UserContext';
 import { useDBDispatch } from '../Context/DBContext';
@@ -23,11 +23,11 @@ const Overlay = styled.div`
     width: 100%;
     height: 100%;
     z-index: 9997;
-    background: rgba(0, 0, 0, 0.6);
+    background: ${Palette.overlay};
 `;
 
 const ModalBox = styled.div`
-    background: #efefef;
+    background: ${Palette.white_2};
     min-width: 400px;
     width: 30%;
     max-width: 500px;
@@ -51,12 +51,11 @@ const ModalBox = styled.div`
 const ModalContent = styled.div`
     padding-top: 20px;
     font-size: 50px;
-
     .description {
         font-size: 18px;
         font-weight: 700;
         padding-top: 30px;
-        color: #757575;
+        color: ${FontColor.black};
     }
 `;
 
@@ -74,8 +73,6 @@ const CustomButton = styled(Button)`
     margin-left: 10px;
 `;
 
-interface TextProps {}
-
 const Modal = () => {
     const { modalAction, props } = useModalData();
     const modalDispatch = useModalDispatch();
@@ -87,9 +84,11 @@ const Modal = () => {
     const { description, values, oldvalues, charName } = props;
     const ModalAction = async () => {
         if (user === null) {
-            modalDispatch({ type: 'NOTUSER' });
+            signInWithGoogle();
+            CloseModal();
             return;
         }
+        console.log(user);
         const { uid } = user;
         switch (modalAction) {
             case 'add':
@@ -103,9 +102,6 @@ const Modal = () => {
             case 'edit':
                 await EditData(description, oldvalues!, values, charName, uid);
                 await LoadData(charName, dbDispatch);
-                break;
-            case 'notuser':
-                signInWithGoogle();
                 break;
             default:
                 alert('알수 없는 행동입니다!');
@@ -124,8 +120,7 @@ const Modal = () => {
             description: '수정하시겠습니까?',
         },
         notuser: {
-            description:
-                '정보를 수정하기 위해서는 로그인해야합니다. 하시겠습니까?',
+            description: '정보를 수정하기 위해서는 로그인해야합니다',
         },
     };
     return (
@@ -135,7 +130,7 @@ const Modal = () => {
                     <ModalContent>
                         <CustomIcon
                             icon={faExclamationTriangle}
-                            color={Palette.icon_red_1}
+                            color={Palette.red_1}
                         />
 
                         <div className="description">
@@ -145,8 +140,9 @@ const Modal = () => {
                     <ModalControl>
                         <ControlContent>
                             <CustomButton
-                                backColor={Palette.icon_red_1}
+                                backColor={Palette.red_1}
                                 onClick={ModalAction}
+                                hoverColor={Palette.red_2}
                             >
                                 Yes
                             </CustomButton>

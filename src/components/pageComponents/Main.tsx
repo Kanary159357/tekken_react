@@ -3,16 +3,18 @@ import React from 'react';
 
 import ExTabs from '../TableComponents/ExTabs';
 import { CharProps } from '../../types/CharProps';
-import { Device } from '../../styles/theme';
+import { Device, Palette } from '../../styles/theme';
 const MainWrapper = styled.div`
     display: flex;
     height: 100%;
     width: 100%;
-    background: #fff;
+    background: ${Palette.white_1};
 
     @media ${Device.desktop} {
         height: calc(100% - 50px);
-        width: 100%;
+    }
+    @media ${Device.tablet} {
+        height: calc(100% - 100px);
     }
 `;
 

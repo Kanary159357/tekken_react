@@ -6,6 +6,11 @@ export const FontSize = {
     base: calcRem(14),
 };
 
+export const FontColor = {
+    black: '#333333',
+    white: '#ffffff',
+};
+
 export const BreakPoint = {
     mobile: '720px',
     tablet: '768px',
@@ -19,13 +24,18 @@ export const Device = {
 };
 
 export const Palette = {
+    black_1: '#212529',
+    black_2: '#333333',
     white_1: '#ffffff',
+    white_2: '#efefef',
     border_1: '#d1d1d1',
-    font_white: '#ffffff',
-    icon_red_1: '#ff937d',
-    icon_red_2: '#b35440',
-    icon_green_1: '#b1e36f',
-    icon_green_2: '#93ad74',
+    red_1: '#ff937d',
+    red_2: '#b35440',
+    red_3: '#b33a20',
+    green_1: '#b1e36f',
+    green_2: '#93ad74',
     gray_1: '#c9c9c9',
     gray_2: '#8a8a8a',
+    gray_3: '#525252',
+    overlay: 'rgba(0, 0, 0, 0.6)',
 };

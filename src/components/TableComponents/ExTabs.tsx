@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import TabInfo from './TabInfo';
 import { CharProps } from '../../types/CharProps';
+import { Palette } from '../../styles/theme';
 const TabPanelBlock = styled.div<{ shown: boolean }>`
     ${({ shown }) => (shown ? `width:100%;  height:90%;` : 'width:0%')};
     overflow-y: scroll;
@@ -35,33 +33,87 @@ function TabPanel(props: PanelProps) {
     );
 }
 
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
-};
-
-const Root = styled.div`
-    flex-grow: 1;
-`;
-const TabsBlock = styled(Tabs)`
-    display: flex;
-    width: 100%;
-    justify-content: center;
-`;
-const TabBlock = styled(Tab)`
-    flex: 1 1 auto;
-`;
-
 interface TabsProps {
     Data: CharProps;
 }
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+`;
 
-export default function VerticalTabs({ Data }: TabsProps) {
-    const [value, setValue] = React.useState(0);
-    const handleChange = (event: any, newValue: number) => {
-        setValue(newValue);
+const TabControlBox = styled.div`
+    height: 70px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+`;
+
+const TabControlItemBox = styled.div<{ selected: boolean }>`
+    flex: 1 0;
+    text-align: center;
+    line-height: 70px;
+    cursor: pointer;
+    &::after {
+        content: '';
+        display: block;
+        width: ${(props) => (props.selected ? '100%' : '0%')};
+        height: 2px;
+        left: 50%;
+        bottom: 0;
+        background-color: ${Palette.red_1};
+        transition: all ease-in-out 0.2s;
+    }
+`;
+
+const TabControlItem = (props: {
+    content: string;
+    setValue: (index: number) => void;
+    index: number;
+    selected: boolean;
+}) => {
+    const { content, setValue, index, selected } = props;
+    const handleChange = () => {
+        setValue(index);
     };
+    console.log(selected);
+    return (
+        <TabControlItemBox selected={selected} onClick={handleChange}>
+            {content}
+        </TabControlItemBox>
+    );
+};
+
+const TabControl = ({
+    value,
+    setValue,
+    arr,
+}: {
+    value: number;
+    setValue: (index: number) => void;
+    arr: string[];
+}) => {
+    return (
+        <TabControlBox>
+            {arr.map((item, index) => {
+                return (
+                    <TabControlItem
+                        selected={index === value}
+                        content={item}
+                        setValue={setValue}
+                        index={index}
+                    />
+                );
+            })}
+        </TabControlBox>
+    );
+};
+
+function VerticalTabs({ Data }: TabsProps) {
+    const [value, setValue] = useState(0);
+
+    console.log(value);
     const PunishInfo = [
         {
             tag: {
@@ -130,13 +182,45 @@ export default function VerticalTabs({ Data }: TabsProps) {
         },
     ];
 
+    const PatternMainInfo = [
+        {
+            tag: {
+                description: 'MainMove',
+                detail: [
+                    'frame',
+                    'damage',
+                    'command',
+                    'range',
+                    'hitframe',
+                    'guardframe',
+                    'state',
+                ],
+            },
+            header: '주력기',
+            columns: [
+                '커맨드',
+                '데미지',
+                '프레임',
+                '히트프레임',
+                '가드프레임',
+                '판정',
+                '상황',
+            ],
+            data: Data.MainMove,
+        },
+        {
+            tag: { description: 'Pattern', detail: ['state', 'command'] },
+            header: '콤보',
+            columns: ['커맨드', '상황'],
+            data: Data.Pattern,
+        },
+    ];
+
+    const arr = ['딜레이캐치', '콤보', '잡기', '주력기 + 패턴'];
+
     return (
-        <Root>
-            <TabsBlock value={value} onChange={handleChange} centered>
-                <TabBlock label="딜레이캐치" />
-                <TabBlock label="콤보" />
-                <TabBlock label="잡기" />
-            </TabsBlock>
+        <Wrapper>
+            <TabControl setValue={setValue} value={value} arr={arr} />
             <TabPanel value={value} index={0}>
                 <TabInfo data={PunishInfo} />
             </TabPanel>
@@ -146,6 +230,11 @@ export default function VerticalTabs({ Data }: TabsProps) {
             <TabPanel value={value} index={2}>
                 <TabInfo data={ThrowInfo} />
             </TabPanel>
-        </Root>
+            <TabPanel value={value} index={3}>
+                <TabInfo data={PatternMainInfo} />
+            </TabPanel>
+        </Wrapper>
     );
 }
+
+export default VerticalTabs;

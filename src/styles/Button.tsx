@@ -1,24 +1,35 @@
 import styled from 'styled-components';
 import React from 'react';
+import { FontColor, Palette } from './theme';
 
-const ButtonWrapper = styled.div<{
+interface ButtonProps {
     width?: number;
     height?: number;
     backColor?: string;
-}>`
+    hoverColor?: string;
+    color?: string;
+}
+
+const ButtonWrapper = styled.div<ButtonProps>`
     width: ${(props) => (props.width ? props.width : '75px')};
     height: ${(props) => (props.height ? props.height : '25px')};
     border-radius: 4px;
-    color: #efefef;
+    color: ${(props) => (props.color ? props.color : FontColor.white)};
     display: inline-block;
     cursor: pointer;
     text-align: center;
-    background: ${(props) => (props.backColor ? props.backColor : '#eb5e34')};
+    background: ${(props) =>
+        props.backColor ? props.backColor : Palette.gray_2};
+    &:hover {
+        background: ${(props) =>
+            props.hoverColor ? props.hoverColor : Palette.gray_3};
+    }
 `;
 
-export interface Props extends React.HtmlHTMLAttributes<HTMLElement> {
+export interface Props
+    extends React.HtmlHTMLAttributes<HTMLElement>,
+        ButtonProps {
     children: React.ReactNode;
-    backColor?: string;
 }
 
 const Button = (props: Props) => {

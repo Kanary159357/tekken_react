@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
-import { Device } from '../styles/theme';
+import { Device, FontColor, Palette } from '../styles/theme';
 const Wrapper = styled.div<{ toggle: boolean }>`
     width: 240px;
-    background: #212529;
+    background: ${Palette.black_1};
     position: fixed;
     top: 0;
     left: 0;
@@ -45,7 +45,7 @@ const SideItemLink = styled.li`
     a {
         width: 100%;
         padding-left: 30px;
-        color: white;
+        color: ${FontColor.white};
         line-height: 3;
         user-select: none;
         cursor: pointer;
@@ -53,24 +53,25 @@ const SideItemLink = styled.li`
         &:active,
         &:link,
         &:hover {
-            color: #fff;
+            color: ${FontColor.white};
         }
     }
     &:hover {
-        background: #333;
-        color: #fff;
+        background: ${Palette.black_2};
+        color: ${FontColor.white};
     }
 `;
 
 interface itemProps {
     path: string;
+    handleToggle: () => void;
 }
 
-const SidebarItem = ({ path }: itemProps) => {
+const SidebarItem = ({ path, handleToggle }: itemProps) => {
     const checkedPath = path.replace('_', ' ');
 
     return (
-        <SideItemLink>
+        <SideItemLink onClick={handleToggle}>
             <Link to={`/data/:${checkedPath}`}>{checkedPath}</Link>
         </SideItemLink>
     );
@@ -78,18 +79,72 @@ const SidebarItem = ({ path }: itemProps) => {
 
 interface Props {
     toggle: boolean;
-    Data: string[];
+    handleToggle: () => void;
 }
+const CharNames = [
+    'Akuma',
+    'Alisa',
+    'Anna',
+    'ArmorKing',
+    'Asuka',
+    'Bob',
+    'Bryan',
+    'Cladio',
+    'DevilJin',
+    'Dragunov',
+    'Eddy',
+    'Eliza',
+    'Feng',
+    'Geese',
+    'Gigas',
+    'Heihachi',
+    'Hworang',
+    'Jack7',
+    'Jin',
+    'Josie',
+    'Julia',
+    'Katarina',
+    'Kazumi',
+    'Kazuya',
+    'King',
+    'Kuma',
+    'Kunimitsu',
+    'Lars',
+    'Law',
+    'Lee',
+    'Lei',
+    'Leo',
+    'Lidia',
+    'Lili',
+    'Lucky',
+    'Marduk',
+    'MasterRaven',
+    'Miguel',
+    'Negan',
+    'Nina',
+    'Noctis',
+    'Paul',
+    'Shaheen',
+    'Steve',
+    'Xiaoyu',
+    'Yoshimitsu',
+];
 
-const Sidebar = ({ toggle, Data }: Props) => {
+const Sidebar = ({ toggle, handleToggle }: Props) => {
     return (
         <Wrapper toggle={toggle}>
             <div className="Main">
                 <Link to="/">Tekken-Info</Link>
             </div>
             <UserProfile />
-            {Data.map((element, index) => {
-                return <SidebarItem path={element} key={index} />;
+            {CharNames.map((element, index) => {
+                return (
+                    <SidebarItem
+                        handleToggle={handleToggle}
+                        path={element}
+                        key={index}
+                    />
+                );
             })}
         </Wrapper>
     );

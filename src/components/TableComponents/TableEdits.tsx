@@ -39,14 +39,11 @@ const TableEdits = ({
                 />
             ))}
 
-            <EditTableControl
-                backcolor={Palette.icon_green_1}
-                onClick={handleModal}
-            >
+            <EditTableControl backcolor={Palette.green_1} onClick={handleModal}>
                 <CustomIcon icon={faCheck} />
             </EditTableControl>
             <EditTableControl
-                backcolor={Palette.icon_red_1}
+                backcolor={Palette.red_1}
                 onClick={() => setEdit(false)}
             >
                 <CustomIcon icon={faTimes} />

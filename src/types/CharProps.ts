@@ -6,6 +6,8 @@ export interface CharProps {
     Throw: Throw[];
     Extrahit: Extrahit[];
     Info: InfoProps[];
+    Pattern: Pattern[];
+    MainMove: MainMove[];
     [key: string]:
         | Standing[]
         | Up[]
@@ -43,6 +45,22 @@ export interface WallCombo {
     command: string;
     state: string;
     [key: string]: boolean | number | string;
+}
+
+export interface Pattern {
+    command: string;
+    state: string;
+    [key: string]: boolean | number | string;
+}
+
+export interface MainMove {
+    frame: string;
+    damage: string;
+    command: string;
+    range: string;
+    hitframe: string;
+    guardframe: string;
+    state: string;
 }
 
 export interface Throw {

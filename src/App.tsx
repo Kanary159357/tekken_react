@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Sidebar from './components/Sidebar';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Page from './components/CharPage';
 import React from 'react';
 import {
@@ -16,7 +16,8 @@ import Error from './components/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
 import CustomIcon from './styles/Icon';
-import { Device } from './styles/theme';
+import { Device, Palette } from './styles/theme';
+import { NewProps } from './Context/DBContextFunc';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -45,6 +46,7 @@ const MenuButtonBlock = styled(CustomIcon)<MenuProps>`
     font-size: 20px;
     color: #fff;
     visibility: hidden;
+    cursor: pointer;
     @media ${Device.desktop} {
         visibility: visible;
     }
@@ -55,64 +57,16 @@ const Overlay = styled.div<{ toggle: boolean }>`
     position: fixed;
     height: 100%;
     z-index: 996;
-    background: rgba(122, 122, 122, 0.5);
+    background: ${Palette.overlay};
     visibility: ${(props) => (props.toggle ? 'visible' : 'hidden')};
 `;
 
-const CharNames = [
-    'Akuma',
-    'Alisa',
-    'Anna',
-    'ArmorKing',
-    'Asuka',
-    'Bob',
-    'Bryan',
-    'Cladio',
-    'DevilJin',
-    'Dragunov',
-    'Eddy',
-    'Eliza',
-    'Feng',
-    'Geese',
-    'Gigas',
-    'Heihachi',
-    'Hworang',
-    'Jack7',
-    'Jin',
-    'Josie',
-    'Julia',
-    'Katarina',
-    'Kazumi',
-    'Kazuya',
-    'King',
-    'Kuma',
-    'Kunimitsu',
-    'Lars',
-    'Law',
-    'Lee',
-    'Lei',
-    'Leo',
-    'Lidia',
-    'Lili',
-    'Lucky',
-    'Marduk',
-    'MasterRaven',
-    'Miguel',
-    'Negan',
-    'Nina',
-    'Noctis',
-    'Paul',
-    'Shaheen',
-    'Steve',
-    'Xiaoyu',
-    'Yoshimitsu',
-];
-
 function App() {
     const [toggle, setToggle] = useState(false);
-    const { loading, error } = useDBData();
     const { open } = useModalData();
-
+    const handleToggle = useCallback(() => {
+        setToggle(false);
+    }, []);
     return (
         <>
             <title>Tekken_info 0.1.0</title>
@@ -120,27 +74,20 @@ function App() {
             <Wrapper>
                 <MenuButtonBlock
                     icon={toggle ? faTimes : faBars}
-                    onClick={() => {
-                        setToggle(!toggle);
-                    }}
+                    onClick={() => setToggle(!toggle)}
                 />
-                <Sidebar toggle={toggle} Data={CharNames} />
-                <Overlay
-                    toggle={toggle}
-                    onClick={() => {
-                        setToggle(!toggle);
-                    }}
-                />
+                <Sidebar toggle={toggle} handleToggle={handleToggle} />
+                <Overlay toggle={toggle} onClick={handleToggle} />
 
                 <PageContent>
+                    <button onClick={NewProps}>안녕</button>
+
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
                         <Route path="/data/:char" exact={true}>
                             <Page />
                         </Route>
-                        <Route path="/404" exact={true}>
-                            <Error />
-                        </Route>
+                        <Route component={Error} />
                     </Switch>
                 </PageContent>
                 {open && <Modal />}

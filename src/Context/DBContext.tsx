@@ -18,6 +18,8 @@ const InitialState: StateProps = {
         Throw: [],
         Extrahit: [],
         Info: [],
+        Pattern: [],
+        MainMove: [],
     },
     loading: false,
     error: null,
