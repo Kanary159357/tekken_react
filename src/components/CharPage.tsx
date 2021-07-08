@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import { useDBData, useDBDispatch } from '../Context/DBContext';
 import { LoadData } from '../Context/DBContextFunc';
 import { Device } from '../styles/theme';
+import { LoadingWithoutOverlay } from './Loading';
 
 const CharWrap = styled.div`
     display: flex;
@@ -20,7 +21,7 @@ const CharWrap = styled.div`
 const Page = () => {
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
-    const { charProps } = useDBData();
+    const { charProps, loading } = useDBData();
     const tempDispatch = useDBDispatch();
     useEffect(() => {
         console.log('temp');
@@ -30,8 +31,14 @@ const Page = () => {
 
     return (
         <CharWrap>
-            <Info data={charProps?.Info} />
-            <Main data={charProps!} />
+            {loading ? (
+                <LoadingWithoutOverlay />
+            ) : (
+                <>
+                    <Info data={charProps?.Info} />
+                    <Main data={charProps!} />
+                </>
+            )}
         </CharWrap>
     );
 };

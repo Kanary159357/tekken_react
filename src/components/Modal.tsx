@@ -14,7 +14,8 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../Context/UserContext';
-import { useDBDispatch } from '../Context/DBContext';
+import { useDBData, useDBDispatch } from '../Context/DBContext';
+import { LoadingWithOverlay } from './Loading';
 
 const Overlay = styled.div`
     position: fixed;
@@ -78,6 +79,7 @@ const Modal = () => {
     const modalDispatch = useModalDispatch();
     const dbDispatch = useDBDispatch();
     const user = useUserData()!;
+    const { loading } = useDBData();
     const CloseModal = () => {
         modalDispatch({ type: 'SET', payload: false });
     };
@@ -88,18 +90,20 @@ const Modal = () => {
             CloseModal();
             return;
         }
-        console.log(user);
         const { uid } = user;
         switch (modalAction) {
             case 'add':
+                dbDispatch({ type: 'LOADING' });
                 await AddData(description, values, charName, uid);
                 await LoadData(charName, dbDispatch);
                 break;
             case 'delete':
+                dbDispatch({ type: 'LOADING' });
                 await DeleteData(description, values, charName, uid);
                 await LoadData(charName, dbDispatch);
                 break;
             case 'edit':
+                dbDispatch({ type: 'LOADING' });
                 await EditData(description, oldvalues!, values, charName, uid);
                 await LoadData(charName, dbDispatch);
                 break;
@@ -123,35 +127,44 @@ const Modal = () => {
             description: '정보를 수정하기 위해서는 로그인해야합니다',
         },
     };
+    console.log(loading);
     return (
         <>
-            <ModalBox>
-                <div className="box">
-                    <ModalContent>
-                        <CustomIcon
-                            icon={faExclamationTriangle}
-                            color={Palette.red_1}
-                        />
+            {loading ? (
+                <LoadingWithOverlay />
+            ) : (
+                <>
+                    <ModalBox>
+                        <div className="box">
+                            <ModalContent>
+                                <CustomIcon
+                                    icon={faExclamationTriangle}
+                                    color={Palette.red_1}
+                                />
 
-                        <div className="description">
-                            {modalText[modalAction].description}
+                                <div className="description">
+                                    {modalText[modalAction].description}
+                                </div>
+                            </ModalContent>
+                            <ModalControl>
+                                <ControlContent>
+                                    <CustomButton
+                                        backColor={Palette.red_1}
+                                        onClick={ModalAction}
+                                        hoverColor={Palette.red_2}
+                                    >
+                                        Yes
+                                    </CustomButton>
+                                    <CustomButton onClick={CloseModal}>
+                                        No
+                                    </CustomButton>
+                                </ControlContent>
+                            </ModalControl>
                         </div>
-                    </ModalContent>
-                    <ModalControl>
-                        <ControlContent>
-                            <CustomButton
-                                backColor={Palette.red_1}
-                                onClick={ModalAction}
-                                hoverColor={Palette.red_2}
-                            >
-                                Yes
-                            </CustomButton>
-                            <CustomButton onClick={CloseModal}>No</CustomButton>
-                        </ControlContent>
-                    </ModalControl>
-                </div>
-            </ModalBox>
-            <Overlay onClick={CloseModal}></Overlay>
+                    </ModalBox>
+                    <Overlay onClick={CloseModal}></Overlay>
+                </>
+            )}
         </>
     );
 };

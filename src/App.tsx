@@ -80,8 +80,6 @@ function App() {
                 <Overlay toggle={toggle} onClick={handleToggle} />
 
                 <PageContent>
-                    <button onClick={NewProps}>안녕</button>
-
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
                         <Route path="/data/:char" exact={true}>

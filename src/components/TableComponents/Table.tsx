@@ -74,7 +74,6 @@ const Table = ({ item }: dataProps) => {
     const modalDispatch = useModalDispatch();
     const [edit, setEdit] = useState(false);
     const { values, setValue, handleChange } = useEditValue(initialValue);
-
     const modalProps = {
         description: tag.description,
         values: values,

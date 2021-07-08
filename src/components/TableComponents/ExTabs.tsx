@@ -77,7 +77,6 @@ const TabControlItem = (props: {
     const handleChange = () => {
         setValue(index);
     };
-    console.log(selected);
     return (
         <TabControlItemBox selected={selected} onClick={handleChange}>
             {content}
@@ -103,6 +102,7 @@ const TabControl = ({
                         content={item}
                         setValue={setValue}
                         index={index}
+                        key={index}
                     />
                 );
             })}
@@ -113,7 +113,6 @@ const TabControl = ({
 function VerticalTabs({ Data }: TabsProps) {
     const [value, setValue] = useState(0);
 
-    console.log(value);
     const PunishInfo = [
         {
             tag: {
@@ -187,9 +186,9 @@ function VerticalTabs({ Data }: TabsProps) {
             tag: {
                 description: 'MainMove',
                 detail: [
-                    'frame',
-                    'damage',
                     'command',
+                    'damage',
+                    'frame',
                     'range',
                     'hitframe',
                     'guardframe',
@@ -201,9 +200,9 @@ function VerticalTabs({ Data }: TabsProps) {
                 '커맨드',
                 '데미지',
                 '프레임',
-                '히트프레임',
-                '가드프레임',
                 '판정',
+                '가드프레임',
+                '히트프레임',
                 '상황',
             ],
             data: Data.MainMove,

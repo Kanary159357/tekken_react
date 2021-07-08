@@ -63,12 +63,15 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
             if (['Extrahit', 'combo', 'WallCombo', 'Pattern'].includes(cur)) {
                 acc[cur] = order(data[cur]).sort(sortbyCounter);
+            }
+            if (['standing', 'up'].includes(cur)) {
+                acc[cur] = order(data[cur], frameOrder).sort(sortbyKey());
+            }
+            if (['MainMove'].includes(cur)) {
+                console.log('hui');
+                acc[cur] = order(data[cur]).sort(sortbyKey());
             } else {
-                if (['standing', 'up'].includes(cur)) {
-                    acc[cur] = order(data[cur], frameOrder).sort(sortbyKey());
-                } else {
-                    acc[cur] = order(data[cur]).sort(sortbyKey());
-                }
+                acc[cur] = order(data[cur]).sort();
             }
             return acc;
         }, {});
@@ -222,6 +225,7 @@ export const AddData = async (
     char: string,
     uid: string
 ) => {
+    console.log(tag, data, char, uid);
     await AddFunc(char, data, tag);
     await UpdateHistory(char, data, uid, 'ADD');
 };

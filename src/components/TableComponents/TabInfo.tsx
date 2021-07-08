@@ -1,6 +1,17 @@
 import Table from './Table';
 import React from 'react';
 import styled from 'styled-components';
+import {
+    Combo,
+    Extrahit,
+    InfoProps,
+    MainMove,
+    Pattern,
+    Standing,
+    Throw,
+    Up,
+    WallCombo,
+} from '../../types/CharProps';
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -15,7 +26,16 @@ interface TabInfoProps {
 export interface TableItemProps {
     header: string;
     columns: string[];
-    data: any;
+    data:
+        | Standing[]
+        | Up[]
+        | Combo[]
+        | WallCombo[]
+        | Throw[]
+        | Extrahit[]
+        | InfoProps[]
+        | Pattern[]
+        | MainMove[];
     tag: { description: string; detail: string[] };
 }
 
