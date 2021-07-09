@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Device, Palette } from '../styles/theme';
-
+import Overlay from './Overlay';
 const Wrapper = styled.div`
     align-items: center;
     display: flex;
@@ -20,19 +20,6 @@ const WithoutWrapper = styled.div`
     height: 100%;
     svg {
         z-index: 9999;
-    }
-`;
-
-const Overlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    background: ${Palette.overlay};
-    @media ${Device.desktop} {
-        background: ${Palette.white_1};
     }
 `;
 
@@ -88,9 +75,9 @@ const LoadingWithoutOverlay = () => {
                         cy="50"
                         fill="none"
                         stroke={Palette.red_1}
-                        stroke-width="10"
+                        strokeWidth="10"
                         r="35"
-                        stroke-dasharray="164.93361431346415 56.97787143782138"
+                        strokeDasharray="164.93361431346415 56.97787143782138"
                     >
                         <animateTransform
                             attributeName="transform"

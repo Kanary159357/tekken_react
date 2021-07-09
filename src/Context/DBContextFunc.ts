@@ -64,7 +64,6 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             if (['Extrahit', 'combo', 'WallCombo', 'Pattern'].includes(cur)) {
                 acc[cur] = order(data[cur]).sort(sortbyCounter);
             } else if (['standing', 'up'].includes(cur)) {
-                console.log('hi');
                 acc[cur] = order(data[cur], frameOrder).sort(sortbyKey());
             } else if (['MainMove'].includes(cur)) {
                 acc[cur] = order(data[cur]).sort(sortbyKey());
@@ -73,7 +72,6 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             }
             return acc;
         }, {});
-        console.log(newObj);
         dispatch({ type: 'LOADED', payload: newObj });
     } catch (err) {
         console.log(err);

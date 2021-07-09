@@ -1,4 +1,6 @@
-import react
+import { Palette, Device } from '../styles/theme';
+import styled from 'styled-components';
+import React from 'react';
 
 const OverlayWrapper = styled.div`
     position: fixed;
@@ -6,14 +8,12 @@ const OverlayWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 1;
     background: ${Palette.overlay};
-    @media ${Device.desktop} {
-        background: ${Palette.white_1};
-    }
 `;
 
-
-const Overlay = () => {};
+const Overlay = ({ func }: { func?: () => void }) => {
+    return <OverlayWrapper onClick={func} />;
+};
 
 export default Overlay;

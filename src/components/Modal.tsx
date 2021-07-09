@@ -16,16 +16,7 @@ import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../Context/UserContext';
 import { useDBData, useDBDispatch } from '../Context/DBContext';
 import { LoadingWithOverlay } from './Loading';
-
-const Overlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9997;
-    background: ${Palette.overlay};
-`;
+import Overlay from './Overlay';
 
 const ModalBox = styled.div`
     background: ${Palette.white_2};
@@ -162,7 +153,7 @@ const Modal = () => {
                             </ModalControl>
                         </div>
                     </ModalBox>
-                    <Overlay onClick={CloseModal}></Overlay>
+                    <Overlay func={CloseModal} />
                 </>
             )}
         </>

@@ -86,8 +86,6 @@ const Table = ({ item }: dataProps) => {
     };
     const user = useUserData();
 
-    console.log(data);
-
     const handleModal = () => {
         if (user !== null) {
             modalDispatch({ type: 'ADD', payload: modalProps });
