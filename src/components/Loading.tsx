@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Palette } from '../styles/theme';
+import { Device, Palette } from '../styles/theme';
 
 const Wrapper = styled.div`
     align-items: center;
@@ -31,6 +31,9 @@ const Overlay = styled.div`
     height: 100%;
     z-index: 2;
     background: ${Palette.overlay};
+    @media ${Device.desktop} {
+        background: ${Palette.white_1};
+    }
 `;
 
 const LoadingWithOverlay = () => {
@@ -48,7 +51,7 @@ const LoadingWithOverlay = () => {
                         cx="50"
                         cy="50"
                         fill="none"
-                        stroke="#e15b64"
+                        stroke={Palette.red_1}
                         strokeWidth="10"
                         r="35"
                         strokeDasharray="164.93361431346415 56.97787143782138"

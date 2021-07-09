@@ -40,7 +40,7 @@ interface MenuProps {
 
 const MenuButtonBlock = styled(CustomIcon)<MenuProps>`
     position: fixed;
-    top: 2.5%;
+    top: 15px;
     left: 20px;
     z-index: 999;
     font-size: 20px;

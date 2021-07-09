@@ -209,7 +209,7 @@ function VerticalTabs({ Data }: TabsProps) {
         },
         {
             tag: { description: 'Pattern', detail: ['state', 'command'] },
-            header: '콤보',
+            header: '패턴',
             columns: ['커맨드', '상황'],
             data: Data.Pattern,
         },

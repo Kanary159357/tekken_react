@@ -12,12 +12,18 @@ import { Device, Palette } from '../../styles/theme';
 import { useUserData } from '../../Context/UserContext';
 import { useModalDispatch } from '../../Context/ModalContext';
 
+const TableWrapper = styled.div`
+    margin-bottom: 20px;
+    @media ${Device.mobile} {
+        font-size: 15px;
+    }
+`;
+
 const TableContent = styled.table`
     width: 90%;
     border-collapse: collapse;
     border-radius: 10px;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin: 10px auto;
     @media ${Device.tablet} {
         width: 100%;
     }
@@ -70,7 +76,6 @@ const Table = ({ item }: dataProps) => {
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
     const colSpan = tag.detail.length;
-    const user = useUserData();
     const modalDispatch = useModalDispatch();
     const [edit, setEdit] = useState(false);
     const { values, setValue, handleChange } = useEditValue(initialValue);
@@ -79,18 +84,22 @@ const Table = ({ item }: dataProps) => {
         values: values,
         charName: charName,
     };
+    const user = useUserData();
+
     console.log(data);
+
     const handleModal = () => {
         if (user !== null) {
             modalDispatch({ type: 'ADD', payload: modalProps });
+        } else {
+            modalDispatch({ type: 'NOTUSER' });
         }
-        modalDispatch({ type: 'NOTUSER' });
         setEdit(false);
         setValue(initialValue);
     };
 
     return (
-        <>
+        <TableWrapper>
             <h2>{header}</h2>
             <TableContent>
                 <thead>
@@ -134,7 +143,7 @@ const Table = ({ item }: dataProps) => {
                     )}
                 </tbody>
             </TableContent>
-        </>
+        </TableWrapper>
     );
 };
 
