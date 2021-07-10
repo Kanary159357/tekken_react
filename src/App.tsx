@@ -11,13 +11,11 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { useDBData } from './Context/DBContext';
 import Error from './components/Error';
 import Modal from './components/Modal';
 import { useModalData } from './Context/ModalContext';
 import CustomIcon from './styles/Icon';
 import { Device, Palette } from './styles/theme';
-import { NewProps } from './Context/DBContextFunc';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;

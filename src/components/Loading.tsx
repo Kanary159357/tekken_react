@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Device, Palette } from '../styles/theme';
+import { Palette } from '../styles/theme';
 import Overlay from './Overlay';
 const Wrapper = styled.div`
     align-items: center;

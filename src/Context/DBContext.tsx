@@ -1,6 +1,4 @@
-import firebase from 'firebase';
 import React, { createContext, Dispatch, useContext, useReducer } from 'react';
-import db from '../firebaseInit';
 import { CharProps } from '../types/CharProps';
 
 interface StateProps {

@@ -11,7 +11,7 @@ import {
 
 import CustomIcon from '../styles/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
-import { FontColor, Palette } from '../styles/theme';
+import { Device, FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../Context/UserContext';
 import { useDBData, useDBDispatch } from '../Context/DBContext';
@@ -21,7 +21,7 @@ import Overlay from './Overlay';
 const ModalBox = styled.div`
     background: ${Palette.white_2};
     min-width: 400px;
-    width: 30%;
+    width: 35%;
     max-width: 500px;
     height: 200px;
     position: absolute;
@@ -43,11 +43,15 @@ const ModalBox = styled.div`
 const ModalContent = styled.div`
     padding-top: 20px;
     font-size: 50px;
+
     .description {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
-        padding-top: 30px;
+        padding-top: 20px;
         color: ${FontColor.black};
+        @media ${Device.desktop} {
+            font-size: 15px;
+        }
     }
 `;
 

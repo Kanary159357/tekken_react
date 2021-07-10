@@ -5,9 +5,11 @@ import styled from 'styled-components';
 import { useParams } from 'react-router';
 import { useDBData, useDBDispatch } from '../Context/DBContext';
 import { LoadData } from '../Context/DBContextFunc';
-import { Device } from '../styles/theme';
+import { Device, Palette } from '../styles/theme';
 import { LoadingWithoutOverlay } from './Loading';
 import CommandDescription from './CommandDescription';
+import CustomIcon from '../styles/Icon';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 const CharWrap = styled.div`
     display: flex;
@@ -19,16 +21,29 @@ const CharWrap = styled.div`
     }
 `;
 
+const DescriptionButton = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    @media ${Device.desktop} {
+        top: 5px;
+        right: 20px;
+    }
+`;
+
 const Page = () => {
     let { char }: { char: string } = useParams();
     const charName = char.substring(1);
     const { charProps, loading } = useDBData();
     const tempDispatch = useDBDispatch();
-    const [description, setDescription] = useState(true);
+    const [description, setDescription] = useState(false);
     useEffect(() => {
         console.log('temp');
         LoadData(charName, tempDispatch);
         console.log(charProps);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [charName]);
 
     const handleDescription = useCallback(() => {
@@ -36,6 +51,9 @@ const Page = () => {
     }, []);
     return (
         <CharWrap>
+            <DescriptionButton onClick={() => setDescription(true)}>
+                <CustomIcon icon={faQuestionCircle} color={Palette.white_1} />
+            </DescriptionButton>
             {loading ? (
                 <LoadingWithoutOverlay />
             ) : (

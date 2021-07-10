@@ -6,13 +6,28 @@ import frame1 from '../img/Frame1.png';
 import Overlay from './Overlay';
 import CustomIcon from '../styles/Icon';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+const Animation = styled.div`
+    animation: fadeInAnimation 0.3s;
+
+    @keyframes fadeInAnimation {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+`;
+
 const Wrapper = styled.div`
     position: fixed;
+    left: calc(50% - 200px);
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     z-index: 2;
+    @media ${Device.tablet} {
+        left: calc(50% - 175px);
+    }
 `;
 
 const DescriptionWrapper = styled.div`
@@ -123,9 +138,10 @@ const DeleteButton = styled.div`
     right: 20px;
     text-align: center;
     color: black;
+    cursor: pointer;
 `;
 const CommandDescription = ({ func }: { func?: () => void }) => (
-    <>
+    <Animation>
         <Wrapper>
             <DescriptionWrapper>
                 <DeleteButton onClick={func}>
@@ -159,7 +175,7 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
             </DescriptionWrapper>
         </Wrapper>
         <Overlay func={func} />
-    </>
+    </Animation>
 );
 
 export default CommandDescription;

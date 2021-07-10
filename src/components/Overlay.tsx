@@ -1,4 +1,4 @@
-import { Palette, Device } from '../styles/theme';
+import { Palette } from '../styles/theme';
 import styled from 'styled-components';
 import React from 'react';
 

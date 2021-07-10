@@ -31,7 +31,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
     useEffect(() => {
         setValue(row);
         setEdit(false);
-    }, [row]);
+    }, [row, setValue]);
 
     const modalProps = {
         description: tag,
