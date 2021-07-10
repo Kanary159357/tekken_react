@@ -1,10 +1,20 @@
 export interface CharProps {
-    Standings: Standing[];
-    Ups: Up[];
-    Combos: Combo[];
-    WallCombos: WallCombo[];
-    Throws: Throw[];
-    Info: Info;
+    standing: Standing[];
+    up: Up[];
+    combo: Combo[];
+    WallCombo: WallCombo[];
+    Throw: Throw[];
+    Extrahit: Extrahit[];
+    Info: InfoProps[];
+    Pattern: Pattern[];
+    MainMove: MainMove[];
+    [key: string]:
+        | Standing[]
+        | Up[]
+        | Combo[]
+        | Throw[]
+        | Extrahit[]
+        | InfoProps[];
 }
 
 export interface Standing {
@@ -13,6 +23,7 @@ export interface Standing {
     command: string;
     range: string;
     hitframe: any;
+    state: string;
 }
 
 export interface Up {
@@ -21,15 +32,34 @@ export interface Up {
     command: string;
     range: string;
     hitframe: any;
+    state: string;
 }
 
 export interface Combo {
     command: string;
     state: string;
+    [key: string]: boolean | number | string;
 }
 
 export interface WallCombo {
     command: string;
+    state: string;
+    [key: string]: boolean | number | string;
+}
+
+export interface Pattern {
+    command: string;
+    state: string;
+    [key: string]: boolean | number | string;
+}
+
+export interface MainMove {
+    frame: string;
+    damage: string;
+    command: string;
+    range: string;
+    hitframe: string;
+    guardframe: string;
     state: string;
 }
 
@@ -41,9 +71,18 @@ export interface Throw {
     state: string;
 }
 
-export interface Info {
+export interface Extrahit {
+    command: string;
+    state: string;
+}
+
+export interface InfoProps {
     punish: string;
     combo: string;
     dc: string;
     name: string;
 }
+
+export type Ops = {
+    [key: string]: Object;
+};

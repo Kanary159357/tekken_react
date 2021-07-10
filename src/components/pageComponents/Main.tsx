@@ -1,20 +1,28 @@
 import styled from 'styled-components';
 import React from 'react';
 
-import ExTabs from '../CharInfo/ExTabs';
+import ExTabs from '../TableComponents/ExTabs';
+import { CharProps } from '../../types/CharProps';
+import { Device, Palette } from '../../styles/theme';
 const MainWrapper = styled.div`
     display: flex;
-    height: 90%;
-    width: 70%;
-    background: #fff;
+    height: 100%;
+    width: 100%;
+    background: ${Palette.white_1};
 
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         height: calc(100% - 50px);
-        width: 100%;
+    }
+    @media ${Device.tablet} {
+        height: calc(100% - 100px);
     }
 `;
 
-const Main = ({ data }: any) => {
+interface MainProps {
+    data: CharProps;
+}
+
+const Main = ({ data }: MainProps) => {
     return (
         <MainWrapper>
             <ExTabs Data={data} />

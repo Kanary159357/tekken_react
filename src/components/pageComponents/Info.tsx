@@ -1,28 +1,30 @@
 import styled from 'styled-components';
 
 import React from 'react';
+import { InfoProps } from '../../types/CharProps';
+import { Device, FontColor, Palette } from '../../styles/theme';
 const InfoWrapper = styled.div`
     display: flex;
-    background: #fff;
-    height: 90%;
+    height: 100%;
+    width: 300px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    @media all and (max-width: 1140px) {
+    @media ${Device.desktop} {
         height: 50px;
-        line-height: 50px;
+        line-height: 49px;
         width: 100%;
-        border-bottom: 1px solid black;
         flex-direction: row;
         justify-content: space-around;
-        background: #212529;
+        background: ${Palette.black_1};
     }
-    @media all and (max-width: 768px) {
-        border-bottom: 1px solid black;
+    @media ${Device.tablet} {
+        height: 100px;
         justify-content: center;
+        flex-direction: column;
     }
     h2 {
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             margin: 0;
             font-size: 20px;
         }
@@ -31,7 +33,7 @@ const InfoWrapper = styled.div`
     .link {
         display: flex;
         flex-direction: column;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             flex-direction: row;
             align-items: center;
             justify-content: center;
@@ -39,41 +41,37 @@ const InfoWrapper = styled.div`
     }
     .info_img {
         text-align: center;
-        color: #333;
+        color: ${FontColor.black};
+        @media ${Device.desktop} {
+            color: ${FontColor.white};
+        }
         img {
             width: 80%;
-            @media all and (max-width: 1140px) {
+            @media ${Device.desktop} {
                 display: none;
             }
-        }
-        @media all and (max-width: 1140px) {
-            color: #dee2e6;
         }
     }
     .link a {
         display: flex;
         text-decoration: none;
         align-items: center;
+        &,
         &:active,
         &:link,
         &:visited {
-            color: #333;
+            color: ${FontColor.black};
         }
         padding-bottom: 15px;
-        @media all and (max-width: 1140px) {
+        @media ${Device.desktop} {
             padding-left: 10px;
             padding-bottom: 0;
-            color: #dee2e6;
-
+            &,
             &:active,
             &:link,
             &:visited {
-                color: #dee2e6;
+                color: ${FontColor.white};
             }
-        }
-        @media all and (max-width: 768px) {
-            display: none;
-            color: #dee2e6;
         }
     }
 
@@ -84,16 +82,14 @@ const InfoWrapper = styled.div`
         align-items: center;
         margin-left: 10px;
         border-radius: 30%;
-        @media all and (max-width: 1140px) {
-            width: 1em;
-            height: 1em;
-        }
-        @media all and (max-width: 1140px) {
+        margin-right: 10px;
+
+        @media ${Device.desktop} {
             width: 2em;
             height: 2em;
             text-align: center;
         }
-        @media all and (max-width: 768px) {
+        @media ${Device.tablet} {
             width: 1.5em;
             height: 1.5em;
             text-align: center;
@@ -101,22 +97,27 @@ const InfoWrapper = styled.div`
     }
 `;
 
-const Info = ({ data }: any) => {
-    console.log(data[0].name);
+interface InfoInterface {
+    data: InfoProps[] | undefined;
+}
+
+const Info = ({ data }: InfoInterface) => {
+    const info = data === undefined ? null : data[0];
+
     return (
         <InfoWrapper>
             <div className="info_img">
                 <img
-                    src={process.env.PUBLIC_URL + `/img/${data[0].name}.jpg`}
+                    src={process.env.PUBLIC_URL + `/img/${info?.name}.jpg`}
                     alt="char"
                 />
-                <h2>{data[0].name}</h2>
+                <h2>{info?.name}</h2>
             </div>
             <div className="link">
                 <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={data[0].punish}
+                    href={info?.punish}
                 >
                     <img
                         src={process.env.PUBLIC_URL + `/img/youtube.png`}
@@ -124,18 +125,14 @@ const Info = ({ data }: any) => {
                     />
                     딜캐
                 </a>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={data[0].combo}
-                >
+                <a target="_blank" rel="noopener noreferrer" href={info?.combo}>
                     <img
                         src={process.env.PUBLIC_URL + `/img/youtube.png`}
                         alt="youtube"
                     />
                     콤보
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href={data[0].dc}>
+                <a target="_blank" rel="noopener noreferrer" href={info?.dc}>
                     <img
                         src={process.env.PUBLIC_URL + `/img/dc.png`}
                         alt="dc"
