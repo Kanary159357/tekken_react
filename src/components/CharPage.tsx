@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Info from './pageComponents/Info';
-import Main from './pageComponents/Main';
+import Info from './Info';
+import Main from './Main';
 import styled from 'styled-components';
 import { useParams } from 'react-router';
 import { useDBData, useDBDispatch } from '../Context/DBContext';
@@ -52,7 +52,7 @@ const Page = () => {
     return (
         <CharWrap>
             <DescriptionButton onClick={() => setDescription(true)}>
-                <CustomIcon icon={faQuestionCircle} color={Palette.white_1} />
+                <CustomIcon icon={faQuestionCircle} color={Palette.gray_1} />
             </DescriptionButton>
             {loading ? (
                 <LoadingWithoutOverlay />
@@ -62,7 +62,7 @@ const Page = () => {
                         <CommandDescription func={handleDescription} />
                     )}
                     <>
-                        <Info data={charProps?.Info} />
+                        <Info data={charProps?.Info} name={charName} />
                         <Main data={charProps!} />
                     </>
                 </>
