@@ -44,7 +44,6 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             'command',
             'range',
             'damage',
-
             'hitframe',
             'guardframe',
             'state',
@@ -174,40 +173,65 @@ async function UpdateCharsFunc(order: any, category: string) {
     }
 }
 
-export async function NewProps() {
-    async function UpdatePropsFunc(id: string) {
+async function UpdatePropsFunc(id: string, property: string) {
+    try {
         try {
-            try {
-                await db
-                    .collection('Character')
-                    .doc(id)
-                    .update({
-                        MainMove: [
-                            {
-                                frame: '',
-                                command: '',
-                                damage: '',
-                                hitframe: '',
-                                guardframe: '',
-                                range: '',
-                                state: '',
-                            },
-                        ],
-                    });
-            } catch (err) {
-                alert(id + '의 정보를 받아오는데 실패했습니다');
-                console.log('에러 정보' + err);
-            }
+            await db
+                .collection('Character')
+                .doc(id)
+                .update({
+                    [property]: [],
+                });
         } catch (err) {
-            alert(id + '의 정보를 업데이트하는데 실패했습니다');
+            alert(id + '의 정보를 받아오는데 실패했습니다');
             console.log('에러 정보' + err);
         }
+    } catch (err) {
+        alert(id + '의 정보를 업데이트하는데 실패했습니다');
+        console.log('에러 정보' + err);
     }
+}
 
+export async function Rename() {
+    const data = await db
+        .collection('Character')
+        .doc('Cladio')
+        .get()
+        .then((snap) => {
+            return snap.data() as CharProps;
+        });
+
+    await db.collection('Character').doc('Claudio').set(data);
+}
+
+export async function AddNewCharacter() {
+    const name = 'Leroy';
+    try {
+        await db.collection('Character').doc(name).set({});
+        const arr = [
+            'MainMove',
+            'standing',
+            'up',
+            'Throw',
+            'combo',
+            'WallCombo',
+            'Extrahit',
+            'Pattern',
+            'Info',
+        ];
+        arr.forEach((item) => {
+            UpdatePropsFunc(name, item);
+        });
+    } catch (err) {
+        alert('실패');
+    }
+}
+
+export async function AddNewProps() {
     try {
         const documents = await db.collection('Character').get();
         documents.forEach((document) => {
-            UpdatePropsFunc(document.id);
+            UpdatePropsFunc(document.id, 'MainMove');
         });
     } catch (err) {
         alert('캐릭터들의 정보를 받아오는데 실패했습니다');

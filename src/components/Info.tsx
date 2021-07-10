@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import React from 'react';
-import { InfoProps } from '../../types/CharProps';
-import { Device, FontColor, Palette } from '../../styles/theme';
+import { InfoProps } from '../types/CharProps';
+import { Device, FontColor, Palette } from '../styles/theme';
 const InfoWrapper = styled.div`
     display: flex;
     height: 100%;
@@ -99,16 +99,16 @@ const InfoWrapper = styled.div`
 
 interface InfoInterface {
     data: InfoProps[] | undefined;
+    name: string;
 }
 
-const Info = ({ data }: InfoInterface) => {
+const Info = ({ data, name }: InfoInterface) => {
     const info = data === undefined ? null : data[0];
-
     return (
         <InfoWrapper>
             <div className="info_img">
                 <img
-                    src={process.env.PUBLIC_URL + `/img/${info?.name}.jpg`}
+                    src={process.env.PUBLIC_URL + `/img/${name}.png`}
                     alt="char"
                 />
                 <h2>{info?.name}</h2>

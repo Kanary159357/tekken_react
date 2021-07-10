@@ -89,12 +89,14 @@ const CharNames = [
     'Asuka',
     'Bob',
     'Bryan',
-    'Cladio',
+    'Claudio',
     'DevilJin',
     'Dragunov',
     'Eddy',
     'Eliza',
     'Feng',
+    'Fakumram',
+    'Ganryu',
     'Geese',
     'Gigas',
     'Heihachi',
@@ -114,6 +116,7 @@ const CharNames = [
     'Lee',
     'Lei',
     'Leo',
+    'Leroy',
     'Lidia',
     'Lili',
     'Lucky',
@@ -128,6 +131,7 @@ const CharNames = [
     'Steve',
     'Xiaoyu',
     'Yoshimitsu',
+    'Zafina',
 ];
 
 const Sidebar = ({ toggle, handleToggle }: Props) => {

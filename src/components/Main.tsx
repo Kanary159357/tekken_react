@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
 
-import ExTabs from '../TableComponents/ExTabs';
-import { CharProps } from '../../types/CharProps';
-import { Device, Palette } from '../../styles/theme';
+import ExTabs from './TableComponents/ExTabs';
+import { CharProps } from '../types/CharProps';
+import { Device, Palette } from '../styles/theme';
 const MainWrapper = styled.div`
     display: flex;
     height: 100%;

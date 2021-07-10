@@ -15,7 +15,6 @@ import { Device, FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../Context/UserContext';
 import { useDBData, useDBDispatch } from '../Context/DBContext';
-import { LoadingWithOverlay } from './Loading';
 import Overlay from './Overlay';
 
 const ModalBox = styled.div`
@@ -86,6 +85,7 @@ const Modal = () => {
             return;
         }
         const { uid } = user;
+        CloseModal();
         switch (modalAction) {
             case 'add':
                 dbDispatch({ type: 'LOADING' });
@@ -106,7 +106,6 @@ const Modal = () => {
                 alert('알수 없는 행동입니다!');
                 break;
         }
-        CloseModal();
     };
     const modalText: { [key: string]: { description: string } } = {
         add: {
@@ -125,41 +124,37 @@ const Modal = () => {
     console.log(loading);
     return (
         <>
-            {loading ? (
-                <LoadingWithOverlay />
-            ) : (
-                <>
-                    <ModalBox>
-                        <div className="box">
-                            <ModalContent>
-                                <CustomIcon
-                                    icon={faExclamationTriangle}
-                                    color={Palette.red_1}
-                                />
+            <>
+                <ModalBox>
+                    <div className="box">
+                        <ModalContent>
+                            <CustomIcon
+                                icon={faExclamationTriangle}
+                                color={Palette.red_1}
+                            />
 
-                                <div className="description">
-                                    {modalText[modalAction].description}
-                                </div>
-                            </ModalContent>
-                            <ModalControl>
-                                <ControlContent>
-                                    <CustomButton
-                                        backColor={Palette.red_1}
-                                        onClick={ModalAction}
-                                        hoverColor={Palette.red_2}
-                                    >
-                                        Yes
-                                    </CustomButton>
-                                    <CustomButton onClick={CloseModal}>
-                                        No
-                                    </CustomButton>
-                                </ControlContent>
-                            </ModalControl>
-                        </div>
-                    </ModalBox>
-                    <Overlay func={CloseModal} />
-                </>
-            )}
+                            <div className="description">
+                                {modalText[modalAction].description}
+                            </div>
+                        </ModalContent>
+                        <ModalControl>
+                            <ControlContent>
+                                <CustomButton
+                                    backColor={Palette.red_1}
+                                    onClick={ModalAction}
+                                    hoverColor={Palette.red_2}
+                                >
+                                    Yes
+                                </CustomButton>
+                                <CustomButton onClick={CloseModal}>
+                                    No
+                                </CustomButton>
+                            </ControlContent>
+                        </ModalControl>
+                    </div>
+                </ModalBox>
+                <Overlay func={CloseModal} />
+            </>
         </>
     );
 };

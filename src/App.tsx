@@ -65,6 +65,7 @@ function App() {
     const handleToggle = useCallback(() => {
         setToggle(false);
     }, []);
+
     return (
         <>
             <title>Tekken_info 0.1.0</title>
