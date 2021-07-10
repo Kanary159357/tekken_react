@@ -68,7 +68,7 @@ function App() {
 
     return (
         <>
-            <title>Tekken_info 0.1.0</title>
+            <title>6N23RP</title>
             <GlobalStyle />
             <Wrapper>
                 <MenuButtonBlock
