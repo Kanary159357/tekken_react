@@ -111,7 +111,7 @@ const Info = ({ data, name }: InfoInterface) => {
                     src={process.env.PUBLIC_URL + `/img/${name}.png`}
                     alt="char"
                 />
-                <h2>{info?.name}</h2>
+                <h2>{name}</h2>
             </div>
             <div className="link">
                 <a
