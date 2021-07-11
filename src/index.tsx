@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { StateProvider } from './Context/DBContext';
-import { ModalProvider } from './Context/ModalContext';
-import UserProvider from './Context/UserContext';
+import { StateProvider } from './context/DBContext';
+import { ModalProvider } from './context/ModalContext';
+import UserProvider from './context/UserContext';
 const AppProvider = ({
     contexts,
     children,

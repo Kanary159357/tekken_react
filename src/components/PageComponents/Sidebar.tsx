@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
-import { Device, FontColor, Palette } from '../styles/theme';
+import { Device, FontColor, Palette } from '../../styles/theme';
 const Wrapper = styled.div<{ toggle: boolean }>`
     width: 240px;
     background: ${Palette.black_1};

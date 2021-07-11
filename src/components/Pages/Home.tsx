@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import CustomIcon from '../styles/Icon';
-import { Palette, FontColor, Device } from '../styles/theme';
+import CustomIcon from '../../styles/components/Icon';
+import { Palette, FontColor, Device } from '../../styles/theme';
 import {
     faEnvelope,
     faBug,

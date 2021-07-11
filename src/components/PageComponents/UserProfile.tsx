@@ -1,10 +1,10 @@
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { useUserData } from '../Context/UserContext';
-import { logOut, signInWithGoogle } from '../firebaseInit';
-import Button from '../styles/Button';
-import Icon from '../styles/Icon';
-import { FontColor, Palette } from '../styles/theme';
+import { useUserData } from '../../context/UserContext';
+import { logOut, signInWithGoogle } from '../../firebaseInit';
+import Button from '../../styles/components/Button';
+import Icon from '../../styles/components/Icon';
+import { FontColor, Palette } from '../../styles/theme';
 const UserProfileBox = styled.div<{ user: any }>`
     height: ${(props) => props.user === '150px' && '100px'};
     display: flex;

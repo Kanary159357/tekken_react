@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import { FontColor, Palette } from './theme';
+import { FontColor, Palette } from '../theme';
 
 interface ButtonProps {
     width?: number;
