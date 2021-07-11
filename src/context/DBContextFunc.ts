@@ -4,19 +4,18 @@ import firebase from 'firebase';
 import { StateDispatch } from './DBContext';
 
 export async function LoadData(char: string, dispatch: StateDispatch) {
-    const sortbyKey = () => {
-        return function (a: any, b: any) {
-            if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
-                if (a['frame'] === b['frame']) {
-                    return a['command'] < b['command'] ? -1 : 1;
-                } else {
-                    return a['frame'] < b['frame'] ? -1 : 1;
-                }
-            } else {
+    const sortbyKey = (a: any, b: any) => {
+        if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
+            if (a['frame'] === b['frame']) {
                 return a['command'] < b['command'] ? -1 : 1;
+            } else {
+                return a['frame'] < b['frame'] ? -1 : 1;
             }
-        };
+        } else {
+            return a['command'] < b['command'] ? -1 : 1;
+        }
     };
+
     const sortbyCounter = (a: any, b: any) => {
         const av = a['command'].includes('(C)');
         const bv = b['command'].includes('(C)');
@@ -63,11 +62,11 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             if (['Extrahit', 'combo', 'WallCombo', 'Pattern'].includes(cur)) {
                 acc[cur] = order(data[cur]).sort(sortbyCounter); // 알파벳순 카운터순
             } else if (['standing', 'up'].includes(cur)) {
-                acc[cur] = order(data[cur], frameOrder).sort(sortbyKey()); //프레임순
+                acc[cur] = order(data[cur], frameOrder).sort(sortbyKey); //프레임순
             } else if (['MainMove', 'Throw'].includes(cur)) {
-                acc[cur] = order(data[cur]).sort(sortbyKey());
+                acc[cur] = order(data[cur]).sort(sortbyCounter);
             } else {
-                acc[cur] = order(data[cur]).sort(sortbyKey());
+                acc[cur] = order(data[cur]).sort(sortbyKey);
             }
             return acc;
         }, {});

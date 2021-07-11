@@ -182,7 +182,7 @@ const Home = () => {
                             <div>
                                 <CustomIcon icon={faEnvelope} />
                             </div>
-                            <p>기타 문의</p>
+                            <p>정보 복구 및 기타 문의</p>
                         </a>
                     </FormItem>
                 </Form>
