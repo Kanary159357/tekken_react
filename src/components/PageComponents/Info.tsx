@@ -22,6 +22,7 @@ const InfoWrapper = styled.div`
         height: 100px;
         justify-content: center;
         flex-direction: column;
+        width: 100%;
     }
     h2 {
         @media ${Device.desktop} {

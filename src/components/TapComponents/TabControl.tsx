@@ -1,11 +1,14 @@
 import styled from 'styled-components';
-import { Palette } from '../../styles/theme';
+import { Device, Palette } from '../../styles/theme';
 
 const TabControlBox = styled.div`
     height: 70px;
     width: 500px;
     display: flex;
     justify-content: center;
+    @media ${Device.mobile} {
+        width: 100%;
+    }
 `;
 
 const TabControlItemBox = styled.div<{ selected: boolean }>`
