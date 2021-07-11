@@ -164,19 +164,19 @@ function VerticalTabs({ Data }: TabsProps) {
         {
             tag: { description: 'combo', detail: ['state', 'command'] },
             header: '콤보',
-            columns: ['커맨드', '상황'],
+            columns: ['커맨드', '설명'],
             data: Data.combo,
         },
         {
             tag: { description: 'Extrahit', detail: ['state', 'command'] },
             header: '추가타',
-            columns: ['커맨드', '상황'],
+            columns: ['커맨드', '설명'],
             data: Data.Extrahit,
         },
         {
             tag: { description: 'WallCombo', detail: ['state', 'command'] },
             header: '벽콤보',
-            columns: ['커맨드', '상황'],
+            columns: ['커맨드', '설명'],
             data: Data.WallCombo,
         },
     ];
@@ -203,19 +203,19 @@ function VerticalTabs({ Data }: TabsProps) {
                 '판정',
                 '가드프레임',
                 '히트프레임',
-                '상황',
+                '설명',
             ],
             data: Data.MainMove,
         },
         {
             tag: { description: 'Pattern', detail: ['state', 'command'] },
-            header: '패턴',
-            columns: ['커맨드', '상황'],
+            header: '패턴/날먹',
+            columns: ['커맨드', '설명'],
             data: Data.Pattern,
         },
     ];
 
-    const arr = ['딜레이캐치', '콤보', '잡기', '주력기 + 패턴'];
+    const arr = ['딜레이캐치', '콤보', '잡기', '주력기, 패턴'];
 
     return (
         <Wrapper>
