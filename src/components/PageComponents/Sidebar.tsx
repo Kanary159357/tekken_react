@@ -95,7 +95,7 @@ const CharNames = [
     'Eddy',
     'Eliza',
     'Feng',
-    'Fakumram',
+    'Fahkumram',
     'Ganryu',
     'Geese',
     'Gigas',
