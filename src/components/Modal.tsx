@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../styles/Button';
-import { useModalData, useModalDispatch } from '../Context/ModalContext';
+import Button from '../styles/components/Button';
+import { useModalData, useModalDispatch } from '../context/ModalContext';
 import {
     AddData,
     DeleteData,
     EditData,
     LoadData,
-} from '../Context/DBContextFunc';
+} from '../context/DBContextFunc';
 
-import CustomIcon from '../styles/Icon';
+import CustomIcon from '../styles/components/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { Device, FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
-import { useUserData } from '../Context/UserContext';
-import { useDBData, useDBDispatch } from '../Context/DBContext';
+import { useUserData } from '../context/UserContext';
+import { useDBData, useDBDispatch } from '../context/DBContext';
 import Overlay from './Overlay';
 
 const ModalBox = styled.div`

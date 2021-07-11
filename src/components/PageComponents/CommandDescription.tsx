@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Device, Palette, FontColor } from '../styles/theme';
-import frame2 from '../img/Frame2.png';
-import frame1 from '../img/Frame1.png';
-import Overlay from './Overlay';
-import CustomIcon from '../styles/Icon';
+import { Device, Palette, FontColor } from '../../styles/theme';
+import frame2 from '../../img/Frame2.png';
+import frame1 from '../../img/Frame1.png';
+import Overlay from '../Overlay';
+import CustomIcon from '../../styles/components/Icon';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Animation = styled.div`

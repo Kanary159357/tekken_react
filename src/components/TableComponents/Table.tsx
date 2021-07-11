@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { TableItemProps } from './TabInfo';
+import { TableItemProps } from '../TapComponents/TabInfo';
 import TableRowData from './TableRow';
 import { useParams } from 'react-router';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
-import CustomIcon from '../../styles/Icon';
+import CustomIcon from '../../styles/components/Icon';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Device, Palette } from '../../styles/theme';
-import { useUserData } from '../../Context/UserContext';
-import { useModalDispatch } from '../../Context/ModalContext';
+import { useUserData } from '../../context/UserContext';
+import { useModalDispatch } from '../../context/ModalContext';
 
 const TableWrapper = styled.div`
     margin-bottom: 20px;

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import Sidebar from './components/Sidebar';
+import Home from './components/Pages/Home';
+import Sidebar from './components/PageComponents/Sidebar';
 import { useCallback, useState } from 'react';
-import Page from './components/CharPage';
+import Page from './components/Pages/CharPage';
 import React from 'react';
 import {
     faBars,
@@ -11,10 +11,10 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from './styles/GlobalStyle';
-import Error from './components/Error';
+import Error from './components/Pages/Error';
 import Modal from './components/Modal';
-import { useModalData } from './Context/ModalContext';
-import CustomIcon from './styles/Icon';
+import { useModalData } from './context/ModalContext';
+import CustomIcon from './styles/components/Icon';
 import { Device, Palette } from './styles/theme';
 const Wrapper = styled.div`
     background: #e8e8e8;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Palette } from '../styles/theme';
-import Overlay from './Overlay';
+import { Palette } from '../../styles/theme';
+import Overlay from '../Overlay';
 const Wrapper = styled.div`
     align-items: center;
     display: flex;

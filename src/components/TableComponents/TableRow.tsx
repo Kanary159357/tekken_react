@@ -1,11 +1,11 @@
 import { faEdit, faEraser } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useModalDispatch } from '../../Context/ModalContext';
-import { useUserData } from '../../Context/UserContext';
+import { useModalDispatch } from '../../context/ModalContext';
+import { useUserData } from '../../context/UserContext';
 import useEditValue from '../../hooks/useInputValue';
 import { Palette } from '../../styles/theme';
-import CustomIcon from '../../styles/Icon';
+import CustomIcon from '../../styles/components/Icon';
 import { TableControl, tagProperty } from './Table';
 import TableEdits from './TableEdits';
 const TableRow = styled.tr`

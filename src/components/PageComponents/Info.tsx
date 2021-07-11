@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import React from 'react';
-import { InfoProps } from '../types/CharProps';
-import { Device, FontColor, Palette } from '../styles/theme';
+import { InfoProps } from '../../types/CharProps';
+import { Device, FontColor, Palette } from '../../styles/theme';
 const InfoWrapper = styled.div`
     display: flex;
     height: 100%;
