@@ -9,7 +9,7 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             if (a['frame'] === b['frame']) {
                 return a['command'] < b['command'] ? -1 : 1;
             } else {
-                return a['frame'] < b['frame'] ? -1 : 1;
+                return parseInt(a['frame']) < parseInt(b['frame']) ? -1 : 1;
             }
         } else {
             return a['command'] < b['command'] ? -1 : 1;
