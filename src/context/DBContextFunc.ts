@@ -61,13 +61,13 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             });
         const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
             if (['Extrahit', 'combo', 'WallCombo', 'Pattern'].includes(cur)) {
-                acc[cur] = order(data[cur]).sort(sortbyCounter);
+                acc[cur] = order(data[cur]).sort(sortbyCounter); // 알파벳순 카운터순
             } else if (['standing', 'up'].includes(cur)) {
-                acc[cur] = order(data[cur], frameOrder).sort(sortbyKey());
-            } else if (['MainMove'].includes(cur)) {
+                acc[cur] = order(data[cur], frameOrder).sort(sortbyKey()); //프레임순
+            } else if (['MainMove', 'Throw'].includes(cur)) {
                 acc[cur] = order(data[cur]).sort(sortbyKey());
             } else {
-                acc[cur] = order(data[cur]).sort();
+                acc[cur] = order(data[cur]).sort(sortbyKey());
             }
             return acc;
         }, {});
