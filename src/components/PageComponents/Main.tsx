@@ -82,19 +82,19 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
 
     const ComboInfo = [
         {
-            tag: { description: 'combo', detail: ['state', 'command'] },
+            tag: { description: 'combo', detail: ['command', 'state'] },
             header: '콤보',
             columns: ['커맨드', '설명'],
             data: data.combo,
         },
         {
-            tag: { description: 'Extrahit', detail: ['state', 'command'] },
+            tag: { description: 'Extrahit', detail: ['command', 'state'] },
             header: '추가타',
             columns: ['커맨드', '설명'],
             data: data.Extrahit,
         },
         {
-            tag: { description: 'WallCombo', detail: ['state', 'command'] },
+            tag: { description: 'WallCombo', detail: ['command', 'state'] },
             header: '벽콤보',
             columns: ['커맨드', '설명'],
             data: data.WallCombo,
@@ -110,8 +110,8 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
                     'damage',
                     'frame',
                     'range',
-                    'hitframe',
                     'guardframe',
+                    'hitframe',
                     'state',
                 ],
             },
@@ -128,7 +128,7 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
             data: data.MainMove,
         },
         {
-            tag: { description: 'Pattern', detail: ['state', 'command'] },
+            tag: { description: 'Pattern', detail: ['command', 'state'] },
             header: '패턴/날먹',
             columns: ['커맨드', '설명'],
             data: data.Pattern,
