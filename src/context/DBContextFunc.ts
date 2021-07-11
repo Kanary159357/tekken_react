@@ -41,8 +41,8 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         const order = [
             'frame',
             'command',
-            'range',
             'damage',
+            'range',
             'hitframe',
             'guardframe',
             'state',
