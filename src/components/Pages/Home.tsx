@@ -55,11 +55,20 @@ const Content = styled.div`
 const Description = styled.div`
     width: calc(100% - 200px);
     padding-left: 150px;
+    @media ${Device.desktop} {
+        padding-left: 50px;
+    }
+    @media ${Device.tablet} {
+        padding-left: 10px;
+    }
     .main {
         font-size: 60px;
         position: relative;
         color: ${FontColor.black};
         width: 100%;
+        @media ${Device.desktop} {
+            font-size: 40px;
+        }
     }
     .sub {
         margin-top: 50px;
