@@ -16,6 +16,9 @@ const TableRow = styled.tr`
 const TableData = styled.td`
     border-collapse: collapse;
     padding: 10px 10px;
+    div {
+        white-space: pre-wrap;
+    }
 `;
 
 interface RowProps {
@@ -49,6 +52,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
         setEdit(false);
     };
     const handleUpdate = () => {
+        console.log(modalProps);
         if (user !== null) modalDispatch({ type: 'EDIT', payload: modalProps });
         else modalDispatch({ type: 'NOTUSER' });
         setValue(row);
@@ -70,7 +74,9 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
             ) : (
                 <>
                     {Object.values(row).map((content: any, i) => (
-                        <TableData key={i}>{content}</TableData>
+                        <TableData key={i}>
+                            <div>{content}</div>
+                        </TableData>
                     ))}
 
                     <TableControl onClick={() => setEdit(!edit)}>
