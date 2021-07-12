@@ -11,9 +11,7 @@ declare global {
     }
 }
 
-export const useTracking = (
-    trackingId: string | undefined = process.env.GA_MEASUREMENT_ID
-) => {
+export const useTracking = (trackingId: string) => {
     const { listen } = useHistory();
 
     useEffect(() => {
