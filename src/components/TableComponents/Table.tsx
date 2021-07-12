@@ -34,6 +34,9 @@ const TableHead = styled.th`
     text-align: left;
     padding: 10px;
     border-collapse: collapse;
+    @media ${Device.mobile} {
+        padding: 5px;
+    }
 `;
 const TableRow = styled.tr`
     margin-bottom: -1px;

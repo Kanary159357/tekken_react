@@ -6,7 +6,6 @@ html, body{
   padding: 0;
   margin: 0;
   width: 100%;
-  user-select: none;
   font-family: 'Spoqa Han Sans';
 }
 
