@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useModalDispatch } from '../../context/ModalContext';
 import { useUserData } from '../../context/UserContext';
 import useEditValue from '../../hooks/useInputValue';
-import { Palette } from '../../styles/theme';
+import { Palette, Device } from '../../styles/theme';
 import CustomIcon from '../../styles/components/Icon';
 import { TableControl, tagProperty } from './Table';
 import TableEdits from './TableEdits';
@@ -15,7 +15,10 @@ const TableRow = styled.tr`
 `;
 const TableData = styled.td`
     border-collapse: collapse;
-    padding: 10px 10px;
+    padding: 10px;
+    @media ${Device.mobile} {
+        padding: 5px;
+    }
     div {
         white-space: pre-wrap;
     }
