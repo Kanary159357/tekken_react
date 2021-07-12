@@ -5,6 +5,7 @@ import Sidebar from './components/PageComponents/Sidebar';
 import { useCallback, useState } from 'react';
 import Page from './components/Pages/CharPage';
 import React from 'react';
+import { AddProperty, RemoveProperty } from './context/DBContextFunc';
 import {
     faBars,
     faTimes,
@@ -81,6 +82,14 @@ function App() {
                 <Overlay toggle={toggle} onClick={handleToggle} />
 
                 <PageContent>
+                    <button
+                        onClick={() => {
+                            AddProperty('MainMove', 'nickname');
+                            AddProperty('Pattern', 'win');
+                        }}
+                    >
+                        안녕
+                    </button>
                     <Switch>
                         <Route path="/" exact={true} component={Home} />
                         <Route path="/data/:char" exact={true}>

@@ -2,7 +2,7 @@ import db from '../firebaseInit';
 import { CharProps } from '../types/CharProps';
 import firebase from 'firebase';
 import { StateDispatch } from './DBContext';
-
+import { TableOrder } from '../utils/TableOrder';
 export async function LoadData(char: string, dispatch: StateDispatch) {
     const sortbyKey = (a: any, b: any) => {
         if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
@@ -27,27 +27,25 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             return 1;
         }
     };
-    const order = (arr: any[], ordering?: (a: any, b: any) => number) => {
+    const order = (arr: any[], category: string) => {
+        const order = TableOrder[category];
+        console.log(order);
         return arr.map((cur: { [key: string]: string }) =>
             Object.keys(cur)
-                .sort(ordering)
+                .sort(orderByContent(category))
                 .reduce((obj: any, key: string) => {
                     obj[key] = cur[key];
                     return obj;
                 }, {})
         );
     };
-    const frameOrder = (a: any, b: any) => {
-        const order = [
-            'frame',
-            'command',
-            'damage',
-            'range',
-            'hitframe',
-            'guardframe',
-            'state',
-        ];
-        return order.indexOf(a) - order.indexOf(b);
+
+    const orderByContent = (category: string) => {
+        const order = TableOrder[category];
+        console.log(order);
+        return function (a: any, b: any) {
+            return order.indexOf(a) - order.indexOf(b);
+        };
     };
     dispatch({ type: 'LOADING' });
     try {
@@ -59,14 +57,20 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
                 return snap.data() as CharProps;
             });
         const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
-            if (['Extrahit', 'combo', 'WallCombo', 'Pattern'].includes(cur)) {
-                acc[cur] = order(data[cur]).sort(sortbyCounter); // 알파벳순 카운터순
+            if (cur === 'Info') return acc;
+            if (
+                [
+                    'Extrahit',
+                    'combo',
+                    'WallCombo',
+                    'Pattern',
+                    'MainMove',
+                    'Throw',
+                ].includes(cur)
+            ) {
+                acc[cur] = order(data[cur], cur).sort(sortbyCounter); // 알파벳순 카운터순
             } else if (['standing', 'up'].includes(cur)) {
-                acc[cur] = order(data[cur], frameOrder).sort(sortbyKey); //프레임순
-            } else if (['MainMove', 'Throw'].includes(cur)) {
-                acc[cur] = order(data[cur]).sort(sortbyCounter);
-            } else {
-                acc[cur] = order(data[cur]).sort(sortbyKey);
+                acc[cur] = order(data[cur], cur).sort(sortbyKey); //프레임순
             }
             return acc;
         }, {});
@@ -129,7 +133,7 @@ async function DeleteFunc(char: string, data: Object, tag: string) {
                 [tag]: firebase.firestore.FieldValue.arrayRemove(data),
             });
     } catch (err) {
-        alert('정보를 추가하는데 실패했습니다');
+        alert('정보를 삭제하는데 실패했습니다');
         console.log('에러정보 ' + err);
     }
 }
