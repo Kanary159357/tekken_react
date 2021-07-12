@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import Home from './components/Pages/Home';
 import Sidebar from './components/PageComponents/Sidebar';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import Page from './components/Pages/CharPage';
 import React from 'react';
 import {
@@ -16,6 +16,7 @@ import Modal from './components/Modal';
 import { useModalData } from './context/ModalContext';
 import CustomIcon from './styles/components/Icon';
 import { Device, Palette } from './styles/theme';
+import { useTracking } from './hooks/useTracking';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -66,6 +67,7 @@ function App() {
         setToggle(false);
     }, []);
 
+    useTracking('G-98E53ML0HS');
     return (
         <>
             <title>6N23RP</title>
