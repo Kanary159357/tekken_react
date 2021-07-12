@@ -28,6 +28,12 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         }
     };
     const order = (arr: any[], category: string) => {
+        const orderByContent = (category: string) => {
+            const order = TableOrder[category];
+            return function (a: any, b: any) {
+                return order.indexOf(a) - order.indexOf(b);
+            };
+        };
         return arr.map((cur: { [key: string]: string }) =>
             Object.keys(cur)
                 .sort(orderByContent(category))
@@ -38,12 +44,6 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         );
     };
 
-    const orderByContent = (category: string) => {
-        const order = TableOrder[category];
-        return function (a: any, b: any) {
-            return order.indexOf(a) - order.indexOf(b);
-        };
-    };
     dispatch({ type: 'LOADING' });
     try {
         const data = await db
