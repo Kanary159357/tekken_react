@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/Pages/Home';
 import Sidebar from './components/PageComponents/Sidebar';
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState } from 'react';
 import Page from './components/Pages/CharPage';
 import React from 'react';
 import {
