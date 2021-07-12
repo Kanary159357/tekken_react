@@ -5,7 +5,6 @@ import Sidebar from './components/PageComponents/Sidebar';
 import { useCallback, useState } from 'react';
 import Page from './components/Pages/CharPage';
 import React from 'react';
-import { AddProperty, RemoveProperty } from './context/DBContextFunc';
 import {
     faBars,
     faTimes,
