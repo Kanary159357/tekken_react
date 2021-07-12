@@ -5,6 +5,7 @@ import { Device, Palette } from '../../styles/theme';
 import TabControl from '../TapComponents/TabControl';
 import TabPanel from '../TapComponents/TabPanel';
 import TabInfo from '../TapComponents/TabInfo';
+import { TableOrder } from '../../utils/TableOrder';
 const MainWrapper = styled.div`
     display: flex;
     height: 100%;
@@ -37,14 +38,7 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
         {
             tag: {
                 description: 'standing',
-                detail: [
-                    'frame',
-                    'command',
-                    'damage',
-                    'range',
-                    'hitframe',
-                    'state',
-                ],
+                detail: TableOrder.standing,
             },
             header: '선자세 딜캐',
             columns: ['프레임', '커맨드', '데미지', '판정', '히트이득', '설명'],
@@ -53,14 +47,7 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
         {
             tag: {
                 description: 'up',
-                detail: [
-                    'frame',
-                    'command',
-                    'damage',
-                    'range',
-                    'hitframe',
-                    'state',
-                ],
+                detail: TableOrder.up,
             },
             header: '앉은자세 딜캐',
             columns: ['프레임', '커맨드', '데미지', '판정', '히트이득', '설명'],
@@ -72,7 +59,7 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
         {
             tag: {
                 description: 'Throw',
-                detail: ['command', 'damage', 'frame', 'state', 'way'],
+                detail: TableOrder.Throw,
             },
             header: '잡기',
             columns: ['커맨드', '데미지', '프레임', '설명', '잡기풀기'],
@@ -82,19 +69,19 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
 
     const ComboInfo = [
         {
-            tag: { description: 'combo', detail: ['command', 'state'] },
+            tag: { description: 'combo', detail: TableOrder.combo },
             header: '콤보',
             columns: ['커맨드', '설명'],
             data: data.combo,
         },
         {
-            tag: { description: 'Extrahit', detail: ['command', 'state'] },
+            tag: { description: 'Extrahit', detail: TableOrder.Extrahit },
             header: '추가타',
             columns: ['커맨드', '설명'],
             data: data.Extrahit,
         },
         {
-            tag: { description: 'WallCombo', detail: ['command', 'state'] },
+            tag: { description: 'WallCombo', detail: TableOrder.WallCombo },
             header: '벽콤보',
             columns: ['커맨드', '설명'],
             data: data.WallCombo,
@@ -105,19 +92,12 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
         {
             tag: {
                 description: 'MainMove',
-                detail: [
-                    'command',
-                    'damage',
-                    'frame',
-                    'guardframe',
-                    'hitframe',
-                    'range',
-                    'state',
-                ],
+                detail: TableOrder.MainMove,
             },
             header: '주력기',
             columns: [
                 '커맨드',
+                '별명',
                 '데미지',
                 '프레임',
                 '가드프레임',
@@ -128,9 +108,9 @@ const Main = ({ data, tableIndex, handleIndex }: MainProps) => {
             data: data.MainMove,
         },
         {
-            tag: { description: 'Pattern', detail: ['command', 'state'] },
+            tag: { description: 'Pattern', detail: TableOrder.Pattern },
             header: '패턴/날먹',
-            columns: ['커맨드', '설명'],
+            columns: ['커맨드', '설명', '파해'],
             data: data.Pattern,
         },
     ];

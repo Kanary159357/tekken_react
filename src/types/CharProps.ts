@@ -54,12 +54,13 @@ export interface Pattern {
 }
 
 export interface MainMove {
-    frame: string;
-    damage: string;
     command: string;
-    range: string;
-    hitframe: string;
+    damage: string;
+    frame: string;
     guardframe: string;
+    hitframe: string;
+    range: string;
+    nickname: string;
     state: string;
 }
 
@@ -74,6 +75,7 @@ export interface Throw {
 export interface Extrahit {
     command: string;
     state: string;
+    win: string;
 }
 
 export interface InfoProps {
