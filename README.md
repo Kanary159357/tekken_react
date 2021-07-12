@@ -2,7 +2,8 @@
 
 철권 캐릭터들의 간단한 플레이 정보를 알 수 있는 페이지입니다
 
-https://kanary159357.github.io/tekken_react/#/
+https://6N23RP.COM
+
 
 ### :walking: 딜레이캐치
 ------------------------------
