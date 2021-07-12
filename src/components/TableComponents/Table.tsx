@@ -24,6 +24,7 @@ const TableContent = styled.table`
     border-collapse: collapse;
     border-radius: 10px;
     margin: 10px auto;
+
     @media ${Device.tablet} {
         width: 100%;
     }
