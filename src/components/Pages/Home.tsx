@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Palette, FontColor, Device } from '../../styles/theme';
 
 import PatchNote from '../PageComponents/PatchNote';
-import SiteDescription from '../PageComponents/SiteDescription';
 import ContactForm from '../PageComponents/ContactForm';
 
 const HomeWrapper = styled.div`
