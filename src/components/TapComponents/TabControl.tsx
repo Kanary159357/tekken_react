@@ -26,6 +26,9 @@ const TabControlItemBox = styled.div<{ selected: boolean }>`
         background-color: ${Palette.red_1};
         transition: all ease-in-out 0.2s;
     }
+    @media ${Device.mobile} {
+        font-size: 15px;
+    }
 `;
 
 const TabControlItem = (props: {

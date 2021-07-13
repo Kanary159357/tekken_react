@@ -93,7 +93,10 @@ const InfoWrapper = styled.div`
         @media ${Device.tablet} {
             width: 1.5em;
             height: 1.5em;
-            text-align: center;
+        }
+        @media ${Device.mobile} {
+            width: 1em;
+            height: 1em;
         }
     }
 `;

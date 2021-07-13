@@ -12,17 +12,42 @@ const TableRow = styled.tr`
     margin-bottom: -1px;
     border-bottom: 1px solid #d1d1d1;
     box-sizing: border-box;
+    height: 50px;
 `;
-const TableData = styled.td`
+const TableDataBox = styled.td<{ toggle: boolean; isState: boolean }>`
     border-collapse: collapse;
     padding: 10px;
+    overflow: hidden;
+    max-width: 350px;
+
+    min-width: ${(props) => (props.isState ? '200px' : '50px')};
     @media ${Device.mobile} {
-        padding: 5px;
+        padding: 2px;
     }
     div {
+        height: ${(props) => (props.toggle ? '100%  ' : '100%')};
+        overflow-wrap: break-word;
         white-space: pre-wrap;
+        vertical-align: middle;
+        word-break: normal;
     }
 `;
+
+const TableData = ({
+    content,
+    toggle,
+    isState,
+}: {
+    content: string;
+    toggle: boolean;
+    isState: boolean;
+}) => {
+    return (
+        <TableDataBox toggle={toggle} isState={isState}>
+            <div>{content}</div>
+        </TableDataBox>
+    );
+};
 
 interface RowProps {
     row: tagProperty;
@@ -33,7 +58,7 @@ interface RowProps {
 const TableRowData = ({ row, charName, tag }: RowProps) => {
     const [edit, setEdit] = useState(false);
     const { values, handleChange, setValue } = useEditValue(row);
-
+    const [toggle, setToggle] = useState(false);
     useEffect(() => {
         setValue(row);
         setEdit(false);
@@ -63,7 +88,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
     };
 
     return (
-        <TableRow>
+        <TableRow onClick={() => setToggle(!toggle)}>
             {edit ? (
                 <>
                     <TableEdits
@@ -76,11 +101,16 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                 </>
             ) : (
                 <>
-                    {Object.values(row).map((content: any, i) => (
-                        <TableData key={i}>
-                            <div>{content}</div>
-                        </TableData>
-                    ))}
+                    {Object.entries(row).map(([key, value], i) => {
+                        return (
+                            <TableData
+                                key={i}
+                                content={value}
+                                toggle={toggle}
+                                isState={false}
+                            />
+                        );
+                    })}
 
                     <TableControl onClick={() => setEdit(!edit)}>
                         <CustomIcon
