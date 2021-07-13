@@ -13,13 +13,13 @@ const TableRow = styled.tr`
     border-bottom: 1px solid #d1d1d1;
     box-sizing: border-box;
 `;
-const TableDataBox = styled.td<{ toggle: boolean }>`
+const TableDataBox = styled.td<{ toggle: boolean; isState: boolean }>`
     border-collapse: collapse;
     padding: 10px;
     overflow: hidden;
     max-width: 350px;
 
-    min-width: 100px;
+    min-width: ${(props) => (props.isState ? '150px' : '50px')};
     @media ${Device.mobile} {
         padding: 2px;
     }
@@ -35,12 +35,14 @@ const TableDataBox = styled.td<{ toggle: boolean }>`
 const TableData = ({
     content,
     toggle,
+    isState,
 }: {
     content: string;
     toggle: boolean;
+    isState: boolean;
 }) => {
     return (
-        <TableDataBox toggle={toggle}>
+        <TableDataBox toggle={toggle} isState={isState}>
             <div>{content}</div>
         </TableDataBox>
     );
@@ -98,13 +100,16 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                 </>
             ) : (
                 <>
-                    {Object.values(row).map((content: any, i) => (
-                        <TableData
-                            key={i}
-                            content={content}
-                            toggle={toggle}
-                        ></TableData>
-                    ))}
+                    {Object.entries(row).map(([key, value], i) => {
+                        return (
+                            <TableData
+                                key={i}
+                                content={value}
+                                toggle={toggle}
+                                isState={key === 'state'}
+                            />
+                        );
+                    })}
 
                     <TableControl onClick={() => setEdit(!edit)}>
                         <CustomIcon
