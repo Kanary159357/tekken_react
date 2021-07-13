@@ -12,6 +12,7 @@ const TableRow = styled.tr`
     margin-bottom: -1px;
     border-bottom: 1px solid #d1d1d1;
     box-sizing: border-box;
+    height: 50px;
 `;
 const TableDataBox = styled.td<{ toggle: boolean; isState: boolean }>`
     border-collapse: collapse;
@@ -19,7 +20,7 @@ const TableDataBox = styled.td<{ toggle: boolean; isState: boolean }>`
     overflow: hidden;
     max-width: 350px;
 
-    min-width: ${(props) => (props.isState ? '150px' : '50px')};
+    min-width: ${(props) => (props.isState ? '200px' : '50px')};
     @media ${Device.mobile} {
         padding: 2px;
     }
@@ -106,7 +107,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                                 key={i}
                                 content={value}
                                 toggle={toggle}
-                                isState={key === 'state'}
+                                isState={false}
                             />
                         );
                     })}

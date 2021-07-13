@@ -28,6 +28,9 @@ const TableContent = styled.table`
     @media ${Device.desktop} {
         width: 100%;
     }
+    @media ${Device.mobile} {
+        width: 720px;
+    }
 `;
 
 const TableHead = styled.th`
