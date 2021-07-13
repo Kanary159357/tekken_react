@@ -13,16 +13,38 @@ const TableRow = styled.tr`
     border-bottom: 1px solid #d1d1d1;
     box-sizing: border-box;
 `;
-const TableData = styled.td`
+const TableDataBox = styled.td<{ toggle: boolean }>`
     border-collapse: collapse;
     padding: 10px;
+    overflow: hidden;
+    max-width: 350px;
+
+    min-width: 100px;
     @media ${Device.mobile} {
-        padding: 5px;
+        padding: 2px;
     }
     div {
+        height: ${(props) => (props.toggle ? '100%  ' : '100%')};
+        overflow-wrap: break-word;
         white-space: pre-wrap;
+        vertical-align: middle;
+        word-break: normal;
     }
 `;
+
+const TableData = ({
+    content,
+    toggle,
+}: {
+    content: string;
+    toggle: boolean;
+}) => {
+    return (
+        <TableDataBox toggle={toggle}>
+            <div>{content}</div>
+        </TableDataBox>
+    );
+};
 
 interface RowProps {
     row: tagProperty;
@@ -33,7 +55,7 @@ interface RowProps {
 const TableRowData = ({ row, charName, tag }: RowProps) => {
     const [edit, setEdit] = useState(false);
     const { values, handleChange, setValue } = useEditValue(row);
-
+    const [toggle, setToggle] = useState(false);
     useEffect(() => {
         setValue(row);
         setEdit(false);
@@ -63,7 +85,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
     };
 
     return (
-        <TableRow>
+        <TableRow onClick={() => setToggle(!toggle)}>
             {edit ? (
                 <>
                     <TableEdits
@@ -77,9 +99,11 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
             ) : (
                 <>
                     {Object.values(row).map((content: any, i) => (
-                        <TableData key={i}>
-                            <div>{content}</div>
-                        </TableData>
+                        <TableData
+                            key={i}
+                            content={content}
+                            toggle={toggle}
+                        ></TableData>
                     ))}
 
                     <TableControl onClick={() => setEdit(!edit)}>

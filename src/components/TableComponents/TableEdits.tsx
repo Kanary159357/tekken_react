@@ -7,11 +7,14 @@ import CustomIcon from '../../styles/components/Icon';
 
 const TableEditBox = styled.td`
     border-collapse: collapse;
+    height: 70px;
 `;
 
 const Input = styled.textarea`
     width: 100%;
+    min-width: 75px;
     display: block;
+    height: 150px;
     border: none;
     border-left: 1px solid ${Palette.gray_1};
     margin-left: -1px;

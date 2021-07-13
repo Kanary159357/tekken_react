@@ -25,7 +25,7 @@ const TableContent = styled.table`
     border-radius: 10px;
     margin: 10px auto;
 
-    @media ${Device.tablet} {
+    @media ${Device.desktop} {
         width: 100%;
     }
 `;
