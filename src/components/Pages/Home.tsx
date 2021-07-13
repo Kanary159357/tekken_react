@@ -44,15 +44,17 @@ const Content = styled.div`
     display: flex;
     margin-top: 50px;
     justify-content: space-around;
-    align-items: center;
     @media ${Device.tablet} {
-        margin-top: 100px;
+        margin-top: 50px;
         flex-direction: column;
     }
 `;
 
 const ContentWrapper = styled.div`
     width: calc(100% - 200px);
+    @media ${Device.tablet} {
+        width: 100%;
+    }
 `;
 
 const Home = () => {

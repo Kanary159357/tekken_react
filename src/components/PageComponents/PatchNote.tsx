@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
-
+import { Device } from '../../styles/theme';
 const PatchItemBox = styled.div`
-    margin: 15px;
-    width: 400px;
+    padding: 10px;
+    width: 100%;
 `;
 
 const PatchDate = styled.div``;
 
-const PatchContent = styled.div``;
+const PatchContent = styled.div`
+    overflow-wrap: break-word;
+    width: 100%;
+`;
 
 const PatchItem = ({ content }: { content: PatchInterface }) => {
     return (
@@ -20,14 +23,16 @@ const PatchItem = ({ content }: { content: PatchInterface }) => {
 };
 const PatchMonthBox = styled.div<{ toggle: boolean }>`
     width: 500px;
+    @media ${Device.tablet} {
+        width: 90%;
+    }
     .month {
-        font-size: 40px;
+        font-size: 20px;
     }
     .contents {
         opacity: ${(props) => (props.toggle ? 1 : 0)};
         height: ${(props) => (props.toggle ? 'auto' : '0')};
         overflow: hidden;
-
         transition: all 1s ease-out;
     }
 `;
@@ -41,8 +46,10 @@ const PatchMonth = ({
     const [toggle, setToggle] = useState(true);
 
     return (
-        <PatchMonthBox onClick={() => setToggle(!toggle)} toggle={toggle}>
-            <div className="month">{month}</div>
+        <PatchMonthBox toggle={toggle}>
+            <div className="month" onClick={() => setToggle(!toggle)}>
+                {month}
+            </div>
             <div className="contents">
                 {contents.map((content, index) => {
                     return (
@@ -57,12 +64,6 @@ const PatchMonth = ({
 const PatchNoteWrapper = styled.div`
     width: 80%;
     margin: 0 auto;
-    overflow-y: scroll;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    &::-webkit-scrollbar {
-        display: none;
-    }
 `;
 
 const PatchList = styled.div`

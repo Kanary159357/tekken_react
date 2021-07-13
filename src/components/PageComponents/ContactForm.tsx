@@ -16,7 +16,7 @@ const Form = styled.div`
     justify-content: center;
     align-items: center;
     @media ${Device.tablet} {
-        margin-top: 50px;
+        margin-top: 30px;
         width: 100%;
         height: 300px;
         flex-direction: row;
