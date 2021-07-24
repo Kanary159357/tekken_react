@@ -54,7 +54,10 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
                 return snap.data() as CharProps;
             });
         const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
-            if (cur === 'Info') return acc;
+            if (cur === 'Info') {
+                acc[cur] = data[cur];
+                return acc;
+            }
             if (
                 [
                     'Extrahit',
@@ -245,7 +248,6 @@ export const AddData = async (
     char: string,
     uid: string
 ) => {
-    console.log(tag, data, char, uid);
     await AddFunc(char, data, tag);
     await UpdateHistory(char, data, uid, 'ADD');
 };

@@ -41,9 +41,7 @@ const Page = () => {
     const [description, setDescription] = useState(false);
     const [tableIndex, setTableIndex] = useState(0);
     useEffect(() => {
-        console.log('temp');
         LoadData(charName, tempDispatch);
-        console.log(charProps);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [charName]);
 
