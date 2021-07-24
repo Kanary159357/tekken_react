@@ -83,6 +83,10 @@ const Notes: Record<string, PatchInterface[]> = {
             content:
                 '개행 가능하게 수정, 파쿰람 무한 로딩 수정, 모바일뷰 가독성 개선 ',
         },
+        {
+            date: '2021-07-24',
+            content: '관련 캐릭 링크 클릭 불가능한 버그 수정',
+        },
     ],
 };
 
