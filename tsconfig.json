@@ -18,9 +18,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve"
   },
   "include": [
-    "src"
-, "import.js"  ]
+    "src",
+    "import.js",
+    "utils",
+    "types",
+    "styles",
+    "hooks",
+    "context",
+    "components",
+    "firebaseInit.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
