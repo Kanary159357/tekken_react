@@ -1,4 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.next
 
 # dependencies
 /node_modules
@@ -17,7 +18,6 @@
 .env.development.local
 .env.test.local
 .env.production.local
-.next
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -25,3 +25,15 @@ yarn-error.log*
 
 #firebase key
 .env
+.next/build-manifest.json
+.next/cache/webpack/client-development/0.pack
+.next/cache/webpack/client-development/1.pack
+.next/cache/webpack/client-development/index.pack
+.next/cache/webpack/client-development/index.pack.old
+.next/cache/webpack/server-development/0.pack
+.next/cache/webpack/server-development/1.pack
+.next/cache/webpack/server-development/index.pack
+.next/cache/webpack/server-development/index.pack.old
+.next/server/pages-manifest.json
+.next/static/chunks/webpack.js
+.next/static/development/_buildManifest.js

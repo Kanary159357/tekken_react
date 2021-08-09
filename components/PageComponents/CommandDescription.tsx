@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Device, Palette, FontColor } from '../../styles/theme';
-import frame2 from '../../img/Frame2.png';
-import frame1 from '../../img/Frame1.png';
+
 import Overlay from '../Overlay';
 import CustomIcon from '../../styles/components/Icon';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -163,9 +162,9 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
                     </SmallHeader>
                     <Sentence> 숫자는 레버의 방향을 의미합니다 </Sentence>
                     <ImageWrapper>
-                        <img src={frame1} alt={'numberpad'} />
+                        <img src={'/img/frame1.jpg'} alt={'numberpad'} />
                         <div className="arrow">{'=>'}</div>
-                        <img src={frame2} alt={'arrows'} />
+                        <img src={'/img/frame2'} alt={'arrows'} />
                     </ImageWrapper>
                 </div>
                 <div className="example">

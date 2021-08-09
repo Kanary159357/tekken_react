@@ -111,10 +111,7 @@ const Info = ({ data, name }: InfoInterface) => {
     return (
         <InfoWrapper>
             <div className="info_img">
-                <img
-                    src={process.env.PUBLIC_URL + `/img/${name}.png`}
-                    alt="char"
-                />
+                <img src={`/img/${name}.jpg`} alt="char" />
                 <h2>{name}</h2>
             </div>
             <div className="link">
@@ -123,24 +120,15 @@ const Info = ({ data, name }: InfoInterface) => {
                     rel="noopener noreferrer"
                     href={info?.punish}
                 >
-                    <img
-                        src={process.env.PUBLIC_URL + `/img/youtube.png`}
-                        alt="youtube"
-                    />
+                    <img src={`/img/youtube.png`} alt="youtube" />
                     딜캐
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={info?.combo}>
-                    <img
-                        src={process.env.PUBLIC_URL + `/img/youtube.png`}
-                        alt="youtube"
-                    />
+                    <img src={`/img/youtube.png`} alt="youtube" />
                     콤보
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={info?.dc}>
-                    <img
-                        src={process.env.PUBLIC_URL + `/img/dc.png`}
-                        alt="dc"
-                    />
+                    <img src={`/img/dc.png`} alt="dc" />
                     철마갤 캐릭터 팁
                 </a>
             </div>
