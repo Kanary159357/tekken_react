@@ -14,7 +14,7 @@ const TableRow = styled.tr`
     box-sizing: border-box;
     height: 50px;
 `;
-const TableDataBox = styled.td<{ toggle: boolean; isState: boolean }>`
+const TableDataBox = styled.td<{ isState: boolean }>`
     border-collapse: collapse;
     padding: 10px;
     overflow: hidden;
@@ -25,7 +25,7 @@ const TableDataBox = styled.td<{ toggle: boolean; isState: boolean }>`
         padding: 2px;
     }
     div {
-        height: ${(props) => (props.toggle ? '100%  ' : '100%')};
+        height: 100%;
         overflow-wrap: break-word;
         white-space: pre-wrap;
         vertical-align: middle;
@@ -35,15 +35,13 @@ const TableDataBox = styled.td<{ toggle: boolean; isState: boolean }>`
 
 const TableData = ({
     content,
-    toggle,
     isState,
 }: {
     content: string;
-    toggle: boolean;
     isState: boolean;
 }) => {
     return (
-        <TableDataBox toggle={toggle} isState={isState}>
+        <TableDataBox isState={isState}>
             <div>{content}</div>
         </TableDataBox>
     );
@@ -58,7 +56,6 @@ interface RowProps {
 const TableRowData = ({ row, charName, tag }: RowProps) => {
     const [edit, setEdit] = useState(false);
     const { values, handleChange, setValue } = useEditValue(row);
-    const [toggle, setToggle] = useState(false);
     useEffect(() => {
         setValue(row);
         setEdit(false);
@@ -88,7 +85,7 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
     };
 
     return (
-        <TableRow onClick={() => setToggle(!toggle)}>
+        <TableRow>
             {edit ? (
                 <>
                     <TableEdits
@@ -106,7 +103,6 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                             <TableData
                                 key={i}
                                 content={value}
-                                toggle={toggle}
                                 isState={false}
                             />
                         );
