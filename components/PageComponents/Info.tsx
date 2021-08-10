@@ -42,7 +42,6 @@ const InfoWrapper = styled.div`
     }
     .info_img {
         text-align: center;
-        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -52,7 +51,9 @@ const InfoWrapper = styled.div`
             color: ${FontColor.white};
         }
         .container {
-            width: 80%;
+            width: 200px;
+            height: 200px;
+            position: relative;
             @media ${Device.desktop} {
                 display: none;
             }
@@ -122,9 +123,9 @@ const Info = ({ data, name }: InfoInterface) => {
                     <Image
                         src={`/img/${name}.png`}
                         alt="char"
-                        width={200}
-                        height={200}
-                        layout="responsive"
+                        layout="fill"
+                        objectFit="contain"
+                        priority
                     />
                 </div>
                 <h2>{name}</h2>
