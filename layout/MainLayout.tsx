@@ -11,6 +11,7 @@ import { GlobalStyle } from '../styles/GlobalStyle';
 import Modal from '../components/Modal';
 import CustomIcon from '../styles/components/Icon';
 import { Device, Palette } from '../styles/theme';
+import { useModalData } from '../context/ModalContext';
 
 const Wrapper = styled.div`
     background: #e8e8e8;
@@ -57,6 +58,7 @@ const Overlay = styled.div<{ toggle: boolean }>`
 
 function MainLayout({ children }) {
     const [toggle, setToggle] = useState(false);
+    const { open } = useModalData();
     const handleToggle = useCallback(() => {
         setToggle(false);
     }, []);
@@ -74,6 +76,7 @@ function MainLayout({ children }) {
                 <Overlay toggle={toggle} onClick={handleToggle} />
 
                 <PageContent>{children}</PageContent>
+                {open && <Modal />}
             </Wrapper>
         </>
     );
