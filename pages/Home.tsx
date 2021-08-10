@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Palette, FontColor, Device } from '../styles/theme';
-
+import Head from 'next/head';
 import PatchNote from '../components/PageComponents/PatchNote';
 import ContactForm from '../components/PageComponents/ContactForm';
 
@@ -16,7 +16,7 @@ const HomeWrapper = styled.div`
     }
 `;
 
-const Head = styled.div`
+const HeadContainer = styled.div`
     width: 100%;
     height: 300px;
     text-align: center;
@@ -60,9 +60,12 @@ const Home = () => {
     return (
         <HomeWrapper>
             <Head>
+                <title>6N23RP</title>
+            </Head>
+            <HeadContainer>
                 <MainHead>6N23RP</MainHead>
                 <SubHead>Tekken 7 FR Information</SubHead>
-            </Head>
+            </HeadContainer>
             <Content>
                 <ContentWrapper>
                     {/*<SiteDescription />*/}
