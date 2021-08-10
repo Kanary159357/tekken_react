@@ -17,10 +17,7 @@ const AppProvider = ({
     children: any;
 }) =>
     contexts.reduce(
-        (prev: any, context: any) =>
-            React.createElement(context, {
-                children: prev,
-            }),
+        (prev: any, context: any) => React.createElement(context, {}, prev),
         children
     );
 

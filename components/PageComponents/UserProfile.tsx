@@ -4,6 +4,8 @@ import { useUserData } from '../../context/UserContext';
 import { logOut, signInWithGoogle } from '../../firebaseInit';
 import Button from '../../base/Button';
 import Icon from '../../base/Icon';
+import Image from 'next/image';
+
 import { FontColor, Palette } from '../../styles/theme';
 const UserProfileBox = styled.div<{ user: any }>`
     height: ${(props) => props.user === '150px' && '100px'};
@@ -21,8 +23,8 @@ const ProfileImg = styled.div`
     font-size: 45px;
     text-align: center;
     overflow: hidden;
-    img {
-        object-fit: cover;
+    .image {
+        position: relative;
         width: 100%;
         height: 100%;
     }
@@ -50,7 +52,14 @@ const UserProfile = () => {
         >
             <ProfileImg>
                 {user ? (
-                    <img src={user?.photoURL} alt={'userImg'} />
+                    <div className={'image'}>
+                        <Image
+                            src={user?.photoURL as any}
+                            alt={'userImg'}
+                            layout="fill"
+                            objectFit="contain"
+                        />
+                    </div>
                 ) : (
                     <Icon icon={faUserCircle} />
                 )}

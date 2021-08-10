@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Device, Palette, FontColor } from '../../styles/theme';
-
+import Image from 'next/image';
 import Overlay from '../Overlay';
 import CustomIcon from '../../base/Icon';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -56,7 +56,7 @@ const DescriptionWrapper = styled.div`
     }
     .command {
         margin-top: 30px;
-        img {
+        .img {
             width: 150px;
             height: 150px;
             @media ${Device.tablet} {
@@ -162,9 +162,23 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
                     </SmallHeader>
                     <Sentence> 숫자는 레버의 방향을 의미합니다 </Sentence>
                     <ImageWrapper>
-                        <img src={'/img/frame1.jpg'} alt={'numberpad'} />
+                        <div className="img">
+                            {' '}
+                            <Image
+                                src={'/img/frame1.jpg' as any}
+                                alt={'numberpad'}
+                                layout="fill"
+                            />
+                        </div>
                         <div className="arrow">{'=>'}</div>
-                        <img src={'/img/frame2'} alt={'arrows'} />
+                        <div className="img">
+                            {' '}
+                            <Image
+                                src={'/img/frame2' as any}
+                                alt={'arrows'}
+                                layout="fill"
+                            />
+                        </div>
                     </ImageWrapper>
                 </div>
                 <div className="example">

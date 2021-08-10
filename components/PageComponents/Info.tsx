@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import Image from 'next/image';
 import React from 'react';
 import { InfoProps } from '../../types/CharProps';
 import { Device, FontColor, Palette } from '../../styles/theme';
@@ -42,11 +42,16 @@ const InfoWrapper = styled.div`
     }
     .info_img {
         text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
         color: ${FontColor.black};
         @media ${Device.desktop} {
             color: ${FontColor.white};
         }
-        img {
+        .container {
             width: 80%;
             @media ${Device.desktop} {
                 display: none;
@@ -76,9 +81,10 @@ const InfoWrapper = styled.div`
         }
     }
 
-    .link a img {
+    .link a .img_container {
         display: flex;
         width: 1.5em;
+        position: relative;
         height: 1.5em;
         align-items: center;
         margin-left: 10px;
@@ -111,7 +117,16 @@ const Info = ({ data, name }: InfoInterface) => {
     return (
         <InfoWrapper>
             <div className="info_img">
-                <img src={`/img/${name}.png`} alt="char" />
+                <div className="container">
+                    {' '}
+                    <Image
+                        src={`/img/${name}.png`}
+                        alt="char"
+                        width={200}
+                        height={200}
+                        layout="responsive"
+                    />
+                </div>
                 <h2>{name}</h2>
             </div>
             <div className="link">
@@ -120,15 +135,36 @@ const Info = ({ data, name }: InfoInterface) => {
                     rel="noopener noreferrer"
                     href={info?.punish}
                 >
-                    <img src={`/img/youtube.png`} alt="youtube" />
+                    <div className="img_container">
+                        <Image
+                            src={`/img/youtube.png`}
+                            alt="youtube"
+                            layout="fill"
+                            objectFit="contain"
+                        />
+                    </div>
                     딜캐
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={info?.combo}>
-                    <img src={`/img/youtube.png`} alt="youtube" />
+                    <div className="img_container">
+                        <Image
+                            src={`/img/youtube.png`}
+                            alt="youtube"
+                            layout="fill"
+                            objectFit="contain"
+                        />
+                    </div>
                     콤보
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={info?.dc}>
-                    <img src={`/img/dc.png`} alt="dc" />
+                    <div className="img_container">
+                        <Image
+                            src={`/img/dc.png`}
+                            alt="dc"
+                            layout="fill"
+                            objectFit="contain"
+                        />
+                    </div>
                     철마갤 캐릭터 팁
                 </a>
             </div>

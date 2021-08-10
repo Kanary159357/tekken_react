@@ -24,12 +24,8 @@
     "scripts": {
         "dev": "next",
         "build": "next build",
+        "lint": "next lint",
         "start": "next start"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app"
-        ]
     },
     "browserslist": {
         "production": [
@@ -44,6 +40,8 @@
         ]
     },
     "devDependencies": {
-        "babel-plugin-styled-components": "^1.13.2"
+        "babel-plugin-styled-components": "^1.13.2",
+        "eslint": "^7.32.0",
+        "eslint-config-next": "^11.0.1"
     }
 }
