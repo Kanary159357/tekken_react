@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 import { TableItemProps } from '../TapComponents/TabInfo';
 import TableRowData from './TableRow';
-import { useParams } from 'react-router';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
-import CustomIcon from '../../styles/components/Icon';
+import CustomIcon from '../../base/Icon';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Device, Palette } from '../../styles/theme';
 import { useUserData } from '../../context/UserContext';

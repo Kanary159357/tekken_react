@@ -5,7 +5,7 @@ import { useModalDispatch } from '../../context/ModalContext';
 import { useUserData } from '../../context/UserContext';
 import useEditValue from '../../hooks/useInputValue';
 import { Palette, Device } from '../../styles/theme';
-import CustomIcon from '../../styles/components/Icon';
+import CustomIcon from '../../styles/base/Icon';
 import { TableControl, tagProperty } from './Table';
 import TableEdits from './TableEdits';
 const TableRow = styled.tr`

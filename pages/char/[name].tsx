@@ -8,7 +8,7 @@ import { LoadData } from '../../context/DBContextFunc';
 import { Device, Palette } from '../../styles/theme';
 import { LoadingWithoutOverlay } from '../../components/PageComponents/Loading';
 import CommandDescription from '../../components/PageComponents/CommandDescription';
-import CustomIcon from '../../styles/components/Icon';
+import CustomIcon from '../../base/Icon';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 const CharWrap = styled.div`

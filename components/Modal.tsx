@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../styles/components/Button';
+import Button from '../base/Button';
 import { useModalData, useModalDispatch } from '../context/ModalContext';
 import {
     AddData,
@@ -9,7 +9,7 @@ import {
     LoadData,
 } from '../context/DBContextFunc';
 
-import CustomIcon from '../styles/components/Icon';
+import CustomIcon from '../base/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { Device, FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';

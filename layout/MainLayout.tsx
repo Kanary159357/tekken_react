@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from '../styles/GlobalStyle';
 import Modal from '../components/Modal';
-import CustomIcon from '../styles/components/Icon';
+import CustomIcon from '../base/Icon';
 import { Device, Palette } from '../styles/theme';
 import { useModalData } from '../context/ModalContext';
 
