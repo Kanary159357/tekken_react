@@ -10,6 +10,7 @@ import { LoadingWithoutOverlay } from '../../components/PageComponents/Loading';
 import CommandDescription from '../../components/PageComponents/CommandDescription';
 import CustomIcon from '../../base/Icon';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import Head from 'next/head';
 
 const CharWrap = styled.div`
     display: flex;
@@ -55,6 +56,9 @@ const Char = () => {
 
     return (
         <CharWrap>
+            <Head>
+                <title>{name} | 6N23RP</title>
+            </Head>
             <DescriptionButton onClick={() => setDescription(true)}>
                 <CustomIcon icon={faQuestionCircle} color={Palette.gray_1} />
             </DescriptionButton>
