@@ -74,11 +74,9 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
             }
             return acc;
         }, {});
-        console.log(data['combo']);
-        console.log(newObj['combo']);
         dispatch({ type: 'LOADED', payload: newObj });
     } catch (err) {
-        console.log(err);
+        console.error(err);
         dispatch({ type: 'ERROR', error: err });
     }
 }
@@ -108,7 +106,7 @@ async function UpdateHistory(
                 });
         }
     } catch {
-        console.log('유저 히스토리 업데이트 실패');
+        console.error('유저 히스토리 업데이트 실패');
     }
 }
 
@@ -122,7 +120,7 @@ async function AddFunc(char: string, data: Object, tag: string) {
             });
     } catch (err) {
         alert('정보를 추가하는데 실패했습니다');
-        console.log('에러정보 ' + err);
+        console.error('에러정보 ' + err);
     }
 }
 
@@ -136,7 +134,7 @@ async function DeleteFunc(char: string, data: Object, tag: string) {
             });
     } catch (err) {
         alert('정보를 삭제하는데 실패했습니다');
-        console.log('에러정보 ' + err);
+        console.error('에러정보 ' + err);
     }
 }
 async function UpdateCharsFunc(order: any, category: string) {
@@ -159,11 +157,11 @@ async function UpdateCharsFunc(order: any, category: string) {
                     });
             } catch (err) {
                 alert(id + '의 정보를 받아오는데 실패했습니다');
-                console.log('에러 정보' + err);
+                console.error('에러 정보' + err);
             }
         } catch (err) {
             alert(id + '의 정보를 업데이트하는데 실패했습니다');
-            console.log('에러 정보' + err);
+            console.error('에러 정보' + err);
         }
     }
 
@@ -174,7 +172,7 @@ async function UpdateCharsFunc(order: any, category: string) {
         });
     } catch (err) {
         alert('캐릭터들의 정보를 받아오는데 실패했습니다');
-        console.log('에러 정보' + err);
+        console.error('에러 정보' + err);
     }
 }
 
@@ -189,11 +187,11 @@ async function UpdatePropsFunc(id: string, property: string) {
                 });
         } catch (err) {
             alert(id + '의 정보를 받아오는데 실패했습니다');
-            console.log('에러 정보' + err);
+            console.error('에러 정보' + err);
         }
     } catch (err) {
         alert(id + '의 정보를 업데이트하는데 실패했습니다');
-        console.log('에러 정보' + err);
+        console.error('에러 정보' + err);
     }
 }
 
@@ -240,7 +238,7 @@ export async function AddNewProps() {
         });
     } catch (err) {
         alert('캐릭터들의 정보를 받아오는데 실패했습니다');
-        console.log('에러 정보' + err);
+        console.error('에러 정보' + err);
     }
 }
 

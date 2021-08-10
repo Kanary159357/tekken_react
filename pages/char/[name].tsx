@@ -36,7 +36,6 @@ const DescriptionButton = styled.div`
 const Char = () => {
     const router = useRouter();
     const { name } = router.query;
-    console.log(name);
     const { charProps, loading } = useDBData();
     const tempDispatch = useDBDispatch();
     const [description, setDescription] = useState(false);

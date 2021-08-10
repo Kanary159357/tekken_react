@@ -111,7 +111,7 @@ const Info = ({ data, name }: InfoInterface) => {
     return (
         <InfoWrapper>
             <div className="info_img">
-                <img src={`/img/${name}.jpg`} alt="char" />
+                <img src={`/img/${name}.png`} alt="char" />
                 <h2>{name}</h2>
             </div>
             <div className="link">

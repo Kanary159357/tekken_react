@@ -5,9 +5,12 @@ html, body{
   padding: 0;
   margin: 0;
   width: 100%;
-  font-family: 'Spoqa Han Sans';
+  font-family: 'Spoqa Han Sans Neo';
 }
 
-
-
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 200;
+  src: url("/fonts/SpoqaHanSansNeoRegular.woff") format('woff');
+}
 `;
