@@ -87,6 +87,10 @@ const Notes: Record<string, PatchInterface[]> = {
             date: '2021-07-24',
             content: '관련 캐릭 링크 클릭 불가능한 버그 수정',
         },
+        {
+            date: '2021-08-10',
+            content: '캐릭터 정보 링크를 char/:~~ 에서 char/~~로 수정(베타)',
+        },
     ],
 };
 
