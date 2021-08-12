@@ -57,6 +57,7 @@ const DescriptionWrapper = styled.div`
     .command {
         margin-top: 30px;
         .img {
+            position: relative;
             width: 150px;
             height: 150px;
             @media ${Device.tablet} {
@@ -165,7 +166,7 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
                         <div className="img">
                             {' '}
                             <Image
-                                src={'/img/frame1.jpg' as any}
+                                src={'/img/Frame1.png'}
                                 alt={'numberpad'}
                                 layout="fill"
                             />
@@ -174,7 +175,7 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
                         <div className="img">
                             {' '}
                             <Image
-                                src={'/img/frame2' as any}
+                                src={'/img/Frame2.png'}
                                 alt={'arrows'}
                                 layout="fill"
                             />

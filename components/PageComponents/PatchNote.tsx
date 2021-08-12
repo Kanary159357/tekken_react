@@ -91,6 +91,10 @@ const Notes: Record<string, PatchInterface[]> = {
             date: '2021-08-10',
             content: '캐릭터 정보 링크를 char/:~~ 에서 char/~~로 수정(베타)',
         },
+        {
+            date: '2021-08-12',
+            content: '커맨드 설명 사진 엑박뜨는 문제 수정',
+        },
     ],
 };
 
