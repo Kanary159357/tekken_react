@@ -109,66 +109,51 @@ async function UpdateHistory(
         console.error('유저 히스토리 업데이트 실패');
     }
 }
-
-async function AddFunc(char: string, data: Object, tag: string) {
+async function getCharData(
+    id: string
+): Promise<[CharProps | null, Error | null]> {
+    try {
+        const data = await db
+            .collection('Character')
+            .doc(id)
+            .get()
+            .then((snap) => {
+                return snap.data() as CharProps;
+            });
+        return [data, null];
+    } catch (error: any) {
+        console.error(error);
+        return [null, error];
+    }
+}
+async function updateCharData(id: string, data: any, category: string) {
     try {
         await db
             .collection('Character')
-            .doc(char)
+            .doc(id)
             .update({
-                [tag]: firebase.firestore.FieldValue.arrayUnion(data),
+                [category]: data,
             });
     } catch (err) {
-        alert('정보를 추가하는데 실패했습니다');
-        console.error('에러정보 ' + err);
+        alert(id + '의 정보를 받아오는데 실패했습니다');
+        console.error('에러 정보' + err);
     }
+}
+async function AddFunc(char: string, data: Object, tag: string) {
+    let content = firebase.firestore.FieldValue.arrayUnion(data);
+    updateCharData(char, content, tag);
 }
 
 async function DeleteFunc(char: string, data: Object, tag: string) {
-    try {
-        await db
-            .collection('Character')
-            .doc(char)
-            .update({
-                [tag]: firebase.firestore.FieldValue.arrayRemove(data),
-            });
-    } catch (err) {
-        alert('정보를 삭제하는데 실패했습니다');
-        console.error('에러정보 ' + err);
-    }
+    let content = firebase.firestore.FieldValue.arrayRemove(data);
+    updateCharData(char, content, tag);
 }
-async function UpdateCharsFunc(order: any, category: string) {
-    async function UpdatePropsFunc(order: any, id: string, category: string) {
-        try {
-            const data = await db
-                .collection('Character')
-                .doc(id)
-                .get()
-                .then((snap) => {
-                    return snap.data() as CharProps;
-                });
-            const newData = order(data[category]);
-            try {
-                await db
-                    .collection('Character')
-                    .doc(id)
-                    .update({
-                        [category]: newData,
-                    });
-            } catch (err) {
-                alert(id + '의 정보를 받아오는데 실패했습니다');
-                console.error('에러 정보' + err);
-            }
-        } catch (err) {
-            alert(id + '의 정보를 업데이트하는데 실패했습니다');
-            console.error('에러 정보' + err);
-        }
-    }
 
+async function getUpdateAllChar(fn: any) {
     try {
         const documents = await db.collection('Character').get();
         documents.forEach((document) => {
-            UpdatePropsFunc(order, document.id, category);
+            fn(document.id);
         });
     } catch (err) {
         alert('캐릭터들의 정보를 받아오는데 실패했습니다');
@@ -176,65 +161,20 @@ async function UpdateCharsFunc(order: any, category: string) {
     }
 }
 
-async function UpdatePropsFunc(id: string, property: string) {
-    try {
-        try {
-            await db
-                .collection('Character')
-                .doc(id)
-                .update({
-                    [property]: [],
-                });
-        } catch (err) {
-            alert(id + '의 정보를 받아오는데 실패했습니다');
-            console.error('에러 정보' + err);
+async function UpdateCharsFunc(order: any, category: string) {
+    async function UpdatePropsFunc(order: any, id: string, category: string) {
+        const [data, error] = await getCharData(id);
+        if (error) {
+            return;
         }
-    } catch (err) {
-        alert(id + '의 정보를 업데이트하는데 실패했습니다');
-        console.error('에러 정보' + err);
+        const newData = order(data![category]);
+        await updateCharData(id, newData, category);
     }
-}
 
-export async function Rename() {
-    const data = await db
-        .collection('Character')
-        .doc('Cladio')
-        .get()
-        .then((snap) => {
-            return snap.data() as CharProps;
-        });
-
-    await db.collection('Character').doc('Claudio').set(data);
-}
-
-export async function AddNewCharacter() {
-    const name = 'Leroy';
-    try {
-        await db.collection('Character').doc(name).set({});
-        const arr = [
-            'MainMove',
-            'standing',
-            'up',
-            'Throw',
-            'combo',
-            'WallCombo',
-            'Extrahit',
-            'Pattern',
-            'Info',
-        ];
-        arr.forEach((item) => {
-            UpdatePropsFunc(name, item);
-        });
-    } catch (err) {
-        alert('실패');
-    }
-}
-
-export async function AddNewProps() {
     try {
         const documents = await db.collection('Character').get();
         documents.forEach((document) => {
-            UpdatePropsFunc(document.id, 'MainMove');
+            UpdatePropsFunc(order, document.id, category);
         });
     } catch (err) {
         alert('캐릭터들의 정보를 받아오는데 실패했습니다');
