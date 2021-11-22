@@ -1,5 +1,5 @@
+import { getAuth } from 'firebase/auth';
 import React, { useState, useEffect, createContext, useContext } from 'react';
-import { auth } from '../firebaseInit';
 
 interface UserProps {
     uid: string;
@@ -10,6 +10,8 @@ interface UserProps {
 const UserContext = createContext<UserProps | null>(null);
 
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
+    const auth = getAuth();
+
     const [user, setUser] = useState<UserProps | null>(null);
     useEffect(() => {
         auth.onAuthStateChanged(async (tempUser: any) => {
@@ -20,7 +22,7 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
                 setUser({ uid, displayName, email, photoURL });
             }
         });
-    }, []);
+    }, [auth]);
     return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
 };
 

@@ -96,6 +96,7 @@ const Notes: Record<string, PatchInterface[]> = {
             content: '커맨드 설명 사진 엑박뜨는 문제 수정',
         },
     ],
+    '2021-11': [{ date: '2021-11-22', content: '사이트 최적화 ' }],
 };
 
 interface PatchInterface {
