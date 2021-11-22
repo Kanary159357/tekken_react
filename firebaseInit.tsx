@@ -1,12 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
-import {
-    getFirestore,
-    collection,
-    query,
-    where,
-    getDocs,
-} from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore/lite';
 
 const firebaseApp = initializeApp({
     apiKey: 'AIzaSyDI3lUc4QjYBdRUaTVqI6r0neyocpSuW40',
@@ -19,10 +13,13 @@ const firebaseApp = initializeApp({
 });
 
 const db = getFirestore(firebaseApp);
+
 export default db;
+
 const auth = getAuth();
 
 const googleProvider = new GoogleAuthProvider();
+
 export const signInWithGoogle = () => {
     signInWithRedirect(auth, googleProvider)
         .then(() => {

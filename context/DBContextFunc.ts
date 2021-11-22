@@ -12,7 +12,7 @@ import {
     setDoc,
     Timestamp,
     updateDoc,
-} from 'firebase/firestore';
+} from 'firebase/firestore/lite';
 export async function LoadData(char: string, dispatch: StateDispatch) {
     const sortbyKey = (a: any, b: any) => {
         if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {

@@ -42,7 +42,7 @@ const Char = () => {
     const [description, setDescription] = useState(false);
     const [tableIndex, setTableIndex] = useState(0);
     useEffect(() => {
-        LoadData(name as string, tempDispatch);
+        if (name) LoadData(name as string, tempDispatch);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
 
