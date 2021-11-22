@@ -4,7 +4,6 @@ import { ModalProvider } from '../context/ModalContext';
 import UserProvider from '../context/UserContext';
 import MainLayout from '../layout/MainLayout';
 import { GlobalStyle } from '../styles/GlobalStyle';
-
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
 import { useRouter } from 'next/dist/client/router';

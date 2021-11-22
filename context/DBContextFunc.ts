@@ -1,8 +1,18 @@
 import db from '../firebaseInit';
 import { CharProps } from '../types/CharProps';
-import firebase from 'firebase';
 import { StateDispatch } from './DBContext';
 import { TableOrder } from '../utils/TableOrder';
+import {
+    arrayRemove,
+    arrayUnion,
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    setDoc,
+    Timestamp,
+    updateDoc,
+} from 'firebase/firestore';
 export async function LoadData(char: string, dispatch: StateDispatch) {
     const sortbyKey = (a: any, b: any) => {
         if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
@@ -46,13 +56,10 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
 
     dispatch({ type: 'LOADING' });
     try {
-        const data = await db
-            .collection('Character')
-            .doc(char)
-            .get()
-            .then((snap) => {
-                return snap.data() as CharProps;
-            });
+        const docRef = doc(db, 'Character', char);
+
+        const data = (await getDoc(docRef)).data() as CharProps;
+
         const newObj = Object.keys(data).reduce((acc: any, cur: any) => {
             if (cur === 'Info') {
                 acc[cur] = data[cur];
@@ -90,20 +97,16 @@ async function UpdateHistory(
         const history = {
             char: char,
             data: data,
-            time: firebase.firestore.Timestamp.fromDate(new Date()),
+            time: Timestamp.fromDate(new Date()),
         };
-        const document = await db.collection('User').doc(uid).get();
-        if (document.exists && document) {
-            await document.ref.update({
-                [type]: firebase.firestore.FieldValue.arrayUnion(history),
+        const docRef = doc(db, 'User', uid);
+        const document = await (await getDoc(docRef)).data();
+        if (document!.exists && document) {
+            await updateDoc(docRef, {
+                [type]: arrayUnion(history),
             });
         } else {
-            await db
-                .collection('User')
-                .doc(uid)
-                .set({
-                    [type]: [history],
-                });
+            await setDoc(doc(db, 'User', uid), { [type]: [history] });
         }
     } catch {
         console.error('유저 히스토리 업데이트 실패');
@@ -113,13 +116,9 @@ async function getCharData(
     id: string
 ): Promise<[CharProps | null, Error | null]> {
     try {
-        const data = await db
-            .collection('Character')
-            .doc(id)
-            .get()
-            .then((snap) => {
-                return snap.data() as CharProps;
-            });
+        const data = (await (
+            await getDoc(doc(db, 'Character', id))
+        ).data()) as CharProps;
         return [data, null];
     } catch (error: any) {
         console.error(error);
@@ -128,30 +127,25 @@ async function getCharData(
 }
 async function updateCharData(id: string, data: any, category: string) {
     try {
-        await db
-            .collection('Character')
-            .doc(id)
-            .update({
-                [category]: data,
-            });
+        await updateDoc(doc(db, 'Character', id), { [category]: data });
     } catch (err) {
         alert(id + '의 정보를 받아오는데 실패했습니다');
         console.error('에러 정보' + err);
     }
 }
 async function AddFunc(char: string, data: Object, tag: string) {
-    let content = firebase.firestore.FieldValue.arrayUnion(data);
+    let content = arrayUnion(data);
     updateCharData(char, content, tag);
 }
 
 async function DeleteFunc(char: string, data: Object, tag: string) {
-    let content = firebase.firestore.FieldValue.arrayRemove(data);
+    let content = arrayRemove(data);
     updateCharData(char, content, tag);
 }
 
 async function getUpdateAllChar(fn: any) {
     try {
-        const documents = await db.collection('Character').get();
+        const documents = await getDocs(collection(db, 'Character'));
         documents.forEach((document) => {
             fn(document.id);
         });
@@ -172,7 +166,7 @@ async function UpdateCharsFunc(order: any, category: string) {
     }
 
     try {
-        const documents = await db.collection('Character').get();
+        const documents = await getDocs(collection(db, 'Character'));
         documents.forEach((document) => {
             UpdatePropsFunc(order, document.id, category);
         });
