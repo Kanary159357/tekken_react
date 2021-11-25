@@ -2,20 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../base/Button';
 import { useModalData, useModalDispatch } from '../context/ModalContext';
-import {
-    AddData,
-    DeleteData,
-    EditData,
-    LoadData,
-} from '../context/DBContextFunc';
 
 import CustomIcon from '../base/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { Device, FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../context/UserContext';
-import { useDBData, useDBDispatch } from '../context/DBContext';
 import Overlay from './Overlay';
+import useAddCharDataQuery from '../hooks/useAddCharDataQuery';
+import useDeleteCharDataQuery from '../hooks/useDeleteCharDataQuery';
+import useEditCharDataQuery from '../hooks/useEditCharDataQuery';
 
 const ModalBox = styled.div`
     background: ${Palette.white_2};
@@ -71,36 +67,47 @@ const CustomButton = styled(Button)`
 const Modal = () => {
     const { modalAction, props } = useModalData();
     const modalDispatch = useModalDispatch();
-    const dbDispatch = useDBDispatch();
     const user = useUserData()!;
-    const { loading } = useDBData();
     const CloseModal = () => {
         modalDispatch({ type: 'SET', payload: false });
     };
+
     const { description, values, oldvalues, charName } = props;
+    const addQuery = useAddCharDataQuery(
+        charName,
+        values,
+        user?.uid,
+        description
+    );
+    const deleteQuery = useDeleteCharDataQuery(
+        charName,
+        values,
+        user?.uid,
+        description
+    );
+    const editQuery = useEditCharDataQuery(
+        charName,
+        oldvalues!,
+        values,
+        user?.uid,
+        description
+    );
     const ModalAction = async () => {
         if (user === null) {
             signInWithGoogle();
             CloseModal();
             return;
         }
-        const { uid } = user;
         CloseModal();
         switch (modalAction) {
             case 'add':
-                dbDispatch({ type: 'LOADING' });
-                await AddData(description, values, charName, uid);
-                await LoadData(charName, dbDispatch);
+                addQuery.mutate();
                 break;
             case 'delete':
-                dbDispatch({ type: 'LOADING' });
-                await DeleteData(description, values, charName, uid);
-                await LoadData(charName, dbDispatch);
+                deleteQuery.mutate();
                 break;
             case 'edit':
-                dbDispatch({ type: 'LOADING' });
-                await EditData(description, oldvalues!, values, charName, uid);
-                await LoadData(charName, dbDispatch);
+                editQuery.mutate();
                 break;
             default:
                 alert('알수 없는 행동입니다!');
@@ -121,7 +128,6 @@ const Modal = () => {
             description: '정보를 수정하기 위해서는 로그인해야합니다',
         },
     };
-    console.log(loading);
     return (
         <>
             <>

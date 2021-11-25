@@ -1,7 +1,6 @@
 import db from '../firebaseInit';
 import { CharProps } from '../types/CharProps';
 import { StateDispatch } from './DBContext';
-import { TableOrder } from '../utils/TableOrder';
 import {
     arrayRemove,
     arrayUnion,
@@ -13,47 +12,11 @@ import {
     Timestamp,
     updateDoc,
 } from 'firebase/firestore/lite';
+import { order, sortbyCounter, sortbyKey } from '../utils/charDataSort';
+
+//legacy
+
 export async function LoadData(char: string, dispatch: StateDispatch) {
-    const sortbyKey = (a: any, b: any) => {
-        if (a.hasOwnProperty('frame') && b.hasOwnProperty('frame')) {
-            if (a['frame'] === b['frame']) {
-                return a['command'] < b['command'] ? -1 : 1;
-            } else {
-                return parseInt(a['frame']) < parseInt(b['frame']) ? -1 : 1;
-            }
-        } else {
-            return a['command'] < b['command'] ? 1 : -1;
-        }
-    };
-
-    const sortbyCounter = (a: any, b: any) => {
-        const av = a['command'].includes('(C)');
-        const bv = b['command'].includes('(C)');
-        if (av === bv) {
-            return a['command'] < b['command'] ? -1 : 1;
-        } else if (av === false) {
-            return -1;
-        } else {
-            return 1;
-        }
-    };
-    const order = (arr: any[], category: string) => {
-        const orderByContent = (category: string) => {
-            const order = TableOrder[category];
-            return function (a: any, b: any) {
-                return order.indexOf(a) - order.indexOf(b);
-            };
-        };
-        return arr.map((cur: { [key: string]: string }) =>
-            Object.keys(cur)
-                .sort(orderByContent(category))
-                .reduce((obj: any, key: string) => {
-                    obj[key] = cur[key];
-                    return obj;
-                }, {})
-        );
-    };
-
     dispatch({ type: 'LOADING' });
     try {
         const docRef = doc(db, 'Character', char);
@@ -87,6 +50,7 @@ export async function LoadData(char: string, dispatch: StateDispatch) {
         dispatch({ type: 'ERROR', error: err });
     }
 }
+
 async function UpdateHistory(
     char: string,
     data: Object,
@@ -100,7 +64,7 @@ async function UpdateHistory(
             time: Timestamp.fromDate(new Date()),
         };
         const docRef = doc(db, 'User', uid);
-        const document = await (await getDoc(docRef)).data();
+        const document = (await getDoc(docRef)).data();
         if (document!.exists && document) {
             await updateDoc(docRef, {
                 [type]: arrayUnion(history),
@@ -116,9 +80,9 @@ async function getCharData(
     id: string
 ): Promise<[CharProps | null, Error | null]> {
     try {
-        const data = (await (
+        const data = (
             await getDoc(doc(db, 'Character', id))
-        ).data()) as CharProps;
+        ).data() as CharProps;
         return [data, null];
     } catch (error: any) {
         console.error(error);
@@ -176,15 +140,15 @@ async function UpdateCharsFunc(order: any, category: string) {
     }
 }
 
-export const AddData = async (
+export async function AddData(
     tag: string,
     data: Object,
     char: string,
     uid: string
-) => {
+) {
     await AddFunc(char, data, tag);
     await UpdateHistory(char, data, uid, 'ADD');
-};
+}
 
 export async function DeleteData(
     tag: string,
