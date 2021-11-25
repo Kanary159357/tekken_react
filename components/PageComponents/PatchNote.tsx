@@ -96,7 +96,14 @@ const Notes: Record<string, PatchInterface[]> = {
             content: '커맨드 설명 사진 엑박뜨는 문제 수정',
         },
     ],
-    '2021-11': [{ date: '2021-11-22', content: '사이트 최적화 ' }],
+    '2021-11': [
+        { date: '2021-11-22', content: '사이트 최적화 ' },
+        {
+            date: '2021-11-25',
+            content:
+                '리디아, 파쿰람, 요시미츠, 샤오유, 고우키, 엘리자 유투브, 디시 팁 추가, 사이트 최적화(아무도 모를)',
+        },
+    ],
 };
 
 interface PatchInterface {
