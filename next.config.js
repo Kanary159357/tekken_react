@@ -1,5 +1,7 @@
 const nextConfig = {
     /* config options here */
+    trailingSlash: true,
+
     images: {
         domains: ['lh3.googleusercontent.com'],
     },
