@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { StateProvider } from '../context/DBContext';
 import { ModalProvider } from '../context/ModalContext';
 import UserProvider from '../context/UserContext';
 import MainLayout from '../layout/MainLayout';
@@ -31,7 +30,7 @@ const App = ({ Component, pageProps }) => {
     const router = useRouter();
 
     const handleRouteChange = (url: URL) => {
-        window.gtag('config', 'G-WSCE8CV454', {
+        window.gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`, {
             page_path: url,
         });
     };
@@ -47,9 +46,7 @@ const App = ({ Component, pageProps }) => {
     return (
         <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
-                <AppProvider
-                    contexts={[StateProvider, ModalProvider, UserProvider]}
-                >
+                <AppProvider contexts={[ModalProvider, UserProvider]}>
                     <GlobalStyle />
                     <MainLayout>
                         <Component {...pageProps} />

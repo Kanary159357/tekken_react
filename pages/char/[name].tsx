@@ -39,9 +39,19 @@ const DescriptionButton = styled.div`
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const queryClient = new QueryClient();
-    await queryClient.prefetchQuery(['char', context.query.name], () =>
-        getCharData(context.query.name as string)
-    );
+    try {
+        await queryClient.fetchQuery(['char', context.query.name], () =>
+            getCharData(context.query.name as string)
+        );
+    } catch (error) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/404',
+            },
+        };
+    }
+
     return {
         props: {
             dehydratedState: dehydrate(queryClient),
