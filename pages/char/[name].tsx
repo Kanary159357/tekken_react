@@ -3,14 +3,17 @@ import Info from '../../components/PageComponents/Info';
 import Main from '../../components/PageComponents/Main';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
-import { useDBData, useDBDispatch } from '../../context/DBContext';
-import { LoadData } from '../../context/DBContextFunc';
+
 import { Device, Palette } from '../../styles/theme';
 import { LoadingWithoutOverlay } from '../../components/PageComponents/Loading';
 import CommandDescription from '../../components/PageComponents/CommandDescription';
 import CustomIcon from '../../base/Icon';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Head from 'next/head';
+import useCharDataQuery from '../../hooks/useCharDataQuery';
+import { dehydrate, QueryClient } from 'react-query';
+import { GetServerSideProps } from 'next';
+import { getCharData } from '../../utils/queryFn';
 
 const CharWrap = styled.div`
     display: flex;
@@ -34,22 +37,45 @@ const DescriptionButton = styled.div`
     }
 `;
 
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const queryClient = new QueryClient();
+    try {
+        await queryClient.fetchQuery(['char', context.query.name], () =>
+            getCharData(context.query.name as string)
+        );
+    } catch (error) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/404',
+            },
+        };
+    }
+
+    return {
+        props: {
+            dehydratedState: dehydrate(queryClient),
+        },
+    };
+};
+
 const Char = () => {
     const router = useRouter();
     const { name } = router.query;
-    const { charProps, loading } = useDBData();
-    const tempDispatch = useDBDispatch();
     const [description, setDescription] = useState(false);
     const [tableIndex, setTableIndex] = useState(0);
-    useEffect(() => {
-        if (name) LoadData(name as string, tempDispatch);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [name]);
-
+    const { data, isLoading, isFetching, isError } = useCharDataQuery(
+        name as string
+    );
+    if (isError) {
+        router.push('/404');
+    }
     const handleDescription = useCallback(() => {
         setDescription(false);
     }, []);
-
+    useEffect(() => {
+        console.log(isError);
+    }, [isError]);
     const handleIndex = useCallback((index: number) => {
         setTableIndex(index);
     }, []);
@@ -62,7 +88,7 @@ const Char = () => {
             <DescriptionButton onClick={() => setDescription(true)}>
                 <CustomIcon icon={faQuestionCircle} color={Palette.gray_1} />
             </DescriptionButton>
-            {loading ? (
+            {isLoading ? (
                 <LoadingWithoutOverlay />
             ) : (
                 <>
@@ -70,9 +96,9 @@ const Char = () => {
                         <CommandDescription func={handleDescription} />
                     )}
                     <>
-                        <Info data={charProps?.Info} name={name as string} />
+                        <Info data={data?.Info} name={name as string} />
                         <Main
-                            data={charProps!}
+                            data={data!}
                             tableIndex={tableIndex}
                             handleIndex={handleIndex}
                         />

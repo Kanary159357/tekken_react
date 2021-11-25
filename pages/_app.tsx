@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { StateProvider } from '../context/DBContext';
 import { ModalProvider } from '../context/ModalContext';
 import UserProvider from '../context/UserContext';
 import MainLayout from '../layout/MainLayout';
@@ -7,6 +6,7 @@ import { GlobalStyle } from '../styles/GlobalStyle';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
 import { useRouter } from 'next/dist/client/router';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 const AppProvider = ({
@@ -30,10 +30,11 @@ const App = ({ Component, pageProps }) => {
     const router = useRouter();
 
     const handleRouteChange = (url: URL) => {
-        window.gtag('config', '[Tracking ID]', {
+        window.gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`, {
             page_path: url,
         });
     };
+    const [queryClient] = React.useState(() => new QueryClient());
 
     useEffect(() => {
         router.events.on('routeChangeComplete', handleRouteChange);
@@ -43,12 +44,16 @@ const App = ({ Component, pageProps }) => {
     }, [router.events]);
 
     return (
-        <AppProvider contexts={[StateProvider, ModalProvider, UserProvider]}>
-            <GlobalStyle />
-            <MainLayout>
-                <Component {...pageProps} />
-            </MainLayout>
-        </AppProvider>
+        <QueryClientProvider client={queryClient}>
+            <Hydrate state={pageProps.dehydratedState}>
+                <AppProvider contexts={[ModalProvider, UserProvider]}>
+                    <GlobalStyle />
+                    <MainLayout>
+                        <Component {...pageProps} />
+                    </MainLayout>
+                </AppProvider>
+            </Hydrate>
+        </QueryClientProvider>
     );
 };
 

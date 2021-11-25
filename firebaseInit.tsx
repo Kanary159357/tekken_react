@@ -3,13 +3,13 @@ import { getAuth, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore/lite';
 
 const firebaseApp = initializeApp({
-    apiKey: 'AIzaSyDI3lUc4QjYBdRUaTVqI6r0neyocpSuW40',
+    apiKey: `${process.env.NEXT_PUBLIC_FIREBASE_APIKEY}`,
     authDomain: 'tekken-info.firebaseapp.com',
     databaseURL: 'https://tekken-info-default-rtdb.firebaseio.com',
     projectId: 'tekken-info',
     storageBucket: 'tekken-info.appspot.com',
-    messagingSenderId: '482493151012',
-    appId: '1:482493151012:web:cc3227418248134488a5b1',
+    messagingSenderId: `${process.env.NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER}`,
+    appId: `${process.env.NEXT_PUBLIC_FIREBASE_APP_ID}`,
 });
 
 const db = getFirestore(firebaseApp);
