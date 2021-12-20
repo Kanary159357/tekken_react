@@ -1,21 +1,12 @@
-import {
-    arrayRemove,
-    arrayUnion,
-    doc,
-    getDoc,
-    setDoc,
-    Timestamp,
-    updateDoc,
-} from 'firebase/firestore/lite';
+import { doc } from 'firebase/firestore/lite';
 import { useEffect } from 'react';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import db from '../firebaseInit';
-import { getOrderedCharData } from '../utils/charDataSort';
+import { useMutation, useQueryClient } from 'react-query';
+import db from '../../firebaseInit';
 import {
     AddCharData,
     deleteCharData,
     updateUserHistory,
-} from '../utils/queryFn';
+} from '../../utils/queryFn';
 
 const useEditCharDataQuery = (
     char: string,

@@ -9,9 +9,9 @@ import { Device, FontColor, Palette } from '../styles/theme';
 import { signInWithGoogle } from '../firebaseInit';
 import { useUserData } from '../context/UserContext';
 import Overlay from './Overlay';
-import useAddCharDataQuery from '../hooks/useAddCharDataQuery';
-import useDeleteCharDataQuery from '../hooks/useDeleteCharDataQuery';
-import useEditCharDataQuery from '../hooks/useEditCharDataQuery';
+import useAddCharDataQuery from '../hooks/query/useAddCharDataQuery';
+import useDeleteCharDataQuery from '../hooks/query/useDeleteCharDataQuery';
+import useEditCharDataQuery from '../hooks/query/useEditCharDataQuery';
 
 const ModalBox = styled.div`
     background: ${Palette.white_2};

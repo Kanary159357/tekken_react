@@ -7,11 +7,9 @@ import {
     Timestamp,
     updateDoc,
 } from 'firebase/firestore/lite';
-import { useEffect } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import db from '../firebaseInit';
-import { getOrderedCharData } from '../utils/charDataSort';
-import { deleteCharData, updateUserHistory } from '../utils/queryFn';
+import db from '../../firebaseInit';
+import { deleteCharData, updateUserHistory } from '../../utils/queryFn';
 
 const useDeleteCharDataQuery = (
     char: string,

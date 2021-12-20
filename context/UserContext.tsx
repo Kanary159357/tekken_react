@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase/auth';
 import React, { useState, useEffect, createContext, useContext } from 'react';
-
+import nookies from 'nookies';
 interface UserProps {
     uid: string;
     displayName: string;
@@ -14,15 +14,26 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [user, setUser] = useState<UserProps | null>(null);
     useEffect(() => {
-        auth.onAuthStateChanged(async (tempUser: any) => {
-            if (tempUser === null) {
+        auth.onIdTokenChanged(async (user: any) => {
+            if (user === null) {
                 setUser(null);
+                nookies.set(undefined, 'token', '', { path: '/' });
             } else {
-                const { uid, displayName, email, photoURL } = tempUser;
-                setUser({ uid, displayName, email, photoURL });
+                const token = await user.getIdToken();
+                setUser(user);
+                nookies.set(undefined, 'token', token, { path: '/' });
             }
         });
     }, [auth]);
+    useEffect(() => {
+        const handle = setInterval(async () => {
+            const user = auth.currentUser;
+            if (user) await user.getIdToken(true);
+        }, 10 * 60 * 1000 * 12);
+
+        // clean up setInterval
+        return () => clearInterval(handle);
+    }, [auth.currentUser]);
     return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
 };
 

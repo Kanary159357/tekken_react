@@ -10,11 +10,13 @@ import CommandDescription from '../../components/PageComponents/CommandDescripti
 import CustomIcon from '../../base/Icon';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Head from 'next/head';
-import useCharDataQuery from '../../hooks/useCharDataQuery';
+import useCharDataQuery from '../../hooks/query/useCharDataQuery';
 import { dehydrate, QueryClient } from 'react-query';
 import { GetServerSideProps } from 'next';
 import { getCharData } from '../../utils/queryFn';
-
+import nookies from 'nookies';
+import { getAuth } from 'firebase-admin/auth';
+import { AdminAuth } from '../../fireabaseAdminInit';
 const CharWrap = styled.div`
     display: flex;
     height: 100%;
@@ -39,6 +41,10 @@ const DescriptionButton = styled.div`
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const queryClient = new QueryClient();
+    const cookies = nookies.get(context);
+
+    const token = await AdminAuth.verifyIdToken(cookies.token);
+
     try {
         await queryClient.fetchQuery(['char', context.query.name], () =>
             getCharData(context.query.name as string)
