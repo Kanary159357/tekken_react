@@ -1,14 +1,19 @@
 import { faEdit, faEraser } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useModalDispatch } from '../../context/ModalContext';
-import { useUserData } from '../../context/UserContext';
+import { signInWithGoogle } from '../../firebaseInit';
+import useDeleteCharDataQuery from '../../hooks/query/useDeleteCharDataQuery';
+import useEditCharDataQuery from '../../hooks/query/useEditCharDataQuery';
+import useDialog from '../../hooks/useDialog';
 import useEditValue from '../../hooks/useInputValue';
+import { RootState } from '../../store/store';
 import { Palette, Device } from '../../styles/theme';
-import CustomIcon from '../../base/Icon';
+import { isEmpty } from '../../utils/isEmpty';
+import CustomIcon from '../base/Icon';
 import { TableControl, tagProperty } from './Table';
 import TableEdits from './TableEdits';
-const TableRow = styled.tr`
+const TableRowBox = styled.tr`
     margin-bottom: -1px;
     border-bottom: 1px solid #d1d1d1;
     box-sizing: border-box;
@@ -50,10 +55,10 @@ const TableData = ({
 interface RowProps {
     row: tagProperty;
     charName: string;
-    tag: string;
+    description: string;
 }
 
-const TableRowData = ({ row, charName, tag }: RowProps) => {
+const TableRow = ({ row, charName, description }: RowProps) => {
     const [edit, setEdit] = useState(false);
     const { values, handleChange, setValue } = useEditValue(row);
     useEffect(() => {
@@ -61,31 +66,62 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
         setEdit(false);
     }, [row, setValue]);
 
-    const modalProps = {
-        description: tag,
-        oldvalues: row,
-        values: values,
-        charName: charName,
-    };
-    const modalDispatch = useModalDispatch();
-    const user = useUserData();
-    const handleDelete = () => {
-        if (user !== null)
-            modalDispatch({ type: 'DELETE', payload: modalProps });
-        else modalDispatch({ type: 'NOTUSER' });
+    const user = useSelector((state: RootState) => state.userReducer.user);
+    const { openDialog } = useDialog();
+    const deleteQuery = useDeleteCharDataQuery(
+        charName,
+        values,
+        user?.uid,
+        description
+    );
+    const editQuery = useEditCharDataQuery(
+        charName,
+        row!,
+        values,
+        user?.uid,
+        description
+    );
+    const handleDelete = async () => {
+        if (!isEmpty(user)) {
+            const hasConfirm = await openDialog({
+                content: '삭제하시겠습니까',
+            });
+            if (hasConfirm) {
+                deleteQuery.mutate();
+            }
+        } else {
+            const hasConfirm = await openDialog({
+                content: '정보를 수정하기 위해서는 로그인해야합니다',
+            });
+            if (hasConfirm) {
+                signInWithGoogle();
+            }
+        }
         setValue(row);
         setEdit(false);
     };
-    const handleUpdate = () => {
-        console.log(modalProps);
-        if (user !== null) modalDispatch({ type: 'EDIT', payload: modalProps });
-        else modalDispatch({ type: 'NOTUSER' });
+    const handleUpdate = async () => {
+        if (!isEmpty(user)) {
+            const hasConfirm = await openDialog({
+                content: '수정하시겠습니까',
+            });
+            if (hasConfirm) {
+                editQuery.mutate();
+            }
+        } else {
+            const hasConfirm = await openDialog({
+                content: '정보를 수정하기 위해서는 로그인해야합니다',
+            });
+            if (hasConfirm) {
+                signInWithGoogle();
+            }
+        }
         setValue(row);
         setEdit(false);
     };
 
     return (
-        <TableRow>
+        <TableRowBox>
             {edit ? (
                 <>
                     <TableEdits
@@ -124,8 +160,8 @@ const TableRowData = ({ row, charName, tag }: RowProps) => {
                     </TableControl>
                 </>
             )}
-        </TableRow>
+        </TableRowBox>
     );
 };
 
-export default React.memo(TableRowData);
+export default React.memo(TableRow);

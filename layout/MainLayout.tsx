@@ -9,9 +9,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from '../styles/GlobalStyle';
 import Modal from '../components/Modal';
-import CustomIcon from '../base/Icon';
+import CustomIcon from '../components/base/Icon';
 import { Device, Palette } from '../styles/theme';
-import { useModalData } from '../context/ModalContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 const Wrapper = styled.div`
     background: #e8e8e8;
@@ -58,7 +59,9 @@ const Overlay = styled.div<{ toggle: boolean }>`
 
 function MainLayout({ children }) {
     const [toggle, setToggle] = useState(false);
-    const { open } = useModalData();
+    const isOpen = useSelector(
+        (state: RootState) => state.dialogReducer.isOpen
+    );
     const handleToggle = useCallback(() => {
         setToggle(false);
     }, []);
@@ -76,7 +79,7 @@ function MainLayout({ children }) {
                 <Overlay toggle={toggle} onClick={handleToggle} />
 
                 <PageContent>{children}</PageContent>
-                {open && <Modal />}
+                {isOpen && <Modal />}
             </Wrapper>
         </>
     );

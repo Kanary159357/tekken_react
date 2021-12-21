@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Palette } from '../../styles/theme';
-import CustomIcon from '../../base/Icon';
+import CustomIcon from '../base/Icon';
 
 const TableEditBox = styled.td`
     border-collapse: collapse;

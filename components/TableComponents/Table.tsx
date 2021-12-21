@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { TableItemProps } from '../TapComponents/TabInfo';
-import TableRowData from './TableRow';
+import TableRow from './TableRow';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
-import CustomIcon from '../../base/Icon';
+import CustomIcon from '../base/Icon';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Device, Palette } from '../../styles/theme';
-import { useUserData } from '../../context/UserContext';
-import { useModalDispatch } from '../../context/ModalContext';
 import { useRouter } from 'next/dist/client/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { isEmpty } from '../../utils/isEmpty';
+
+import useAddCharDataQuery from '../../hooks/query/useAddCharDataQuery';
+import useDialog from '../../hooks/useDialog';
+import { signInWithGoogle } from '../../firebaseInit';
 
 const TableWrapper = styled.div`
     margin-bottom: 20px;
@@ -41,7 +46,7 @@ const TableHead = styled.th`
         padding: 5px;
     }
 `;
-const TableRow = styled.tr`
+const TableRowBox = styled.tr`
     margin-bottom: -1px;
     border: 1px solid ${Palette.border_1};
     box-sizing: border-box;
@@ -76,28 +81,39 @@ export interface tagProperty {
 
 const Table = ({ item }: dataProps) => {
     const { header, columns, data, tag } = item;
+    let router = useRouter();
+    const { name } = router.query;
+    const colSpan = tag.detail.length;
+    const [edit, setEdit] = useState(false);
     const initialValue: tagProperty = tag.detail.reduce((acc: any, cur) => {
         acc[cur] = '';
         return acc;
     }, {});
-    let router = useRouter();
-    const { name } = router.query;
-    const colSpan = tag.detail.length;
-    const modalDispatch = useModalDispatch();
-    const [edit, setEdit] = useState(false);
     const { values, setValue, handleChange } = useEditValue(initialValue);
-    const modalProps = {
-        description: tag.description,
-        values: values,
-        charName: name as string,
-    };
-    const user = useUserData();
+    const { openDialog } = useDialog();
 
-    const handleModal = () => {
-        if (user !== null) {
-            modalDispatch({ type: 'ADD', payload: modalProps });
+    const user = useSelector((state: RootState) => state.userReducer.user);
+    const addQuery = useAddCharDataQuery(
+        name as string,
+        values,
+        user?.uid,
+        tag.description
+    );
+    const handleModal = async () => {
+        if (!isEmpty(user)) {
+            const hasConfirm = await openDialog({
+                content: '추가하시겠습니까',
+            });
+            if (hasConfirm) {
+                addQuery.mutate();
+            }
         } else {
-            modalDispatch({ type: 'NOTUSER' });
+            const hasConfirm = await openDialog({
+                content: '정보를 수정하기 위해서는 로그인해야합니다',
+            });
+            if (hasConfirm) {
+                signInWithGoogle();
+            }
         }
         setEdit(false);
         setValue(initialValue);
@@ -108,25 +124,25 @@ const Table = ({ item }: dataProps) => {
             <h2>{header}</h2>
             <TableContent>
                 <thead>
-                    <TableRow>
+                    <TableRowBox>
                         {columns.map((column, index) => (
                             <TableHead key={header + index + column}>
                                 {column}
                             </TableHead>
                         ))}
-                    </TableRow>
+                    </TableRowBox>
                 </thead>
                 <tbody>
                     {data.map((row: any, index: number) => (
-                        <TableRowData
+                        <TableRow
                             key={index}
                             row={row}
                             charName={name as string}
-                            tag={tag.description}
+                            description={tag.description}
                         />
                     ))}
                     {edit ? (
-                        <TableRow>
+                        <TableRowBox>
                             <TableEdits
                                 setEdit={setEdit}
                                 values={values}
@@ -134,7 +150,7 @@ const Table = ({ item }: dataProps) => {
                                 charName={name as string}
                                 handleModal={handleModal}
                             />
-                        </TableRow>
+                        </TableRowBox>
                     ) : (
                         <TableAdd>
                             <td onClick={() => setEdit(true)} colSpan={colSpan}>

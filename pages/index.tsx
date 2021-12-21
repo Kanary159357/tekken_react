@@ -4,6 +4,7 @@ import { Palette, FontColor, Device } from '../styles/theme';
 
 import PatchNote from '../components/PageComponents/PatchNote';
 import ContactForm from '../components/PageComponents/ContactForm';
+import Head from 'next/head';
 
 const HomeWrapper = styled.div`
     display: flex;
@@ -16,21 +17,21 @@ const HomeWrapper = styled.div`
     }
 `;
 
-const Head = styled.div`
+const Header = styled.div`
     width: 100%;
     height: 300px;
     text-align: center;
     background: ${Palette.black_2};
     top: 0;
 `;
-const MainHead = styled.div`
+const MainHeader = styled.div`
     font-size: 50px;
     padding-top: 100px;
     font-weight: 900;
     color: ${FontColor.white};
 `;
 
-const SubHead = styled.p`
+const SubHeader = styled.p`
     color: ${FontColor.white};
     padding-top: 40px;
     font-size: 20px;
@@ -60,9 +61,16 @@ const Index = () => {
     return (
         <HomeWrapper>
             <Head>
-                <MainHead>6N23RP</MainHead>
-                <SubHead>Tekken 7 FR Information</SubHead>
+                <title>6N23RP</title>
+                <meta
+                    name="description"
+                    content="철권 7 캐릭터들의 딜캐, 콤보, 주력기, 잡기 등의 정보 공유"
+                />
             </Head>
+            <Header>
+                <MainHeader>6N23RP</MainHeader>
+                <SubHeader>Tekken 7 FR Information</SubHeader>
+            </Header>
             <Content>
                 <ContentWrapper>
                     {/*<SiteDescription />*/}

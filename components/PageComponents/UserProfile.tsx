@@ -1,18 +1,19 @@
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { useUserData } from '../../context/UserContext';
 import { logOut, signInWithGoogle } from '../../firebaseInit';
-import Button from '../../base/Button';
-import Icon from '../../base/Icon';
+import Button from '../base/Button';
+import Icon from '../base/Icon';
 import Image from 'next/image';
-
+import { useSelector } from 'react-redux';
 import { FontColor, Palette } from '../../styles/theme';
+import { RootState } from '../../store/store';
+import { isEmpty } from '../../utils/isEmpty';
 const UserProfileBox = styled.div<{ user: any }>`
     height: ${(props) => props.user === '150px' && '100px'};
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: ${(props) => props.user === null && 'pointer'};
+    cursor: ${(props) => props.user && 'pointer'};
     margin-bottom: 10px;
 `;
 
@@ -44,17 +45,18 @@ const UserControlBox = styled.div`
     margin-top: 10px;
 `;
 const UserProfile = () => {
-    const user = useUserData();
+    const user = useSelector((state: RootState) => state.userReducer.user);
+    const isUser = isEmpty(user);
     return (
         <UserProfileBox
-            user={user}
-            onClick={user === null ? signInWithGoogle : undefined}
+            user={isUser}
+            onClick={isUser ? signInWithGoogle : undefined}
         >
             <ProfileImg>
-                {user ? (
+                {!isUser ? (
                     <div className={'image'}>
                         <Image
-                            src={user?.photoURL as any}
+                            src={user?.photoURL}
                             alt={'userImg'}
                             layout="fill"
                             objectFit="contain"
@@ -64,11 +66,9 @@ const UserProfile = () => {
                     <Icon icon={faUserCircle} />
                 )}
             </ProfileImg>
-            <UserBox>
-                {user === null ? '로그인하세요' : user?.displayName}
-            </UserBox>
+            <UserBox>{isUser ? '로그인하세요' : user?.displayName}</UserBox>
             <UserControlBox>
-                {user && (
+                {!isUser && (
                     <Button backColor={Palette.gray_2} onClick={logOut}>
                         로그아웃
                     </Button>

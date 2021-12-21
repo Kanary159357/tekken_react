@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Device, Palette, FontColor } from '../../styles/theme';
 import Image from 'next/image';
 import Overlay from '../Overlay';
-import CustomIcon from '../../base/Icon';
+import CustomIcon from '../base/Icon';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Animation = styled.div`

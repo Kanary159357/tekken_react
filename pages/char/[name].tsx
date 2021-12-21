@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { Device, Palette } from '../../styles/theme';
 import { LoadingWithoutOverlay } from '../../components/PageComponents/Loading';
 import CommandDescription from '../../components/PageComponents/CommandDescription';
-import CustomIcon from '../../base/Icon';
+import CustomIcon from '../../components/base/Icon';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Head from 'next/head';
 import useCharDataQuery from '../../hooks/query/useCharDataQuery';
@@ -15,8 +15,11 @@ import { dehydrate, QueryClient } from 'react-query';
 import { GetServerSideProps } from 'next';
 import { getCharData } from '../../utils/queryFn';
 import nookies from 'nookies';
+import { wrapper } from '../../store/store';
 import { getAuth } from 'firebase-admin/auth';
-import { AdminAuth } from '../../fireabaseAdminInit';
+import { verifyAdminToken } from '../../fireabaseAdminInit';
+import { User } from 'firebase/auth';
+import { setUser } from '../../store/slice/userReducer';
 const CharWrap = styled.div`
     display: flex;
     height: 100%;
@@ -39,31 +42,36 @@ const DescriptionButton = styled.div`
     }
 `;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const queryClient = new QueryClient();
-    const cookies = nookies.get(context);
-
-    const token = await AdminAuth.verifyIdToken(cookies.token);
-
-    try {
-        await queryClient.fetchQuery(['char', context.query.name], () =>
-            getCharData(context.query.name as string)
-        );
-    } catch (error) {
+export const getServerSideProps: GetServerSideProps =
+    wrapper.getServerSideProps((store) => async (context) => {
+        const queryClient = new QueryClient();
+        const cookies = nookies.get(context);
+        if (cookies.token !== undefined && cookies.token !== '') {
+            const {
+                name: displayName,
+                picture: photoURL,
+                uid,
+            } = await verifyAdminToken(cookies.token);
+            store.dispatch(setUser({ displayName, photoURL, uid }));
+        }
+        try {
+            await queryClient.fetchQuery(['char', context.query.name], () =>
+                getCharData(context.query.name as string)
+            );
+        } catch (error) {
+            return {
+                redirect: {
+                    permanent: false,
+                    destination: '/404',
+                },
+            };
+        }
         return {
-            redirect: {
-                permanent: false,
-                destination: '/404',
+            props: {
+                dehydratedState: dehydrate(queryClient),
             },
         };
-    }
-
-    return {
-        props: {
-            dehydratedState: dehydrate(queryClient),
-        },
-    };
-};
+    });
 
 const Char = () => {
     const router = useRouter();
@@ -79,9 +87,7 @@ const Char = () => {
     const handleDescription = useCallback(() => {
         setDescription(false);
     }, []);
-    useEffect(() => {
-        console.log(isError);
-    }, [isError]);
+
     const handleIndex = useCallback((index: number) => {
         setTableIndex(index);
     }, []);
@@ -90,6 +96,13 @@ const Char = () => {
         <CharWrap>
             <Head>
                 <title>{name} | 6N23RP</title>
+                <meta
+                    name="description"
+                    content={
+                        name +
+                        ', 철권 7 캐릭터들의 딜캐, 콤보, 주력기, 잡기 등의 정보 공유'
+                    }
+                />
             </Head>
             <DescriptionButton onClick={() => setDescription(true)}>
                 <CustomIcon icon={faQuestionCircle} color={Palette.gray_1} />
