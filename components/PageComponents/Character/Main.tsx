@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import React from 'react';
-import { CharProps } from '../../types/CharProps';
-import { Device, Palette } from '../../styles/theme';
-import TabControl from '../TapComponents/TabControl';
-import TabPanel from '../TapComponents/TabPanel';
-import TabInfo from '../TapComponents/TabInfo';
-import { TableOrder } from '../../utils/TableOrder';
+import { CharProps } from '../../../types/CharProps';
+import { Device, Palette } from '../../../styles/theme';
+import TabControl from '../../Tap/TabControl';
+import TabPanel from '../../Tap/TabPanel';
+import TabInfo from '../../Tap/TabInfo';
+import { TableOrder } from '../../../utils/TableOrder';
 const MainWrapper = styled.div`
     display: flex;
     height: 100%;

@@ -5,14 +5,10 @@ import Button from './base/Button';
 import CustomIcon from './base/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { Device, FontColor, Palette } from '../styles/theme';
-import { signInWithGoogle } from '../firebaseInit';
 import Overlay from './Overlay';
-import useAddCharDataQuery from '../hooks/query/useAddCharDataQuery';
-import useDeleteCharDataQuery from '../hooks/query/useDeleteCharDataQuery';
-import useEditCharDataQuery from '../hooks/query/useEditCharDataQuery';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
-import { isEmpty } from '../utils/isEmpty';
 import {
     closeDialog,
     confirmDialog,

@@ -12,7 +12,7 @@ interface DialogProp {
     isDeclined: boolean;
 }
 
-const initialState = {
+const initialState: DialogProp = {
     dialog: {
         content: '',
     },
@@ -45,27 +45,30 @@ const slice = createSlice({
     initialState,
 });
 
-export const confirmationAsyncThunk = {
+export const confirmationAsyncAction = {
     open: createAsyncThunk<
         boolean,
         DialogContentProp,
         { extra: ThunkExtraArguments }
-    >('dialogStatus', async (payload, { extra: { store }, dispatch }) => {
-        dispatch(openDialog(payload));
-        return new Promise<boolean>((resolve) => {
-            const unsubscribe = store.subscribe(() => {
-                const { dialogReducer } = store.getState() as RootState;
-                if (dialogReducer.isConfirmed) {
-                    unsubscribe();
-                    resolve(true);
-                }
-                if (dialogReducer.isDeclined) {
-                    unsubscribe();
-                    resolve(false);
-                }
+    >(
+        'dialogStatus',
+        async (payload, { extra: { store }, dispatch }): Promise<boolean> => {
+            dispatch(openDialog(payload));
+            return await new Promise<boolean>((resolve) => {
+                const unsubscribe = store.subscribe(() => {
+                    const { dialogReducer } = store.getState() as RootState;
+                    if (dialogReducer.isConfirmed) {
+                        unsubscribe();
+                        resolve(true);
+                    }
+                    if (dialogReducer.isDeclined) {
+                        unsubscribe();
+                        resolve(false);
+                    }
+                });
             });
-        });
-    }),
+        }
+    ),
 };
 
 export const { openDialog, closeDialog, confirmDialog, declineDialog } =

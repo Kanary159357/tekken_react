@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { TableItemProps } from '../TapComponents/TabInfo';
+import { TableItemProps } from '../Tap/TabInfo';
 import TableRow from './TableRow';
 import TableEdits from './TableEdits';
 import useEditValue from '../../hooks/useInputValue';
@@ -9,7 +9,7 @@ import CustomIcon from '../base/Icon';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Device, Palette } from '../../styles/theme';
 import { useRouter } from 'next/dist/client/router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { isEmpty } from '../../utils/isEmpty';
 

@@ -71,14 +71,14 @@ const TableRow = ({ row, charName, description }: RowProps) => {
     const deleteQuery = useDeleteCharDataQuery(
         charName,
         values,
-        user?.uid,
+        user?.uid as string,
         description
     );
     const editQuery = useEditCharDataQuery(
         charName,
         row!,
         values,
-        user?.uid,
+        user?.uid as string,
         description
     );
     const handleDelete = async () => {

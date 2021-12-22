@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Sidebar from '../components/PageComponents/Sidebar';
+
 import { useCallback, useState } from 'react';
 import React from 'react';
 import {
@@ -10,10 +10,11 @@ import {
 import { GlobalStyle } from '../styles/GlobalStyle';
 import Modal from '../components/Modal';
 import CustomIcon from '../components/base/Icon';
+import Sidebar from '../components/Sidebar/Sidebar';
 import { Device, Palette } from '../styles/theme';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
-
+import Head from 'next/head';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -68,7 +69,11 @@ function MainLayout({ children }) {
 
     return (
         <>
-            <title>6N23RP</title>
+            <Head>
+                {' '}
+                <title>6N23RP</title>
+                <link rel="icon" type="image/png" href="/icon/nneo.png" />
+            </Head>
             <GlobalStyle />
             <Wrapper>
                 <MenuButtonBlock

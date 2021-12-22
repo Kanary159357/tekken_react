@@ -4,8 +4,8 @@ import {
     faBullhorn,
 } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { Palette, FontColor, Device } from '../../styles/theme';
-import CustomIcon from '../base/Icon';
+import { Palette, FontColor, Device } from '../../../styles/theme';
+import CustomIcon from '../../base/Icon';
 
 const Form = styled.div`
     margin-left: auto;

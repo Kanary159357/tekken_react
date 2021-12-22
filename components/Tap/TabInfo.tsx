@@ -1,4 +1,4 @@
-import Table from '../TableComponents/Table';
+import Table from '../Table/Table';
 import React from 'react';
 import styled from 'styled-components';
 import {

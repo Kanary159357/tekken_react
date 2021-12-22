@@ -1,6 +1,6 @@
-import { initializeApp, cert, App } from 'firebase-admin/app';
-import { getAuth, UserRecord } from 'firebase-admin/auth';
-import { getApp, getApps } from 'firebase/app';
+import { initializeApp, cert } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
+import { getApp, getApps } from 'firebase-admin/app';
 
 const privateKey = process.env[
     'NEXT_PUBLIC_FIREBASE_ADMIN_PRIVATE_KEY'
@@ -15,16 +15,11 @@ if (!privateKey || !clientEmail || !projectId) {
 }
 const defaultAppConfig = {
     credential: cert({
-        privateKey: privateKey,
+        privateKey,
         clientEmail,
         projectId,
     }),
     databaseURL: `https://${projectId}.firebaseio.com`,
 };
-let app;
-if (getApps().length === 0) {
-    app = initializeApp(defaultAppConfig);
-} else getApp();
-export const verifyAdminToken = (token: string) =>
-    getAuth().verifyIdToken(token);
-export default app;
+if (!getApps().length) initializeApp(defaultAppConfig);
+export const verifyAdmin = (token: string) => getAuth().verifyIdToken(token);

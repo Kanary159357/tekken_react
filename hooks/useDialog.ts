@@ -1,13 +1,13 @@
-import { useDispatch } from 'react-redux';
 import {
-    confirmationAsyncThunk,
+    confirmationAsyncAction,
     DialogContentProp,
 } from '../store/slice/dialogReducer';
+import { useAppDispatch } from '../store/store';
 
 const useDialog = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const openDialog = async (state: DialogContentProp) => {
-        const { payload } = await dispatch(confirmationAsyncThunk.open(state));
+        const { payload } = await dispatch(confirmationAsyncAction.open(state));
         return payload;
     };
 
