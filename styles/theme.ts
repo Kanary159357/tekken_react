@@ -14,7 +14,7 @@ export const FontColor = {
 export const BreakPoint = {
     mobile: '720px',
     tablet: '768px',
-    desktop: '1140px',
+    desktop: '1440px',
 };
 
 export const Device = {

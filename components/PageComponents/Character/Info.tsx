@@ -3,6 +3,12 @@ import Image from 'next/image';
 import React from 'react';
 import { InfoProps } from '../../../types/CharProps';
 import { Device, FontColor, Palette } from '../../../styles/theme';
+import * as sprite from '../../../styles/sprite.json';
+import {
+    DCHalfImage,
+    DCImage,
+    YoutubeHalfImage,
+} from '../../../styles/SpriteStyle';
 const InfoWrapper = styled.div`
     display: flex;
     height: 100%;
@@ -10,9 +16,9 @@ const InfoWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
     @media ${Device.desktop} {
         height: 50px;
-        line-height: 49px;
         width: 100%;
         flex-direction: row;
         justify-content: space-around;
@@ -30,16 +36,6 @@ const InfoWrapper = styled.div`
             font-size: 20px;
         }
     }
-
-    .link {
-        display: flex;
-        flex-direction: column;
-        @media ${Device.desktop} {
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
-    }
     .info_img {
         text-align: center;
         display: flex;
@@ -50,6 +46,9 @@ const InfoWrapper = styled.div`
         @media ${Device.desktop} {
             color: ${FontColor.white};
         }
+        @media ${Device.tablet} {
+            height: 50px;
+        }
         .container {
             width: 200px;
             height: 200px;
@@ -59,7 +58,21 @@ const InfoWrapper = styled.div`
             }
         }
     }
-    .link a {
+`;
+
+const InfoLinkList = styled.div`
+    display: flex;
+    flex-direction: column;
+    @media ${Device.desktop} {
+        flex-direction: row;
+        align-items: center;
+        margin-right: 100px;
+    }
+    @media ${Device.tablet} {
+        margin: 0;
+    }
+    white-space: nowrap;
+    a {
         display: flex;
         text-decoration: none;
         align-items: center;
@@ -73,6 +86,7 @@ const InfoWrapper = styled.div`
         @media ${Device.desktop} {
             padding-left: 10px;
             padding-bottom: 0;
+            height: 100%;
             &,
             &:active,
             &:link,
@@ -82,7 +96,7 @@ const InfoWrapper = styled.div`
         }
     }
 
-    .link a .img_container {
+    a .img_container {
         display: flex;
         width: 1.5em;
         position: relative;
@@ -90,20 +104,11 @@ const InfoWrapper = styled.div`
         align-items: center;
         margin-left: 10px;
         border-radius: 30%;
-        margin-right: 10px;
-
+        margin-right: 20px;
         @media ${Device.desktop} {
-            width: 2em;
-            height: 2em;
+            width: 100%;
             text-align: center;
-        }
-        @media ${Device.tablet} {
-            width: 1.5em;
-            height: 1.5em;
-        }
-        @media ${Device.mobile} {
-            width: 1em;
-            height: 1em;
+            margin-right: 5px;
         }
     }
 `;
@@ -130,45 +135,36 @@ const Info = ({ data, name }: InfoInterface) => {
                 </div>
                 <h2>{name}</h2>
             </div>
-            <div className="link">
+            <InfoLinkList>
                 <a
                     target="_blank"
                     rel="noopener noreferrer"
                     href={info?.punish}
                 >
                     <div className="img_container">
-                        <Image
-                            src={`/img/youtube.png`}
-                            alt="youtube"
-                            layout="fill"
-                            objectFit="contain"
-                        />
+                        <div>
+                            <YoutubeHalfImage />
+                        </div>
                     </div>
                     딜캐
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={info?.combo}>
                     <div className="img_container">
-                        <Image
-                            src={`/img/youtube.png`}
-                            alt="youtube"
-                            layout="fill"
-                            objectFit="contain"
-                        />
+                        <div>
+                            <YoutubeHalfImage />
+                        </div>
                     </div>
                     콤보
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href={info?.dc}>
                     <div className="img_container">
-                        <Image
-                            src={`/img/dc.png`}
-                            alt="dc"
-                            layout="fill"
-                            objectFit="contain"
-                        />
+                        <div>
+                            <DCHalfImage />
+                        </div>
                     </div>
-                    철마갤 캐릭터 팁
+                    캐릭터 팁
                 </a>
-            </div>
+            </InfoLinkList>
         </InfoWrapper>
     );
 };

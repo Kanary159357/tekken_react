@@ -7,6 +7,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { wrapper } from '../store/store';
 import useGA from '../hooks/useGA';
 import useAuthObserver from '../hooks/useAuthObserver';
+import '../scripts/wdyr';
 
 config.autoAddCss = false;
 

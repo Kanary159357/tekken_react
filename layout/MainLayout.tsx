@@ -66,7 +66,9 @@ function MainLayout({ children }) {
     const handleToggle = useCallback(() => {
         setToggle(false);
     }, []);
-
+    const changeToggle = useCallback(() => {
+        setToggle(!toggle);
+    }, [toggle]);
     return (
         <>
             <Head>
@@ -78,7 +80,7 @@ function MainLayout({ children }) {
             <Wrapper>
                 <MenuButtonBlock
                     icon={toggle ? faTimes : faBars}
-                    onClick={() => setToggle(!toggle)}
+                    onClick={changeToggle}
                 />
                 <Sidebar toggle={toggle} handleToggle={handleToggle} />
                 <Overlay toggle={toggle} onClick={handleToggle} />

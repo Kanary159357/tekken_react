@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import '../public/spritesmith-generated/sprite.module.scss';
 export const GlobalStyle = createGlobalStyle`
 html, body{
   height: 100%;

@@ -1,12 +1,42 @@
-const nextConfig = {
-    /* config options here */
-    trailingSlash: true,
+let SpritesmithPlugin = require('webpack-spritesmith');
+let path = require('path');
 
-    images: {
-        domains: ['lh3.googleusercontent.com'],
-    },
-};
+const nextConfig = {};
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',
 });
-module.exports = withBundleAnalyzer(nextConfig);
+
+module.exports = {
+    trailingSlash: true,
+    images: {
+        domains: ['lh3.googleusercontent.com'],
+    },
+    webpack: (config, options) => {
+        config.plugins.push(
+            new SpritesmithPlugin({
+                src: {
+                    cwd: path.resolve(__dirname, 'public/icon'),
+                    glob: '*.png',
+                },
+                target: {
+                    image: path.resolve(
+                        __dirname,
+                        'public/spritesmith-generated/sprite.png'
+                    ),
+                    css: [
+                        [
+                            path.resolve(__dirname, 'style//sprite.json'),
+                            {
+                                format: 'json_texture',
+                            },
+                        ],
+                    ],
+                },
+                apiOptions: {
+                    cssImageRef: '~sprite.png',
+                },
+            })
+        );
+        return config;
+    },
+};
