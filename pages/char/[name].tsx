@@ -56,19 +56,22 @@ export const getServerSideProps: GetServerSideProps =
                 console.log(e.code);
             }
         }
-        try {
-            store.dispatch(
-                getCharacterByName.initiate(context.query.name as string)
-            );
-            await Promise.all(getRunningOperationPromises());
-        } catch (error) {
-            return {
-                redirect: {
-                    permanent: false,
-                    destination: '/404',
-                },
-            };
+        if (typeof context.query.name === 'string') {
+            try {
+                store.dispatch(
+                    getCharacterByName.initiate(context.query.name as string)
+                );
+                await Promise.all(getRunningOperationPromises());
+            } catch (error) {
+                return {
+                    redirect: {
+                        permanent: false,
+                        destination: '/404',
+                    },
+                };
+            }
         }
+
         return {
             props: {},
         };
