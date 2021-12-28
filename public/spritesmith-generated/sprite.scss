@@ -1,0 +1,123 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$dc-name: 'dc';
+$dc-x: 0px;
+$dc-y: 0px;
+$dc-offset-x: 0px;
+$dc-offset-y: 0px;
+$dc-width: 64px;
+$dc-height: 64px;
+$dc-total-width: 128px;
+$dc-total-height: 128px;
+$dc-image: '~sprite.png';
+$dc: (0px, 0px, 0px, 0px, 64px, 64px, 128px, 128px, '~sprite.png', 'dc', );
+$neon-name: 'neon';
+$neon-x: 64px;
+$neon-y: 0px;
+$neon-offset-x: -64px;
+$neon-offset-y: 0px;
+$neon-width: 64px;
+$neon-height: 64px;
+$neon-total-width: 128px;
+$neon-total-height: 128px;
+$neon-image: '~sprite.png';
+$neon: (64px, 0px, -64px, 0px, 64px, 64px, 128px, 128px, '~sprite.png', 'neon', );
+$nneo-name: 'nneo';
+$nneo-x: 0px;
+$nneo-y: 64px;
+$nneo-offset-x: 0px;
+$nneo-offset-y: -64px;
+$nneo-width: 64px;
+$nneo-height: 64px;
+$nneo-total-width: 128px;
+$nneo-total-height: 128px;
+$nneo-image: '~sprite.png';
+$nneo: (0px, 64px, 0px, -64px, 64px, 64px, 128px, 128px, '~sprite.png', 'nneo', );
+$youtube-name: 'youtube';
+$youtube-x: 64px;
+$youtube-y: 64px;
+$youtube-offset-x: -64px;
+$youtube-offset-y: -64px;
+$youtube-width: 64px;
+$youtube-height: 64px;
+$youtube-total-width: 128px;
+$youtube-total-height: 128px;
+$youtube-image: '~sprite.png';
+$youtube: (64px, 64px, -64px, -64px, 64px, 64px, 128px, 128px, '~sprite.png', 'youtube', );
+$spritesheet-width: 128px;
+$spritesheet-height: 128px;
+$spritesheet-image: '~sprite.png';
+$spritesheet-sprites: ($dc, $neon, $nneo, $youtube, );
+$spritesheet: (128px, 128px, '~sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

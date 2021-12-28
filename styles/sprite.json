@@ -1,0 +1,46 @@
+{
+    "frames": {
+        "dc.png": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 64
+            }
+        },
+        "neon.png": {
+            "frame": {
+                "x": 64,
+                "y": 0,
+                "w": 64,
+                "h": 64
+            }
+        },
+        "nneo.png": {
+            "frame": {
+                "x": 0,
+                "y": 64,
+                "w": 64,
+                "h": 64
+            }
+        },
+        "youtube.png": {
+            "frame": {
+                "x": 64,
+                "y": 64,
+                "w": 64,
+                "h": 64
+            }
+        }
+    },
+    "meta": {
+        "app": "spritesheet-templates",
+        "version": "10.5.2",
+        "image": "~sprite.png",
+        "scale": 1,
+        "size": {
+            "w": 128,
+            "h": 128
+        }
+    }
+}

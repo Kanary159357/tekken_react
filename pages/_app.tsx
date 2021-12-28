@@ -1,60 +1,32 @@
 import React, { useEffect } from 'react';
-import { ModalProvider } from '../context/ModalContext';
-import UserProvider from '../context/UserContext';
 import MainLayout from '../layout/MainLayout';
 import { GlobalStyle } from '../styles/GlobalStyle';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
-import { useRouter } from 'next/dist/client/router';
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
-config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+import { wrapper } from '../store/store';
+import useGA from '../hooks/useGA';
+import useAuthObserver from '../hooks/useAuthObserver';
+import '../scripts/wdyr';
 
-const AppProvider = ({
-    contexts,
-    children,
-}: {
-    contexts: any;
-    children: any;
-}) =>
-    contexts.reduce(
-        (prev: any, context: any) => React.createElement(context, {}, prev),
-        children
-    );
+config.autoAddCss = false;
+
 declare global {
     interface Window {
         gtag: any;
     }
 }
-
 const App = ({ Component, pageProps }) => {
-    const router = useRouter();
-
-    const handleRouteChange = (url: URL) => {
-        window.gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`, {
-            page_path: url,
-        });
-    };
-    const [queryClient] = React.useState(() => new QueryClient());
-
-    useEffect(() => {
-        router.events.on('routeChangeComplete', handleRouteChange);
-        return () => {
-            router.events.off('routeChangeComplete', handleRouteChange);
-        };
-    }, [router.events]);
+    useGA();
+    useAuthObserver();
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-                <AppProvider contexts={[ModalProvider, UserProvider]}>
-                    <GlobalStyle />
-                    <MainLayout>
-                        <Component {...pageProps} />
-                    </MainLayout>
-                </AppProvider>
-            </Hydrate>
-        </QueryClientProvider>
+        <>
+            <GlobalStyle />
+            <MainLayout>
+                <Component {...pageProps} />
+            </MainLayout>
+        </>
     );
 };
 
-export default App;
+export default wrapper.withRedux(App);

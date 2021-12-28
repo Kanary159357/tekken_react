@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Sidebar from '../components/PageComponents/Sidebar';
+
 import { useCallback, useState } from 'react';
 import React from 'react';
 import {
@@ -9,10 +9,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { GlobalStyle } from '../styles/GlobalStyle';
 import Modal from '../components/Modal';
-import CustomIcon from '../base/Icon';
+import CustomIcon from '../components/base/Icon';
+import Sidebar from '../components/Sidebar/Sidebar';
 import { Device, Palette } from '../styles/theme';
-import { useModalData } from '../context/ModalContext';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
+import Head from 'next/head';
 const Wrapper = styled.div`
     background: #e8e8e8;
 `;
@@ -58,25 +60,33 @@ const Overlay = styled.div<{ toggle: boolean }>`
 
 function MainLayout({ children }) {
     const [toggle, setToggle] = useState(false);
-    const { open } = useModalData();
+    const isOpen = useSelector(
+        (state: RootState) => state.dialogReducer.isOpen
+    );
     const handleToggle = useCallback(() => {
         setToggle(false);
     }, []);
-
+    const changeToggle = useCallback(() => {
+        setToggle(!toggle);
+    }, [toggle]);
     return (
         <>
-            <title>6N23RP</title>
+            <Head>
+                {' '}
+                <title>6N23RP</title>
+                <link rel="icon" type="image/png" href="/icon/nneo.png" />
+            </Head>
             <GlobalStyle />
             <Wrapper>
                 <MenuButtonBlock
                     icon={toggle ? faTimes : faBars}
-                    onClick={() => setToggle(!toggle)}
+                    onClick={changeToggle}
                 />
                 <Sidebar toggle={toggle} handleToggle={handleToggle} />
                 <Overlay toggle={toggle} onClick={handleToggle} />
 
                 <PageContent>{children}</PageContent>
-                {open && <Modal />}
+                {isOpen && <Modal />}
             </Wrapper>
         </>
     );
