@@ -1,9 +1,11 @@
-import { createStore, AnyAction, Store } from 'redux';
-import { createWrapper, Context, HYDRATE } from 'next-redux-wrapper';
+import { Store } from 'redux';
+import { createWrapper } from 'next-redux-wrapper';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import userReducer from './slice/userReducer';
 import dialogReducer from './slice/dialogReducer';
 import { useDispatch } from 'react-redux';
+import { charApi } from './api/charApi';
+
 export interface ThunkExtraArguments {
     store: Store;
 }
@@ -14,13 +16,14 @@ const makeStore = () => {
         reducer: {
             userReducer,
             dialogReducer,
+            [charApi.reducerPath]: charApi.reducer,
         },
         middleware: getDefaultMiddleware({
             thunk: {
                 extraArgument: thunkExtraArguments,
             },
             serializableCheck: false,
-        }),
+        }).concat(charApi.middleware),
     });
     thunkExtraArguments.store = store;
     return store;

@@ -6,7 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = {
+module.exports = withBundleAnalyzer({
     trailingSlash: true,
     images: {
         domains: ['lh3.googleusercontent.com'],
@@ -25,7 +25,7 @@ module.exports = {
                     ),
                     css: [
                         [
-                            path.resolve(__dirname, 'style//sprite.json'),
+                            path.resolve(__dirname, 'styles//sprite.json'),
                             {
                                 format: 'json_texture',
                             },
@@ -39,4 +39,4 @@ module.exports = {
         );
         return config;
     },
-};
+});

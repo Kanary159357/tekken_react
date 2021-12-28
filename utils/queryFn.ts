@@ -10,6 +10,7 @@ import {
     updateDoc,
 } from 'firebase/firestore/lite';
 import db from '../firebaseInit';
+import { CharProps } from '../types/CharProps';
 import { getOrderedCharData } from './charDataSort';
 
 export const updateUserHistory = async (
@@ -33,8 +34,9 @@ export const updateUserHistory = async (
         } else {
             await setDoc(doc(db, 'User', uid), { [type]: [history] });
         }
+        return true;
     } catch {
-        throw new Error('Error with Updating User History');
+        return false;
     }
 };
 
@@ -45,27 +47,29 @@ export const deleteCharData = async (
 ) => {
     try {
         await updateDoc(docRef, { [type]: arrayRemove(data) });
+        return true;
     } catch {
-        throw new Error('Error with Removing old data');
+        return false;
     }
 };
-export const AddCharData = async (
+export const addCharData = async (
     docRef: DocumentReference<DocumentData>,
     type: string,
     data: Object
 ) => {
     try {
         await updateDoc(docRef, { [type]: arrayUnion(data) });
+        return true;
     } catch {
-        throw new Error('Error with add New data');
+        return false;
     }
 };
 export async function getCharData(char: string) {
     const docRef = doc(db, 'Character', char);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-        return getOrderedCharData(docSnap.data());
+        return getOrderedCharData(docSnap.data() as CharProps);
     } else {
-        throw new Error('No Character');
+        return false;
     }
 }

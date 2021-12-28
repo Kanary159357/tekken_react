@@ -2,14 +2,14 @@ import { faEdit, faEraser } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { signInWithGoogle } from '../../firebaseInit';
-import useDeleteCharDataQuery from '../../hooks/query/useDeleteCharDataQuery';
-import useEditCharDataQuery from '../../hooks/query/useEditCharDataQuery';
-import useDialog from '../../hooks/useDialog';
 import useEditValue from '../../hooks/useInputValue';
+import useUserCheckDialog from '../../hooks/useUserCheckDialog';
+import {
+    useDeleteCharDataMutation,
+    useEditCharDataMutation,
+} from '../../store/api/charApi';
 import { RootState } from '../../store/store';
 import { Palette, Device } from '../../styles/theme';
-import { isEmpty } from '../../utils/isEmpty';
 import CustomIcon from '../base/Icon';
 import { TableControl, tagProperty } from './Table';
 import TableEdits from './TableEdits';
@@ -61,61 +61,42 @@ interface RowProps {
 const TableRow = ({ row, charName, description }: RowProps) => {
     const [edit, setEdit] = useState(false);
     const { values, handleChange, setValue } = useEditValue(row);
+    const { uid } = useSelector((state: RootState) => state.userReducer.user);
+    const { openUserCheckDialog } = useUserCheckDialog();
     useEffect(() => {
         setValue(row);
         setEdit(false);
     }, [row, setValue]);
 
-    const user = useSelector((state: RootState) => state.userReducer.user);
-    const { openDialog } = useDialog();
-    const deleteQuery = useDeleteCharDataQuery(
-        charName,
-        values,
-        user?.uid as string,
-        description
-    );
-    const editQuery = useEditCharDataQuery(
-        charName,
-        row!,
-        values,
-        user?.uid as string,
-        description
-    );
+    const [deleteChar, { isLoading: loading }] = useDeleteCharDataMutation();
+    const [editChar, { isLoading }] = useEditCharDataMutation();
+
     const handleDelete = async () => {
-        if (!isEmpty(user)) {
-            const hasConfirm = await openDialog({
-                content: '삭제하시겠습니까',
-            });
-            if (hasConfirm) {
-                deleteQuery.mutate();
-            }
-        } else {
-            const hasConfirm = await openDialog({
-                content: '정보를 수정하기 위해서는 로그인해야합니다',
-            });
-            if (hasConfirm) {
-                signInWithGoogle();
-            }
-        }
+        openUserCheckDialog(
+            async () =>
+                deleteChar({
+                    char: charName,
+                    data: values,
+                    uid: uid as string,
+                    type: description,
+                }),
+            '삭제하시겠습니까'
+        );
         setValue(row);
         setEdit(false);
     };
     const handleUpdate = async () => {
-        if (!isEmpty(user)) {
-            const hasConfirm = await openDialog({
-                content: '수정하시겠습니까',
-            });
-            if (hasConfirm) {
-                editQuery.mutate();
-            }
-        } else {
-            const hasConfirm = await openDialog({
-                content: '정보를 수정하기 위해서는 로그인해야합니다',
-            });
-            if (hasConfirm) {
-                signInWithGoogle();
-            }
-        }
+        openUserCheckDialog(
+            async () =>
+                editChar({
+                    char: charName,
+                    old: row!,
+                    newData: values,
+                    uid: uid as string,
+                    type: description,
+                }),
+            '수정하시겠습니까'
+        );
         setValue(row);
         setEdit(false);
     };

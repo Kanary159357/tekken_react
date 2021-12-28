@@ -11,11 +11,9 @@ import { Device, Palette } from '../../styles/theme';
 import { useRouter } from 'next/dist/client/router';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { isEmpty } from '../../utils/isEmpty';
 
-import useAddCharDataQuery from '../../hooks/query/useAddCharDataQuery';
-import useDialog from '../../hooks/useDialog';
-import { signInWithGoogle } from '../../firebaseInit';
+import useUserCheckDialog from '../../hooks/useUserCheckDialog';
+import { useAddCharMutation } from '../../store/api/charApi';
 
 const TableWrapper = styled.div`
     margin-bottom: 20px;
@@ -90,31 +88,21 @@ const Table = ({ item }: dataProps) => {
         return acc;
     }, {});
     const { values, setValue, handleChange } = useEditValue(initialValue);
-    const { openDialog } = useDialog();
-
+    const { openUserCheckDialog } = useUserCheckDialog();
     const user = useSelector((state: RootState) => state.userReducer.user);
-    const addQuery = useAddCharDataQuery(
-        name as string,
-        values,
-        user?.uid,
-        tag.description
-    );
+    const [addChar, { isLoading }] = useAddCharMutation();
+
     const handleModal = async () => {
-        if (!isEmpty(user)) {
-            const hasConfirm = await openDialog({
-                content: '추가하시겠습니까',
-            });
-            if (hasConfirm) {
-                addQuery.mutate();
-            }
-        } else {
-            const hasConfirm = await openDialog({
-                content: '정보를 수정하기 위해서는 로그인해야합니다',
-            });
-            if (hasConfirm) {
-                signInWithGoogle();
-            }
-        }
+        openUserCheckDialog(
+            async () =>
+                addChar({
+                    char: name as string,
+                    data: values,
+                    uid: user?.uid as string,
+                    type: tag.description,
+                }),
+            '추가하시겠습니까?'
+        );
         setEdit(false);
         setValue(initialValue);
     };

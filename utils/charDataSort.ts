@@ -1,3 +1,4 @@
+import { CharProps } from '../types/CharProps';
 import { TableOrder } from './TableOrder';
 
 export const sortbyKey = (a: any, b: any) => {
@@ -40,8 +41,8 @@ export const order = (arr: any[], category: string) => {
     );
 };
 
-export const getOrderedCharData = (data: any) =>
-    Object.keys(data).reduce((acc: any, cur: any) => {
+export const getOrderedCharData = (data: CharProps) =>
+    Object.keys(data).reduce((acc, cur: string) => {
         if (cur === 'Info') {
             acc[cur] = data[cur];
             return acc;
@@ -61,4 +62,4 @@ export const getOrderedCharData = (data: any) =>
             acc[cur] = order(data[cur], cur).sort(sortbyKey); //프레임순
         }
         return acc;
-    }, {});
+    }, {} as CharProps);
