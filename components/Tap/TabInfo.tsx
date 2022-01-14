@@ -11,7 +11,7 @@ import {
     Throw,
     Up,
     WallCombo,
-} from '../../types/CharProps';
+} from '../../lib/types/CharProps';
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;

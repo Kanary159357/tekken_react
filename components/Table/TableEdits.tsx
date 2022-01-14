@@ -2,7 +2,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Palette } from '../../styles/theme';
+import { Palette } from '../../lib/styles/theme';
 import CustomIcon from '../base/Icon';
 
 const TableEditBox = styled.td`

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
-import { Device } from '../../../styles/theme';
+import { Device } from '../../../lib/styles/theme';
 const PatchItemBox = styled.div`
     padding: 10px;
     width: 100%;

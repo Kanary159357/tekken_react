@@ -4,16 +4,16 @@ import styled from 'styled-components';
 import { TableItemProps } from '../Tap/TabInfo';
 import TableRow from './TableRow';
 import TableEdits from './TableEdits';
-import useEditValue from '../../hooks/useInputValue';
+import useEditValue from '../../lib/hooks/useInputValue';
 import CustomIcon from '../base/Icon';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Device, Palette } from '../../styles/theme';
+import { Device, Palette } from '../../lib/styles/theme';
 import { useRouter } from 'next/dist/client/router';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+import { RootState } from '../../lib/store/store';
 
-import useUserCheckDialog from '../../hooks/useUserCheckDialog';
-import { useAddCharMutation } from '../../store/api/charApi';
+import useUserCheckDialog from '../../lib/hooks/useUserCheckDialog';
+import { useAddCharMutation } from '../../lib/store/api/charApi';
 
 const TableWrapper = styled.div`
     margin-bottom: 20px;

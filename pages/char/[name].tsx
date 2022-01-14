@@ -3,7 +3,7 @@ import Info from '../../components/PageComponents/Character/Info';
 import Main from '../../components/PageComponents/Character/Main';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
-import { Device, Palette } from '../../styles/theme';
+import { Device, Palette } from '../../lib/styles/theme';
 import { LoadingWithoutOverlay } from '../../components/base/Loading';
 import CommandDescription from '../../components/PageComponents/Home/CommandDescription';
 import CustomIcon from '../../components/base/Icon';
@@ -11,14 +11,14 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import nookies from 'nookies';
-import { wrapper } from '../../store/store';
+import { wrapper } from '../../lib/store/store';
 import { verifyAdmin } from '../../fireabaseAdminInit';
-import { setUser } from '../../store/slice/userReducer';
+import { setUser } from '../../lib/store/slice/userReducer';
 import {
     getCharacterByName,
     getRunningOperationPromises,
     useGetCharacterByNameQuery,
-} from '../../store/api/charApi';
+} from '../../lib/store/api/charApi';
 const CharWrap = styled.div`
     display: flex;
     height: 100%;

@@ -4,7 +4,7 @@ import {
     faBullhorn,
 } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { Palette, FontColor, Device } from '../../../styles/theme';
+import { Palette, FontColor, Device } from '../../../lib/styles/theme';
 import CustomIcon from '../../base/Icon';
 
 const Form = styled.div`

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Device, Palette, FontColor } from '../../../styles/theme';
+import { Device, Palette, FontColor } from '../../../lib/styles/theme';
 import Image from 'next/image';
 import Overlay from '../../Overlay';
 import CustomIcon from '../../base/Icon';

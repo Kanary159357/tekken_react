@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Device, Palette } from '../../styles/theme';
+import { Device, Palette } from '../../lib/styles/theme';
 
 const TabControlBox = styled.div`
     height: 70px;
