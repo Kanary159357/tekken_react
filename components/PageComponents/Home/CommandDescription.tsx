@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Device, Palette, FontColor } from '../../../lib/styles/theme';
-import Image from 'next/image';
 import Overlay from '../../Overlay';
 import CustomIcon from '../../base/Icon';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+    Frame1HalfImage,
+    Frame2HalfImage,
+} from '../../../lib/styles/SpriteStyle';
 
 const Animation = styled.div`
     animation: fadeInAnimation 0.3s;
@@ -48,26 +51,14 @@ const DescriptionWrapper = styled.div`
             font-size: 30px;
         }
     }
-    .description {
-        font-size: 1em;
-        @media ${Device.desktop} {
-            width: 100%;
-        }
-    }
-    .command {
+    .content {
         margin-top: 30px;
-        .img {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            @media ${Device.tablet} {
-                width: 125px;
-                height: 125px;
-            }
-        }
     }
-    .example {
-        margin-top: 30px;
+`;
+const DescriptionContent = styled.div`
+    font-size: 1em;
+    @media ${Device.desktop} {
+        width: 100%;
     }
 `;
 const Sentence = styled.div`
@@ -88,9 +79,6 @@ const SmallHeader = styled.div`
     font-weight: 800;
     font-size: 30px;
     @media ${Device.tablet} {
-        padding-left: 80px;
-    }
-    @media ${Device.mobile} {
         padding-left: 0;
     }
     &:after {
@@ -118,14 +106,17 @@ const ImageWrapper = styled.div`
     display: flex;
     flex-direction: row;
     padding-top: 20px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    @media ${Device.tablet} {
+    .img {
+        display: flex;
         justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 150px;
     }
     .arrow {
-        font-size: 50px;
-        margin: 0 10px;
+        font-size: 30px;
         color: ${Palette.gray_1};
     }
 `;
@@ -148,7 +139,7 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
                     <CustomIcon icon={faTimes} color={Palette.black_1} />
                 </DeleteButton>
                 <div className="header">커맨드 읽는법</div>
-                <div className="description">
+                <DescriptionContent>
                     <SmallHeader>
                         <Highlighted color={Palette.red_1}>버튼</Highlighted>
                     </SmallHeader>
@@ -156,8 +147,8 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
                     <Sentence>LK = 왼발, RK = 오른발 </Sentence>
                     <Sentence> AL = LP+LK, {'  '}AR = RP+RK </Sentence>
                     <Sentence> AP = LP+RP, {'  '}AK = LK+ RK </Sentence>
-                </div>
-                <div className="command">
+                </DescriptionContent>
+                <div className="content">
                     <SmallHeader>
                         <Highlighted color={Palette.green_2}>레버</Highlighted>
                     </SmallHeader>
@@ -165,24 +156,16 @@ const CommandDescription = ({ func }: { func?: () => void }) => (
                     <ImageWrapper>
                         <div className="img">
                             {' '}
-                            <Image
-                                src={'/img/Frame1.png'}
-                                alt={'numberpad'}
-                                layout="fill"
-                            />
+                            <Frame1HalfImage />
                         </div>
-                        <div className="arrow">{'=>'}</div>
+                        <div className="arrow">{'>'}</div>
                         <div className="img">
                             {' '}
-                            <Image
-                                src={'/img/Frame2.png'}
-                                alt={'arrows'}
-                                layout="fill"
-                            />
+                            <Frame2HalfImage />
                         </div>
                     </ImageWrapper>
                 </div>
-                <div className="example">
+                <div className="content">
                     따라서 3RP는 오른쪽 아래 대각선으로 레버를 밀고 오른손을
                     누르라는 의미입니다.
                 </div>

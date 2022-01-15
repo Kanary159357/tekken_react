@@ -1,5 +1,4 @@
 let SpritesmithPlugin = require('webpack-spritesmith');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 let path = require('path');
 
 const nextConfig = {};
@@ -13,17 +12,6 @@ module.exports = withBundleAnalyzer({
         domains: ['lh3.googleusercontent.com'],
     },
     webpack: (config, options) => {
-        config.module.rules.push({
-            test: /\.svg$/i,
-            include: /.*_sprite\.svg/,
-
-            loader: 'svg-sprite-loader',
-            options: {
-                extract: true,
-                publicPath: '',
-            },
-        });
-        config.plugins.push(new SpriteLoaderPlugin());
         config.plugins.push(
             new SpritesmithPlugin({
                 src: {

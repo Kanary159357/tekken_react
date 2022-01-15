@@ -8,6 +8,7 @@ import {
     DCHalfImage,
     DCImage,
     YoutubeHalfImage,
+    YoutubeImage,
 } from '../../../lib/styles/SpriteStyle';
 const InfoWrapper = styled.div`
     display: flex;
