@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Palette, FontColor, Device } from '../styles/theme';
+import { Palette, FontColor, Device } from '../lib/styles/theme';
 
 import PatchNote from '../components/PageComponents/Home/PatchNote';
 import ContactForm from '../components/PageComponents/Home/ContactForm';

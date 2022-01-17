@@ -2,14 +2,14 @@ import { faEdit, faEraser } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import useEditValue from '../../hooks/useInputValue';
-import useUserCheckDialog from '../../hooks/useUserCheckDialog';
+import useEditValue from '../../lib/hooks/useInputValue';
+import useUserCheckDialog from '../../lib/hooks/useUserCheckDialog';
 import {
     useDeleteCharDataMutation,
     useEditCharDataMutation,
-} from '../../store/api/charApi';
-import { RootState } from '../../store/store';
-import { Palette, Device } from '../../styles/theme';
+} from '../../lib/store/api/charApi';
+import { RootState } from '../../lib/store/store';
+import { Palette, Device } from '../../lib/styles/theme';
 import CustomIcon from '../base/Icon';
 import { TableControl, tagProperty } from './Table';
 import TableEdits from './TableEdits';

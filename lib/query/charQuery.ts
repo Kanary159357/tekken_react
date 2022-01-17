@@ -1,5 +1,5 @@
 import { doc } from 'firebase/firestore/lite';
-import db from '../firebaseInit';
+import db from '../../firebaseInit';
 import {
     addCharData,
     deleteCharData,

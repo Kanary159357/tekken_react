@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import React from 'react';
-import { InfoProps } from '../../../types/CharProps';
-import { Device, FontColor, Palette } from '../../../styles/theme';
-import * as sprite from '../../../styles/sprite.json';
+import { InfoProps } from '../../../lib/types/CharProps';
+import { Device, FontColor, Palette } from '../../../lib/styles/theme';
+import * as sprite from '../../../lib/styles/sprite.json';
 import {
     DCHalfImage,
     DCImage,
     YoutubeHalfImage,
-} from '../../../styles/SpriteStyle';
+    YoutubeImage,
+} from '../../../lib/styles/SpriteStyle';
 const InfoWrapper = styled.div`
     display: flex;
     height: 100%;

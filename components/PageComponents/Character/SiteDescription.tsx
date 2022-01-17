@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Device, FontColor, Palette } from '../../../styles/theme';
+import { Device, FontColor, Palette } from '../../../lib/styles/theme';
 const Description = styled.div`
     width: calc(100% - 200px);
     padding-left: 150px;

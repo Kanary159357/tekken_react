@@ -1,4 +1,4 @@
-import { Palette } from '../styles/theme';
+import { Palette } from '../lib/styles/theme';
 import styled from 'styled-components';
 import React from 'react';
 

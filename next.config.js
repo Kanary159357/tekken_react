@@ -25,7 +25,7 @@ module.exports = withBundleAnalyzer({
                     ),
                     css: [
                         [
-                            path.resolve(__dirname, 'styles//sprite.json'),
+                            path.resolve(__dirname, 'lib//styles//sprite.json'),
                             {
                                 format: 'json_texture',
                             },

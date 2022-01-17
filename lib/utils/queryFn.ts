@@ -9,7 +9,7 @@ import {
     Timestamp,
     updateDoc,
 } from 'firebase/firestore/lite';
-import db from '../firebaseInit';
+import db from '../../firebaseInit';
 import { CharProps } from '../types/CharProps';
 import { getOrderedCharData } from './charDataSort';
 

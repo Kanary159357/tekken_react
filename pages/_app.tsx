@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import MainLayout from '../layout/MainLayout';
-import { GlobalStyle } from '../styles/GlobalStyle';
+import { GlobalStyle } from '../lib/styles/GlobalStyle';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
-import { wrapper } from '../store/store';
-import useGA from '../hooks/useGA';
-import useAuthObserver from '../hooks/useAuthObserver';
-import '../scripts/wdyr';
+import { wrapper } from '../lib/store/store';
+import useGA from '../lib/hooks/useGA';
+import useAuthObserver from '../lib/hooks/useAuthObserver';
+//import '../lib/scripts/wdyr';
 
 config.autoAddCss = false;
 

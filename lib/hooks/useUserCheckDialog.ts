@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { signInWithGoogle } from '../firebaseInit';
+import { signInWithGoogle } from '../../firebaseInit';
 import { RootState } from '../store/store';
 import { isEmpty } from '../utils/isEmpty';
 import useDialog from './useDialog';

@@ -5,9 +5,9 @@ import Button from '../base/Button';
 import Icon from '../base/Icon';
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
-import { FontColor, Palette } from '../../styles/theme';
-import { RootState } from '../../store/store';
-import { isEmpty } from '../../utils/isEmpty';
+import { FontColor, Palette } from '../../lib/styles/theme';
+import { RootState } from '../../lib/store/store';
+import { isEmpty } from '../../lib/utils/isEmpty';
 const UserProfileBox = styled.div<{ user: any }>`
     height: ${(props) => props.user === '150px' && '100px'};
     display: flex;

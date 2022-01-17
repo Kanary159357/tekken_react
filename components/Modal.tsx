@@ -4,16 +4,16 @@ import Button from './base/Button';
 
 import CustomIcon from './base/Icon';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
-import { Device, FontColor, Palette } from '../styles/theme';
+import { Device, FontColor, Palette } from '../lib/styles/theme';
 import Overlay from './Overlay';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store/store';
+import { RootState } from '../lib/store/store';
 import {
     closeDialog,
     confirmDialog,
     declineDialog,
-} from '../store/slice/dialogReducer';
+} from '../lib/store/slice/dialogReducer';
 
 const ModalBox = styled.div`
     background: ${Palette.white_2};

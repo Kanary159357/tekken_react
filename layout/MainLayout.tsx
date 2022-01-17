@@ -7,13 +7,13 @@ import {
     faTimes,
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
-import { GlobalStyle } from '../styles/GlobalStyle';
+import { GlobalStyle } from '../lib/styles/GlobalStyle';
 import Modal from '../components/Modal';
 import CustomIcon from '../components/base/Icon';
 import Sidebar from '../components/Sidebar/Sidebar';
-import { Device, Palette } from '../styles/theme';
+import { Device, Palette } from '../lib/styles/theme';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
+import { RootState } from '../lib/store/store';
 import Head from 'next/head';
 const Wrapper = styled.div`
     background: #e8e8e8;
